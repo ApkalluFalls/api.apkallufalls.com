@@ -9,7 +9,10 @@ module.exports = new Helper("Achievement", "achievements", {
     "icon",
     "id",
     "item",
-    "name",
+    "name_de",
+    "name_en",
+    "name_fr",
+    "name_ja",
     "patch",
     "points",
     "requirement_1",
@@ -28,7 +31,7 @@ module.exports = new Helper("Achievement", "achievements", {
           de: entry.name_de,
           en: entry.name_en,
           fr: entry.name_fr,
-          jp: entry.name_jp
+          jp: entry.name_ja
         },
         patch: entry.patch,
         weight: _getWeight(entry)

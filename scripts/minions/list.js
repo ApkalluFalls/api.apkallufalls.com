@@ -22,7 +22,7 @@ module.exports = new Helper("Minion", "minions", {
           de: entry.name_de,
           en: entry.name_en,
           fr: entry.name_fr,
-          jp: entry.name_jp
+          jp: entry.name_ja
         },
         patch: entry.patch
       }

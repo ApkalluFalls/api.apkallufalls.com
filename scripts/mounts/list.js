@@ -23,7 +23,7 @@ module.exports = new Helper("Mount", "mounts", {
           de: entry.name_de,
           en: entry.name_en,
           fr: entry.name_fr,
-          jp: entry.name_jp
+          jp: entry.name_ja
         },
         patch: entry.patch,
         canFly: entry.can_fly_extra

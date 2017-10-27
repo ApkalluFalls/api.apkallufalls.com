@@ -1,13 +1,11 @@
 {
-  "name": "scripts",
+  "name": "api.apkallufalls.com",
   "version": "1.0.0",
-  "description": "",
-  "main": "_helper.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "description": "The mock API for Apkallu Falls",
+  "private": true,
+  "main": "scripts/update.js",
+  "author": "James Donnelly @ApkalluFalls",
+  "license": "MIT",
   "dependencies": {
     "node-fetch": "^1.7.3"
   }

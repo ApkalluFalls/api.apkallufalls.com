@@ -4,7 +4,7 @@ const fs = require('fs');
 module.exports = class Helper {
   constructor(name, plural, config, callback) {
     this.api = config.api;
-    this.base = "../api/" + (config.base ? config.base + "/" : '');
+    this.base = "../docs/" + (config.base ? config.base + "/" : '');
     this.columns = config.columns;
     this.details = config.details;
     this.format = config.format;

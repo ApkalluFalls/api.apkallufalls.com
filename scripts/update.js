@@ -1,3 +1,5 @@
+const cacheBust = require('./_cacheBust');
+
 console.log("\n");
 
 const update = async function(args) {
@@ -43,12 +45,13 @@ const update = async function(args) {
   if (config && config.mountsList) {
     require('./mounts/list.js').fetch();
   }
+
+  // Cache bust.
+  cacheBust();
 }
 
 function message(type) {
-  console.log("\n----------");
   console.info("Updating " + type + ".");
-  console.log("----------\n");
 }
 
 update(process.argv.slice(2));

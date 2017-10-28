@@ -1,5 +1,6 @@
 const Helper = require('../_helper');
 const recursiveFetch = require('../_recursive');
+const config = require('../_config');
 
 const api = "mount";
 const base = 'mount';
@@ -38,7 +39,8 @@ module.exports = new Helper(name, plural, {
             en: data.summon_en,
             fr: data.summon_fr,
             jp: data.summon_ja
-          }
+          },
+          img: data.icon.replace(config.fullImagePath, "")
         }
       }
     }

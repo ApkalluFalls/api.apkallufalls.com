@@ -1,5 +1,6 @@
 const Helper = require('../_helper');
 const recursiveFetch = require('../_recursive');
+const config = require('../_config');
 
 const api = "achievement";
 const base = 'achievement';
@@ -30,7 +31,8 @@ module.exports = new Helper(name, plural, {
             en: data.help_en,
             fr: data.help_fr,
             jp: data.help_ja
-          }
+          },
+          img: data.icon.replace(config.fullImagePath, "")
         }
       }
     }

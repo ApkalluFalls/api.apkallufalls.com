@@ -1,6 +1,7 @@
 const Helper = require('../_helper');
 const recursiveFetch = require('../_recursive');
 const config = require('../_config');
+const soundFilter = require('../../filters/minions/sounds');
 
 const api = "minion";
 const base = 'minion';
@@ -20,7 +21,7 @@ module.exports = new Helper(name, plural, {
       api: api + '/' + entry.id,
       base,
       format: (data) => {
-        return {
+        const result = {
           id: data.id,
           behavior: data.behavior,
           info: {
@@ -47,6 +48,13 @@ module.exports = new Helper(name, plural, {
             return data.icon.replace(config.fullImagePath, "")
           })()
         }
+
+        const sound = soundFilter(result);
+
+        if (sound)
+          result.sound = sound;
+
+        return result;
       }
     }
   }, resolve)

@@ -8,11 +8,15 @@ This benefit of this is that anyone can now update the site's content by cloning
 
 ## Structure
 
-In this repository are two folders:
+This repository has 3 core folders:
 
-### api
+### docs
 
 This contains a load of JSON data which Apkallu Falls relies upon.
+
+### filters
+
+This contains scripts which alter the generated API in some way.
 
 ### scripts
 

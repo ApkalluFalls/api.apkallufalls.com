@@ -18,7 +18,7 @@
  * @returns {(bool|string)} - if it has a sound or a sound override.
  */
 module.exports = (minion) => {
-  const quote = minion.quote.fr;
+  let quote = minion.quote.fr;
 
   switch (minion.id) {
     case 200:
@@ -121,7 +121,7 @@ module.exports = (minion) => {
       return override('L\'avenir sera porteur d\'espoir.', 'The future will bring hope.');
     
     case 123:
-      return override('Ô grand Ramuh! Protège-nous des intrus!', 'Oh great Ramuh! Protect us from intruders!');
+      return override('Ô grand Ramuh! Protège-nous des intrus!', 'Oh great Ramuh! Protect us from intruders!', true);
     
     case 124:
       return override('Son ennemi, un guerrier doit respecter.', 'A warrior must respect his enemy.');
@@ -319,13 +319,21 @@ module.exports = (minion) => {
       return true;
   }
 
-  function override(match, replacement) {
+  function override(match, replacement, stripNewLines) {
+    let newQuote = quote;
+
+    if (stripNewLines)
+      newQuote = quote.replace(/\n/g, '');
+
     // Throw an error if the quote no longer matches the test.
-    if (quote !== match && !quote.match(match))
+    if (newQuote !== match && !newQuote.match(match))
       throw new Error(
         'Minion ' + minion.id + ' sound "' + quote + '" doesn\'t match test `' + match.toString()
       );
 
-    return minion.quote.fr.replace(match, replacement);
+    if (stripNewLines)
+      newQuote = quote.replace(/\n/g, ' ');
+
+    return newQuote.replace(match, replacement);
   }
 }

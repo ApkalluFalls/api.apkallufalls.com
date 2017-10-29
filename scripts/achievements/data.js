@@ -32,7 +32,11 @@ module.exports = new Helper(name, plural, {
             fr: data.help_fr,
             jp: data.help_ja
           },
-          img: data.icon.replace(config.fullImagePath, "")
+          img: (() => {
+            if (data.icon === config.noIcon)
+              return false;
+            return data.icon.replace(config.fullImagePath, "")
+          })()
         }
       }
     }

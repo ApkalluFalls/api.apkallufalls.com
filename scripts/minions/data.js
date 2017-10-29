@@ -41,7 +41,11 @@ module.exports = new Helper(name, plural, {
             fr: data.summon_fr,
             jp: data.summon_ja
           },
-          img: data.icon.replace(config.fullImagePath, "")
+          img: (() => {
+            if (data.icon === config.noIcon)
+              return false;
+            return data.icon.replace(config.fullImagePath, "")
+          })()
         }
       }
     }

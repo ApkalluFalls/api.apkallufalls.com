@@ -18,7 +18,7 @@
  * @returns {(bool|string)} - if it has a sound or a sound override.
  */
 module.exports = (minion) => {
-  let quote = minion.quote.fr;
+  const quote = minion.quote.fr;
 
   switch (minion.id) {
     case 200:
@@ -121,10 +121,10 @@ module.exports = (minion) => {
       return override('L\'avenir sera porteur d\'espoir.', 'The future will bring hope.');
     
     case 123:
-      return override('Ô grand Ramuh! Protège-nous des intrus!', 'Oh great Ramuh! Protect us from intruders!', true);
+      return override('Ô grand Ramuh!\\nProtège-nous des intrus!', 'Oh great Ramuh!\\nProtect us from intruders!', true);
     
     case 124:
-      return override('Son ennemi, un guerrier doit respecter.', 'A warrior must respect his enemy.');
+      return override('Son ennemi, un  guerrier doit respecter.', 'A warrior must respect his enemy.');
     
     case 125:
       return override('Celui-ci s\'envolera!', 'This one will fly away!');
@@ -157,7 +157,7 @@ module.exports = (minion) => {
       return override('Défense de lire.', 'Do not read.');
     
     case 145:
-      return override('Nous serons les acteurs de notre propre délivrance!', 'We will be the actors of our own deliverance!');
+      return override('Nous serons les acteurs de\\nnotre propre délivrance!', 'We will be the actors of our own deliverance!');
     
     case 146:
       return override('Fusion, ouaf!', 'Fusion, woof!');
@@ -229,13 +229,13 @@ module.exports = (minion) => {
       return override('Aucun d\'entre vous ne m\'échappera!', 'None of you will escape me!');
     
     case 214:
-      return override('Going-My-Way !', 'Going my way!');
+      return override('Going-My-Way', 'Going my way');
     
     case 217:
-      return override('La survie, ça me connaît !', 'Survival, it knows me!');
+      return override('La survie, ça me connaît', 'Survival, it knows me');
     
     case 218:
-      return override('Prêtez-moi main-forte !', 'Lend me a helping hand!');
+      return override('Prêtez-moi main-forte', 'Lend me a helping hand');
     
     case 224:
       return override('Où est-ce que tu te cachais, vieille canaille!?', 'Where were you hiding, old rascal!?');
@@ -320,20 +320,12 @@ module.exports = (minion) => {
   }
 
   function override(match, replacement, stripNewLines) {
-    let newQuote = quote;
-
-    if (stripNewLines)
-      newQuote = quote.replace(/\n/g, '');
-
     // Throw an error if the quote no longer matches the test.
-    if (newQuote !== match && !newQuote.match(match))
+    if (quote !== match && !quote.match(match))
       throw new Error(
         'Minion ' + minion.id + ' sound "' + quote + '" doesn\'t match test `' + match.toString()
       );
 
-    if (stripNewLines)
-      newQuote = quote.replace(/\n/g, ' ');
-
-    return newQuote.replace(match, replacement);
+    return quote.replace(match, replacement);
   }
 }

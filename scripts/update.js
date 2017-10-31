@@ -13,37 +13,45 @@ const update = async function(args) {
   // // Patches
   if (!config || config.patches) {
     message('Patches');
-    require('./patches/list.js').fetch();
+    await require('./patches/list.js').fetch();
   }
 
   // // Achievements.
   if (!config || config.achievements) {
     message('Achievements');
     await require('./achievements/data.js').fetch();
-    require('./achievements/list.js').fetch();
+    await require('./achievements/list.js').fetch();
   }
   if (config && config.achievementsList) {
-    require('./achievements/list.js').fetch();
+    await require('./achievements/list.js').fetch();
   }
 
   // Minions.
   if (!config || config.minions) {
     message('Minions');
     await require('./minions/data.js').fetch();
-    require('./minions/list.js').fetch();
+    await require('./minions/list.js').fetch();
   }
   if (config && config.minionsList) {
-    require('./minions/list.js').fetch();
+    await require('./minions/list.js').fetch();
+    await require('./minions/list.js').fetch();
   }
 
   // Mounts.
   if (!config || config.mounts) {
     message('Mounts');
     await require('./mounts/data.js').fetch();
-    require('./mounts/list.js').fetch();
+    await require('./mounts/list.js').fetch();
   }
   if (config && config.mountsList) {
-    require('./mounts/list.js').fetch();
+    await require('./mounts/list.js').fetch();
+  }
+
+  if (!config || config.icons) {
+    message('Icons');
+    await require('./icons/achievements.js').fetch();
+    await require('./icons/minions.js').fetch();
+    await require('./icons/mounts.js').fetch();
   }
 
   // Cache bust.

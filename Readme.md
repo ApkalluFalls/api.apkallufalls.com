@@ -91,3 +91,10 @@ npm update.js mounts
 ```
 npm update.js mountsList
 ```
+
+#### Icons
+
+##### Everything
+```
+npm update.js icons
+```

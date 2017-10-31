@@ -10,6 +10,8 @@ const base = 'minion';
 const name = "Minion";
 const plural = "minions";
 
+const minions = {};
+
 module.exports = new Helper(name, plural, {
   api,
   base,
@@ -35,7 +37,11 @@ module.exports = new Helper(name, plural, {
         // If it has a parent, info like quote etc is redundant.
         const parent = hasParent(result);
         if (parent) {
-          result.parent = parent;
+          result.parent = {
+            id: parent,
+            name: minions[parent].name
+          };
+          minions[+result.id] = result;
           return result;
         }
 
@@ -67,6 +73,7 @@ module.exports = new Helper(name, plural, {
         if (sound)
           result.sound = sound;
 
+        minions[+result.id] = result;
         return result;
       }
     }

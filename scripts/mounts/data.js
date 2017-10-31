@@ -15,7 +15,7 @@ module.exports = new Helper(name, plural, {
   ],
   useCallback: true
 }, (data, resolve) => {
-  recursiveFetch(data, name, (entry) => {
+  recursiveFetch(data, name, (entry, all) => {
     return {
       api: api + '/' + entry.id,
       base,

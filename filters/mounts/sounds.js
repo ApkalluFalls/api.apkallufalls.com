@@ -50,7 +50,7 @@ module.exports = (mount) => {
       return override('Bip bip... Mise à niveau des systèmes recommandée...', 'Beep beep... System upgrade recommended...');
     
     case 101:
-      return override('Protocole de conduite responsable engagé', 'Responsible protocol of conduct engaged!')
+      return override('Protocole de conduite responsable engagé', 'Responsible protocol of conduct engaged')
 
     case 106:
       return override('Un petit œuf, deux petits œufs...', 'One small egg, two small eggs...')

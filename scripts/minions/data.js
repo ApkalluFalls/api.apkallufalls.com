@@ -10,17 +10,21 @@ const base = 'minion';
 const name = "Minion";
 const plural = "minions";
 
-const minions = {};
+let minions;
 
 module.exports = new Helper(name, plural, {
   api,
   base,
   columns: [
-    "id"
+    "id",
+    "name_de",
+    "name_en",
+    "name_fr",
+    "name_ja"
   ],
   useCallback: true
 }, (data, resolve) => {
-  recursiveFetch(data, name, (entry) => {
+  recursiveFetch(data, name, (entry, all) => {
     return {
       api: api + '/' + entry.id,
       base,
@@ -37,11 +41,16 @@ module.exports = new Helper(name, plural, {
         // If it has a parent, info like quote etc is redundant.
         const parent = hasParent(result);
         if (parent) {
+          const minion = all.filter(minion => +minion.id === +parent)[0];
           result.parent = {
             id: parent,
-            name: minions[parent].name
+            name: {
+              de: minion.name_de,
+              en: minion.name_en,
+              fr: minion.name_fr,
+              jp: minion.name_ja
+            }
           };
-          minions[+result.id] = result;
           return result;
         }
 
@@ -73,7 +82,6 @@ module.exports = new Helper(name, plural, {
         if (sound)
           result.sound = sound;
 
-        minions[+result.id] = result;
         return result;
       }
     }

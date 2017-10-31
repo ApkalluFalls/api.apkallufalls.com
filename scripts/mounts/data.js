@@ -2,6 +2,8 @@ const Helper = require('../_helper');
 const recursiveFetch = require('../_recursive');
 const config = require('../_config');
 
+const soundFilter = require('../../filters/mounts/sounds');
+
 const api = "mount";
 const base = 'mount';
 const name = "Mount";
@@ -20,7 +22,7 @@ module.exports = new Helper(name, plural, {
       api: api + '/' + entry.id,
       base,
       format: (data) => {
-        return {
+        const result = {
           id: data.id,
           info: {
             de: data.info1_de,
@@ -46,6 +48,13 @@ module.exports = new Helper(name, plural, {
             return data.icon.replace(config.fullImagePath, "")
           })()
         }
+
+        const sound = soundFilter(result);
+        
+        if (sound)
+          result.sound = sound;
+
+        return result;
       }
     }
   }, resolve)

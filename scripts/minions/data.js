@@ -35,7 +35,10 @@ module.exports = new Helper(name, plural, {
             if (data.icon === config.noIcon)
               return false;
             return data.icon.replace(config.fullImagePath, "")
-          })()
+          })(),
+          ref: data.url_xivdb.replace(/^http(s?)\:\/\/xivdb\.com/, (math, https) => {
+            return 'http' + (https ? 's' : '') + '://{0}xivdb.com/';
+          })
         }
 
         // If it has a parent, info like quote etc is redundant.
@@ -55,6 +58,7 @@ module.exports = new Helper(name, plural, {
         }
 
         result.behavior = data.behavior;
+        result.race = data.race;
 
         result.info = {
           de: data.info1_de,

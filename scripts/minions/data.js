@@ -34,11 +34,9 @@ module.exports = new Helper(name, plural, {
           img: (() => {
             if (data.icon === config.noIcon)
               return false;
-            return data.icon.replace(config.fullImagePath, "")
+            return data.icon.replace(config.fullImagePath, "");
           })(),
-          ref: data.url_xivdb.replace(/^http(s?)\:\/\/xivdb\.com/, (math, https) => {
-            return 'http' + (https ? 's' : '') + '://{0}xivdb.com/';
-          })
+          ref: data.url_xivdb.replace(/^https?\:\/\/xivdb\.com/, '')
         }
 
         // If it has a parent, info like quote etc is redundant.

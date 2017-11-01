@@ -46,7 +46,33 @@ module.exports = (minion, achievements) => {
       return o.ARealmReborn.fate(true, { fate: locale.get('Lazy for You') });
     
     case 15:
-      return o.ARealmReborn.quest.side(true, { quest: locale.get('Occupational Hazards'), region: 'Gridanian', level: 22 });
+      return o.ARealmReborn.quest.side(true, {
+        quest: locale.get('Occupational Hazards'),
+        level: 22,
+        npc: locale.get('Yoenne'),
+        location: locale.get('South Shroud'),
+        pos: {
+          x: 18,
+          y: 20
+        }
+      });
+    
+    case 16:
+      return [
+        o.ARealmReborn.treasureMap(true, {
+          map: locale.get('Timeworn Peisteskin Map')
+        }),
+        o.ARealmReborn.purchase.trimmedSack(true, {
+          item: locale.get('Bronze-trimmed Sack')
+        }),
+        o.Heavensward.treasureMap(true, {
+          map: locale.get('Timeworn Dragonskin Map')
+        }),
+        o.Heavensward.duty(true, {
+          duty: locale.get('The Aquapolis'),
+          aquapolis: true
+        })
+      ]
 
     default:
       //console.log("Unknown method for minion " + minion.id);

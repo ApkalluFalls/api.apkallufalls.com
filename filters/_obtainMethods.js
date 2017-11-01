@@ -6,6 +6,8 @@ const content = {
   grandCompany: 5,
   instanced: 6,
   quest: 7,
+  treasureMap: 8,
+  potd: 9,
   '$$$': 99
 }
 
@@ -32,12 +34,18 @@ module.exports = {
         general: (available, extra) => o(200000, 'general', 'arr', available, extra),
         fate: (available, extra) => o(200000, 'fate', 'arr', available, extra)
       },
-      companySeals: (available, extra) => o(200200, 'grandCompany', 'arr', available, extra)
+      companySeals: (available, extra) => o(200020, 'grandCompany', 'arr', available, extra),
+      trimmedSack: (available, extra) => o(200030, 'potd', 'arr', available, extra)
     },
     quest: {
       mainScenario: (available, extra) => o(200500, 'quest', 'arr', available, extra),
       side: (available, extra) => o(200501, 'quest', 'arr', available, extra)
-    }
+    },
+    treasureMap: (available, extra) => o(200600, 'treasureMap', 'arr', available, extra)
+  },
+  Heavensward: {
+    duty: (available, extra) => o(300300, 'instanced', 'hw', available, extra),
+    treasureMap: (available, extra) => o(300600, 'treasureMap', 'hw', available, extra)
   }
 }
 

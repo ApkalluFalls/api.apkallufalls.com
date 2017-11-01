@@ -10,10 +10,10 @@ class Locale {
     }
 
     let localised = {
-      de: match.de,
+      de: match.de === true ? string : match.de,
       en: string,
-      fr: match.fr,
-      jp: match.jp
+      fr: match.fr === true ? string : match.fr,
+      jp: match.jp === true ? string : match.jp
     }
 
     if (!localised.de) {

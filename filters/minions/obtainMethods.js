@@ -31,7 +31,7 @@ module.exports = (minion, achievements) => {
       return o.ARealmReborn.purchase.companySeals(true, { company: locale.get('Maelstrom'), cost: 20000 });
     
     case 10:
-      return o.ARealmReborn.purchase.companySeals(true, { company: locale.get('Twin Adder'), cost: 20000 });
+      return o.ARealmReborn.purchase.companySeals(true, { company: locale.get('Order of the Twin Adder'), cost: 20000 });
     
     case 11:
       return o.ARealmReborn.purchase.companySeals(true, { company: locale.get('Immortal Flames'), cost: 20000 });
@@ -46,7 +46,7 @@ module.exports = (minion, achievements) => {
       return o.ARealmReborn.fate(true, { fate: locale.get('Lazy for You') });
     
     case 15:
-      return o.ARealmReborn.quest.side(true, { quest: locale.get('Occupational Hazards'), region: 'Gridanian' });
+      return o.ARealmReborn.quest.side(true, { quest: locale.get('Occupational Hazards'), region: 'Gridanian', level: 22 });
 
     default:
       //console.log("Unknown method for minion " + minion.id);

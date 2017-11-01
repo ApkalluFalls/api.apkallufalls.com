@@ -321,10 +321,12 @@ module.exports = (minion) => {
 
   function override(match, replacement, stripNewLines) {
     // Throw an error if the quote no longer matches the test.
-    if (quote !== match && !quote.match(match))
-      throw new Error(
+    if (quote !== match && !quote.match(match)) {
+      console.error(
         'Minion ' + minion.id + ' sound "' + quote + '" doesn\'t match test `' + match.toString()
       );
+      process.exit();
+    }
 
     return quote.replace(match, replacement);
   }

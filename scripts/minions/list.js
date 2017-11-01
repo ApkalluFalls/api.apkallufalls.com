@@ -1,5 +1,6 @@
 const Helper = require('../_helper');
 const createList = require('../_list');
+const obtainMethod = require('../../filters/minions/obtainMethods');
 
 module.exports = new Helper("Minion", "minions", {
   api: 'minion',
@@ -13,7 +14,7 @@ module.exports = new Helper("Minion", "minions", {
     "patch"
   ],
   list: true,
-  format: (data) => {
+  format: (data, args) => {
     return data.map(entry => {
       return {
         id: entry.id,
@@ -24,7 +25,8 @@ module.exports = new Helper("Minion", "minions", {
           fr: entry.name_fr,
           jp: entry.name_ja
         },
-        patch: entry.patch
+        patch: entry.patch,
+        ref: obtainMethod(entry, args && args[0])
       }
     })
   }

@@ -23,6 +23,8 @@ module.exports = class Helper {
   }
 
   fetch() {
+    this.args = arguments;
+
     return new Promise((resolve) => {
       this.resolve = resolve;
       const apiPath = "https://api.xivdb.com/" + this.api;
@@ -139,7 +141,7 @@ function formatData(data) {
     return data;
 
   if (!this.formatted && typeof this.format === 'function')
-    data = this.format(data);
+    data = this.format(data, this.args);
 
   this.formatted = true;
   return data;

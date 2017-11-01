@@ -1,14 +1,21 @@
+const fs = require('fs');
 const cacheBust = require('./_cacheBust');
 
 console.log("\n");
 
-const update = async function(args) {
+const update = async function (args) {
   let config = {};
 
   if (args.length)
     args.forEach(a => config[a] = true);
   else
     config = false;
+  
+  let achievementsList;
+
+  await new Promise((resolve) => fs.readFile('../docs/achievements.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => achievementsList = JSON.parse(data));
 
   // // Patches
   if (!config || config.patches) {
@@ -30,11 +37,10 @@ const update = async function(args) {
   if (!config || config.minions) {
     message('Minions');
     await require('./minions/data.js').fetch();
-    await require('./minions/list.js').fetch();
+    await require('./minions/list.js').fetch(achievementsList);
   }
   if (config && config.minionsList) {
-    await require('./minions/list.js').fetch();
-    await require('./minions/list.js').fetch();
+    await require('./minions/list.js').fetch(achievementsList);
   }
 
   // Mounts.

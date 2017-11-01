@@ -33,6 +33,7 @@ module.exports = function(achievement) {
 		case 16: // there is no type 16
 		case 22: // there is no type 22
 		default:
-			throw new Error("Unknown achievement type " + achievement.type + " detected. achievements/_getWeight.js will need updating.");
+			console.error("Unknown achievement type " + achievement.type + " detected. achievements/_getWeight.js will need updating.");
+			return process.exit();
 	}
 }

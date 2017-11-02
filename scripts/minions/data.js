@@ -36,7 +36,7 @@ module.exports = new Helper(name, plural, {
               return false;
             return data.icon.replace(config.fullImagePath, "");
           })(),
-          ref: data.url_xivdb.replace(/^https?\:\/\/xivdb\.com/, '')
+          xivdb: data.url_xivdb.replace(/^https?\:\/\/xivdb\.com/, '')
         }
 
         // If it has a parent, info like quote etc is redundant.

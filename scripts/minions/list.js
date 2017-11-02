@@ -16,6 +16,11 @@ module.exports = new Helper("Minion", "minions", {
   list: true,
   format: (data, args) => {
     return data.map(entry => {
+      let method = obtainMethod(entry, args && args[0]);
+
+      if (method && !(method instanceof Array))
+        method = [method];
+      
       return {
         id: entry.id,
         icon: entry.icon,
@@ -26,7 +31,7 @@ module.exports = new Helper("Minion", "minions", {
           jp: entry.name_ja
         },
         patch: entry.patch,
-        ref: obtainMethod(entry, args && args[0])
+        ref: method
       }
     })
   }

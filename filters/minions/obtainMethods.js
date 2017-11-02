@@ -76,6 +76,6 @@ module.exports = (minion, achievements) => {
 
     default:
       //console.log("Unknown method for minion " + minion.id);
-      return {};
+      return null;
   }
 }

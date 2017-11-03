@@ -172,7 +172,7 @@ const helper = {
   timewornMap: (level, fullParty, map, expansion) => {
     let type = 'timewornMap';
     if (fullParty)
-      type = 'timewornMapFullParty;'
+      type = 'timewornMapFullParty';
 
     return o(
       type,

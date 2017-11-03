@@ -9,5 +9,5 @@ module.exports = {
   achievement: { en: 'Unlock the __achievement__ achievement, then speak to {0} at {1} in {2} (x: {3}, y: {4}).' },
   duty: { en: 'Randomly awarded from treasure chest in level {0} duty \'{1}\' (x: {2}, y: {3}).' },
   dutyFinalChest: { en: 'Randomly awarded from treasure chest in level {0} duty \'{1}\' (final chest).' },
-  gilAfterFate: { en: 'Purchase for {0} {1} from {2} {3} in {4} (x: {5}, y: {6}) after completing the level {7} FATE {8} (x: {9}, y: {10}).' }
+  gilAfterFate: { en: 'Purchase for {0} {1} from {2} in {3} (x: {4}, y: {5}) after completing the level {6} FATE {7} (x: {8}, y: {9}).' }
 };

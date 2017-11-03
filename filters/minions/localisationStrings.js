@@ -10,6 +10,7 @@ module.exports = {
   aquapolis: { en: 'Randomly awarded from treasure chests in {0} after {1}.' },
   duty: { en: 'Randomly awarded from the treasure chest at (x: {2}, y: {3}) in the level {0} duty \'{1}\'.' },
   dutyFinalChest: { en: 'Randomly awarded from treasure chest in level {0} duty \'{1}\' (final chest).' },
+  fate: { en: 'Achieve gold rating in the level {0} FATE \'{1}\' in {2} (x: {3}, y: {4}).' },
   gilAfterFate: { en: 'Purchase for {0} {1} from {2} in {3} (x: {4}, y: {5}) after completing the level {6} FATE \'{7}\' (x: {8}, y: {9}).' },
   quest: { en: 'Complete the level {0} {1} quest \'{2}\' from {3} in {4} (x: {5}, y: {6}).' },
   timewornMap: { en: 'Randomly awarded from the treasure chest after completing a level {0} {1}.' },

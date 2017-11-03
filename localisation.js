@@ -46,11 +46,6 @@ module.exports = {
   },
 
   // Duties
-  'The Aurum Vale': {
-    de: 'Goldklamm',
-    fr: 'Le Val D\'Aurum',
-    jp: '霧中行軍 オーラムヴェイル'
-  },
   'The Aquapolis': {
     de: 'Aquapolis',
     fr: 'L\'Aquapole',
@@ -58,11 +53,6 @@ module.exports = {
   },
 
   // FATEs
-  'Attack on Highbridge: Act III': {
-    de: 'Schlacht Um Hohenbrück: Duell Mit Nayokk Roh',
-    fr: 'Assaut Sur Le Viaduc: Acte III',
-    jp: 'ハイブリッジの死闘：ナヨク・ロー排撃'
-  },
   'Lazy for You': {
     de: 'Undank Des Faulen',
     fr: 'Défi: Laurence Pas Ravie',

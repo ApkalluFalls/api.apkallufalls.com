@@ -22,14 +22,10 @@ module.exports = (methodText, methodValues, expansion, available, promo, extra) 
         return v;
       })
     },
+    available: available,
+    promo: promo,
     expansion: expansions[expansion || 'X']
   }
-
-  if (available === false)
-    result.unavailable = true;
-
-  if (promo === true)
-    result.promo = true;
 
   if (extra)
     result.extra = extra;

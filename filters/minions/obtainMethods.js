@@ -123,7 +123,9 @@ module.exports = (minion, achievementsIn) => {
             ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
             11.5, 11.3
           ],
-          expansions.ARR
+          expansions.ARR,
+          true,
+          false
         )
       ];
     }

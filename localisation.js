@@ -1,4 +1,32 @@
 module.exports = {
+  // Game
+  'Legacy (1.0)': {
+    fr: true,
+    jp: 'LEGACY'
+  },
+  'A Realm Reborn': {
+    de: true,
+    fr: true,
+    jp: '新生エオルゼア'
+  },
+  'Heavensward': {
+    de: true,
+    fr: true,
+    jp: '蒼天のイシュガルド'
+  },
+  'Stormblood': {
+    de: true,
+    fr: true,
+    jp: '紅蓮のリベレーター'
+  },
+
+  // Website
+  'Mog Station': {
+    de: 'Mogry-Station',
+    fr: 'Station Mog',
+    jp: 'モグステーション'
+  },
+
   // Grand Companies
   'Maelstrom': {
     de: 'Mahlstrom',
@@ -78,5 +106,15 @@ module.exports = {
     de: 'Vergilbte Drachenleder-Karte',
     fr: 'Vieille carte en peau de dragon',
     jp: '古ぼけた地図G8'
-  }
+  },
+
+  // API Response Strings
+  // Purchase for 2,400 Gil from Maisenta (Purchase Tools) in New Gridania (x11, y11).
+  'Purchase for {0} {1} from {2} {3} in {4} (x: {5}, y: {6}).': {},
+  // Pre-order A Realm Reborn and register the promotional code on or before Tuesday, 31st December 2013.
+  'Pre-order {0} and register the promotional code on or before {2}.': {},
+  // Register or digitially upgrade to the Collector's Edition of A Realm Reborn on the Mog Station.
+  'Register or digitally upgrade to the {0} of {1} on the {2}.': {},
+  // Unlock the __achievement__ achievement, then speak to Jonathas at Apkallu Falls in Old Gridania (x: 10.5, y: 6.3).
+  'Unlock the __achievement__ achievement, then speak to {0} at {1} in {2} (x: {3}, y: {4}).': {}
 }

@@ -1,64 +1,38 @@
-const content = {
-  general: 1,
-  fate: 2,
-  pvp: 3,
-  pve: 4,
-  grandCompany: 5,
-  instanced: 6,
-  quest: 7,
-  treasureMap: 8,
-  potd: 9,
-  '$$$': 99
-}
+const expansions = {
+  'X': 'Unknown',
+  '1': 'Legacy',
+  '2': 'A Realm Reborn',
+  '3': 'Heavensward',
+  '4': 'Stormblood'
+};
 
-const expansion = {
-  legacy: 1,
-  arr: 2,
-  hw: 3,
-  sb: 4
-}
-
-module.exports = {
-  ARealmReborn: {
-    achievement: {
-      pve: (available, extra) => o(200100, 'pve', 'arr', available, extra)
-    },
-    duty: (available, extra) => o(200300, 'instanced', 'arr', available, extra),
-    fate: (available, extra) => o(200400, 'fate', 'arr', available, extra),
-    promotional: {
-      preOrder: (available, extra) => o(209000, '$$$', 'arr', available, extra),
-      collectorsEdition: (available, extra) => o(209001, '$$$', 'arr', available, extra)
-    },
-    purchase: {
-      gil: {
-        general: (available, extra) => o(200000, 'general', 'arr', available, extra),
-        fate: (available, extra) => o(200000, 'fate', 'arr', available, extra)
-      },
-      companySeals: (available, extra) => o(200020, 'grandCompany', 'arr', available, extra),
-      trimmedSack: (available, extra) => o(200030, 'potd', 'arr', available, extra)
-    },
-    quest: {
-      mainScenario: (available, extra) => o(200500, 'quest', 'arr', available, extra),
-      side: (available, extra) => o(200501, 'quest', 'arr', available, extra)
-    },
-    treasureMap: (available, extra) => o(200600, 'treasureMap', 'arr', available, extra)
-  },
-  Heavensward: {
-    duty: (available, extra) => o(300300, 'instanced', 'hw', available, extra),
-    treasureMap: (available, extra) => o(300600, 'treasureMap', 'hw', available, extra)
-  }
-}
-
-function o(id, contentStr, expansionStr, available, extra) {
+module.exports = (methodText, methodValues, expansion, available, promo, extra) => {
   const result = {
-    method: id,
-    content: content[contentStr],
-    expansion: expansion[expansionStr],
-    ...extra
+    method: {
+      text: methodText,
+      values: methodValues.map(v => {
+        if (v instanceof Array)
+          return {
+            de: v[1] === true ? v[0] : v[1],
+            en: v[0],
+            fr: v[2] === true ? v[2] : v[1],
+            jp: v[3] === true ? v[3] : v[1]
+          }
+        
+        return v;
+      })
+    },
+    expansion: expansions[expansion || 'X']
   }
 
   if (available === false)
     result.unavailable = true;
+
+  if (promo === true)
+    result.promo = true;
+
+  if (extra)
+    result.extra = extra;
 
   return result;
 }

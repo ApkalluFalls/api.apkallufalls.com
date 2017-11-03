@@ -87,10 +87,13 @@ const helper = {
       expansions.ARR
     )
   },
-  dungeon: (name, x, y) => {
+  dungeon: (name, level, x, y, expansions, available, promo) => {
     return o(
-      strings.dungeon,
-      [level, name,]
+      x && y ? strings.dungeon : strings.dungeonFinalChest,
+      x && y ? [level, name,, x, y] : [level, name],
+      expansions,
+      available,
+      promo
     )
   }
 }
@@ -161,42 +164,45 @@ module.exports = (minion, achievements) => {
       return helper.companySeals(20000, 'Immortal Flames');
     
     case 12:
-      return o.ARealmReborn.duty(true, { duty: locale.get('The Aurum Vale'), pos: { x: 10, y: 8 }});
+      return helper.dungeon(
+        ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
+        47, 10, 8, expansions.ARR, true, false
+      );
     
-    case 13:
-      return o.ARealmReborn.purchase.gil.fate(true, { cost: 2400, fate: locale.get('Attack on Highbridge: Act III') });
+    // case 13:
+    //   return o.ARealmReborn.purchase.gil.fate(true, { cost: 2400, fate: locale.get('Attack on Highbridge: Act III') });
     
-    case 14:
-      return o.ARealmReborn.fate(true, { fate: locale.get('Lazy for You') });
+    // case 14:
+    //   return o.ARealmReborn.fate(true, { fate: locale.get('Lazy for You') });
     
-    case 15:
-      return o.ARealmReborn.quest.side(true, {
-        quest: locale.get('Occupational Hazards'),
-        level: 22,
-        npc: locale.get('Yoenne'),
-        location: locale.get('South Shroud'),
-        pos: {
-          x: 18,
-          y: 20
-        }
-      });
+    // case 15:
+    //   return o.ARealmReborn.quest.side(true, {
+    //     quest: locale.get('Occupational Hazards'),
+    //     level: 22,
+    //     npc: locale.get('Yoenne'),
+    //     location: locale.get('South Shroud'),
+    //     pos: {
+    //       x: 18,
+    //       y: 20
+    //     }
+    //   });
     
-    case 16:
-      return [
-        o.ARealmReborn.treasureMap(true, {
-          map: locale.get('Timeworn Peisteskin Map')
-        }),
-        o.ARealmReborn.purchase.trimmedSack(true, {
-          item: locale.get('Bronze-trimmed Sack')
-        }),
-        o.Heavensward.treasureMap(true, {
-          map: locale.get('Timeworn Dragonskin Map')
-        }),
-        o.Heavensward.duty(true, {
-          duty: locale.get('The Aquapolis'),
-          aquapolis: true
-        })
-      ]
+    // case 16:
+    //   return [
+    //     o.ARealmReborn.treasureMap(true, {
+    //       map: locale.get('Timeworn Peisteskin Map')
+    //     }),
+    //     o.ARealmReborn.purchase.trimmedSack(true, {
+    //       item: locale.get('Bronze-trimmed Sack')
+    //     }),
+    //     o.Heavensward.treasureMap(true, {
+    //       map: locale.get('Timeworn Dragonskin Map')
+    //     }),
+    //     o.Heavensward.duty(true, {
+    //       duty: locale.get('The Aquapolis'),
+    //       aquapolis: true
+    //     })
+    //   ]
 
     default:
       //console.log("Unknown method for minion " + minion.id);

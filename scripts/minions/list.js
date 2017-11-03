@@ -1,6 +1,7 @@
 const Helper = require('../_helper');
 const createList = require('../_list');
 const obtainMethod = require('../../filters/minions/obtainMethods');
+const localisationStrings = require('../../filters/minions/localisationStrings');
 
 module.exports = new Helper("Minion", "minions", {
   api: 'minion',
@@ -15,25 +16,28 @@ module.exports = new Helper("Minion", "minions", {
   ],
   list: true,
   format: (data, args) => {
-    return data.map(entry => {
-      let method = obtainMethod(entry, args && args[0]);
+    return {
+      localisation: localisationStrings,
+      data: data.map(entry => {
+        let method = obtainMethod(entry, args && args[0]);
 
-      if (method && !(method instanceof Array))
-        method = [method];
-      
-      return {
-        id: entry.id,
-        icon: entry.icon,
-        name: {
-          de: entry.name_de,
-          en: entry.name_en,
-          fr: entry.name_fr,
-          jp: entry.name_ja
-        },
-        patch: entry.patch,
-        ref: method
-      }
-    })
+        if (method && !(method instanceof Array))
+          method = [method];
+        
+        return {
+          id: entry.id,
+          icon: entry.icon,
+          name: {
+            de: entry.name_de,
+            en: entry.name_en,
+            fr: entry.name_fr,
+            jp: entry.name_ja
+          },
+          patch: entry.patch,
+          ref: method
+        }
+      })
+    }
   }
 }, (data, base, _helperCreateJSONFn) => {
   createList("minions", data, base, _helperCreateJSONFn);

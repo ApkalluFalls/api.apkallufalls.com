@@ -6,6 +6,8 @@ const expansions = {
   '4': 'Stormblood'
 };
 
+const locale = require('./_locale');
+
 module.exports = (methodText, methodValues, expansion, available, promo, extra) => {
   const result = {
     method: {

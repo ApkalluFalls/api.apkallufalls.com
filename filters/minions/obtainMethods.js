@@ -12,18 +12,11 @@ const expansions = {
   SB: 4
 };
 
-const strings = {
-  purchase: 'Purchase for {0} {1} from {2} {3} in {4} (x: {5}, y: {6}).',
-  preOrder: 'Pre-order {0} and register the promotional code on or before {2}.',
-  collectorsEdition: 'Register or digitally upgrade to the {0} of {1} on the {2}.',
-  achievementReward: 'Unlock the __achievement__ achievement, then speak to {0} at {1} in {2} (x: {3}, y: {4}).'
-}
-
 const helper = {
   achievementReward: (achievementId, expansion, available, promo) => {
     const achievement = getAchievement(achievements, achievementId);
     return o(
-      strings.achievementReward,
+      'achievement',
       [
         ['Jonathas', true, true, 'ジョナサス'],
         ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
@@ -40,7 +33,7 @@ const helper = {
   },
   collectorsEdition: (expansionText, expansion, available) => {
     return o(
-      strings.collectorsEdition,
+      'collectorsEdition',
       [
         ['Collector\'s Edition', true, true, 'コレクターズエディション'],
         expansionText,
@@ -84,14 +77,14 @@ const helper = {
     }
 
     return o(
-      strings.purchase,
+      'purchase',
       [cost, companySeals, npc, companyName, location, x, y],
       expansions.ARR
     )
   },
   dungeon: (name, level, x, y, expansions, available, promo) => {
     return o(
-      x && y ? strings.dungeon : strings.dungeonFinalChest,
+      x && y ? 'duty' : 'dutyFinalChest',
       x && y ? [level, name,, x, y] : [level, name],
       expansions,
       available,
@@ -115,7 +108,7 @@ module.exports = (minion, achievementsIn) => {
       const cost = 2400;
       return [
         o(
-          strings.purchase,
+          'purchase',
           [
             cost, gil,
             ['Maisenta', true, true, '黒兎堂 マイセンタ'],
@@ -133,7 +126,7 @@ module.exports = (minion, achievementsIn) => {
     case 4:
       return [
         o(
-          strings.preOrder,
+          'preOrder',
           [
             locale('A Realm Reborn'),
             ['Tuesday, December 31, 2013', 'Dienstag, den 31.12.2013', 'le mardi 31 décembre 2013', '2013年12月31日（火）']

@@ -13,18 +13,36 @@ const expansions = {
 };
 
 const location = {
+  chamber5: ['5th Chamber', 'Fünfte Kammer', 'Cinquième Salle', '第五区画'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
+  eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
+  theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
   duty: {
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル']
   }
+}
+
+const timewornMap = {
+  peisteskin: [
+    50,
+    true,
+    ['Timeworn Peisteskin Map', 'Vergilbte Basiliskenleder-Karte', 'Vieille carte en peau de peiste', '古ぼけた地図G5'],
+    expansions.ARR
+  ],
+  dragonskin: [
+    60,
+    true,
+    ['Timeworn Dragonskin Map', 'Vergilbte Drachenleder-Karte', 'Vieille carte en peau de dragon', '古ぼけた地図G8'],
+    expansions.HW
+  ]
 }
 
 const gil = ['Gil', true, true, 'ギル'];
@@ -46,6 +64,18 @@ const helper = {
       {
         achievement: achievement
       }
+    )
+  },
+  aquapolis: () => {
+    return o(
+      'aquapolis',
+      [
+        location.theAquapolis,
+        location.chamber5
+      ],
+      expansions.ARR,
+      true,
+      false
     )
   },
   collectorsEdition: (expansionText, expansion, available) => {
@@ -106,16 +136,47 @@ const helper = {
   dungeon: (name, level, x, y, expansion, available, promo) => {
     return o(
       x && y ? 'duty' : 'dutyFinalChest',
-      x && y ? [level, name,, x, y] : [level, name],
+      x && y ? [level, name, x, y] : [level, name],
       expansion,
       available,
       promo
+    )
+  },
+  fate: (level, fate, loc, x, y, expansion) => {
+    return o(
+      'fate',
+      [level, fate, loc, x, y],
+      expansion,
+      true,
+      false
     )
   },
   gilAfterFate: (cost, npc, loc, x1, y1, fate, level, x2, y2, expansion) => {
     return o(
       'gilAfterFate',
       [cost, gil, npc, loc, x1, y1, level, fate, x2, y2],
+      expansion,
+      true,
+      false
+    )
+  },
+  quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
+    return o(
+      'quest',
+      [level, type, quest, npc, loc, x, y],
+      expansion,
+      available,
+      promo
+    )
+  },
+  timewornMap: (level, fullParty, map, expansion) => {
+    let type = 'timewornMap';
+    if (fullParty)
+      type = 'timewornMapFullParty;'
+
+    return o(
+      type,
+      [level, map],
       expansion,
       true,
       false
@@ -244,21 +305,35 @@ module.exports = (minion, achievementsIn) => {
         26, 23, 23,
         expansions.ARR
       );
+
+    case 14:
+      return helper.fate(
+        20,
+        ['Lazy for You', 'Undank Des Faulen', 'Défi: Laurence Pas Ravie', '非情な収穫者「レジー・ローレンス」'],
+        location.eastShroud,
+        23, 29,
+        expansions.ARR
+      );
     
-    // case 14:
-    //   return o.ARealmReborn.fate(true, { fate: locale('Lazy for You') });
-    
-    // case 15:
-    //   return o.ARealmReborn.quest.side(true, {
-    //     quest: locale('Occupational Hazards'),
-    //     level: 22,
-    //     npc: locale('Yoenne'),
-    //     location: locale('South Shroud'),
-    //     pos: {
-    //       x: 18,
-    //       y: 20
-    //     }
-    //   });
+    case 15:
+      return helper.quest(
+        22,
+        locale('Gridanian Sidequests'),
+        ['Occupational Hazards', 'Ruinöse Plagegeister', 'Rassurer Yoenne', '遺跡調査の落とし穴'],
+        ['Yoenne', true, true, 'ヨエヌ'],
+        location.southShroud,
+        18, 20,
+        expansions.ARR,
+        true,
+        false
+      );
+
+    case 16:
+      return [
+        helper.timewornMap(...timewornMap.peisteskin),
+        helper.timewornMap(...timewornMap.dragonskin),
+        helper.aquapolis()
+      ];
     
     // case 16:
     //   return [

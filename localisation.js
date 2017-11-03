@@ -52,13 +52,6 @@ module.exports = {
     jp: '宝物庫 アクアポリス'
   },
 
-  // FATEs
-  'Lazy for You': {
-    de: 'Undank Des Faulen',
-    fr: 'Défi: Laurence Pas Ravie',
-    jp: '非情な収穫者「レジー・ローレンス」'
-  },
-
   // Items
   'Bronze-trimmed Sack': {
     jp: '埋もれた財宝G1',
@@ -66,36 +59,10 @@ module.exports = {
     fr: 'Trésor mystérieux de grade I'
   },
 
-  // Locations
-  'South Shroud': {
-    de: 'Südwald',
-    fr: 'Forêt Du Sud',
-    jp: '黒衣森：南部森林'
-  },
-
-  // NPCs
-  'Yoenne': {
-    de: true,
-    fr: true,
-    jp: 'ヨエヌ'
-  },
-
-  // Quests
-  'Occupational Hazards': {
-    de: 'Ruinöse Plagegeister',
-    fr: 'Rassurer Yoenne',
-    jp: '遺跡調査の落とし穴'
-  },
-
-  // Treasure Maps
-  'Timeworn Peisteskin Map': {
-    de: 'Vergilbte Basiliskenleder-Karte',
-    fr: 'Vieille carte en peau de peiste',
-    jp: '古ぼけた地図G5'
-  },
-  'Timeworn Dragonskin Map': {
-    de: 'Vergilbte Drachenleder-Karte',
-    fr: 'Vieille carte en peau de dragon',
-    jp: '古ぼけた地図G8'
+  // Quest
+  'Gridanian Sidequests': {
+    de: 'Aufträge Finsterwald',
+    fr: 'Sombrelinceul',
+    jp: 'サブクエスト：黒衣森'
   }
 }

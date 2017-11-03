@@ -12,6 +12,18 @@ const expansions = {
   SB: 4
 };
 
+const location = {
+  limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
+  limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
+  newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
+  oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
+  theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
+  uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
+  duty: {
+    theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル']
+  }
+}
+
 const helper = {
   achievementReward: (achievementId, expansion, available, promo) => {
     const achievement = getAchievement(achievements, achievementId);
@@ -20,7 +32,7 @@ const helper = {
       [
         ['Jonathas', true, true, 'ジョナサス'],
         ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
-        ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
+        location.oldGridania,
         10.6, 6.3
       ],
       expansion,
@@ -49,7 +61,7 @@ const helper = {
     companyName = [company, companyName.de, companyName.fr, companyName.jp];
 
     let npc;
-    let location;
+    let loc;
     let x;
     let y;
 
@@ -58,19 +70,19 @@ const helper = {
     switch (company) {
       case 'Maelstrom':
         npc = ['Storm Quartermaster', ...quartermasters];
-        location = ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'];
+        loc = location.limsaUpperDecks;
         x = 13.1;
         y = 12.7;
         break;
       case 'Order of the Twin Adder':
         npc = ['Serpent Quartermaster', ...quartermasters];
-        location = ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'];
+        loc = location.newGridania;
         x = 9.8;
         y = 11.0;
         break;
       case 'Immortal Flames':
         npc = ['Flame Quartermaster', ...quartermasters];
-        location = ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'];
+        loc = location.uldahStepsOfNald;
         x = 8.3;
         y = 9.0;
         break;
@@ -78,7 +90,7 @@ const helper = {
 
     return o(
       'purchase',
-      [cost, companySeals, npc, companyName, location, x, y],
+      [cost, companySeals, npc, companyName, loc, x, y],
       expansions.ARR
     )
   },
@@ -106,15 +118,55 @@ module.exports = (minion, achievementsIn) => {
     case 2:
     case 3: {
       const cost = 2400;
+      const purchaseTools = ['(Purchase Tools)', '(Werkzeuge)', '(Outils)', '(道具の取引)'];
       return [
         o(
           'purchase',
           [
             cost, gil,
             ['Maisenta', true, true, '黒兎堂 マイセンタ'],
-            ['(Purchase Tools)', '(Werkzeuge)', '(Outils)', '(道具の取引)'],
-            ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
+            purchaseTools,
+            location.newGridania,
             11.5, 11.3
+          ],
+          expansions.ARR,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            cost, gil,
+            ['Bango Zango', true, true, 'ブルゲール商会 バンゴ・ザンゴ'],
+            purchaseTools,
+            location.limsaLowerDecks,
+            10, 11.4
+          ],
+          expansions.ARR,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            cost, gil,
+            ['Roarich', true, true, 'アシュガナ貿易 ロリッヒ'],
+            purchaseTools,
+            location.uldahStepsOfNald,
+            10.6, 9.6
+          ],
+          expansions.ARR,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            cost, gil,
+            ['Minion Trader', 'Trabantenhändlerin', 'Marchande De Mascottes', 'ミニオントレーダー'],
+            ['Purchase Minions (Gil)', 'Begleiter (Gil)', 'Mascottes (gils)', 'ミニオンの取引（ギル消費）'],
+            location.theGoldSaucer,
+            7.8, 7
           ],
           expansions.ARR,
           true,
@@ -163,7 +215,7 @@ module.exports = (minion, achievementsIn) => {
     
     case 12:
       return helper.dungeon(
-        ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
+        location.duty.theAurumVale,
         47, 10, 8, expansions.ARR, true, false
       );
     

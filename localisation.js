@@ -1,6 +1,7 @@
 module.exports = {
   // Game
   'Legacy (1.0)': {
+    de: true,
     fr: true,
     jp: 'LEGACY'
   },

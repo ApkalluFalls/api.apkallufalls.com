@@ -2,6 +2,8 @@ const o = require('../_obtainMethods');
 const getAchievement = require('../_getAchievement');
 const locale = require('../_locale');
 
+let achievements;
+
 const expansions = {
   Unknown: 'X',
   Legacy: 1,
@@ -42,7 +44,7 @@ const helper = {
       [
         ['Collector\'s Edition', true, true, 'コレクターズエディション'],
         expansionText,
-        window.locale('Mog Station')
+        locale('Mog Station')
       ],
       expansion,
       available,
@@ -50,7 +52,7 @@ const helper = {
     );
   },
   companySeals: (cost, company) => {
-    let companyName = locale.get(company);
+    let companyName = locale(company);
     companyName = [company, companyName.de, companyName.fr, companyName.jp];
 
     let npc;
@@ -62,19 +64,19 @@ const helper = {
 
     switch (company) {
       case 'Maelstrom':
-        npc = ['Storm Quartermaster', ...quatermasters];
+        npc = ['Storm Quartermaster', ...quartermasters];
         location = ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'];
         x = 13.1;
         y = 12.7;
         break;
       case 'Order of the Twin Adder':
-        npc = ['Serpent Quartermaster', ...quatermasters];
+        npc = ['Serpent Quartermaster', ...quartermasters];
         location = ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'];
         x = 9.8;
         y = 11.0;
         break;
       case 'Immortal Flames':
-        npc = ['Flame Quartermaster', ...quatermasters];
+        npc = ['Flame Quartermaster', ...quartermasters];
         location = ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'];
         x = 8.3;
         y = 9.0;
@@ -104,7 +106,8 @@ const companySeals = ['Company Seals', 'Staatstaler', 'Sceaux de compagnie', '�
 /* Returns information about how minions are obtained.
  * Corresponds to ../../docs/obtainMethods.json.
  */
-module.exports = (minion, achievements) => {
+module.exports = (minion, achievementsIn) => {
+  achievements = achievementsIn;
   switch (+minion.id) {
     case 1:
     case 2:
@@ -130,7 +133,7 @@ module.exports = (minion, achievements) => {
         o(
           strings.preOrder,
           [
-            window.locale('A Realm Reborn'),
+            locale('A Realm Reborn'),
             ['Tuesday, December 31, 2013', 'Dienstag, den 31.12.2013', 'le mardi 31 décembre 2013', '2013年12月31日（火）']
           ],
           expansions.ARR,
@@ -141,18 +144,18 @@ module.exports = (minion, achievements) => {
     
     case 5:
       return [
-        helper.collectorsEdition(window.locale('Legacy'), expansions.Legacy, false),
-        helper.collectorsEdition(window.locale('A Realm Reborn'), expansions.ARR, true)
+        helper.collectorsEdition(locale('Legacy (1.0)'), expansions.Legacy, false),
+        helper.collectorsEdition(locale('A Realm Reborn'), expansions.ARR, true)
       ];
     
     case 6:
-      return helper.achievementReward(736, expansion.ARealmReborn, true, false);
+      return helper.achievementReward(736, expansions.ARealmReborn, true, false);
       
     case 7:
-      return helper.achievementReward(737, expansion.ARealmReborn, true, false);
+      return helper.achievementReward(737, expansions.ARealmReborn, true, false);
       
     case 8:
-      return helper.achievementReward(738, expansion.ARealmReborn, true, false);
+      return helper.achievementReward(738, expansions.ARealmReborn, true, false);
     
     case 9:
       return helper.companySeals(20000, 'Maelstrom');
@@ -170,17 +173,17 @@ module.exports = (minion, achievements) => {
       );
     
     // case 13:
-    //   return o.ARealmReborn.purchase.gil.fate(true, { cost: 2400, fate: locale.get('Attack on Highbridge: Act III') });
+    //   return o.ARealmReborn.purchase.gil.fate(true, { cost: 2400, fate: locale('Attack on Highbridge: Act III') });
     
     // case 14:
-    //   return o.ARealmReborn.fate(true, { fate: locale.get('Lazy for You') });
+    //   return o.ARealmReborn.fate(true, { fate: locale('Lazy for You') });
     
     // case 15:
     //   return o.ARealmReborn.quest.side(true, {
-    //     quest: locale.get('Occupational Hazards'),
+    //     quest: locale('Occupational Hazards'),
     //     level: 22,
-    //     npc: locale.get('Yoenne'),
-    //     location: locale.get('South Shroud'),
+    //     npc: locale('Yoenne'),
+    //     location: locale('South Shroud'),
     //     pos: {
     //       x: 18,
     //       y: 20
@@ -190,16 +193,16 @@ module.exports = (minion, achievements) => {
     // case 16:
     //   return [
     //     o.ARealmReborn.treasureMap(true, {
-    //       map: locale.get('Timeworn Peisteskin Map')
+    //       map: locale('Timeworn Peisteskin Map')
     //     }),
     //     o.ARealmReborn.purchase.trimmedSack(true, {
-    //       item: locale.get('Bronze-trimmed Sack')
+    //       item: locale('Bronze-trimmed Sack')
     //     }),
     //     o.Heavensward.treasureMap(true, {
-    //       map: locale.get('Timeworn Dragonskin Map')
+    //       map: locale('Timeworn Dragonskin Map')
     //     }),
     //     o.Heavensward.duty(true, {
-    //       duty: locale.get('The Aquapolis'),
+    //       duty: locale('The Aquapolis'),
     //       aquapolis: true
     //     })
     //   ]

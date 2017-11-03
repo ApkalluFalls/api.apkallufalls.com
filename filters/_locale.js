@@ -35,4 +35,4 @@ class Locale {
   }
 }
 
-module.exports = new Locale();
+module.exports = new Locale().get;

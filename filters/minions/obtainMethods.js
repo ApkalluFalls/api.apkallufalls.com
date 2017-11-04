@@ -23,6 +23,7 @@ const location = {
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
+  morDhona: ['Mor Dhona', true, true, 'モードゥナ'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
@@ -52,6 +53,7 @@ const timewornMap = {
 }
 
 const gil = ['Gil', true, true, 'ギル'];
+const poetics = ['Allagan Tomestone of Poetics', 'Allagischer Stein der Poesie', 'Mémoquartz allagois poétique', 'アラガントームストーン:詩学'];
 
 const helper = {
   achievementReward: (achievementId, expansion, available, promo) => {
@@ -355,22 +357,22 @@ module.exports = (minion, achievementsIn) => {
         helper.itemAccursedHoard(item.bronzeTrimmedSack)
       ];
     
-    // case 16:
-    //   return [
-    //     o.ARealmReborn.treasureMap(true, {
-    //       map: locale('Timeworn Peisteskin Map')
-    //     }),
-    //     o.ARealmReborn.purchase.trimmedSack(true, {
-    //       item: locale('Bronze-trimmed Sack')
-    //     }),
-    //     o.Heavensward.treasureMap(true, {
-    //       map: locale('Timeworn Dragonskin Map')
-    //     }),
-    //     o.Heavensward.duty(true, {
-    //       duty: locale('The Aquapolis'),
-    //       aquapolis: true
-    //     })
-    //   ]
+    case 17:
+    case 28:
+    case 37:
+      return o(
+        'purchase',
+        [
+          7, poetics,
+          ['Auriana', true, true, 'オーリアナ'],
+          ['(Allagan Tomestones Of Poetics (Other))', '(Allagische Steine Der Poesie (Anderes))', '(Mémoquartz Allagois Poétiques (divers))', '（アラガントームストーン:詩学の取引（その他））'],
+          location.morDhona,
+          22.8, 6.7
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
 
     case 25:
       return helper.gilAfterFate(

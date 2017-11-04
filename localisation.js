@@ -57,5 +57,10 @@ module.exports = {
     de: 'Aufträge Finsterwald',
     fr: 'Sombrelinceul',
     jp: 'サブクエスト：黒衣森'
+  },
+  'Lominsan Sidequests': {
+    de: 'Aufträge La Noscea',
+    fr: 'Noscea',
+    jp: 'サブクエスト：ラノシア'
   }
 }

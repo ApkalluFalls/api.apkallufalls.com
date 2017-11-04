@@ -25,16 +25,22 @@ const location = {
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   morDhona: ['Mor Dhona', true, true, 'モードゥナ'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
+  northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
+  westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿']
   }
+}
+
+const _npc = {
+  minionTrader: ['Minion Trader', 'Trabantenhändlerin', 'Marchande De Mascottes', 'ミニオントレーダー']
 }
 
 const timewornMap = {
@@ -54,6 +60,7 @@ const timewornMap = {
 
 const gil = ['Gil', true, true, 'ギル'];
 const poetics = ['Allagan Tomestone of Poetics', 'Allagischer Stein der Poesie', 'Mémoquartz allagois poétique', 'アラガントームストーン:詩学'];
+const mgp = ['MGP', true, 'Point du Gold Saucer', 'マンダヴィル・ゴールドソーサーポイント'];
 
 const helper = {
   achievementReward: (achievementId, expansion, available, promo) => {
@@ -167,6 +174,36 @@ const helper = {
       false
     )
   },
+  goldSaucerMinionsMGP: (cost) => {
+    return o(
+      'purchase',
+      [
+        cost, mgp,
+        _npc.minionTrader,
+        ['Purchase Minions (MGP)', 'Begleiter (MGP)', 'Mascottes (PGS)', 'ミニオンの取引（MGP消費）'],
+        location.theGoldSaucer,
+        7.8, 7
+      ],
+      expansions.ARR,
+      true,
+      false
+    )
+  },
+  goldSaucerPrizeExchange: (cost) => {
+    return o(
+      'purchase',
+      [
+        cost, mgp,
+        ['Gold Saucer Attendant', 'Sonderartikel-Händlerin', 'Préposée Aux Lots', '景品交換窓口'],
+        ['Prize Exchange I', 'Gewinne I', 'Lots (1)', '景品の交換（その1）'],
+        location.theGoldSaucer,
+        5.4, 6.7
+      ],
+      expansions.ARR,
+      true,
+      false
+    )
+  },
   itemAccursedHoard: (sack) => {
     return o(
       'itemAccursedHoard',
@@ -203,6 +240,8 @@ const helper = {
     )
   }
 }
+
+let value;
 
 /* Returns information about how minions are obtained.
  * Corresponds to ../../docs/obtainMethods.json.
@@ -259,7 +298,7 @@ module.exports = (minion, achievementsIn) => {
           'purchase',
           [
             cost, gil,
-            ['Minion Trader', 'Trabantenhändlerin', 'Marchande De Mascottes', 'ミニオントレーダー'],
+            _npc.minionTrader,
             ['(Purchase Minions (Gil))', '(Begleiter (Gil))', '(Mascottes (gils))', '（ミニオンの取引（ギル消費））'],
             location.theGoldSaucer,
             7.8, 7
@@ -373,6 +412,35 @@ module.exports = (minion, achievementsIn) => {
         true,
         false
       );
+    
+    case 18:
+      return helper.fate(
+        49,
+        ['Go, Go, Gorgimera', 'Etwas Von Allem', 'Défi: Gorgimère Indigne', '荒れ狂う巨獣「ゴーキマイラ」'],
+        location.northernThanalan,
+        17, 14,
+        expansions.ARR
+      );
+    
+    case 19:
+      return helper.quest(
+        22,
+        locale('Lominsan Sidequests'),
+        ['Curiosity Killed The Coeurl', 'Die Unschuld Der Jugend', 'Le Félin Orphelin', '魔獣が守ったもの'],
+        ['Skribyld', true, true, 'スクリビルド'],
+        location.westernLaNoscea,
+        26.4, 26.4,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 20:
+    case 106:
+      return [
+        helper.goldSaucerPrizeExchange(20000),
+        helper.goldSaucerMinionsMGP(20000)
+      ];
 
     case 25:
       return helper.gilAfterFate(
@@ -395,6 +463,20 @@ module.exports = (minion, achievementsIn) => {
         20, 12, 24,
         expansions.ARR
       );
+    
+    case 83:
+    case 117:
+      return [
+        helper.goldSaucerPrizeExchange(10000),
+        helper.goldSaucerMinionsMGP(10000)
+      ];
+    
+    case 174:
+    case 187:
+      return [
+        helper.goldSaucerPrizeExchange(30000),
+        helper.goldSaucerMinionsMGP(30000)
+      ];
 
     default:
       //console.log("Unknown method for minion " + minion.id);

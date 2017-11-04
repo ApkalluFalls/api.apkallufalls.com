@@ -28,6 +28,13 @@ module.exports = {
     jp: 'モグステーション'
   },
 
+  // Generic
+  'Pre-order': {
+    de: true,
+    fr: true,
+    jp: true
+  },
+
   // Grand Companies
   'Maelstrom': {
     de: 'Mahlstrom',

@@ -275,6 +275,7 @@ module.exports = (minion, achievementsIn) => {
         o(
           'preOrder',
           [
+            locale('Pre-order'),
             locale('A Realm Reborn'),
             ['Tuesday, December 31, 2013', 'Dienstag, den 31.12.2013', 'le mardi 31 décembre 2013', '2013年12月31日（火）']
           ],

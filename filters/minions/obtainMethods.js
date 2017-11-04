@@ -55,7 +55,6 @@ const gil = ['Gil', true, true, 'ギル'];
 
 const helper = {
   achievementReward: (achievementId, expansion, available, promo) => {
-    const achievement = getAchievement(achievements, achievementId);
     return o(
       'achievement',
       [
@@ -68,7 +67,7 @@ const helper = {
       available,
       promo,
       {
-        achievement: achievement
+        achievement: getAchievement(achievements, achievementId)
       }
     )
   },

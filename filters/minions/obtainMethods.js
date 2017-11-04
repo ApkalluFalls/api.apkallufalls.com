@@ -65,7 +65,7 @@ const helper = {
         10.6, 6.3
       ],
       expansion,
-      !available,
+      available,
       promo,
       {
         achievement: achievement

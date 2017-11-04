@@ -12,6 +12,11 @@ const expansions = {
   SB: 4
 };
 
+const item = {
+  bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
+  pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝']
+}
+
 const location = {
   chamber5: ['5th Chamber', 'Fünfte Kammer', 'Cinquième Salle', '第五区画'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
@@ -21,12 +26,13 @@ const location = {
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
-  theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
   duty: {
-    theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル']
+    theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
+    theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
+    thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿']
   }
 }
 
@@ -70,7 +76,7 @@ const helper = {
     return o(
       'aquapolis',
       [
-        location.theAquapolis,
+        location.duty.theAquapolis,
         location.chamber5
       ],
       expansions.ARR,
@@ -156,6 +162,19 @@ const helper = {
       'gilAfterFate',
       [cost, gil, npc, loc, x1, y1, level, fate, x2, y2],
       expansion,
+      true,
+      false
+    )
+  },
+  itemAccursedHoard: (item) => {
+    return o(
+      'itemAccursedHoard',
+      [
+        item,
+        item.pieceOfAccursedHoard,
+        location.duty.thePalaceOfTheDead
+      ],
+      expansions.ARR,
       true,
       false
     )
@@ -332,7 +351,8 @@ module.exports = (minion, achievementsIn) => {
       return [
         helper.timewornMap(...timewornMap.peisteskin),
         helper.timewornMap(...timewornMap.dragonskin),
-        helper.aquapolis()
+        helper.aquapolis(),
+        helper.itemAccursedHoard(item.bronzeTrimmedSack)
       ];
     
     // case 16:

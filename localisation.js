@@ -45,20 +45,6 @@ module.exports = {
     jp: '不滅隊'
   },
 
-  // Duties
-  'The Aquapolis': {
-    de: 'Aquapolis',
-    fr: 'L\'Aquapole',
-    jp: '宝物庫 アクアポリス'
-  },
-
-  // Items
-  'Bronze-trimmed Sack': {
-    jp: '埋もれた財宝G1',
-    de: 'Gefundener Schatz I',
-    fr: 'Trésor mystérieux de grade I'
-  },
-
   // Quest
   'Gridanian Sidequests': {
     de: 'Aufträge Finsterwald',

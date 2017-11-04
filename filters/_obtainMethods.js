@@ -26,7 +26,8 @@ module.exports = (methodText, methodValues, expansion, available, promo, extra) 
     },
     available: available,
     promo: promo,
-    expansion: expansions[expansion || 'X']
+    expansion: expansions[expansion || 'X'],
+    unid: Math.floor(Math.random() * 2147000000)
   }
 
   if (extra)

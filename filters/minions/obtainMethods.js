@@ -166,11 +166,11 @@ const helper = {
       false
     )
   },
-  itemAccursedHoard: (item) => {
+  itemAccursedHoard: (sack) => {
     return o(
       'itemAccursedHoard',
       [
-        item,
+        sack,
         item.pieceOfAccursedHoard,
         location.duty.thePalaceOfTheDead
       ],

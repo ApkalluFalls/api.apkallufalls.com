@@ -56,6 +56,12 @@ const _npc = {
 }
 
 const timewornMap = {
+  boarskin: [
+    50,
+    false,
+    ['Timeworn Boarskin Map', 'Vergilbte Keilerleder-Karte', 'Vieille carte en peau de sanglier', '古ぼけた地図G4'],
+    expansions.ARR
+  ],
   peisteskin: [
     50,
     true,
@@ -485,7 +491,7 @@ module.exports = (minion, achievementsIn) => {
         locale('Hildibrand Quests'),
         ['Her Last Vow', 'Ruinöse Revanche', 'Boucler La Boucle', '事件は砂塵に消ゆ'],
         ['Julyan', true, true, 'ジュリアン'],
-        location.uldahSepsOfThal,
+        location.uldahStepsOfThal,
         12.1, 11.8,
         expansions.ARR,
         true,
@@ -502,6 +508,13 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 3, ...craftItem.astralRock }
         ]
       );
+    
+    case 23:
+      return [
+        helper.timewornMap(...timewornMap.boarskin),
+        helper.aquapolis(),
+        helper.itemAccursedHoard(item.bronzeTrimmedSack)
+      ];
 
     case 25:
       return helper.gilAfterFate(

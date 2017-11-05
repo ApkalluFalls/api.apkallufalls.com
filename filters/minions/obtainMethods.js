@@ -163,8 +163,8 @@ const helper = {
     const itemArr = ['', '', '', ''];
     items.forEach((item, index) => {
       for (var i = 0; i < 4; i++)
-        itemArr[i] += (index === 0 ? '' : ', ')
-                    + item.quantity + ' '
+        itemArr[i] += (index === 0 ? '' : (index === items.length - 1 ? ' and ' : ', '))
+                    + item.quantity + 'x '
                     + item.name[i]
                     + ' <img src="https://api.apkallufalls.com/icons/item/' + item.icon + '.png" alt="' + item.name[i] + '" />';
     });

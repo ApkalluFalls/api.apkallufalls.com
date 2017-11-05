@@ -16,5 +16,5 @@ module.exports = {
   quest: { en: 'Complete the level {0} {1} quest \'{i2}\' from {3} in {4} (x: {5}, y: {6}).' },
   timewornMap: { en: 'Randomly awarded from the treasure chest after completing a level {0} {i1}.' },
   timewornMapFullParty: { en: 'Randomly awarded from the treasure chest after completing a level {0} (full party) {i1}.' },
-  craft: { en: 'Crafted from level {0} {1} recipe{2} with {3}.' }
+  craft: { en: 'Crafted from a level {0} {1} recipe{2} with {3}.' }
 };

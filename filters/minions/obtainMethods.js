@@ -17,6 +17,17 @@ const item = {
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝']
 }
 
+const craftItem = {
+  astralRock: {
+    icon: 5158,
+    name: ['Astral Rock', 'Astralgestein', 'Roche astrale', '星性岩']
+  },
+  windShard: {
+    icon: 4,
+    name: ['Wind Shard', 'Windscherbe', 'Éclat de vent', 'ウィンドシャード']
+  }
+}
+
 const location = {
   chamber5: ['5th Chamber', 'Fünfte Kammer', 'Cinquième Salle', '第五区画'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
@@ -30,6 +41,7 @@ const location = {
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
+  uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
@@ -147,6 +159,31 @@ const helper = {
       false
     )
   },
+  craft: (level, job, stars, items, expansion) => {
+    const itemArr = ['', '', '', ''];
+    items.forEach((item, index) => {
+      for (var i = 0; i < 4; i++)
+        itemArr[i] += (index === 0 ? '' : ', ')
+                    + item.quantity
+                    + ' <img src="https://api.apkallufalls.com/docs/icons/item/' + item.icon + '.png" alt="' + item.name[i] + '" />'
+                    + item.name[i];
+    });
+    return o(
+      'craft',
+      [
+        level,
+        job,
+        stars ? ' (' + (new Array(stars).fill()).map(s => '★').join('') + ')' : '',
+        itemArr
+      ],
+      expansion,
+      true,
+      false,
+      {
+        job: job[0]
+      }
+    )
+  },
   dungeon: (name, level, x, y, expansion, available, promo) => {
     return o(
       x && y ? 'duty' : 'dutyFinalChest',
@@ -180,7 +217,7 @@ const helper = {
       [
         cost, mgp,
         _npc.minionTrader,
-        ['Purchase Minions (MGP)', 'Begleiter (MGP)', 'Mascottes (PGS)', 'ミニオンの取引（MGP消費）'],
+        ['(Purchase Minions (MGP))', '(Begleiter (MGP))', '(Mascottes (PGS))', '（ミニオンの取引（MGP消費））'],
         location.theGoldSaucer,
         7.8, 7
       ],
@@ -195,7 +232,7 @@ const helper = {
       [
         cost, mgp,
         ['Gold Saucer Attendant', 'Sonderartikel-Händlerin', 'Préposée Aux Lots', '景品交換窓口'],
-        ['Prize Exchange I', 'Gewinne I', 'Lots (1)', '景品の交換（その1）'],
+        ['(Prize Exchange I)', '(Gewinne I)', '(Lots (1))', '（景品の交換（その1））'],
         location.theGoldSaucer,
         5.4, 6.7
       ],
@@ -441,6 +478,30 @@ module.exports = (minion, achievementsIn) => {
         helper.goldSaucerPrizeExchange(20000),
         helper.goldSaucerMinionsMGP(20000)
       ];
+
+    case 21:
+      return helper.quest(
+        50,
+        locale('Hildibrand Quests'),
+        ['Her Last Vow', 'Ruinöse Revanche', 'Boucler La Boucle', '事件は砂塵に消ゆ'],
+        ['Julyan', true, true, 'ジュリアン'],
+        location.uldahSepsOfThal,
+        12.1, 11.8,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 22:
+      return helper.craft(
+        50,
+        locale('Goldsmith'),
+        0,
+        [
+          { quantity: 99, ...craftItem.windShard },
+          { quantity: 3, ...craftItem.astralRock }
+        ]
+      );
 
     case 25:
       return helper.gilAfterFate(

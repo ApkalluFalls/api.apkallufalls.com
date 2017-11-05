@@ -15,5 +15,6 @@ module.exports = {
   itemAccursedHoard: { en: 'Randomly awarded from a {i0}, after obtaining a {1} within {2}.' },
   quest: { en: 'Complete the level {0} {1} quest \'{i2}\' from {3} in {4} (x: {5}, y: {6}).' },
   timewornMap: { en: 'Randomly awarded from the treasure chest after completing a level {0} {i1}.' },
-  timewornMapFullParty: { en: 'Randomly awarded from the treasure chest after completing a level {0} (full party) {i1}.' }
+  timewornMapFullParty: { en: 'Randomly awarded from the treasure chest after completing a level {0} (full party) {i1}.' },
+  craft: { en: 'Crafted from level {0} {1} recipe{2} with {3}.' }
 };

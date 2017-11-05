@@ -165,7 +165,7 @@ const helper = {
       for (var i = 0; i < 4; i++)
         itemArr[i] += (index === 0 ? '' : ', ')
                     + item.quantity
-                    + ' <img src="https://api.apkallufalls.com/icons/item/' + item.icon + '.png" alt="' + item.name[i] + '" />'
+                    + ' <img src="https://api.apkallufalls.com/icons/item/' + item.icon + '.png" alt="' + item.name[i] + '" /> '
                     + item.name[i];
     });
     return o(

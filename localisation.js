@@ -124,5 +124,10 @@ module.exports = {
     de: 'Aufträge La Noscea',
     fr: 'Noscea',
     jp: 'サブクエスト：ラノシア'
-  }
+  },
+  'Seventh Astral Era': {
+    de: '7. Ära des Lichts',
+    fr: 'Chroniques de la 7e ère astrale',
+    jp: '第七星暦ストーリー'
+  },
 }

@@ -16,7 +16,8 @@ const item = {
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
   bait: {
-    northernKrill: ['Northern Krill', 'Nordkrill', 'Krill polaire', 'ポーラークリル']
+    northernKrill: ['Northern Krill', 'Nordkrill', 'Krill polaire', 'ポーラークリル'],
+    topwaterFrog: ['Topwater Frog', 'Schwimmfrosch', 'Grenouille sèche', 'トップウォーターフロッグ']
   }
 }
 
@@ -24,6 +25,14 @@ const craftItem = {
   astralRock: {
     icon: 5158,
     name: ['Astral Rock', 'Astralgestein', 'Roche astrale', '星性岩']
+  },
+  darksteelNugget: {
+    icon: 5061,
+    name: ['Darksteel Nugget', 'Dunkelstahl-Nugget', 'Pépite de sombracier', 'ダークスチールナゲット']
+  },
+  iceShard: {
+    icon: 3,
+    name: ['Ice Shard', 'Eisscherbe', 'Éclat de glace', 'アイスシャード']
   },
   windShard: {
     icon: 4,
@@ -33,6 +42,7 @@ const craftItem = {
 
 const location = {
   chamber5: ['5th Chamber', 'Fünfte Kammer', 'Cinquième Salle', '第五区画'],
+  coerthasCentralHighlands: ['Coerthas Central Highlands', 'Zentrales Hochland Von Coerthas', 'Hautes Terres Du Coerthas Central', 'クルザス中央高地'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
@@ -54,6 +64,7 @@ const location = {
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿']
   },
   fishing: {
+    theBurningWall: ['The Burning Wall', 'Der Feuerwall', 'Mur Incandescent', 'バーニングウォール'],
     theSaltStrand: ['The Salt Strand', 'Der Salzstrand', 'Atolls De Sel', 'ソルトストランド']
   }
 }
@@ -63,6 +74,12 @@ const _npc = {
 }
 
 const timewornMap = {
+  toadskin: [
+    50,
+    false,
+    ['Timeworn Toadskin Map', 'Vergilbte Krötenleder-Karte', 'Vieille carte en peau de crapaud', '古ぼけた地図G3'],
+    expansions.ARR
+  ],
   boarskin: [
     50,
     false,
@@ -540,7 +557,7 @@ module.exports = (minion, achievementsIn) => {
         item.bait.northernKrill,
         50,
         expansions.ARR
-      )
+      );
 
     case 25:
       return helper.gilAfterFate(
@@ -563,7 +580,57 @@ module.exports = (minion, achievementsIn) => {
         20, 12, 24,
         expansions.ARR
       );
+
+    case 27:
+      return [
+        helper.timewornMap(...timewornMap.toadskin),
+        helper.aquapolis(),
+        helper.itemAccursedHoard(item.bronzeTrimmedSack)
+      ];
     
+    case 29:
+      return helper.craft(
+        50,
+        locale('Armorer'),
+        0,
+        [
+          { quantity: 99, ...craftItem.iceShard },
+          { quantity: 3, ...craftItem.darksteelNugget }
+        ]
+      );
+    
+    case 30:
+      return helper.fishing(
+        location.fishing.theBurningWall,
+        location.easternThanalan,
+        29, 24,
+        item.bait.topwaterFrog,
+        44,
+        expansions.ARR
+      );
+    
+    case 31:
+      return helper.fate(
+        39,
+        ['The Eyes Have It', 'Mehr Augen, Mehr Ärger', 'Défi: L\'œil De La Tête', '帰ってきた男「ステロペス」'],
+        location.coerthasCentralHighlands,
+        15, 19,
+        expansions.ARR
+      );
+    
+    case 32:
+      return helper.quest(
+        50,
+        locale('Seventh Astral Era'),
+        ['You\'re Gonna Carry That', 'Tatarus sieben Sachen', 'Un petit coup de main', '砂の家でのお片付け'],
+        ['Stafborn', true, true, 'スラフボーン'],
+        location.morDhona,
+        21.9, 7.8,
+        expansions.ARR,
+        true,
+        false
+      );
+
     case 83:
     case 117:
       return [

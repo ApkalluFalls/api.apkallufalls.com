@@ -14,7 +14,10 @@ const expansions = {
 
 const item = {
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
-  pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝']
+  pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
+  bait: {
+    northernKrill: ['Northern Krill', 'Nordkrill', 'Krill polaire', 'ポーラークリル']
+  }
 }
 
 const craftItem = {
@@ -34,6 +37,7 @@ const location = {
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
+  lowerLaNoscea: ['Lower La Noscea', 'Unteres La Noscea', 'Basse-Noscea', '低地ラノシア'],
   morDhona: ['Mor Dhona', true, true, 'モードゥナ'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
@@ -48,6 +52,9 @@ const location = {
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿']
+  },
+  fishing: {
+    theSaltStrand: ['The Salt Strand', 'Der Salzstrand', 'Atolls De Sel', 'ソルトストランド']
   }
 }
 
@@ -203,6 +210,15 @@ const helper = {
     return o(
       'fate',
       [level, fate, loc, x, y],
+      expansion,
+      true,
+      false
+    )
+  },
+  fishing: (waters, loc, x, y, bait, level, expansion) => {
+    return o(
+      'fishing',
+      [locale('Fisher'), waters, loc, x, y, bait, level],
       expansion,
       true,
       false
@@ -515,6 +531,16 @@ module.exports = (minion, achievementsIn) => {
         helper.aquapolis(),
         helper.itemAccursedHoard(item.bronzeTrimmedSack)
       ];
+    
+    case 24:
+      return helper.fishing(
+        location.fishing.theSaltStrand,
+        location.lowerLaNoscea,
+        17, 35,
+        item.bait.northernKrill,
+        50,
+        expansions.ARR
+      )
 
     case 25:
       return helper.gilAfterFate(

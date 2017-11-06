@@ -76,6 +76,21 @@ module.exports = {
     fr: 'Cuisinier',
     jp: '調理師'
   },
+  'Botanist': {
+    de: 'Gärtner',
+    fr: 'Botaniste',
+    jp: '園芸師'
+  },
+  'Miner': {
+    de: 'Minenarbeiter',
+    fr: 'Mineur',
+    jp: '採掘師'
+  },
+  'Fisher': {
+    de: 'Fischer',
+    fr: 'Pêcheur',
+    jp: '漁師'
+  },
 
   // Grand Companies
   'Maelstrom': {

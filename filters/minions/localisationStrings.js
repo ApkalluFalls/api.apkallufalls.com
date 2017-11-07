@@ -19,5 +19,6 @@ module.exports = {
   craft: { en: 'Crafted from a level {0} {i1} recipe{2} with {3}.' },
   fishing: { en: 'Gathered by a {i0} at {1} in {i2} (x: {3}, y: {4}) using {5} as bait (level {6}).' },
   achievementCertificate: { en: 'Purchase for {i0} {i1} {2} from {3} at {4} in {5} (x: {6}, y: {7}).' },
-  veteranReward: { en: 'Received as mail from a {i0} for subscribing for {1} days.' }
+  veteranReward: { en: 'Received as mail from a {i0} for subscribing for {1} days.' },
+  gather: { en: 'Gathered by a level {0} {i1} at an unspoiled node{2} in {3} (x: {4}, y: {5}) at {6}.' }
 };

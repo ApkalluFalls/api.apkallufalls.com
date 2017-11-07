@@ -266,6 +266,22 @@ const helper = {
       false
     )
   },
+  gather: (level, job, stars, loc, x, y, time, expansion) => {
+    return o(
+      'gather',
+      [
+        level,
+        locale(job),
+        stars ? ' (' + (new Array(stars).fill()).map(s => '★').join('') + ')' : '',
+        loc,
+        x, y,
+        time
+      ],
+      expansion,
+      true,
+      false
+    )
+  },
   gilAfterFate: (cost, npc, loc, x1, y1, fate, level, x2, y2, expansion) => {
     return o(
       'gilAfterFate',
@@ -705,7 +721,15 @@ module.exports = (minion, achievementsIn) => {
         helper.veteranReward(90),
         helper.achievementCertificate(2)
       ];
-      
+    
+    case 38:
+      return helper.gather(
+        50, 'Miner', 1,
+        location.easternThanalan,
+        28, 22,
+        '9:00AM'
+      )
+
     case 49:
       return [
         helper.veteranReward(450),

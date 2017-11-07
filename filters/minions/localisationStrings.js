@@ -11,7 +11,7 @@ module.exports = {
   duty: { en: 'Randomly awarded from a treasure chest in the level {0} duty {img1} \'{i2}\' (x: {3}, y: {4}).' },
   dutyFinalChest: { en: 'Randomly awarded from treasure chest in level {0} duty {img1} \'{i2}\' (final chest).' },
   fate: { en: 'Achieve gold rating in the level {0} FATE {img1} \'{i2}\' in {img3} {4} (x: {5}, y: {6}).' },
-  gilAfterFate: { en: 'Purchase for {i0} {i1} {img2} from {3} in {img4} {5} (x: {6}, y: {7}) after completing the level {7} FATE {img8} \'{i9}\' (x: {10}, y: {11}).' },
+  gilAfterFate: { en: 'Purchase for {i0} {i1} {img2} from {3} in {img4} {5} (x: {6}, y: {7}) after completing the level {8} FATE {img9} \'{i10}\' (x: {11}, y: {12}).' },
   itemAccursedHoard: { en: 'Randomly awarded from a {i0}, after obtaining a {1} within {img2} {3}.' },
   quest: { en: 'Complete the level {0} {1} quest \'{i2}\' from {3} in {img4} {5} (x: {6}, y: {7}).' },
   timewornMap: { en: 'Randomly awarded from the treasure chest after completing a level {0} (solo) {img1} {i2}.' },

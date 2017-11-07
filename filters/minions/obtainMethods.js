@@ -16,6 +16,7 @@ const gilImage = '<img class="currency" src="https://api.apkallufalls.com/icons/
 const companySealsImage = '<img class="currency-special" src="https://api.apkallufalls.com/icons/item/cs.png" alt="Company Seals" />';
 const mgpImage = '<img class="currency" src="https://api.apkallufalls.com/icons/item/mgp.png" alt="MGP" />';
 const poeticsImage = '<img class="currency-special" src="https://api.apkallufalls.com/icons/item/poetics.png" alt="Poetics" />';
+const achievementCertificate = '<img class="currency" src="https://api.apkallufalls.com/icons/item/ac.png" alt="Achievement Certificate" />';
 
 const item = {
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
@@ -116,9 +117,9 @@ const helper = {
     return o(
       'achievementCertificate',
       [
-        quantity,
+        quantity + 'x',
         ['Achievement Certificate', 'Errungenschaftszertifikat', 'Jeton de hauts faits', 'アチーブメントスクリップ'],
-        '<img class="currency" src="https://api.apkallufalls.com/icons/item/ac.png" alt="Achievement Certificate" />'
+        achievementCertificate,
         ['Jonathas', true, true, 'ジョナサス'],
         location.apkalluFalls,
         location.oldGridania,

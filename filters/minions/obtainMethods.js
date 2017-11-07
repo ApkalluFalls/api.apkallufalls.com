@@ -705,53 +705,48 @@ module.exports = (minion, achievementsIn) => {
         helper.veteranReward(90),
         helper.achievementCertificate(2)
       ];
+      
     case 49:
       return [
         helper.veteranReward(450),
         helper.achievementCertificate(2)
       ];
+
     case 51:
       return [
         helper.veteranReward(30),
         helper.achievementCertificate(2)
       ];
+
     case 54:
       return [
         helper.veteranReward(60),
         helper.achievementCertificate(2)
       ];
+
     case 67:
       return [
         helper.veteranReward(180),
         helper.achievementCertificate(2)
       ];
+
     case 71:
       return [
         helper.veteranReward(270),
         helper.achievementCertificate(2)
       ];
+
     case 76:
       return [
         helper.veteranReward(360),
         helper.achievementCertificate(2)
       ];
+
     case 77:
       return [
         helper.veteranReward(360),
         helper.achievementCertificate(2)
       ];
-    case 84:
-      return [
-        helper.veteranReward(630),
-        helper.achievementCertificate(2)
-      ];
-    case 85:
-      return [
-        helper.veteranReward(540),
-        helper.achievementCertificate(2)
-      ];
-    case 167:
-      return helper.achievementCertificate(2);
 
     case 83:
     case 117:
@@ -759,6 +754,24 @@ module.exports = (minion, achievementsIn) => {
         helper.goldSaucerPrizeExchange(10000),
         helper.goldSaucerMinionsMGP(10000)
       ];
+
+    case 84:
+      return [
+        helper.veteranReward(630),
+        helper.achievementCertificate(2)
+      ];
+
+    case 85:
+      return [
+        helper.veteranReward(540),
+        helper.achievementCertificate(2)
+      ];
+
+    case 167: 
+      return [
+        helper.veteranReward(960),
+        helper.achievementCertificate(2)
+      ]
     
     case 174:
     case 187:

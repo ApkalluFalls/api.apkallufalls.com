@@ -339,6 +339,15 @@ const helper = {
       true,
       false
     )
+  },
+  veteranReward: (days) => {
+    return o(
+      'veteranReward',
+      [locale('Veteran Reward'), days],
+      expansions.ARR,
+      false,
+      false
+    )
   }
 }
 
@@ -692,15 +701,55 @@ module.exports = (minion, achievementsIn) => {
       );
 
     case 36:
+      return [
+        helper.veteranReward(90),
+        helper.achievementCertificate(2)
+      ];
     case 49:
+      return [
+        helper.veteranReward(450),
+        helper.achievementCertificate(2)
+      ];
     case 51:
+      return [
+        helper.veteranReward(30),
+        helper.achievementCertificate(2)
+      ];
     case 54:
+      return [
+        helper.veteranReward(60),
+        helper.achievementCertificate(2)
+      ];
     case 67:
+      return [
+        helper.veteranReward(180),
+        helper.achievementCertificate(2)
+      ];
     case 71:
+      return [
+        helper.veteranReward(270),
+        helper.achievementCertificate(2)
+      ];
     case 76:
+      return [
+        helper.veteranReward(360),
+        helper.achievementCertificate(2)
+      ];
     case 77:
+      return [
+        helper.veteranReward(360),
+        helper.achievementCertificate(2)
+      ];
     case 84:
+      return [
+        helper.veteranReward(630),
+        helper.achievementCertificate(2)
+      ];
     case 85:
+      return [
+        helper.veteranReward(540),
+        helper.achievementCertificate(2)
+      ];
     case 167:
       return helper.achievementCertificate(2);
 

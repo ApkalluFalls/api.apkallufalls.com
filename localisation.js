@@ -34,6 +34,11 @@ module.exports = {
     fr: true,
     jp: true
   },
+  'Veteran Reward': {
+    de: 'Veteranen-Belohnen',
+    fr: 'Récompenses d\'ancienneté',
+    jp: 'ベテランリワード'
+  },
 
   // Job
   'Carpenter': {

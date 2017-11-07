@@ -19,6 +19,8 @@ const poeticsImage = 'poetics';
 const achievementCertificate = 'ac';
 const fateImage = 'fate';
 const locationImage = 'loc';
+const dutyImage = 'duty';
+const timewornImage = 'map';
 
 const item = {
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
@@ -124,6 +126,7 @@ const helper = {
         achievementCertificate,
         ['Jonathas', true, true, 'ジョナサス'],
         location.apkalluFalls,
+        locationImage,
         location.oldGridania,
         10.6, 6.3
       ],
@@ -138,6 +141,7 @@ const helper = {
       [
         ['Jonathas', true, true, 'ジョナサス'],
         ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
+        locationImage,
         location.oldGridania,
         10.6, 6.3
       ],
@@ -153,6 +157,7 @@ const helper = {
     return o(
       'aquapolis',
       [
+        dutyImage,
         location.duty.theAquapolis,
         location.chamber5
       ],
@@ -210,7 +215,7 @@ const helper = {
 
     return o(
       'purchase',
-      [cost, companySeals, companySealsImage, npc, companyName, loc, x, y],
+      [cost, companySeals, companySealsImage, npc, companyName, locationImage, loc, x, y],
       expansions.ARR,
       true,
       false
@@ -244,7 +249,7 @@ const helper = {
   dungeon: (name, level, x, y, expansion, available, promo) => {
     return o(
       x && y ? 'duty' : 'dutyFinalChest',
-      x && y ? [level, name, x, y] : [level, name],
+      x && y ? [level, dutyImage, name, x, y] : [level, dutyImage, name],
       expansion,
       available,
       promo
@@ -253,7 +258,7 @@ const helper = {
   fate: (level, fate, loc, x, y, expansion) => {
     return o(
       'fate',
-      [level, fateImage, fate, loc, x, y],
+      [level, fateImage, fate, locationImage, loc, x, y],
       expansion,
       true,
       false
@@ -262,7 +267,7 @@ const helper = {
   fishing: (waters, loc, x, y, bait, level, expansion) => {
     return o(
       'fishing',
-      [locale('Fisher'), waters, loc, x, y, bait, level],
+      [locale('Fisher'), waters, locationImage, loc, x, y, bait, level],
       expansion,
       true,
       false
@@ -288,7 +293,7 @@ const helper = {
   gilAfterFate: (cost, npc, loc, x1, y1, fate, level, x2, y2, expansion) => {
     return o(
       'gilAfterFate',
-      [cost, gil, gilImage, npc, loc, x1, y1, level, fateImage, fate, x2, y2],
+      [cost, gil, gilImage, npc, locationImage, loc, x1, y1, level, fateImage, fate, x2, y2],
       expansion,
       true,
       false
@@ -301,6 +306,7 @@ const helper = {
         cost, mgp, mgpImage,
         _npc.minionTrader,
         ['(Purchase Minions (MGP))', '(Begleiter (MGP))', '(Mascottes (PGS))', '（ミニオンの取引（MGP消費））'],
+        locationImage,
         location.theGoldSaucer,
         7.8, 7
       ],
@@ -316,6 +322,7 @@ const helper = {
         cost, mgp, mgpImage,
         ['Gold Saucer Attendant', 'Sonderartikel-Händlerin', 'Préposée Aux Lots', '景品交換窓口'],
         ['(Prize Exchange I)', '(Gewinne I)', '(Lots (1))', '（景品の交換（その1））'],
+        locationImage,
         location.theGoldSaucer,
         5.4, 6.7
       ],
@@ -330,6 +337,7 @@ const helper = {
       [
         sack,
         item.pieceOfAccursedHoard,
+        dutyImage,
         location.duty.thePalaceOfTheDead
       ],
       expansions.ARR,
@@ -340,7 +348,7 @@ const helper = {
   quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
     return o(
       'quest',
-      [level, type, quest, npc, loc, x, y],
+      [level, type, quest, npc, locationImage, loc, x, y],
       expansion,
       available,
       promo
@@ -353,7 +361,7 @@ const helper = {
 
     return o(
       type,
-      [level, map],
+      [level, timewornImage, map],
       expansion,
       true,
       false
@@ -390,6 +398,7 @@ module.exports = (minion, achievementsIn) => {
             cost, gil, gilImage,
             ['Maisenta', true, true, '黒兎堂 マイセンタ'],
             purchaseTools,
+            locationImage,
             location.newGridania,
             11.5, 11.3
           ],
@@ -403,6 +412,7 @@ module.exports = (minion, achievementsIn) => {
             cost, gil, gilImage,
             ['Bango Zango', true, true, 'ブルゲール商会 バンゴ・ザンゴ'],
             purchaseTools,
+            locationImage,
             location.limsaLowerDecks,
             10, 11.4
           ],
@@ -416,6 +426,7 @@ module.exports = (minion, achievementsIn) => {
             cost, gil, gilImage,
             ['Roarich', true, true, 'アシュガナ貿易 ロリッヒ'],
             purchaseTools,
+            locationImage,
             location.uldahStepsOfNald,
             10.6, 9.6
           ],
@@ -429,6 +440,7 @@ module.exports = (minion, achievementsIn) => {
             cost, gil, gilImage,
             _npc.minionTrader,
             ['(Purchase Minions (Gil))', '(Begleiter (Gil))', '(Mascottes (gils))', '（ミニオンの取引（ギル消費））'],
+            locationImage,
             location.theGoldSaucer,
             7.8, 7
           ],
@@ -534,6 +546,7 @@ module.exports = (minion, achievementsIn) => {
           7, poetics, poeticsImage,
           ['Auriana', true, true, 'オーリアナ'],
           ['(Allagan Tomestones Of Poetics (Other))', '(Allagische Steine Der Poesie (Anderes))', '(Mémoquartz Allagois Poétiques (divers))', '（アラガントームストーン:詩学の取引（その他））'],
+          locationImage,
           location.morDhona,
           22.8, 6.7
         ],

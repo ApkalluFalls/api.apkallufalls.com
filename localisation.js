@@ -130,4 +130,9 @@ module.exports = {
     fr: 'Chroniques de la 7e ère astrale',
     jp: '第七星暦ストーリー'
   },
+  'Ul\'dahn Sidequests': {
+    de: 'Aufträge Thanalan',
+    fr: 'Thanalan',
+    jp: 'サブクエスト：ザナラーン'
+  }
 }

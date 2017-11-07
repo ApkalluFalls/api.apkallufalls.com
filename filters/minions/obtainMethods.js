@@ -12,6 +12,11 @@ const expansions = {
   SB: 4
 };
 
+const gilImage = '<img class="currency" src="https://api.apkallufalls.com/icons/item/gil.png" alt="Gil" />';
+const companySealsImage = '<img class="currency-special" src="https://api.apkallufalls.com/icons/item/cs.png" alt="Company Seals" />';
+const mgpImage = '<img class="currency" src="https://api.apkallufalls.com/icons/item/mgp.png" alt="MGP" />';
+const poeticsImage = '<img class="currency-special" src="https://api.apkallufalls.com/icons/item/poetics.png" alt="Poetics" />';
+
 const item = {
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
@@ -41,8 +46,10 @@ const craftItem = {
 }
 
 const location = {
+  apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
   chamber5: ['5th Chamber', 'Fünfte Kammer', 'Cinquième Salle', '第五区画'],
   coerthasCentralHighlands: ['Coerthas Central Highlands', 'Zentrales Hochland Von Coerthas', 'Hautes Terres Du Coerthas Central', 'クルザス中央高地'],
+  easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
@@ -105,6 +112,26 @@ const poetics = ['Allagan Tomestone of Poetics', 'Allagischer Stein der Poesie',
 const mgp = ['MGP', true, 'Point du Gold Saucer', 'マンダヴィル・ゴールドソーサーポイント'];
 
 const helper = {
+  achievementCertificate: (quantity) => {
+    return o(
+      'achievementCertificate',
+      [
+        quantity,
+        ['Achievement Certificate', 'Errungenschaftszertifikat', 'Jeton de hauts faits', 'アチーブメントスクリップ'],
+        '<img class="currency" src="https://api.apkallufalls.com/icons/item/ac.png" alt="Achievement Certificate" />'
+        ['Jonathas', true, true, 'ジョナサス'],
+        location.apkalluFalls,
+        location.oldGridania,
+        10.6, 6.3
+      ],
+      expansion,
+      available,
+      promo,
+      {
+        achievement: getAchievement(achievements, achievementId)
+      }
+    )
+  },
   achievementReward: (achievementId, expansion, available, promo) => {
     return o(
       'achievement',
@@ -183,7 +210,7 @@ const helper = {
 
     return o(
       'purchase',
-      [cost, companySeals, npc, companyName, loc, x, y],
+      [cost, companySeals, companySealsImage, npc, companyName, loc, x, y],
       expansions.ARR,
       true,
       false
@@ -244,7 +271,7 @@ const helper = {
   gilAfterFate: (cost, npc, loc, x1, y1, fate, level, x2, y2, expansion) => {
     return o(
       'gilAfterFate',
-      [cost, gil, npc, loc, x1, y1, level, fate, x2, y2],
+      [cost, gil, gilImage, npc, loc, x1, y1, level, fate, x2, y2],
       expansion,
       true,
       false
@@ -254,7 +281,7 @@ const helper = {
     return o(
       'purchase',
       [
-        cost, mgp,
+        cost, mgp, mgpImage,
         _npc.minionTrader,
         ['(Purchase Minions (MGP))', '(Begleiter (MGP))', '(Mascottes (PGS))', '（ミニオンの取引（MGP消費））'],
         location.theGoldSaucer,
@@ -269,7 +296,7 @@ const helper = {
     return o(
       'purchase',
       [
-        cost, mgp,
+        cost, mgp, mgpImage,
         ['Gold Saucer Attendant', 'Sonderartikel-Händlerin', 'Préposée Aux Lots', '景品交換窓口'],
         ['(Prize Exchange I)', '(Gewinne I)', '(Lots (1))', '（景品の交換（その1））'],
         location.theGoldSaucer,
@@ -334,7 +361,7 @@ module.exports = (minion, achievementsIn) => {
         o(
           'purchase',
           [
-            cost, gil,
+            cost, gil, gilImage,
             ['Maisenta', true, true, '黒兎堂 マイセンタ'],
             purchaseTools,
             location.newGridania,
@@ -347,7 +374,7 @@ module.exports = (minion, achievementsIn) => {
         o(
           'purchase',
           [
-            cost, gil,
+            cost, gil, gilImage,
             ['Bango Zango', true, true, 'ブルゲール商会 バンゴ・ザンゴ'],
             purchaseTools,
             location.limsaLowerDecks,
@@ -360,7 +387,7 @@ module.exports = (minion, achievementsIn) => {
         o(
           'purchase',
           [
-            cost, gil,
+            cost, gil, gilImage,
             ['Roarich', true, true, 'アシュガナ貿易 ロリッヒ'],
             purchaseTools,
             location.uldahStepsOfNald,
@@ -373,7 +400,7 @@ module.exports = (minion, achievementsIn) => {
         o(
           'purchase',
           [
-            cost, gil,
+            cost, gil, gilImage,
             _npc.minionTrader,
             ['(Purchase Minions (Gil))', '(Begleiter (Gil))', '(Mascottes (gils))', '（ミニオンの取引（ギル消費））'],
             location.theGoldSaucer,
@@ -478,7 +505,7 @@ module.exports = (minion, achievementsIn) => {
       return o(
         'purchase',
         [
-          7, poetics,
+          7, poetics, poeticsImage,
           ['Auriana', true, true, 'オーリアナ'],
           ['(Allagan Tomestones Of Poetics (Other))', '(Allagische Steine Der Poesie (Anderes))', '(Mémoquartz Allagois Poétiques (divers))', '（アラガントームストーン:詩学の取引（その他））'],
           location.morDhona,
@@ -626,6 +653,41 @@ module.exports = (minion, achievementsIn) => {
         ['Stafborn', true, true, 'スラフボーン'],
         location.morDhona,
         21.9, 7.8,
+        expansions.ARR,
+        true,
+        false
+      );
+
+    case 33:
+      return helper.quest(
+        47,
+        locale('Ul\'dahn Sidequests'),
+        ['Zombies Are People Too', 'Love me Sabotender', 'De piquants compagnons', '悲しみのゾンビー'],
+        ['Hab', true, true, 'ハブ'],
+        location.uldahStepsOfThal,
+        24.8, 40.9,
+        expansions.ARR,
+        true,
+        false
+      );
+      
+    case 34:
+      return helper.fate(
+        32,
+        ['It\'s Not Lupus', 'Krabbe XXL', 'Défi: Cancer, Le Casque De Mort', '死顔の簒奪者「キャンサー」'],
+        location.easternLaNoscea,
+        31, 34,
+        expansions.ARR
+      );
+
+    case 35:
+      return helper.quest(
+        15,
+        locale('Lominsan Sidequests'),
+        ['Man\'s Best Fiend', 'Wolfshundbändiger', 'Le chacal amical', '幼い狼犬を救え'],
+        ['Skribyld', true, true, 'スクリビルド'],
+        location.westernLaNoscea,
+        26.4, 26.4,
         expansions.ARR,
         true,
         false

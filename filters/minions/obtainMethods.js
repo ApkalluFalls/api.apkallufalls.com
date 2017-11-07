@@ -124,12 +124,9 @@ const helper = {
         location.oldGridania,
         10.6, 6.3
       ],
-      expansion,
-      available,
-      promo,
-      {
-        achievement: getAchievement(achievements, achievementId)
-      }
+      expansions.ARR,
+      true,
+      false
     )
   },
   achievementReward: (achievementId, expansion, available, promo) => {
@@ -692,6 +689,19 @@ module.exports = (minion, achievementsIn) => {
         true,
         false
       );
+
+    case 36:
+    case 49:
+    case 51:
+    case 54:
+    case 67:
+    case 71:
+    case 76:
+    case 77:
+    case 84:
+    case 85:
+    case 167:
+      return helper.achievementCertificate(2);
 
     case 83:
     case 117:

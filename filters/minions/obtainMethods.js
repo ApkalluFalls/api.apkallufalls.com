@@ -12,11 +12,13 @@ const expansions = {
   SB: 4
 };
 
-const gilImage = '<img class="currency" src="https://api.apkallufalls.com/icons/item/gil.png" alt="Gil" />';
-const companySealsImage = '<img class="currency-special" src="https://api.apkallufalls.com/icons/item/cs.png" alt="Company Seals" />';
-const mgpImage = '<img class="currency" src="https://api.apkallufalls.com/icons/item/mgp.png" alt="MGP" />';
-const poeticsImage = '<img class="currency-special" src="https://api.apkallufalls.com/icons/item/poetics.png" alt="Poetics" />';
-const achievementCertificate = '<img class="currency" src="https://api.apkallufalls.com/icons/item/ac.png" alt="Achievement Certificate" />';
+const gilImage = 'gil';
+const companySealsImage = 'cs';
+const mgpImage = 'mgp';
+const poeticsImage = 'poetics';
+const achievementCertificate = 'ac';
+const fateImage = 'fate';
+const locationImage = 'loc';
 
 const item = {
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
@@ -251,7 +253,7 @@ const helper = {
   fate: (level, fate, loc, x, y, expansion) => {
     return o(
       'fate',
-      [level, fate, loc, x, y],
+      [level, fateImage, fate, loc, x, y],
       expansion,
       true,
       false
@@ -273,6 +275,7 @@ const helper = {
         level,
         locale(job),
         stars ? ' (' + (new Array(stars).fill()).map(s => '★').join('') + ')' : '',
+        locationImage,
         loc,
         x, y,
         time
@@ -285,7 +288,7 @@ const helper = {
   gilAfterFate: (cost, npc, loc, x1, y1, fate, level, x2, y2, expansion) => {
     return o(
       'gilAfterFate',
-      [cost, gil, gilImage, npc, loc, x1, y1, level, fate, x2, y2],
+      [cost, gil, gilImage, npc, loc, x1, y1, level, fateImage, fate, x2, y2],
       expansion,
       true,
       false

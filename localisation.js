@@ -135,6 +135,11 @@ module.exports = {
     fr: 'Chroniques de la 7e ère astrale',
     jp: '第七星暦ストーリー'
   },
+  'Seventh Umbral Era': {
+    de: 'A Realm Reborn',
+    fr: 'Chroniques de la 7e ère ombrale',
+    jp: '新生エオルゼア'
+  },
   'Ul\'dahn Sidequests': {
     de: 'Aufträge Thanalan',
     fr: 'Thanalan',

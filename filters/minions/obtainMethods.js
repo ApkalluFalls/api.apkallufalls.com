@@ -774,6 +774,22 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 1, ...craftItem.chocoboFeather }
         ]
       );
+    
+    case 40:
+      return helper.achievementReward(929, expansions.ARealmReborn, true, false);
+
+    case 41:
+      return helper.quest(
+        22,
+        locale('Seventh Umbral Era'),
+        ['It Was A Very Good Year', 'Wandelndes Biotop', 'Un pied de vigne ambulant', '人の命運、ワインの運命'],
+        ['Shamani Lohmani', true, true, 'シャマニ・ローマニ'],
+        location.easternLaNoscea,
+        21.7, 21.2,
+        expansions.ARR,
+        true,
+        false
+      );
 
     case 49:
       return [

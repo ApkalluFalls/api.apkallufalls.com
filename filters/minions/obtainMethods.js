@@ -380,6 +380,15 @@ const helper = {
       false
     )
   },
+  mogStation: () => {
+    return o(
+      'mogStation',
+      [locale('Mog Station')],
+      expansions.ARR,
+      true,
+      true
+    )
+  },
   quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
     return o(
       'quest',
@@ -853,7 +862,8 @@ module.exports = (minion, achievementsIn) => {
           15,
           ['All\'s Wool That Ends Wool', 'Des Schäfchens Generäle', 'L\'année Du Mouton', '羊と私の降神祭'],
           expansions.ARR
-        )
+        ),
+        helper.mogStation()
       ]
 
     case 49:

@@ -21,6 +21,7 @@ module.exports = {
   fishing: { en: 'Gathered by a {i0} at {1} in {img2} {i3} (x: {4}, y: {5}) using {6} as bait (level {7}).' },
   achievementCertificate: { en: 'Purchase for {i0} {i1} {img2} from {3} at {4} in {img5} {6} (x: {7}, y: {8}).' },
   veteranReward: { en: 'Received as mail from a {i0} for subscribing for {1} days.' },
-  gather: { en: 'Gathered by a level {0} {i1} at an unspoiled node{2} in {img3} {4} (x: {5}, y: {6}) at {7}.' },
-  mogStation: { en: 'Purchase directly from the {i0}.' }
+  gather: { en: 'Gathered by a level {0} {i1} at an unspoiled node{2} in {img3} {4} (x: {5}, y: {6}) at {7} (slot {8}).' },
+  mogStation: { en: 'Purchase directly from the {i0}.' },
+  beastTribe: { en: 'Achieve {0} reputation with the {i1} Beast Tribe, then purchase for {i2} {i3} {img4} from {5} {6} in {img7} {8} (x: {9}, y: {10}).'}
 };

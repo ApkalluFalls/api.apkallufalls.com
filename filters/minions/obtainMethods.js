@@ -22,6 +22,15 @@ const locationImage = 'loc';
 const dutyImage = 'duty';
 const timewornImage = 'map';
 
+const rank = {
+  trusted: 
+  ['Trusted', 'Vertraut', 'Estimé', '信頼'],
+}
+
+const beastTribe = {
+  sylph: ['Sylph', 'Sylphen', 'Sylphe', 'シルフ']
+}
+
 const item = {
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
@@ -96,6 +105,7 @@ const location = {
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
+    copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
@@ -308,7 +318,7 @@ const helper = {
       false
     )
   },
-  gather: (level, job, stars, loc, x, y, time, expansion) => {
+  gather: (level, job, stars, loc, x, y, time, slot, expansion) => {
     return o(
       'gather',
       [
@@ -318,7 +328,8 @@ const helper = {
         locationImage,
         loc,
         x, y,
-        time
+        time,
+        slot
       ],
       expansion,
       true,
@@ -385,7 +396,7 @@ const helper = {
       'mogStation',
       [locale('Mog Station')],
       expansions.ARR,
-      true,
+      false,
       true
     )
   },
@@ -787,6 +798,7 @@ module.exports = (minion, achievementsIn) => {
         50, 'Miner', 1,
         location.easternThanalan,
         28, 22,
+        7,
         '9:00AM'
       );
     
@@ -864,13 +876,46 @@ module.exports = (minion, achievementsIn) => {
           expansions.ARR
         ),
         helper.mogStation()
-      ]
+      ];
+    
+    case 47:
+      return helper.dungeon(
+        location.duty.copperbellMinesHard,
+        50, 11, 12, expansions.ARR, true, false
+      );
+    
+    case 48:
+      return helper.gather(
+        50, 'Botanist', 1,
+        location.eastShroud,
+        13, 23,
+        '9:00PM',
+        7
+      );
 
     case 49:
       return [
         helper.veteranReward(450),
         helper.achievementCertificate(2)
       ];
+    
+    case 50:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.sylph,
+          25000, gil, gilImage,
+          ['Sylphic Vendor', 'Sylphen-Händlerin', 'Vendeur Sylphe', 'シルフ族のよろず屋'],
+          ['Purchase Items (Trusted)', 'Waren (Vertraut)', 'Objets (rang Estimé)', 'アイテムの取引(友好関係：信頼)'],
+          locationImage,
+          location.eastShroud,
+          22.4, 26.4
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
 
     case 51:
       return [

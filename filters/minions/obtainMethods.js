@@ -281,6 +281,15 @@ const helper = {
       promo
     )
   },
+  eventQuest: (level, quest, expansion) => {
+    return o(
+      'eventQuest',
+      [level, locale('Seasonal Events'), quest],
+      expansion,
+      false,
+      false
+    )
+  },
   fate: (level, fate, loc, x, y, expansion) => {
     return o(
       'fate',
@@ -824,6 +833,28 @@ module.exports = (minion, achievementsIn) => {
         location.duty.amdaporKeep,
         50, 9, 10, expansions.ARR, true, false
       );
+    
+    case 45:
+      return helper.quest(
+        50,
+        locale('Delivery Moogle Quests'),
+        ['Thwack-a-Mole', 'Hau Den Mull!', 'Taupologie', 'モールのひみつ'],
+        ['Deputy Postmoogle', 'Mogry-Postdirektor', 'Maître Mog postier', '先輩レターモーグリ'],
+        location.limsaLowerDecks,
+        10.5, 11.4,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 46:
+      return [
+        helper.eventQuest(
+          15,
+          ['All\'s Wool That Ends Wool', 'Des Schäfchens Generäle', 'L\'année Du Mouton', '羊と私の降神祭'],
+          expansions.ARR
+        )
+      ]
 
     case 49:
       return [

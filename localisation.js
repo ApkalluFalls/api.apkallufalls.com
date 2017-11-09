@@ -115,6 +115,11 @@ module.exports = {
   },
 
   // Quest
+  'Delivery Moogle Quests': {
+    de: 'Mogry-Post',
+    fr: 'Quêtes du Mog postier',
+    jp: 'レターモーグリ'
+  },
   'Gridanian Sidequests': {
     de: 'Aufträge Finsterwald',
     fr: 'Sombrelinceul',
@@ -129,6 +134,11 @@ module.exports = {
     de: 'Aufträge La Noscea',
     fr: 'Noscea',
     jp: 'サブクエスト：ラノシア'
+  },
+  'Seasonal Events': {
+    de: 'Saisonale Aufträge',
+    fr: 'Événements Saisonniers',
+    jp: 'シーズナルイベント'
   },
   'Seventh Astral Era': {
     de: '7. Ära des Lichts',

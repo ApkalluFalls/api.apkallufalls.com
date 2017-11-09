@@ -412,6 +412,15 @@ const helper = {
       promo
     )
   },
+  squareEnixStore: (item, expiration) => {
+    return o(
+      'squareEnixStore',
+      [item, locale('Square Enix Store'), expiration],
+      expansions.ARR,
+      false,
+      true
+    )
+  },
   timewornMap: (level, fullParty, map, expansion) => {
     let type = 'timewornMap';
     if (fullParty)
@@ -990,6 +999,12 @@ module.exports = (minion, achievementsIn) => {
         helper.veteranReward(60),
         helper.achievementCertificate(2)
       ];
+    
+    case 55:
+      return helper.squareEnixStore(
+        ['Before Meteor：FINAL FANTASY XIV Original Soundtrack[映像付サントラ／Blu-ray Disc Music]', true, true, true],
+        ['Wednesday, December 31, 2014', 'Mittwoch, 31. Dezember 2014', 'Mercredi 31 décembre 2014', '2014年12月31日（水）']
+      )
 
     case 67:
       return [

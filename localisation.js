@@ -27,6 +27,11 @@ module.exports = {
     fr: 'Station Mog',
     jp: 'モグステーション'
   },
+  'Square Enix Store': {
+    de: true,
+    fr: true,
+    jp: 'Square Enix e-STORE'
+  },
 
   // Generic
   'Pre-order': {

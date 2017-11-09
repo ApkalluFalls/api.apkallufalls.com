@@ -12,6 +12,7 @@ module.exports = {
   dutyFinalChest: { en: 'Randomly awarded from treasure chest in level {0} duty {img1} \'{i2}\' (final chest).' },
   eventQuest: { en: 'Complete the level {0} {i1} quest \'{i2}\'.' },
   fate: { en: 'Achieve gold rating in the level {0} FATE {img1} \'{i2}\' in {img3} {4} (x: {5}, y: {6}).' },
+  fateUnknown: { en: 'Achieve gold rating in the level {0} FATE {img1} \'{i2}\' in {img3} {4}.' },
   gilAfterFate: { en: 'Purchase for {i0} {i1} {img2} from {3} in {img4} {5} (x: {6}, y: {7}) after completing the level {8} FATE {img9} \'{i10}\' (x: {11}, y: {12}).' },
   itemAccursedHoard: { en: 'Randomly awarded from a {i0}, after obtaining a {1} within {img2} {3}.' },
   quest: { en: 'Complete the level {0} {1} quest \'{i2}\' from {3} in {img4} {5} (x: {6}, y: {7}).' },

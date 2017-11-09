@@ -100,6 +100,7 @@ const location = {
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
+  theDiadem: ['The Diadem', 'Das Diadem', 'Le Diadème', 'ディアデム諸島'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
@@ -304,7 +305,7 @@ const helper = {
   },
   fate: (level, fate, loc, x, y, expansion) => {
     return o(
-      'fate',
+      x && y ? 'fate' : 'fateUnknown',
       [level, fateImage, fate, locationImage, loc, x, y],
       expansion,
       true,
@@ -805,17 +806,26 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 39:
-      return helper.craft(
-        50,
-        locale('Weaver'),
-        0,
-        [
-          { quantity: 99, ...craftItem.lightningShard },
-          { quantity: 1, ...craftItem.vanyaSilk },
-          { quantity: 1, ...craftItem.twinthread },
-          { quantity: 1, ...craftItem.chocoboFeather }
-        ]
-      );
+      return [
+        helper.craft(
+          50,
+          locale('Weaver'),
+          0,
+          [
+            { quantity: 99, ...craftItem.lightningShard },
+            { quantity: 1, ...craftItem.vanyaSilk },
+            { quantity: 1, ...craftItem.twinthread },
+            { quantity: 1, ...craftItem.chocoboFeather }
+          ]
+        ),
+        helper.fate(
+          60,
+          ['Where\'s The Beef', 'Aufgebrachte Herde', 'Défi: Le Bovin Mythique', '古の巨獣「フォゴットン・ウィセント」'],
+          location.theDiadem,
+          null, null,
+          expansions.HW
+        )
+      ];
     
     case 40:
       return helper.achievementReward(929, expansions.ARealmReborn, true, false);
@@ -960,7 +970,20 @@ module.exports = (minion, achievementsIn) => {
           true,
           false
         )
-      ]
+      ];
+    
+    case 53:
+      return helper.craft(
+        50,
+        locale('Weaver'),
+        0,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.vanyaSilk },
+          { quantity: 1, ...craftItem.twinthread },
+          { quantity: 1, ...craftItem.chocoboFeather }
+        ]
+      );
 
     case 54:
       return [

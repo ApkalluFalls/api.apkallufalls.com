@@ -87,11 +87,13 @@ const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
   chamber5: ['5th Chamber', 'Fünfte Kammer', 'Cinquième Salle', '第五区画'],
   coerthasCentralHighlands: ['Coerthas Central Highlands', 'Zentrales Hochland Von Coerthas', 'Hautes Terres Du Coerthas Central', 'クルザス中央高地'],
+  commandRoom: ['Command Room', 'Admiralsbrücke', 'Salon De L\'Amiral', 'アドミラルブリッジ：提督室'],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
+  lotusStand: ['Lotus Stand', 'Wasserrosentisch', 'Chaire Du Lotus', '不語仙の座卓'],
   lowerLaNoscea: ['Lower La Noscea', 'Unteres La Noscea', 'Basse-Noscea', '低地ラノシア'],
   morDhona: ['Mor Dhona', true, true, 'モードゥナ'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
@@ -907,7 +909,7 @@ module.exports = (minion, achievementsIn) => {
           beastTribe.sylph,
           25000, gil, gilImage,
           ['Sylphic Vendor', 'Sylphen-Händlerin', 'Vendeur Sylphe', 'シルフ族のよろず屋'],
-          ['Purchase Items (Trusted)', 'Waren (Vertraut)', 'Objets (rang Estimé)', 'アイテムの取引(友好関係：信頼)'],
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
           locationImage,
           location.eastShroud,
           22.4, 26.4
@@ -922,6 +924,43 @@ module.exports = (minion, achievementsIn) => {
         helper.veteranReward(30),
         helper.achievementCertificate(2)
       ];
+    
+    case 52:
+      return [
+        helper.quest(
+          14,
+          locale('Seventh Umbral Era'),
+          ['The Gridanian Envoy', 'Die Stimme Des Waldes', 'L\'émissaire De Gridania', '海都と砂都と'],
+          ['Kan-E-Senna', true, true, 'カヌ・エ・センナ'],
+          location.lotusStand,
+          0, 0,
+          expansions.ARR,
+          true,
+          false
+        ),
+        helper.quest(
+          14,
+          locale('Seventh Umbral Era'),
+          ['The Lominsan Envoy', 'Die Stimme Des Meeres', 'L\'émissaire De Limsa Lominsa', '森都と砂都と'],
+          ['Merlwyb', true, true, 'メルウィブ'],
+          location.commandRoom,
+          0, 0,
+          expansions.ARR,
+          true,
+          false
+        ),
+        helper.quest(
+          14,
+          locale('Seventh Umbral Era'),
+          ['The Ul\'dahn Envoy', 'Die Stimme Der Wüste', 'L\'émissaire D\'Ul\'dah', '海都と森都と'],
+          ['Raubahn', true, true, 'ラウバーン'],
+          location.uldahStepsOfNald,
+          8.5, 9,
+          expansions.ARR,
+          true,
+          false
+        )
+      ]
 
     case 54:
       return [

@@ -44,6 +44,14 @@ const craftItem = {
     icon: 5061,
     name: ['Darksteel Nugget', 'Dunkelstahl-Nugget', 'Pépite de sombracier', 'ダークスチールナゲット']
   },
+  garleanSteelJoint: {
+    icon: 5104,
+    name: ['Garlean Steel Joint', 'Garleisches Leichtmetall-Verbindungsstück', 'Morceau d\'acier léger impérial', '帝国製軽金属片']
+  },
+  garleanSteelPlate: {
+    icon: 5105,
+    name: ['Garlean Steel Plate', 'Garleische Leichtmetall-Platte', 'Plaque d\'acier léger impérial', '帝国製軽金属板']
+  },
   iceShard: {
     icon: 3,
     name: ['Ice Shard', 'Eisscherbe', 'Éclat de glace', 'アイスシャード']
@@ -87,9 +95,11 @@ const location = {
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
+    amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
-    thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿']
+    thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
+    theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス']
   },
   fishing: {
     theBurningWall: ['The Burning Wall', 'Der Feuerwall', 'Mur Incandescent', 'バーニングウォール'],
@@ -789,6 +799,30 @@ module.exports = (minion, achievementsIn) => {
         expansions.ARR,
         true,
         false
+      );
+    
+    case 42:
+      return helper.dungeon(
+        location.duty.theWanderersPalace,
+        50, 12, 5, expansions.ARR, true, false
+      );
+    
+    case 43:
+      return helper.craft(
+        50,
+        locale('Goldsmith'),
+        0,
+        [
+          { quantity: 99, ...craftItem.windShard },
+          { quantity: 1, ...craftItem.garleanSteelPlate },
+          { quantity: 1, ...craftItem.garleanSteelJoint }
+        ]
+      );
+    
+    case 44:
+      return helper.dungeon(
+        location.duty.amdaporKeep,
+        50, 9, 10, expansions.ARR, true, false
       );
 
     case 49:

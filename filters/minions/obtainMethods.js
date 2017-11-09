@@ -36,6 +36,10 @@ const craftItem = {
     icon: 5158,
     name: ['Astral Rock', 'Astralgestein', 'Roche astrale', '星性岩']
   },
+  chocoboFeather: {
+    icon: 5359,
+    name: ['Chocobo Feather', 'Chocobo-Feder', 'Plume de chocobo', 'チョコボの羽根']
+  },
   darksteelNugget: {
     icon: 5061,
     name: ['Darksteel Nugget', 'Dunkelstahl-Nugget', 'Pépite de sombracier', 'ダークスチールナゲット']
@@ -43,6 +47,18 @@ const craftItem = {
   iceShard: {
     icon: 3,
     name: ['Ice Shard', 'Eisscherbe', 'Éclat de glace', 'アイスシャード']
+  },
+  lightningShard: {
+    icon: 6,
+    name: ['Lightning Shard', 'Blitzscherbe', 'Éclat de foudre', 'ライトニングシャード']
+  },
+  twinthread: {
+    icon: 5330,
+    name: ['Twinthread', 'Doppelfaden', 'Fil de doublesoie', '玉糸']
+  },
+  vanyaSilk: {
+    icon: 19988,
+    name: ['Vanya Silk', 'Vanya-Seidenstoff', 'Étoffe de soie vanya', '山繭絹布']
   },
   windShard: {
     icon: 4,
@@ -744,7 +760,20 @@ module.exports = (minion, achievementsIn) => {
         location.easternThanalan,
         28, 22,
         '9:00AM'
-      )
+      );
+    
+    case 39:
+      return helper.craft(
+        50,
+        locale('Weaver'),
+        0,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.vanyaSilk },
+          { quantity: 1, ...craftItem.twinthread },
+          { quantity: 1, ...craftItem.chocoboFeather }
+        ]
+      );
 
     case 49:
       return [

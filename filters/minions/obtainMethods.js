@@ -28,6 +28,7 @@ const rank = {
 }
 
 const beastTribe = {
+  amaljaa: ['Amalj\'aa', true, true, 'アマルジャ'],
   sylph: ['Sylph', 'Sylphen', 'Sylphe', 'シルフ']
 }
 
@@ -100,6 +101,7 @@ const location = {
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
+  southernThanalan: ['南ザナラーン', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
   theDiadem: ['The Diadem', 'Das Diadem', 'Le Diadème', 'ディアデム諸島'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
@@ -109,6 +111,7 @@ const location = {
   duty: {
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
+    sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
@@ -413,9 +416,21 @@ const helper = {
     )
   },
   retainerVenture: (level, jobType, type, number) => {
+    let expansion;
+
+    if (level <= 50)
+      expansion = expansions.ARR;
+    else if (level <= 60)
+      expansion = expansions.HW;
+    else if (level <= 70)
+      expansion = expansions.SB;
+
     return o(
       'retainerVenture',
-      [level, locale(jobType), locale(type), locale(number)]
+      [level, locale(jobType), locale(type), locale(number)],
+      expansion,
+      true,
+      false
     )
   },
   squareEnixStore: (item, expiration) => {
@@ -1019,6 +1034,30 @@ module.exports = (minion, achievementsIn) => {
         helper.aquapolis(),
         helper.itemAccursedHoard(item.bronzeTrimmedSack)
       ];
+
+    case 57:
+      return [
+        helper.dungeon(location.duty.sastashaHard, 50, null, null, expansions.ARR, true, false),
+        helper.aquapolis()
+      ];
+    
+    case 58:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.amaljaa,
+          25000, gil, gilImage,
+          ['Amalj\'aa Vendor', 'Amalj\'aa-Händler', 'Vendeur Amalj\'aa', 'アマルジャ族のよろず屋'],
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
+          locationImage,
+          location.southernThanalan,
+          23.3, 14.2
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
 
     case 67:
       return [

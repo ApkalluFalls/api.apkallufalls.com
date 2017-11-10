@@ -412,6 +412,12 @@ const helper = {
       promo
     )
   },
+  retainerVenture: (level, jobType, type, number) => {
+    return o(
+      'retainerVenture',
+      [level, locale(jobType), locale(type), locale(number)]
+    )
+  },
   squareEnixStore: (item, expiration) => {
     return o(
       'squareEnixStore',
@@ -1004,7 +1010,15 @@ module.exports = (minion, achievementsIn) => {
       return helper.squareEnixStore(
         ['Before Meteor：FINAL FANTASY XIV Original Soundtrack[映像付サントラ／Blu-ray Disc Music]', true, true, true],
         ['Wednesday, December 31, 2014', 'Mittwoch, 31. Dezember 2014', 'Mercredi 31 décembre 2014', '2014年12月31日（水）']
-      )
+      );
+    
+    case 56:
+      [
+        helper.retainerVenture(50, 'Disciples of War and Magic', 'Field Exploration', 'XIII'),
+        helper.retainerVenture(50, 'Miner', 'Highland Exploration', 'XIII'),
+        helper.aquapolis(),
+        helper.itemAccursedHoard(item.bronzeTrimmedSack)
+      ];
 
     case 67:
       return [

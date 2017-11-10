@@ -101,6 +101,11 @@ module.exports = {
     fr: 'Pêcheur',
     jp: '漁師'
   },
+  'Disciples of War and Magic': {
+    de: 'Krieger und Magier',
+    fr: 'Disciples de la guerre ou de la magie',
+    jp: 'タンク／ヒーラー／DPS'
+  },
 
   // Grand Companies
   'Maelstrom': {
@@ -159,5 +164,37 @@ module.exports = {
     de: 'Aufträge Thanalan',
     fr: 'Thanalan',
     jp: 'サブクエスト：ザナラーン'
+  },
+
+  // Retainer venture
+  'Field Exploration': {
+    de: 'Felderkundung',
+    fr: 'Exploration en plaine',
+    jp: '探索依頼：平地'
+  },
+  'Highland Exploration': {
+    de: 'Hochlanderkundung',
+    fr: 'Exploration en montagne',
+    jp: '探索依頼：山岳'
+  },
+  'Waterside Exploration': {
+    de: 'Gewässererkundung',
+    fr: 'Exploration en rivage',
+    jp: '探索依頼：水辺'
+  },
+  'Woodland Exploration': {
+    de: 'Forsterkundung',
+    fr: 'Exploration en forêt',
+    jp: '探索依頼：森林'
+  },
+  'XIII': {
+    de: true,
+    fr: true,
+    jp: 'G13'
+  },
+  'XXII': {
+    de: true,
+    fr: true,
+    jp: 'G22'
   }
 }

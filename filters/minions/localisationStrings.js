@@ -25,5 +25,6 @@ module.exports = {
   gather: { en: 'Gathered by a level {0} {i1} at an unspoiled node{2} in {img3} {4} (x: {5}, y: {6}) at {7} (slot {8}).' },
   mogStation: { en: 'Purchase directly from the {i0}.' },
   beastTribe: { en: 'Achieve {0} reputation with the {i1} Beast Tribe, then purchase for {i2} {i3} {img4} from {5} {6} in {img7} {8} (x: {9}, y: {10}).'},
-  squareEnixStore: { en: 'Purchase {i0} on the {i1} and register the promotional code on or before {2}.' }
+  squareEnixStore: { en: 'Purchase {i0} on the {i1} and register the promotional code on or before {2}.' },
+  retainerVenture: { en: 'Randomly awarded from the {1} level {0} {i2} {i3} retainer venture.' }
 };

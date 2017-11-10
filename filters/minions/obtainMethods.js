@@ -1013,7 +1013,7 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 56:
-      [
+      return [
         helper.retainerVenture(50, 'Disciples of War and Magic', 'Field Exploration', 'XIII'),
         helper.retainerVenture(50, 'Miner', 'Highland Exploration', 'XIII'),
         helper.aquapolis(),

@@ -23,12 +23,15 @@ const dutyImage = 'duty';
 const timewornImage = 'map';
 
 const rank = {
-  trusted: 
-  ['Trusted', 'Vertraut', 'Estimé', '信頼'],
+  sworn: ['Sworn', 'Solidarisch', 'Assermenté', '友好関係：誓約'],
+  trusted: ['Trusted', 'Vertraut', 'Estimé', '信頼'],
 }
 
 const beastTribe = {
   amaljaa: ['Amalj\'aa', true, true, 'アマルジャ'],
+  ixal: ['Ixal', true, true, 'イクサル'],
+  kobold: ['Kobold', true, 'Kobolde', 'コボルド'],
+  sahagin: ['Sahagin', true, 'Sahuagin', 'サハギン'],
   sylph: ['Sylph', 'Sylphen', 'Sylphe', 'シルフ']
 }
 
@@ -98,10 +101,12 @@ const location = {
   lowerLaNoscea: ['Lower La Noscea', 'Unteres La Noscea', 'Basse-Noscea', '低地ラノシア'],
   morDhona: ['Mor Dhona', true, true, 'モードゥナ'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
+  northShroud: ['North Shroud', 'Nordwald', 'Forêt Du Nord', '黒衣森：北部森林'],
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
+  outerLaNoscea: ['Outer La Noscea', 'Äußeres La Noscea', 'Noscea Extérieure', '地ラノシア'],
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
-  southernThanalan: ['南ザナラーン', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
+  southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
   theDiadem: ['The Diadem', 'Das Diadem', 'Le Diadème', 'ディアデム諸島'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
@@ -1058,6 +1063,69 @@ module.exports = (minion, achievementsIn) => {
         true,
         false
       );
+    
+    case 59:
+      return o(
+        'beastTribe',
+        [
+          rank.sworn,
+          beastTribe.ixal,
+          25000, gil, gilImage,
+          ['Ixali Vendor', 'Ixal-Händler', 'Vendeur Ixal', 'イクサル族のよろず屋'],
+          ['(Purchase Items (Sworn))', '(Waren (Solidarisch))', '(Objets (rang Assermenté))', '(アイテムの取引(友好関係：誓約))'],
+          locationImage,
+          location.northShroud,
+          25, 22.8
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 60:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.kobold,
+          25000, gil, gilImage,
+          ['Kobold Vendor', 'Kobold-Händler', 'Vendeur Kobold', 'コボルド族のよろず屋'],
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
+          locationImage,
+          location.outerLaNoscea,
+          21.6, 17.8
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 61:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.sahagin,
+          25000, gil, gilImage,
+          ['Sahagin Vendor', 'Sahagin-Händler', 'Vendeur Sahuagin', 'サハギン族のよろず屋'],
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
+          locationImage,
+          location.westernLaNoscea,
+          17, 22.4
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 62:
+      return [
+        helper.eventQuest(
+          7,
+          ['Breaking Brick Mountains', 'Harte Steine Und Weiche Birnen', 'Les Créatures De Granit', 'あらくれ男と未知なるゴーレム'],
+          expansions.ARR
+        )
+      ];
 
     case 67:
       return [

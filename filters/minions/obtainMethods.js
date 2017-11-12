@@ -57,6 +57,10 @@ const craftItem = {
     icon: 5359,
     name: ['Chocobo Feather', 'Chocobo-Feder', 'Plume de chocobo', 'チョコボの羽根']
   },
+  cottonBoll: {
+    icon: 5343,
+    name: ['Cotton Boll', 'Baumwoll-Samenkapsel', 'Fleur de coton', '草綿']
+  },
   darksteelNugget: {
     icon: 5061,
     name: ['Darksteel Nugget', 'Dunkelstahl-Nugget', 'Pépite de sombracier', 'ダークスチールナゲット']
@@ -69,9 +73,17 @@ const craftItem = {
     icon: 5105,
     name: ['Garlean Steel Plate', 'Garleische Leichtmetall-Platte', 'Plaque d\'acier léger impérial', '帝国製軽金属板']
   },
+  glazenut: {
+    icon: 7775,
+    name: ['Glazenut', 'Glanznuss', 'Noix luisante', 'グレイズナッツ']
+  },
   iceShard: {
     icon: 3,
     name: ['Ice Shard', 'Eisscherbe', 'Éclat de glace', 'アイスシャード']
+  },
+  juteYarn: {
+    icon: 7777,
+    name: ['Jute Yarn', 'Jutegarn', 'Toile de jute', 'ジュート繊維']
   },
   lightningShard: {
     icon: 6,
@@ -80,6 +92,10 @@ const craftItem = {
   twinthread: {
     icon: 5330,
     name: ['Twinthread', 'Doppelfaden', 'Fil de doublesoie', '玉糸']
+  },
+  undyedCottonCloth: {
+    icon: 5325,
+    name: ['Undyed Cotton Cloth', 'Naturbelassene Baumwolle', 'Étoffe de coton', '綿布']
   },
   vanyaSilk: {
     icon: 19988,
@@ -1137,11 +1153,14 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 64:
-      return helper.eventQuest(
-        15,
-        ['A Real Peach', 'Marionette Mit Herz', 'Une Issue Inattendue', 'プリンセスデーは時を越えて'],
-        expansions.ARR
-      );
+      return [
+        helper.eventQuest(
+          15,
+          ['A Real Peach', 'Marionette Mit Herz', 'Une Issue Inattendue', 'プリンセスデーは時を越えて'],
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
     
     case 65:
       return o(
@@ -1157,6 +1176,20 @@ module.exports = (minion, achievementsIn) => {
         expansions.ARR,
         true,
         false
+      );
+    
+    case 66:
+      return helper.craft(
+        50,
+        locale('Weaver'),
+        3,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.glazenut },
+          { quantity: 1, ...craftItem.juteYarn },
+          { quantity: 1, ...craftItem.undyedCottonCloth },
+          { quantity: 1, ...craftItem.cottonBoll }
+        ]
       );
 
     case 67:

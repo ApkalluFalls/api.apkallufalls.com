@@ -23,6 +23,8 @@ const dutyImage = 'duty';
 const timewornImage = 'map';
 const elixirImage = '4559';
 const hiElixirImage = '4560';
+const alliedSealsImage = 'as';
+const seedImage = 'seed';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '友好関係：誓約'],
@@ -45,13 +47,28 @@ const item = {
   bait: {
     northernKrill: ['Northern Krill', 'Nordkrill', 'Krill polaire', 'ポーラークリル'],
     topwaterFrog: ['Topwater Frog', 'Schwimmfrosch', 'Grenouille sèche', 'トップウォーターフロッグ']
+  },
+  seeds: {
+    eggplantKnight: ['Eggplant Knight Seeds', 'Ritter-Aubergine-Samen', 'Graines du Chevalier aubergine', 'エッグナイトの種'],
+    garlicJester: ['Garlic Jester Seeds', 'Sir-Knoblauch-Samen', 'Graines du Baron ail', 'ガーリックスターの種'],
+    mandragoraQueen: ['Mandragora Queen Seeds', 'Königin-Mandragora-Samen', 'Graines de la Reine mandragore', 'マンドラクイーンの種'],
+    onionPrince: ['Onion Prince Seeds', 'Prinz-Zwiebel-Samen', 'Graines du Prince oignon', 'オニオンプリンスの種'],
+    tomatoKing: ['Tomato King Seeds', 'König-Tomate-Samen', 'Graines du Roi tomate', 'キングトマトの種']
   }
 }
 
 const craftItem = {
+  ancientLumber: {
+    icon: 7606,
+    name: ['Ancient Lumber', 'Götterholz', 'Madrier de morta', '神代木']
+  },
   astralRock: {
     icon: 5158,
     name: ['Astral Rock', 'Astralgestein', 'Roche astrale', '星性岩']
+  },
+  broombush: {
+    icon: 7776,
+    name: ['Broombush', 'Ginsterstrauch', 'Genêt', 'ホウキグサ']
   },
   chocoboFeather: {
     icon: 5359,
@@ -88,6 +105,10 @@ const craftItem = {
   lightningShard: {
     icon: 6,
     name: ['Lightning Shard', 'Blitzscherbe', 'Éclat de foudre', 'ライトニングシャード']
+  },
+  rosewoodBranch: {
+    icon: 5414,
+    name: ['Rosewood Branch', 'Palisanderast', 'Branche de palissandre', 'ローズウッドの枝']
   },
   twinthread: {
     icon: 5330,
@@ -138,6 +159,7 @@ const location = {
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
+    syrcusTower: ['Syrcus Tower', 'Kristallturm - Der Syrcus-Turm', 'La Tour De Cristal - Tour De Syrcus', 'クリスタルタワー：シルクスの塔'],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
@@ -183,6 +205,7 @@ const timewornMap = {
 const gil = ['Gil', true, true, 'ギル'];
 const poetics = ['Allagan Tomestone of Poetics', 'Allagischer Stein der Poesie', 'Mémoquartz allagois poétique', 'アラガントームストーン:詩学'];
 const mgp = ['MGP', true, 'Point du Gold Saucer', 'マンダヴィル・ゴールドソーサーポイント'];
+const alliedSeals = ['Allied Seal', 'Jagdabzeichen', 'Insigne allié', '同盟記章']
 
 const helper = {
   achievementCertificate: (quantity) => {
@@ -350,6 +373,11 @@ const helper = {
       false
     )
   },
+  gardening: (seeds) => {
+    return o(
+      'gardening', [seedImage, seeds], expansions.ARR, true, false
+    )
+  },
   gather: (level, job, stars, loc, x, y, time, slot, expansion) => {
     return o(
       'gather',
@@ -436,6 +464,15 @@ const helper = {
     return o(
       'quest',
       [level, type, quest, npc, locationImage, loc, x, y],
+      expansion,
+      available,
+      promo
+    )
+  },
+  raid: (name, level, x, y, expansion, available, promo) => {
+    return o(
+      x && y ? 'raid' : 'raidFinalChest',
+      x && y ? [level, dutyImage, name, x, y] : [level, dutyImage, name],
       expansion,
       available,
       promo
@@ -1235,6 +1272,67 @@ module.exports = (minion, achievementsIn) => {
         helper.aquapolis(),
         helper.itemAccursedHoard(item.bronzeTrimmedSack)
       ];
+    
+    case 81:
+      return helper.craft(
+        50,
+        locale('Carpenter'),
+        3,
+        [
+          { quantity: 99, ...craftItem.windShard },
+          { quantity: 1, ...craftItem.glazenut },
+          { quantity: 1, ...craftItem.broombush },
+          { quantity: 1, ...craftItem.rosewoodBranch },
+          { quantity: 1, ...craftItem.ancientLumber }
+        ]
+      );
+    
+    case 82:
+    case 93:
+      return [
+        o(
+          'purchase',
+          [
+            500, alliedSeals, alliedSealsImage,
+            ['Hunt Billmaster', 'Jagdmeister', 'Responsable De La Chasse', 'モブハント担当官'],
+            ['Allied Seals (Other)', 'Jagdabzeichen (Anderes)', 'Insignes Alliés (divers)', '（同盟記章の取引（その他））'],
+            locationImage,
+            location.limsaUpperDecks,
+            13.2, 12.5
+          ],
+          expansions.ARR,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            500, alliedSeals, alliedSealsImage,
+            ['Hunt Billmaster', 'Jagdmeister', 'Responsable De La Chasse', 'モブハント担当官'],
+            ['Allied Seals (Other)', 'Jagdabzeichen (Anderes)', 'Insignes Alliés (divers)', '（同盟記章の取引（その他））'],
+            locationImage,
+            location.newGridania,
+            9.8, 11.3
+          ],
+          expansions.ARR,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            500, alliedSeals, alliedSealsImage,
+            ['Hunt Billmaster', 'Jagdmeister', 'Responsable De La Chasse', 'モブハント担当官'],
+            ['Allied Seals (Other)', 'Jagdabzeichen (Anderes)', 'Insignes Alliés (divers)', '（同盟記章の取引（その他））'],
+            locationImage,
+            location.uldahStepsOfNald,
+            8.1, 9.3
+          ],
+          expansions.ARR,
+          true,
+          false
+        )
+      ];
 
     case 83:
     case 117:
@@ -1254,6 +1352,27 @@ module.exports = (minion, achievementsIn) => {
         helper.veteranReward(540),
         helper.achievementCertificate(2)
       ];
+
+    case 86:
+      return helper.gardening(item.seeds.onionPrince);
+
+    case 87:
+      return helper.gardening(item.seeds.eggplantKnight);
+
+    case 88:
+      return helper.gardening(item.seeds.garlicJester);
+
+    case 89:
+      return helper.gardening(item.seeds.tomatoKing);
+
+    case 90:
+      return helper.gardening(item.seeds.mandragoraQueen);
+    
+    case 91:
+      return helper.mogStation();
+    
+    case 92:
+      return helper.raid(location.duty.syrcusTower, 50, null, null, expansions.ARR, true, false);
 
     case 167: 
       return [

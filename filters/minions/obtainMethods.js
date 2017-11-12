@@ -94,6 +94,18 @@ const craftItem = {
     icon: 5061,
     name: ['Darksteel Nugget', 'Dunkelstahl-Nugget', 'Pépite de sombracier', 'ダークスチールナゲット']
   },
+  fireShard: {
+    icon: 2,
+    name: ['Fire Shard', 'Feuerscherbe', 'Éclat de feu', 'ファイアシャード']
+  },
+  garleanFiber: {
+    icon: 5340,
+    name: ['Garlean Fiber', 'Garleischer Faserstoff', 'Fibre impériale', '帝国製強化繊維']
+  },
+  garleanRubber: {
+    icon: 5533,
+    name: ['Garlean Rubber', 'Garleischer Gummi', 'Caoutchouc impérial', '帝国製ラバー材']
+  },
   garleanSteelJoint: {
     icon: 5104,
     name: ['Garlean Steel Joint', 'Garleisches Leichtmetall-Verbindungsstück', 'Morceau d\'acier léger impérial', '帝国製軽金属片']
@@ -137,6 +149,10 @@ const craftItem = {
   windShard: {
     icon: 4,
     name: ['Wind Shard', 'Windscherbe', 'Éclat de vent', 'ウィンドシャード']
+  },
+  wootzIngot: {
+    icon: 9358,
+    name: ['Wootz Ingot', 'Wootz-Barren', 'Lingot de wootz', 'ウーツインゴット']
   }
 }
 
@@ -175,7 +191,8 @@ const location = {
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
-    theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス']
+    theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス'],
+    theWorldOfDarkness: ['The World Of Darkness', 'Die Welt Der Dunkelheit', 'La Tour De Cristal - Monde Des Ténèbres', 'クリスタルタワー：闇の世界']
   },
   fishing: {
     theBurningWall: ['The Burning Wall', 'Der Feuerwall', 'Mur Incandescent', 'バーニングウォール'],
@@ -188,6 +205,12 @@ const _npc = {
 }
 
 const timewornMap = {
+  unhidden: [
+    50,
+    false,
+    ['Unhidden Leather Map', 'Unversteckte Lederkarte', 'Carte secrète en cuir', '隠された地図G1'],
+    expansions.ARR
+  ],
   toadskin: [
     50,
     false,
@@ -1381,19 +1404,21 @@ module.exports = (minion, achievementsIn) => {
       return helper.gardening(item.seeds.mandragoraQueen);
     
     case 91:
+    case 98:
+    case 99:
       return helper.mogStation();
     
     case 92:
       return helper.raid(location.duty.syrcusTower, 50, null, null, expansions.ARR, true, false);
 
-    case 93:
+    case 94:
       return [
         helper.retainerVenture(50, 'Disciples of War and Magic', 'Field Exploration', 'XIV'),
         helper.retainerVenture(50, 'Disciples of War and Magic', 'Field Exploration', 'XV'),
         helper.retainerVenture(50, 'Disciples of War and Magic', 'Field Exploration', 'XIX')
       ];
     
-    case 94:
+    case 95:
       return helper.craft(
         50,
         locale('Weaver'),
@@ -1406,6 +1431,35 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 1, ...craftItem.twinthread }
         ]
       );
+
+    case 96:
+      return helper.retainerVenture(50, 'Disciples of War and Magic', 'Highland Exploration', 'XIV');
+
+    case 97:
+      return [
+        helper.timewornMap(...timewornMap.unhidden),
+        helper.aquapolis(),
+        helper.itemAccursedHoard(item.bronzeTrimmedSack)
+      ];
+
+    case 100:
+      return helper.craft(
+        50,
+        locale('Blacksmith'),
+        4,
+        [
+          { quantity: 99, ...craftItem.fireShard },
+          { quantity: 1, ...craftItem.glazenut },
+          { quantity: 1, ...craftItem.wootzIngot },
+          { quantity: 1, ...craftItem.garleanSteelJoint },
+          { quantity: 1, ...craftItem.garleanSteelPlate },
+          { quantity: 1, ...craftItem.garleanFiber },
+          { quantity: 1, ...craftItem.garleanRubber }
+        ]
+      );
+
+    case 101:
+      return helper.raid(location.duty.theWorldOfDarkness, 50, null, null, expansions.ARR, true, false);
 
     case 167: 
       return [

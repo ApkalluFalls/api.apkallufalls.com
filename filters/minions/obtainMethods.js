@@ -21,6 +21,8 @@ const fateImage = 'fate';
 const locationImage = 'loc';
 const dutyImage = 'duty';
 const timewornImage = 'map';
+const elixirImage = '4559';
+const hiElixirImage = '4560';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '友好関係：誓約'],
@@ -37,6 +39,8 @@ const beastTribe = {
 
 const item = {
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
+  elixir: ['Elixir', 'Elixier', 'Élixir', 'エリクサー'],
+  hiElixir: ['Hi-Elixir', 'Super-Elixier', 'Super élixir', 'ハイエリクサー'],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
   bait: {
     northernKrill: ['Northern Krill', 'Nordkrill', 'Krill polaire', 'ポーラークリル'],
@@ -1119,13 +1123,41 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 62:
-      return [
-        helper.eventQuest(
-          7,
-          ['Breaking Brick Mountains', 'Harte Steine Und Weiche Birnen', 'Les Créatures De Granit', 'あらくれ男と未知なるゴーレム'],
-          expansions.ARR
-        )
-      ];
+      return helper.eventQuest(
+        7,
+        ['Breaking Brick Mountains', 'Harte Steine Und Weiche Birnen', 'Les Créatures De Granit', 'あらくれ男と未知なるゴーレム'],
+        expansions.ARR
+      );
+    
+    case 63:
+      return helper.eventQuest(
+        10,
+        ['Burgeoning Dread', 'Der Schwarze Dämon', 'Abomination Aberrante', '黒い悪魔'],
+        expansions.ARR
+      );
+    
+    case 64:
+      return helper.eventQuest(
+        15,
+        ['A Real Peach', 'Marionette Mit Herz', 'Une Issue Inattendue', 'プリンセスデーは時を越えて'],
+        expansions.ARR
+      );
+    
+    case 65:
+      return o(
+        'purchase',
+        [
+          1, item.elixir, elixirImage,
+          ['Magic Pot', 'Zauberpott', 'Pot Magique', 'マジックポット'],
+          ['(Gimme An Elixir)', '(Gib Mir Ein Elixier!)', '(Je Veux Un élixir !)', '(エリクサーちょうだい)'],
+          locationImage,
+          location.westernLaNoscea,
+          12.1, 36.8
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
 
     case 67:
       return [
@@ -1182,6 +1214,22 @@ module.exports = (minion, achievementsIn) => {
         helper.goldSaucerPrizeExchange(30000),
         helper.goldSaucerMinionsMGP(30000)
       ];
+    
+    case 236:
+      return o(
+        'purchase',
+        [
+          1, item.hiElixir, hiElixirImage,
+          ['Magic Pot', 'Zauberpott', 'Pot Magique', 'マジックポット'],
+          ['(Gimme An Elixir)', '(Gib Mir Ein Elixier!)', '(Je Veux Un élixir !)', '(エリクサーちょうだい)'],
+          locationImage,
+          location.westernLaNoscea,
+          12.1, 36.8
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
 
     default:
       //console.log("Unknown method for minion " + minion.id);

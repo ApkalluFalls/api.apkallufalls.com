@@ -456,7 +456,7 @@ const helper = {
       'mogStation',
       [locale('Mog Station')],
       expansions.ARR,
-      false,
+      true,
       true
     )
   },

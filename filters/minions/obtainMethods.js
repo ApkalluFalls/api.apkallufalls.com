@@ -135,6 +135,7 @@ const location = {
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
+    brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
@@ -1203,6 +1204,9 @@ module.exports = (minion, achievementsIn) => {
         helper.veteranReward(270),
         helper.achievementCertificate(2)
       ];
+    
+    case 75:
+      return helper.achievementReward(859, expansions.ARealmReborn, true, false);
 
     case 76:
       return [
@@ -1214,6 +1218,22 @@ module.exports = (minion, achievementsIn) => {
       return [
         helper.veteranReward(360),
         helper.achievementCertificate(2)
+      ];
+    
+    case 78:
+      return helper.squareEnixStore(
+        ['A REALM REBORN: FINAL FANTASY XIV Original Soundtrack【映像付サントラ／Blu-ray Disc Music】', true, true, true],
+        ['Wednesday, December 31, 2014', 'Mittwoch, 31. Dezember 2014', 'Mercredi 31 décembre 2014', '2014年12月31日（水）']        
+      );
+    
+    case 79:
+      return helper.collectorsEdition(locale('A Realm Reborn'), expansions.ARR, true);
+
+    case 80:
+      return [
+        helper.dungeon(location.duty.brayfloxsLongstopHard, 50, null, null, expansions.ARR, true, false),
+        helper.aquapolis(),
+        helper.itemAccursedHoard(item.bronzeTrimmedSack)
       ];
 
     case 83:

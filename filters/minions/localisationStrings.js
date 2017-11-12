@@ -1,6 +1,7 @@
 module.exports = {
   // Purchase for 2,400 Gil {image} from Maisenta (Purchase Tools) in New Gridania (x11, y11).
   purchase: { en: 'Purchase for {i0} {i1} {img2} from {3} {4} in {img5} {6} (x: {7}, y: {8}).' },
+  eventQuestPurchase: { en: 'Purchase from {0} during the {i1} event.' },
   // Pre-order A Realm Reborn and register the promotional code on or before Tuesday, 31st December 2013.
   preOrder: { en: '{i0} {1} and register the promotional code on or before {2}.' },
   // Register or digitially upgrade to the Collector's Edition of A Realm Reborn on the Mog Station.
@@ -9,9 +10,9 @@ module.exports = {
   achievement: { en: 'Unlock the __achievement__ achievement, then speak to {0} at {1} in {img2} {3} (x: {4}, y: {5}).' },
   aquapolis: { en: 'Randomly awarded from treasure chests in {img0} {i1} from {2} onwards.' },
   duty: { en: 'Randomly awarded from a treasure chest in the level {0} duty {img1} \'{i2}\' (x: {3}, y: {4}).' },
-  dutyFinalChest: { en: 'Randomly awarded from treasure chest in level {0} duty {img1} \'{i2}\' (final chest).' },
-  raid: { en: 'Randomly awarded from a treasure chest in the level {0} raid {img1} \'{i2}\' (x: {3}, y: {4}).' },
-  raidFinalChest: { en: 'Randomly awarded from treasure chest in level {0} raid {img1} \'{i2}\' (final chest).' },
+  dutyFinalChest: { en: 'Randomly awarded from a treasure chest in level {0} duty {img1} \'{i2}\' (final chest).' },
+  raid: { en: 'Randomly awarded from a treasure chest in level {0} raid {img1} \'{i2}\' (final chest).' },
+  trial: { en: 'Randomly awarded from a treasure chest in level {0} trial {img1} \'{i2}\' (final chest).' },
   eventQuest: { en: 'Complete the level {0} {i1} quest \'{i2}\'.' },
   fate: { en: 'Achieve gold rating in the level {0} FATE {img1} \'{i2}\' in {img3} {4} (x: {5}, y: {6}).' },
   fateUnknown: { en: 'Achieve gold rating in the level {0} FATE {img1} \'{i2}\' in {img3} {4}.' },

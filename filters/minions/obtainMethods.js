@@ -186,11 +186,13 @@ const location = {
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
+    hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
     syrcusTower: ['Syrcus Tower', 'Kristallturm - Der Syrcus-Turm', 'La Tour De Cristal - Tour De Syrcus', 'クリスタルタワー：シルクスの塔'],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
+    theSunkenTempleOfQarnHard: ['The Sunken Temple of Qarn (Hard)', 'Versunkener Tempel Von Qarn (schwer)', 'Le Temple Enseveli De Qarn (brutal)', '遺跡救援 カルン埋没寺院 (Hard)'],
     theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス'],
     theWorldOfDarkness: ['The World Of Darkness', 'Die Welt Der Dunkelheit', 'La Tour De Cristal - Monde Des Ténèbres', 'クリスタルタワー：闇の世界']
   },
@@ -390,6 +392,15 @@ const helper = {
       false
     )
   },
+  eventQuestPurchase: (shop, event, expansion) => {
+    return o(
+      'eventQuestPurchase',
+      [shop, event],
+      expansion,
+      false,
+      false
+    )
+  },
   fate: (level, fate, loc, x, y, expansion) => {
     return o(
       x && y ? 'fate' : 'fateUnknown',
@@ -506,8 +517,8 @@ const helper = {
   },
   raid: (name, level, x, y, expansion, available, promo) => {
     return o(
-      x && y ? 'raid' : 'raidFinalChest',
-      x && y ? [level, dutyImage, name, x, y] : [level, dutyImage, name],
+      'raid',
+      [level, dutyImage, name],
       expansion,
       available,
       promo
@@ -551,6 +562,15 @@ const helper = {
       expansion,
       true,
       false
+    )
+  },
+  trial: (name, level, expansion, available, promo) => {
+    return o(
+      'trial',
+      [level, dutyImage, name],
+      expansion,
+      available,
+      promo
     )
   },
   veteranReward: (days) => {
@@ -1122,7 +1142,7 @@ module.exports = (minion, achievementsIn) => {
     case 55:
       return helper.squareEnixStore(
         ['Before Meteor：FINAL FANTASY XIV Original Soundtrack[映像付サントラ／Blu-ray Disc Music]', true, true, true],
-        ['Wednesday, December 31, 2014', 'Mittwoch, 31. Dezember 2014', 'Mercredi 31 décembre 2014', '2014年12月31日（水）']
+        ['Wednesday, December 31, 2014', 'Mittwoch, 31. Dezember 2014', 'Mercredi 31 décembre 2014', '2014年12月31日']
       );
     
     case 56:
@@ -1295,7 +1315,7 @@ module.exports = (minion, achievementsIn) => {
     case 78:
       return helper.squareEnixStore(
         ['A REALM REBORN: FINAL FANTASY XIV Original Soundtrack【映像付サントラ／Blu-ray Disc Music】', true, true, true],
-        ['Wednesday, December 31, 2014', 'Mittwoch, 31. Dezember 2014', 'Mercredi 31 décembre 2014', '2014年12月31日（水）']        
+        ['Wednesday, December 31, 2014', 'Mittwoch, 31. Dezember 2014', 'Mercredi 31 décembre 2014', '2014年12月31日']        
       );
     
     case 79:
@@ -1406,10 +1426,14 @@ module.exports = (minion, achievementsIn) => {
     case 91:
     case 98:
     case 99:
+    case 103:
+    case 107:
+    case 108:
+    case 109:
       return helper.mogStation();
     
     case 92:
-      return helper.raid(location.duty.syrcusTower, 50, null, null, expansions.ARR, true, false);
+      return helper.raid(location.duty.syrcusTower, 50, expansions.ARR, true, false);
 
     case 94:
       return [
@@ -1459,7 +1483,63 @@ module.exports = (minion, achievementsIn) => {
       );
 
     case 101:
-      return helper.raid(location.duty.theWorldOfDarkness, 50, null, null, expansions.ARR, true, false);
+      return helper.raid(location.duty.theWorldOfDarkness, 50, expansions.ARR, true, false);
+    
+    case 102:
+      return helper.dungeon(
+        location.duty.hullbreakerIsle,
+        50, 5, 10, expansions.ARR, true, false
+      );
+    
+    case 104:
+      return helper.trial(location.duty.theDragonsNeck, 50, expansions.ARR, true, false);
+    
+    case 105:
+      return [
+        helper.eventQuestPurchase(
+          ['Fallen Star Exchange', 'Sternschnuppen', 'Objets Festifs', 'スターライトストーンの取引'],
+          ['Starlight Celebration 2014', true, true, '星芒祭'],
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
+
+    case 110:
+      return [
+        helper.retainerVenture(50, 'Fisher', 'Waterside Exploration', 'XIV'),
+        helper.retainerVenture(50, 'Fisher', 'Waterside Exploration', 'XV'),
+        helper.retainerVenture(50, 'Fisher', 'Waterside Exploration', 'XVI'),
+        helper.retainerVenture(50, 'Fisher', 'Waterside Exploration', 'XVII'),
+        helper.retainerVenture(50, 'Fisher', 'Waterside Exploration', 'XVIII')
+      ];
+
+    case 111:
+      return [
+        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XIV'),
+        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XV'),
+        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XVI'),
+        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XVII'),
+        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XVIII')
+      ];
+
+    case 112: 
+      return [
+        helper.dungeon(location.duty.theSunkenTempleOfQarnHard, 50, null, null, expansions.ARR, true, false),
+        helper.aquapolis(),
+        helper.itemAccursedHoard(item.bronzeTrimmedSack)
+      ];
+    
+    case 113:
+      return helper.squareEnixStore(
+        ['FINAL FANTASY XIV: A Realm Reborn The Art of Eorzea - ​​Another Dawn', true, true, true],
+        ['Saturday, December 31, 2016', 'Samstag, 31. Dezember 2016', 'Samedi 31 décembre 2016', '2016年12月31日']
+      );
+    
+    case 114:
+      return helper.squareEnixStore(
+        ['FINAL FANTASY® XIV: A REALM REBORN™ DELIVERY MOOGLE PLUSH', true, true, true],
+        ['Sunday, December 31, 2017', 'Sonntag, 31. Dezember 2017', 'Dimanche 31 décembre 2017', '2017年12月31日']
+      );
 
     case 167: 
       return [

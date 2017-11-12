@@ -62,6 +62,14 @@ const craftItem = {
     icon: 7606,
     name: ['Ancient Lumber', 'Götterholz', 'Madrier de morta', '神代木']
   },
+  apkalluDown: {
+    icon: 5348,
+    name: ['Apkallu Down', 'Apkallu-Daunen', 'Duvet d\'apkallu', 'アプカルの綿毛']
+  },
+  arachneWeb: {
+    icon: 9367,
+    name: ['Arachne Web', 'Arachne-Netz', 'Toile d\'Arachne', 'アラクネウェブ']
+  },
   astralRock: {
     icon: 5158,
     name: ['Astral Rock', 'Astralgestein', 'Roche astrale', '星性岩']
@@ -69,6 +77,10 @@ const craftItem = {
   broombush: {
     icon: 7776,
     name: ['Broombush', 'Ginsterstrauch', 'Genêt', 'ホウキグサ']
+  },
+  cashmereCloth: {
+    icon: 7609,
+    name: ['Cashmere Cloth', 'Kaschmir', 'Étoffe de cachemire', 'カシミヤ織物']
   },
   chocoboFeather: {
     icon: 5359,
@@ -1295,7 +1307,7 @@ module.exports = (minion, achievementsIn) => {
           [
             500, alliedSeals, alliedSealsImage,
             ['Hunt Billmaster', 'Jagdmeister', 'Responsable De La Chasse', 'モブハント担当官'],
-            ['Allied Seals (Other)', 'Jagdabzeichen (Anderes)', 'Insignes Alliés (divers)', '（同盟記章の取引（その他））'],
+            ['(Allied Seals (Other))', '(Jagdabzeichen (Anderes))', '(Insignes Alliés (divers))', '（同盟記章の取引（その他））'],
             locationImage,
             location.limsaUpperDecks,
             13.2, 12.5
@@ -1309,7 +1321,7 @@ module.exports = (minion, achievementsIn) => {
           [
             500, alliedSeals, alliedSealsImage,
             ['Hunt Billmaster', 'Jagdmeister', 'Responsable De La Chasse', 'モブハント担当官'],
-            ['Allied Seals (Other)', 'Jagdabzeichen (Anderes)', 'Insignes Alliés (divers)', '（同盟記章の取引（その他））'],
+            ['(Allied Seals (Other))', '(Jagdabzeichen (Anderes))', '(Insignes Alliés (divers))', '（同盟記章の取引（その他））'],
             locationImage,
             location.newGridania,
             9.8, 11.3
@@ -1323,7 +1335,7 @@ module.exports = (minion, achievementsIn) => {
           [
             500, alliedSeals, alliedSealsImage,
             ['Hunt Billmaster', 'Jagdmeister', 'Responsable De La Chasse', 'モブハント担当官'],
-            ['Allied Seals (Other)', 'Jagdabzeichen (Anderes)', 'Insignes Alliés (divers)', '（同盟記章の取引（その他））'],
+            ['(Allied Seals (Other))', '(Jagdabzeichen (Anderes))', '(Insignes Alliés (divers))', '（同盟記章の取引（その他））'],
             locationImage,
             location.uldahStepsOfNald,
             8.1, 9.3
@@ -1373,6 +1385,27 @@ module.exports = (minion, achievementsIn) => {
     
     case 92:
       return helper.raid(location.duty.syrcusTower, 50, null, null, expansions.ARR, true, false);
+
+    case 93:
+      return [
+        helper.retainerVenture(50, 'Disciples of War and Magic', 'Field Exploration', 'XIV'),
+        helper.retainerVenture(50, 'Disciples of War and Magic', 'Field Exploration', 'XV'),
+        helper.retainerVenture(50, 'Disciples of War and Magic', 'Field Exploration', 'XIX')
+      ];
+    
+    case 94:
+      return helper.craft(
+        50,
+        locale('Weaver'),
+        4,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.arachneWeb },
+          { quantity: 1, ...craftItem.cashmereCloth },
+          { quantity: 1, ...craftItem.apkalluDown },
+          { quantity: 1, ...craftItem.twinthread }
+        ]
+      );
 
     case 167: 
       return [

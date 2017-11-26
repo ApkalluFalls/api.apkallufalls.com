@@ -6,19 +6,19 @@
   "tw": "inb4",
   "world": "Zodiark"
 },{
-  "desc": "<a href='https://twitter.com/atheistium/status/834767395168382978' target='_blank'>Keeper of Knowledge</a>",
-  "id": 2116280,
-  "img": "https://img2.finalfantasyxiv.com/f/2bedb5e475b7d88e555d1c217b68230d_3fbff0e6b620e4d259dc427abc6574dafc0_96x96.jpg?t=201732917",
-  "name": "Athelisia Lumi",
-  "tw": "atheistium",
-  "world": "Shiva"
-},{
   "desc": "<a href='https://xivdb.com/about'>Sky Pirate</a>",
   "id": 730968,
   "img": "https://img2.finalfantasyxiv.com/f/73cbde3df508fa147006c64859727aae_5047bc596a4bab2dc7f7c120bb22dec5fc0_96x96.jpg?t=201732917",
   "name": "Premium Virtue",
   "tw": "viion",
   "world": "Phoenix"
+},{
+  "desc": "<a href='https://twitter.com/atheistium/status/834767395168382978' target='_blank'>Keeper of Knowledge</a>",
+  "id": 2116280,
+  "img": "https://img2.finalfantasyxiv.com/f/2bedb5e475b7d88e555d1c217b68230d_3fbff0e6b620e4d259dc427abc6574dafc0_96x96.jpg?t=201732917",
+  "name": "Athelisia Lumi",
+  "tw": "atheistium",
+  "world": "Shiva"
 },{
   "desc": "Bug Girl",
   "id": 12216782,

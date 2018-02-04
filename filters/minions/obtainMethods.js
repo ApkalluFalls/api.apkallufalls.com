@@ -79,6 +79,10 @@ const craftItem = {
     icon: 5158,
     name: ['Astral Rock', 'Astralgestein', 'Roche astrale', '星性岩']
   },
+  atomosCorpulence: {
+    icon: 12647,
+    name: ["Atomos Corpulence", "Atomos-Fett", "Chair d'Atomos", "アトモスの肉片"]
+  },
   broombush: {
     icon: 7776,
     name: ['Broombush', 'Ginsterstrauch', 'Genêt', 'ホウキグサ']
@@ -98,6 +102,14 @@ const craftItem = {
   darksteelNugget: {
     icon: 5061,
     name: ['Darksteel Nugget', 'Dunkelstahl-Nugget', 'Pépite de sombracier', 'ダークスチールナゲット']
+  },
+  dawnborneAethersand: {
+    icon: 12937,
+    name: ["Dawnborne Aethersand", "Morgengrauen-Seelensand", "Sable éthéréen de l'aurore", "暁光の霊砂"]
+  },
+  dragonBlood: {
+    icon: 12630,
+    name: ["Dragon Blood", "Drachenblut", "Sang de dragon", "竜族の血"]
   },
   fireShard: {
     icon: 2,
@@ -119,9 +131,17 @@ const craftItem = {
     icon: 5105,
     name: ['Garlean Steel Plate', 'Garleische Leichtmetall-Platte', 'Plaque d\'acier léger impérial', '帝国製軽金属板']
   },
+  gelatoFlesh: {
+    icon: 12635,
+    name: ["Gelato Flesh", "Gelato-Fleisch", "Viande de gelato", "ジェラートの肉"]
+  },
   glazenut: {
     icon: 7775,
     name: ['Glazenut', 'Glanznuss', 'Noix luisante', 'グレイズナッツ']
+  },
+  growthFormulaZeta: {
+    icon: 12608,
+    name: ["Growth Formula Zeta", "Wachstumsformel Zeta", "Formule de croissance zêta", "グロースフォーミュラ・ゼータ"]
   },
   iceShard: {
     icon: 3,
@@ -150,6 +170,10 @@ const craftItem = {
   vanyaSilk: {
     icon: 19988,
     name: ['Vanya Silk', 'Vanya-Seidenstoff', 'Étoffe de soie vanya', '山繭絹布']
+  },
+  waterShard: {
+    icon: 7,
+    name: ["Water Shard", "Wasserscherbe", "Éclat d'eau", "ウォーターシャード"]
   },
   windShard: {
     icon: 4,
@@ -197,11 +221,14 @@ const location = {
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
     hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
+    neverreap: ["Neverreap", "Nimmerreich", "Nalloncques", "神域浮島 ネバーリープ"],
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
+    sohmAl: ["Sohm Al", "Sohm Al", "Sohm Al", "霊峰踏破 ソーム・アル"],
     syrcusTower: ['Syrcus Tower', 'Kristallturm - Der Syrcus-Turm', 'La Tour De Cristal - Tour De Syrcus', 'クリスタルタワー：シルクスの塔'],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     theDragonsNeck: ["The Dragon's Neck", "Das Drachenhals-Kolosseum", "Le Col Du Dragon", "アマジナ杯闘技会決勝戦"],
+    theFractalContinuum: ["The Fractal Continuum", "Die Fraktal-Kontinuum", "Le Continuum Fractal", "博物戦艦 フラクタル・コンティニアム"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
     theSunkenTempleOfQarnHard: ['The Sunken Temple of Qarn (Hard)', 'Versunkener Tempel Von Qarn (schwer)', 'Le Temple Enseveli De Qarn (brutal)', '遺跡救援 カルン埋没寺院 (Hard)'],
     theVault: ["The Vault", "Erzbasilika", "La Voûte", "強硬突入 イシュガルド教皇庁"],
@@ -1615,7 +1642,7 @@ module.exports = (minion, achievementsIn) => {
           beastTribe.sylph,
           25000, gil, gilImage,
           ['Sylphic Vendor', 'Sylphen-Händlerin', 'Vendeur Sylphe', 'シルフ族のよろず屋'],
-          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          ["(Purchase Items (Allied))", "(Waren (Verbündet))", "(Objets (rang Allié))", "(アイテムの取引(友好関係：盟友))"],
           locationImage,
           location.eastShroud,
           22.4, 26.4
@@ -1633,7 +1660,7 @@ module.exports = (minion, achievementsIn) => {
           beastTribe.amaljaa,
           25000, gil, gilImage,
           ['Amalj\'aa Vendor', 'Amalj\'aa-Händler', 'Vendeur Amalj\'aa', 'アマルジャ族のよろず屋'],
-          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          ["(Purchase Items (Allied))", "(Waren (Verbündet))", "(Objets (rang Allié))", "(アイテムの取引(友好関係：盟友))"],
           locationImage,
           location.southernThanalan,
           23.3, 14.2
@@ -1651,7 +1678,7 @@ module.exports = (minion, achievementsIn) => {
           beastTribe.ixal,
           25000, gil, gilImage,
           ['Ixali Vendor', 'Ixal-Händler', 'Vendeur Ixal', 'イクサル族のよろず屋'],
-          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          ["(Purchase Items (Allied))", "(Waren (Verbündet))", "(Objets (rang Allié))", "(アイテムの取引(友好関係：盟友))"],
           locationImage,
           location.northShroud,
           25, 22.8
@@ -1669,7 +1696,7 @@ module.exports = (minion, achievementsIn) => {
           beastTribe.kobold,
           25000, gil, gilImage,
           ['Kobold Vendor', 'Kobold-Händler', 'Vendeur Kobold', 'コボルド族のよろず屋'],
-          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          ["(Purchase Items (Allied))", "(Waren (Verbündet))", "(Objets (rang Allié))", "(アイテムの取引(友好関係：盟友))"],
           locationImage,
           location.outerLaNoscea,
           21.6, 17.8
@@ -1687,7 +1714,7 @@ module.exports = (minion, achievementsIn) => {
           beastTribe.sahagin,
           25000, gil, gilImage,
           ['Sahagin Vendor', 'Sahagin-Händler', 'Vendeur Sahuagin', 'サハギン族のよろず屋'],
-          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          ["(Purchase Items (Allied))", "(Waren (Verbündet))", "(Objets (rang Allié))", "(アイテムの取引(友好関係：盟友))"],
           locationImage,
           location.westernLaNoscea,
           17, 22.4
@@ -1755,7 +1782,7 @@ module.exports = (minion, achievementsIn) => {
           beastTribe.vanuVanu,
           35000, gil, gilImage,
           _npc.lunaVanu,
-          ["Purchase Items (Trusted-Honored)", "Waren (Vertraut)", "Objets (rangs Estimé à émérite)", "アイテムの取引(友好関係：信頼～名誉)"],
+          ["(Purchase Items (Trusted-Honored))", "(Waren (Vertraut))", "(Objets (rangs Estimé à émérite))", "(アイテムの取引(友好関係：信頼～名誉))"],
           locationImage,
           location.theSeaOfClouds,
           7, 14.3
@@ -1764,6 +1791,31 @@ module.exports = (minion, achievementsIn) => {
         true,
         false
       );
+    
+    case 136:
+      return helper.craft(
+        60,
+        locale('Alchemist'),
+        1,
+        [
+          { quantity: 99, ...craftItem.waterShard },
+          { quantity: 1, ...craftItem.glazenut },
+          { quantity: 2, ...craftItem.growthFormulaZeta },
+          { quantity: 3, ...craftItem.dragonBlood },
+          { quantity: 3, ...craftItem.gelatoFlesh },
+          { quantity: 3, ...craftItem.atomosCorpulence },
+          { quantity: 1, ...craftItem.dawnborneAethersand }
+        ]
+      );
+    
+    case 137:
+      return helper.dungeon(location.duty.theFractalContinuum, 60, null, null, expansions.HW, true, false);
+    
+    case 138:
+      return helper.dungeon(location.duty.neverreap, 60, null, null, expansions.HW, true, false);
+    
+    case 139:
+      return helper.dungeon(location.duty.sohmAl, 60, null, null, expansions.HW, true, false);
 
     case 167: 
       return [

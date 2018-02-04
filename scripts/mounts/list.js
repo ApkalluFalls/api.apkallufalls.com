@@ -15,20 +15,22 @@ module.exports = new Helper("Mount", "mounts", {
   ],
   list: true,
   format: (data) => {
-    return data.map(entry => {
-      return {
-        id: entry.id,
-        icon: entry.icon,
-        name: {
-          de: entry.name_de,
-          en: entry.name_en,
-          fr: entry.name_fr,
-          jp: entry.name_ja
-        },
-        patch: entry.patch,
-        canFly: entry.can_fly_extra
-      }
-    });
+    return {
+      data: data.map(entry => {
+        return {
+          id: entry.id,
+          icon: entry.icon,
+          name: {
+            de: entry.name_de,
+            en: entry.name_en,
+            fr: entry.name_fr,
+            jp: entry.name_ja
+          },
+          patch: entry.patch,
+          canFly: entry.can_fly_extra
+        }
+      })
+    };
   }
 }, (data, base, _helperCreateJSONFn) => {
   createList("mounts", data, base, _helperCreateJSONFn);

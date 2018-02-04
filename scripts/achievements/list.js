@@ -22,36 +22,38 @@ module.exports = new Helper("Achievement", "achievements", {
   ],
   list: true,
   format: (data) => {
-    return data.map(entry => {
-      let response = {
-        id: entry.id,
-        icon: entry.icon,
-        points: entry.points,
-        name: {
-          de: entry.name_de,
-          en: entry.name_en,
-          fr: entry.name_fr,
-          jp: entry.name_ja
-        },
-        patch: entry.patch,
-        weight: _getWeight(entry)
-      }
+    return {
+      data: data.map(entry => {
+        let response = {
+          id: entry.id,
+          icon: entry.icon,
+          points: entry.points,
+          name: {
+            de: entry.name_de,
+            en: entry.name_en,
+            fr: entry.name_fr,
+            jp: entry.name_ja
+          },
+          patch: entry.patch,
+          weight: _getWeight(entry)
+        }
 
-      if (entry.item || entry.title) {
-        response.reward = {};
+        if (entry.item || entry.title) {
+          response.reward = {};
 
-        if (entry.item)
-          response.reward.item = entry.item;
-          
-        if (entry.title)
-          response.reward.title = entry.title;
-      }
+          if (entry.item)
+            response.reward.item = entry.item;
+            
+          if (entry.title)
+            response.reward.title = entry.title;
+        }
 
-      if (_isCumulative(entry))
-        response.cumulative = true;
+        if (_isCumulative(entry))
+          response.cumulative = true;
 
-      return response;
-    })
+        return response;
+      })
+    }
   }
 }, (data, base, _helperCreateJSONFn) => {
   createList("achievements", data, base, _helperCreateJSONFn);

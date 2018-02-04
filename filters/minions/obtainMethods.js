@@ -169,6 +169,7 @@ const location = {
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   fogfens: ["Fogfens", "Nebelmoor", "Fangebrume", "迷霧湿原"],
+  foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   lotusStand: ['Lotus Stand', 'Wasserrosentisch', 'Chaire Du Lotus', '不語仙の座卓'],
@@ -190,6 +191,7 @@ const location = {
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
+    battleInTheBigKeep: ["Battle In The Big Keep", "Revanche In Den Ruinen", "Revanche Au Vieux Château", "真ギルガメッシュ討滅戦"],
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
     hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
@@ -1444,6 +1446,7 @@ module.exports = (minion, achievementsIn) => {
     case 107:
     case 108:
     case 109:
+    case 121:
       return helper.mogStation();
     
     case 92:
@@ -1591,6 +1594,130 @@ module.exports = (minion, achievementsIn) => {
         location.theRisingStones,
         6, 5,
         expansions.ARR,
+        true,
+        false
+      );
+    
+    case 122:
+      return helper.dungeon(location.duty.battleInTheBigKeep, 50, null, null, expansions.ARR, true, false);
+
+    case 123:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.sylph,
+          25000, gil, gilImage,
+          ['Sylphic Vendor', 'Sylphen-Händlerin', 'Vendeur Sylphe', 'シルフ族のよろず屋'],
+          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          locationImage,
+          location.eastShroud,
+          22.4, 26.4
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 124:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.amaljaa,
+          25000, gil, gilImage,
+          ['Amalj\'aa Vendor', 'Amalj\'aa-Händler', 'Vendeur Amalj\'aa', 'アマルジャ族のよろず屋'],
+          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          locationImage,
+          location.southernThanalan,
+          23.3, 14.2
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 125:
+      return o(
+        'beastTribe',
+        [
+          rank.sworn,
+          beastTribe.ixal,
+          25000, gil, gilImage,
+          ['Ixali Vendor', 'Ixal-Händler', 'Vendeur Ixal', 'イクサル族のよろず屋'],
+          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          locationImage,
+          location.northShroud,
+          25, 22.8
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 126:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.kobold,
+          25000, gil, gilImage,
+          ['Kobold Vendor', 'Kobold-Händler', 'Vendeur Kobold', 'コボルド族のよろず屋'],
+          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          locationImage,
+          location.outerLaNoscea,
+          21.6, 17.8
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 127:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.sahagin,
+          25000, gil, gilImage,
+          ['Sahagin Vendor', 'Sahagin-Händler', 'Vendeur Sahuagin', 'サハギン族のよろず屋'],
+          ["Purchase Items (Allied)", "Waren (Verbündet)", "Objets (rang Allié)", "アイテムの取引(友好関係：盟友)"],
+          locationImage,
+          location.westernLaNoscea,
+          17, 22.4
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+
+    case 128:
+      return [
+        o(
+          'preOrder',
+          [
+            locale('Pre-order'),
+            locale('Heavensward'),
+            ['Saturday, December 31, 2016', 'Samstag, 31. Dezember 2016', 'Samedi 31 décembre 2016', '2016年12月31日']
+          ],
+          expansions.HW,
+          false,
+          true
+        )
+      ];
+
+    case 129:
+      return helper.collectorsEdition(locale('Heavensward'), expansions.HW, true);
+    
+    case 130:
+      return helper.quest(
+        51,
+        locale('Heavensward'),
+        ["In Search Of Iceheart", "Die Suche Beginnt", "À La Recherche De Cœur-de-glace", "イゼルを探して"],
+        ["Alphinaud", true, true, "アルフィノ"],
+        location.foundation,
+        13.4, 11.1,
+        expansions.HW,
         true,
         false
       );

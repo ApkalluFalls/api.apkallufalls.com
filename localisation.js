@@ -160,6 +160,11 @@ module.exports = {
     fr: 'Chroniques de la 7e ère ombrale',
     jp: '新生エオルゼア'
   },
+  'Special Quests': {
+    de: 'Spezial-Aufträge',
+    fr: 'Quêtes Spéciales',
+    jp: 'スペシャルクエスト'
+  },
   'Ul\'dahn Sidequests': {
     de: 'Aufträge Thanalan',
     fr: 'Thanalan',

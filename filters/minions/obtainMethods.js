@@ -183,6 +183,7 @@ const location = {
   southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
   theDiadem: ['The Diadem', 'Das Diadem', 'Le Diadème', 'ディアデム諸島'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
+  theRisingStones: ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
@@ -1563,6 +1564,35 @@ module.exports = (minion, achievementsIn) => {
         item.fish.assassinBetta,
         50,
         expansions.ARR
+      );
+
+    case 116:
+      return helper.quest(
+        1,
+        locale('Special Quests'),
+        ["The Ties That Bind", "Ein Bund Fürs Leben", "Jusqu'à Ce Que Le Destin Vous Sépare", "時がふたりを分かつまで"],
+        ["Claribel", true, true, "介添人 クラリベル"],
+        location.eastShroud,
+        17.6, 18.3,
+        expansions.ARR,
+        true,
+        false
+      );
+
+    case 118:
+      return helper.achievementReward(1040, expansions.ARealmReborn, true, false);
+
+    case 119:
+      return helper.quest(
+        50,
+        locale('Seventh Astral Era'),
+        ["The Rising Chorus", "Der Hüter Erwacht", "Le Gardien Du Lac", "黙約の塔へ"],
+        ["Tataru", true, true, "タタル"],
+        location.theRisingStones,
+        6, 5,
+        expansions.ARR,
+        true,
+        false
       );
 
     case 167: 

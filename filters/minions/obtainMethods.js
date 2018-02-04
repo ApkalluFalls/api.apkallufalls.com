@@ -36,7 +36,8 @@ const beastTribe = {
   ixal: ['Ixal', true, true, 'イクサル'],
   kobold: ['Kobold', true, 'Kobolde', 'コボルド'],
   sahagin: ['Sahagin', true, 'Sahuagin', 'サハギン'],
-  sylph: ['Sylph', 'Sylphen', 'Sylphe', 'シルフ']
+  sylph: ['Sylph', 'Sylphen', 'Sylphe', 'シルフ'],
+  vanuVanu: ['Vanu Vanu', true, true, 'バヌバヌ']
 }
 
 const item = {
@@ -185,6 +186,7 @@ const location = {
   theDiadem: ['The Diadem', 'Das Diadem', 'Le Diadème', 'ディアデム諸島'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   theRisingStones: ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
+  theSeaOfClouds: ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
@@ -202,6 +204,7 @@ const location = {
     theDragonsNeck: ["The Dragon's Neck", "Das Drachenhals-Kolosseum", "Le Col Du Dragon", "アマジナ杯闘技会決勝戦"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
     theSunkenTempleOfQarnHard: ['The Sunken Temple of Qarn (Hard)', 'Versunkener Tempel Von Qarn (schwer)', 'Le Temple Enseveli De Qarn (brutal)', '遺跡救援 カルン埋没寺院 (Hard)'],
+    theVault: ["The Vault", "Erzbasilika", "La Voûte", "強硬突入 イシュガルド教皇庁"],
     theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス'],
     theWorldOfDarkness: ['The World Of Darkness', 'Die Welt Der Dunkelheit', 'La Tour De Cristal - Monde Des Ténèbres', 'クリスタルタワー：闇の世界']
   },
@@ -213,7 +216,8 @@ const location = {
 }
 
 const _npc = {
-  minionTrader: ['Minion Trader', 'Trabantenhändlerin', 'Marchande De Mascottes', 'ミニオントレーダー']
+  minionTrader: ['Minion Trader', 'Trabantenhändlerin', 'Marchande De Mascottes', 'ミニオントレーダー'],
+  lunaVanu: ["Luna Vanu", true, true, "商人のルナバヌ"]
 }
 
 const timewornMap = {
@@ -1447,6 +1451,8 @@ module.exports = (minion, achievementsIn) => {
     case 108:
     case 109:
     case 121:
+    case 131:
+    case 132:
       return helper.mogStation();
     
     case 92:
@@ -1717,6 +1723,43 @@ module.exports = (minion, achievementsIn) => {
         ["Alphinaud", true, true, "アルフィノ"],
         location.foundation,
         13.4, 11.1,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 133:
+      return helper.quest(
+        57,
+        locale('Heavensward'),
+        ["A Difference Of Opinion", "Mit Eigenen Waffen", "Une Impérieuse Présence", "北方より来たりし者"],
+        ["Alphinaud", true, true, "アルフィノ"],
+        location.theSeaOfClouds,
+        19.4, 11.7,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 134:
+      return helper.dungeon(
+        location.duty.theVault,
+        57, null, null, expansions.HW, true, false
+      );
+    
+    case 135:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.vanuVanu,
+          35000, gil, gilImage,
+          _npc.lunaVanu,
+          ["Purchase Items (Trusted-Honored)", "Waren (Vertraut)", "Objets (rangs Estimé à émérite)", "アイテムの取引(友好関係：信頼～名誉)"],
+          locationImage,
+          location.theSeaOfClouds,
+          7, 14.3
+        ],
         expansions.HW,
         true,
         false

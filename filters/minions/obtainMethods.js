@@ -48,6 +48,10 @@ const item = {
     northernKrill: ['Northern Krill', 'Nordkrill', 'Krill polaire', 'ポーラークリル'],
     topwaterFrog: ['Topwater Frog', 'Schwimmfrosch', 'Grenouille sèche', 'トップウォーターフロッグ']
   },
+  fish: {
+    assassinBetta: ["Assassin Betta", "Kampffisch", "Betta assassin", "アサシンベタ"],
+    ninjaBetta: ["Ninja Betta", "Ninja-Kampffisch", "Betta ninja", "ニンジャベタ"]
+  },
   seeds: {
     eggplantKnight: ['Eggplant Knight Seeds', 'Ritter-Aubergine-Samen', 'Graines du Chevalier aubergine', 'エッグナイトの種'],
     garlicJester: ['Garlic Jester Seeds', 'Sir-Knoblauch-Samen', 'Graines du Baron ail', 'ガーリックスターの種'],
@@ -164,6 +168,7 @@ const location = {
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
+  fogfens: ["Fogfens", "Nebelmoor", "Fangebrume", "迷霧湿原"],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   lotusStand: ['Lotus Stand', 'Wasserrosentisch', 'Chaire Du Lotus', '不語仙の座卓'],
@@ -191,6 +196,7 @@ const location = {
     syrcusTower: ['Syrcus Tower', 'Kristallturm - Der Syrcus-Turm', 'La Tour De Cristal - Tour De Syrcus', 'クリスタルタワー：シルクスの塔'],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
+    theDragonsNeck: ["The Dragon's Neck", "Das Drachenhals-Kolosseum", "Le Col Du Dragon", "アマジナ杯闘技会決勝戦"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
     theSunkenTempleOfQarnHard: ['The Sunken Temple of Qarn (Hard)', 'Versunkener Tempel Von Qarn (schwer)', 'Le Temple Enseveli De Qarn (brutal)', '遺跡救援 カルン埋没寺院 (Hard)'],
     theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス'],
@@ -198,7 +204,8 @@ const location = {
   },
   fishing: {
     theBurningWall: ['The Burning Wall', 'Der Feuerwall', 'Mur Incandescent', 'バーニングウォール'],
-    theSaltStrand: ['The Salt Strand', 'Der Salzstrand', 'Atolls De Sel', 'ソルトストランド']
+    theSaltStrand: ['The Salt Strand', 'Der Salzstrand', 'Atolls De Sel', 'ソルトストランド'],
+    theTangle: ["The Tangle", "Der Schlingwald", "L'Enchevêtrement", "タングル湿林"]
   }
 }
 
@@ -417,6 +424,12 @@ const helper = {
       expansion,
       true,
       false
+    )
+  },
+  fishingDesynthesis: (item, waters, loc, x, y, bait, level, expansion) => {
+    return o(
+      'fishingDesynth',
+      [item, locale('Culinarian'), locale('Fisher'), waters, locationImage, loc, x, y, bait, level]
     )
   },
   gardening: (seeds) => {
@@ -1539,6 +1552,17 @@ module.exports = (minion, achievementsIn) => {
       return helper.squareEnixStore(
         ['FINAL FANTASY® XIV: A REALM REBORN™ DELIVERY MOOGLE PLUSH', true, true, true],
         ['Sunday, December 31, 2017', 'Sonntag, 31. Dezember 2017', 'Dimanche 31 décembre 2017', '2017年12月31日']
+      );
+
+    case 115:
+      return helper.fishingDesynthesis(
+        item.fish.ninjaBetta,
+        location.fishing.theTangle,
+        location.fogfens,
+        14, 13,
+        item.fish.assassinBetta,
+        50,
+        expansions.ARR
       );
 
     case 167: 

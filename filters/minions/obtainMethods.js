@@ -28,6 +28,8 @@ const hiElixirImage = '4560';
 const alliedSealsImage = 'as';
 const centurioSealsImage = 'cnts';
 const seedImage = 'seed';
+const questImage = 'quest';
+const msqImage = 'msq';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '友好関係：誓約'],
@@ -513,10 +515,10 @@ const helper = {
       promo
     )
   },
-  eventQuest: (level, quest, expansion) => {
+  eventQuest: (level, quest, image, expansion) => {
     return o(
       'eventQuest',
-      [level, locale('Seasonal Events'), quest],
+      [level, locale('Seasonal Events'), quest, image],
       expansion,
       false,
       false
@@ -642,6 +644,15 @@ const helper = {
       true
     )
   },
+  msq: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
+    return o(
+      'msq',
+      [level, type, msqImage, quest, npc, locationImage, loc, x, y],
+      expansion,
+      available,
+      promo
+    )
+  },
   pvp: (name, level, expansion, available, promo) => {
     return o(
       'pvp',
@@ -654,7 +665,7 @@ const helper = {
   quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
     return o(
       'quest',
-      [level, type, quest, npc, locationImage, loc, x, y],
+      [level, type, questImage, quest, npc, locationImage, loc, x, y],
       expansion,
       available,
       promo
@@ -1036,7 +1047,7 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 32:
-      return helper.quest(
+      return helper.msq(
         50,
         locale('Seventh Astral Era'),
         ['You\'re Gonna Carry That', 'Tatarus sieben Sachen', 'Un petit coup de main', '砂の家でのお片付け'],
@@ -1124,7 +1135,7 @@ module.exports = (minion, achievementsIn) => {
       return helper.achievementReward(929, expansions.ARealmReborn, true, false);
 
     case 41:
-      return helper.quest(
+      return helper.msq(
         22,
         locale('Seventh Umbral Era'),
         ['It Was A Very Good Year', 'Wandelndes Biotop', 'Un pied de vigne ambulant', '人の命運、ワインの運命'],
@@ -1178,6 +1189,7 @@ module.exports = (minion, achievementsIn) => {
         helper.eventQuest(
           15,
           ['All\'s Wool That Ends Wool', 'Des Schäfchens Generäle', 'L\'année Du Mouton', '羊と私の降神祭'],
+          'eq2',
           expansions.ARR
         ),
         helper.mogStation()
@@ -1230,7 +1242,7 @@ module.exports = (minion, achievementsIn) => {
     
     case 52:
       return [
-        helper.quest(
+        helper.msq(
           14,
           locale('Seventh Umbral Era'),
           ['The Gridanian Envoy', 'Die Stimme Des Waldes', 'L\'émissaire De Gridania', '海都と砂都と'],
@@ -1241,7 +1253,7 @@ module.exports = (minion, achievementsIn) => {
           true,
           false
         ),
-        helper.quest(
+        helper.msq(
           14,
           locale('Seventh Umbral Era'),
           ['The Lominsan Envoy', 'Die Stimme Des Meeres', 'L\'émissaire De Limsa Lominsa', '森都と砂都と'],
@@ -1252,7 +1264,7 @@ module.exports = (minion, achievementsIn) => {
           true,
           false
         ),
-        helper.quest(
+        helper.msq(
           14,
           locale('Seventh Umbral Era'),
           ['The Ul\'dahn Envoy', 'Die Stimme Der Wüste', 'L\'émissaire D\'Ul\'dah', '海都と森都と'],
@@ -1380,6 +1392,7 @@ module.exports = (minion, achievementsIn) => {
       return helper.eventQuest(
         7,
         ['Breaking Brick Mountains', 'Harte Steine Und Weiche Birnen', 'Les Créatures De Granit', 'あらくれ男と未知なるゴーレム'],
+        'eq3',
         expansions.ARR
       );
     
@@ -1387,6 +1400,7 @@ module.exports = (minion, achievementsIn) => {
       return helper.eventQuest(
         10,
         ['Burgeoning Dread', 'Der Schwarze Dämon', 'Abomination Aberrante', '黒い悪魔'],
+        'eq4',
         expansions.ARR
       );
     
@@ -1395,6 +1409,7 @@ module.exports = (minion, achievementsIn) => {
         helper.eventQuest(
           15,
           ['A Real Peach', 'Marionette Mit Herz', 'Une Issue Inattendue', 'プリンセスデーは時を越えて'],
+          'eq5',
           expansions.ARR
         ),
         helper.mogStation()
@@ -1717,7 +1732,7 @@ module.exports = (minion, achievementsIn) => {
       return helper.achievementReward(1040, expansions.ARealmReborn, true, false);
 
     case 119:
-      return helper.quest(
+      return helper.msq(
         50,
         locale('Seventh Astral Era'),
         ["The Rising Chorus", "Der Hüter Erwacht", "Le Gardien Du Lac", "黙約の塔へ"],
@@ -1841,7 +1856,7 @@ module.exports = (minion, achievementsIn) => {
       return helper.collectorsEdition(locale('Heavensward'), expansions.HW, true);
     
     case 130:
-      return helper.quest(
+      return helper.msq(
         51,
         locale('Heavensward'),
         ["In Search Of Iceheart", "Die Suche Beginnt", "À La Recherche De Cœur-de-glace", "イゼルを探して"],
@@ -1854,7 +1869,7 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 133:
-      return helper.quest(
+      return helper.msq(
         57,
         locale('Heavensward'),
         ["A Difference Of Opinion", "Mit Eigenen Waffen", "Une Impérieuse Présence", "北方より来たりし者"],
@@ -1988,6 +2003,7 @@ module.exports = (minion, achievementsIn) => {
         helper.eventQuest(
           15,
           ["A World Away", "Welten Entfernt", "Si Loin, Si Proche", "新生祭と鎮魂の夜空"],
+          'eq6',
           expansions.ARR
         ),
         helper.mogStation()
@@ -2031,7 +2047,7 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 149:
-      return helper.quest(
+      return helper.msq(
         60,
         locale('Heavensward'),
         ["Do It For Gilly", "Zurück Auf Den Rechten Weg", "Le Musée Des Machines", "博物戦艦 フラクタル・コンティニアム"],
@@ -2114,6 +2130,7 @@ module.exports = (minion, achievementsIn) => {
         helper.eventQuest(
           20,
           ["Joining The Circus", "Großer Verwandlungszirkus", "Des Biscuits Porte-bonheur", "おかしなオカシと守護天節"],
+          'eq1',
           expansions.ARR
         ),
         helper.mogStation()
@@ -2230,7 +2247,7 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 173:
-      return helper.quest(
+      return helper.msq(
         60,
         locale('Heavensward'),
         ["As Goes Light, So Goes Darkness", "Licht Und Dunkel", "Entre Lumière Et Ténèbres", "光と闇の境界"],
@@ -2275,6 +2292,7 @@ module.exports = (minion, achievementsIn) => {
         helper.eventQuest(
           15,
           ["After The Curtain Falls", "Ein Wahrer Held", "À La Gloire De La Lumière", "新生祭の英雄賛歌"],
+          'eq6',
           expansions.ARR
         ),
         helper.mogStation()
@@ -2288,7 +2306,7 @@ module.exports = (minion, achievementsIn) => {
       return helper.dungeon(location.duty.theLostCityOfAmdaporHard, 60, null, null, expansions.HW, true, false);
     
     case 181:
-      return helper.quest(
+      return helper.msq(
         60,
         locale('Heavensward'),
         ["The Word Of The Mother", "Zwiesprache Mit Dem Planeten", "La Voix De La Planète", "星の呼び声"],

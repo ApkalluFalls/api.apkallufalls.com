@@ -1,5 +1,5 @@
 module.exports = (achievements, id) => {
-  const match = achievements.filter(a => a.id == id);
+  const match = achievements.data.filter(a => a.id == id);
 
   if (!match.length)
     return console.warn("Achievement data does not contain id " + id);

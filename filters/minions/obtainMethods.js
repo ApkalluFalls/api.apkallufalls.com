@@ -24,6 +24,7 @@ const timewornImage = 'map';
 const elixirImage = '4559';
 const hiElixirImage = '4560';
 const alliedSealsImage = 'as';
+const centurioSealsImage = 'cnts';
 const seedImage = 'seed';
 
 const rank = {
@@ -83,6 +84,10 @@ const craftItem = {
     icon: 12647,
     name: ["Atomos Corpulence", "Atomos-Fett", "Chair d'Atomos", "アトモスの肉片"]
   },
+  birchLumber: {
+    icon: 12583,
+    name: ["Birch Lumber", "Birken-Bauholz", "Madrier de bouleau", "バーチ材"]
+  },
   broombush: {
     icon: 7776,
     name: ['Broombush', 'Ginsterstrauch', 'Genêt', 'ホウキグサ']
@@ -139,6 +144,10 @@ const craftItem = {
     icon: 7775,
     name: ['Glazenut', 'Glanznuss', 'Noix luisante', 'グレイズナッツ']
   },
+  gobwalkerShielding: {
+    icon: 12652,
+    name: ["Gobwalker Shielding", "Stampfer-Rüstungsteil", "Blindage de gobtank G-VII", "VII号ゴブリ鋼板"]
+  },
   growthFormulaZeta: {
     icon: 12608,
     name: ["Growth Formula Zeta", "Wachstumsformel Zeta", "Formule de croissance zêta", "グロースフォーミュラ・ゼータ"]
@@ -146,6 +155,14 @@ const craftItem = {
   iceShard: {
     icon: 3,
     name: ['Ice Shard', 'Eisscherbe', 'Éclat de glace', 'アイスシャード']
+  },
+  ironGiantCore: {
+    icon: 13003,
+    name: ["Iron Giant Core", "Eisengiganten-Kern", "Cœur de géant d'acier", "鉄巨人のコア"]
+  },
+  ironGiantScrap: {
+    icon: 12651,
+    name: ["Iron Giant Scrap", "Eisengiganten-Überreste", "Débris de colosse", "鉄巨人の残骸"]
   },
   juteYarn: {
     icon: 7777,
@@ -158,6 +175,18 @@ const craftItem = {
   rosewoodBranch: {
     icon: 5414,
     name: ['Rosewood Branch', 'Palisanderast', 'Branche de palissandre', 'ローズウッドの枝']
+  },
+  steelMainspring: {
+    icon: 12648,
+    name: ["Steel Mainspring", "Stahl-Triebfeder", "Ressort moteur en acier", "ゼンマイバネ"]
+  },
+  steelWheelBearing: {
+    icon: 12649,
+    name: ["Steel Wheel Bearing", "Stahl-Radlager", "Roulement de roue en acier", "ホイールベアリング"]
+  },
+  stuffedGoblin: {
+    icon: 7966,
+    name: ["Stuffed Goblin", "Stoff-Goblin", "Gobelin en peluche", "ゴブリンのぬいぐるみ"]
   },
   twinthread: {
     icon: 5330,
@@ -208,6 +237,7 @@ const location = {
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
   southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
   theDiadem: ['The Diadem', 'Das Diadem', 'Le Diadème', 'ディアデム諸島'],
+  theForgottenKnight: ["The Forgotten Knight", "Der Vergessene Ritter", "Le Chevalier Oublié", "忘れられた騎士亭"],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   theRisingStones: ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
   theSeaOfClouds: ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
@@ -225,10 +255,12 @@ const location = {
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
     sohmAl: ["Sohm Al", "Sohm Al", "Sohm Al", "霊峰踏破 ソーム・アル"],
     syrcusTower: ['Syrcus Tower', 'Kristallturm - Der Syrcus-Turm', 'La Tour De Cristal - Tour De Syrcus', 'クリスタルタワー：シルクスの塔'],
+    theAery: ["The Aery", "Nest Des Drachen", "L'Aire", "邪竜血戦 ドラゴンズエアリー"],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     theDragonsNeck: ["The Dragon's Neck", "Das Drachenhals-Kolosseum", "Le Col Du Dragon", "アマジナ杯闘技会決勝戦"],
     theFractalContinuum: ["The Fractal Continuum", "Die Fraktal-Kontinuum", "Le Continuum Fractal", "博物戦艦 フラクタル・コンティニアム"],
+    theGreatGubalLibrary: ["The Great Gubal Library", "Große Gubal-Bibliothek", "La Grande Bibliothèque De Gubal", "禁書回収 グブラ幻想図書館"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
     theSunkenTempleOfQarnHard: ['The Sunken Temple of Qarn (Hard)', 'Versunkener Tempel Von Qarn (schwer)', 'Le Temple Enseveli De Qarn (brutal)', '遺跡救援 カルン埋没寺院 (Hard)'],
     theVault: ["The Vault", "Erzbasilika", "La Voûte", "強硬突入 イシュガルド教皇庁"],
@@ -283,7 +315,8 @@ const timewornMap = {
 const gil = ['Gil', true, true, 'ギル'];
 const poetics = ['Allagan Tomestone of Poetics', 'Allagischer Stein der Poesie', 'Mémoquartz allagois poétique', 'アラガントームストーン:詩学'];
 const mgp = ['MGP', true, 'Point du Gold Saucer', 'マンダヴィル・ゴールドソーサーポイント'];
-const alliedSeals = ['Allied Seal', 'Jagdabzeichen', 'Insigne allié', '同盟記章']
+const alliedSeals = ['Allied Seal', 'Jagdabzeichen', 'Insigne allié', '同盟記章'];
+const centurioSeals = ["Centurio Seal", "Centurio-Abzeichen", "Insigne Centurio", "セントリオ記章"];
 
 const helper = {
   achievementCertificate: (quantity) => {
@@ -1769,10 +1802,10 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 134:
-      return helper.dungeon(
-        location.duty.theVault,
-        57, null, null, expansions.HW, true, false
-      );
+      return [
+        helper.dungeon(location.duty.theVault, 57, null, null, expansions.HW, true, false),
+        helper.aquapolis()
+      ];
     
     case 135:
       return o(
@@ -1800,7 +1833,40 @@ module.exports = (minion, achievementsIn) => {
         [
           { quantity: 99, ...craftItem.waterShard },
           { quantity: 1, ...craftItem.glazenut },
-          { quantity: 2, ...craftItem.growthFormulaZeta },
+          { quantity: 3, ...craftItem.birchLumber },
+          { quantity: 1, ...craftItem.steelMainspring },
+          { quantity: 1, ...craftItem.steelWheelBearing },
+          { quantity: 1, ...craftItem.dawnborneAethersand }
+        ]
+      );
+    
+    case 137:
+      return [
+        helper.dungeon(location.duty.theFractalContinuum, 60, null, null, expansions.HW, true, false),
+        helper.aquapolis()
+      ];
+    
+    case 138:
+      return [
+        helper.dungeon(location.duty.neverreap, 60, null, null, expansions.HW, true, false),
+        helper.aquapolis()
+      ];
+    
+    case 139:
+      return [
+        helper.dungeon(location.duty.sohmAl, 60, null, null, expansions.HW, true, false),
+        helper.aquapolis()
+      ];
+    
+    case 140:
+      return helper.craft(
+        60,
+        locale('Carpenter'),
+        1,
+        [
+          { quantity: 99, ...craftItem.windShard },
+          { quantity: 1, ...craftItem.glazenut },
+          { quantity: 2, ...craftItem.birchLumber },
           { quantity: 3, ...craftItem.dragonBlood },
           { quantity: 3, ...craftItem.gelatoFlesh },
           { quantity: 3, ...craftItem.atomosCorpulence },
@@ -1808,14 +1874,76 @@ module.exports = (minion, achievementsIn) => {
         ]
       );
     
-    case 137:
-      return helper.dungeon(location.duty.theFractalContinuum, 60, null, null, expansions.HW, true, false);
+    case 141:
+      return [
+        helper.dungeon(location.duty.theAery, 55, null, null, expansions.HW, true, false),
+        helper.aquapolis()
+      ];
     
-    case 138:
-      return helper.dungeon(location.duty.neverreap, 60, null, null, expansions.HW, true, false);
+    case 142:
+      return [
+        helper.dungeon(location.duty.theGreatGubalLibrary, 59, null, null, expansions.HW, true, false),
+        helper.aquapolis()
+      ];
     
-    case 139:
-      return helper.dungeon(location.duty.sohmAl, 60, null, null, expansions.HW, true, false);
+    case 143:
+      return helper.craft(
+        60,
+        locale('Armorer'),
+        1,
+        [
+          { quantity: 99, ...craftItem.iceShard },
+          { quantity: 1, ...craftItem.glazenut },
+          { quantity: 2, ...craftItem.garleanSteelJoint },
+          { quantity: 5, ...craftItem.ironGiantScrap },
+          { quantity: 3, ...craftItem.ironGiantCore },
+          { quantity: 1, ...craftItem.dawnborneAethersand }
+        ]
+      );
+    
+    case 144:
+      return o(
+        'purchase',
+        [
+          400, centurioSeals, centurioSealsImage,
+          ["Ardolain", true, true, "アルドラン"],
+          ['(Centurio Seals I)', '(Centurio-Abzeichen I)', '(Insigne Centurio I)', '（セントリオ記章（その他））'],
+          locationImage,
+          location.theForgottenKnight,
+          13, 11
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 145:
+      return helper.eventQuest(
+        15,
+        ["A World Away", "Welten Entfernt", "Si Loin, Si Proche", "新生祭と鎮魂の夜空"],
+        expansions.ARR
+      );
+    
+    case 146:
+      return [
+        helper.retainerVenture(55, 'Fisher', 'Waterside Exploration', 'XVIII'),
+        helper.retainerVenture(60, 'Fisher', 'Waterside Exploration', 'XIX')
+      ];
+    
+    case 147:
+      return helper.craft(
+        60,
+        locale('Armorer'),
+        1,
+        [
+          { quantity: 99, ...craftItem.iceShard },
+          { quantity: 1, ...craftItem.glazenut },
+          { quantity: 2, ...craftItem.garleanSteelPlate },
+          { quantity: 1, ...craftItem.stuffedGoblin },
+          { quantity: 3, ...craftItem.gobwalkerShielding },
+          { quantity: 1, ...craftItem.dawnborneAethersand }
+        ]
+      );
 
     case 167: 
       return [

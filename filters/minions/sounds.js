@@ -319,7 +319,7 @@ module.exports = (minion) => {
       return override('(couine)... (couine)...', '(whine)... (whine)...');
     
     case 281:
-      return override('Je n\'y crois pas', 'I just can\'t believe it')
+      return override('Je n\'y crois pas', 'I just can\'t believe it');
 
     default:
       return true;

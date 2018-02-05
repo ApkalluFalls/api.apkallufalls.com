@@ -20,6 +20,8 @@ const achievementCertificate = 'ac';
 const fateImage = 'fate';
 const locationImage = 'loc';
 const dutyImage = 'duty';
+const pvpImage = 'pvp';
+const trialImage = 'trial';
 const timewornImage = 'map';
 const elixirImage = '4559';
 const hiElixirImage = '4560';
@@ -38,7 +40,9 @@ const beastTribe = {
   kobold: ['Kobold', true, 'Kobolde', 'コボルド'],
   sahagin: ['Sahagin', true, 'Sahuagin', 'サハギン'],
   sylph: ['Sylph', 'Sylphen', 'Sylphe', 'シルフ'],
-  vanuVanu: ['Vanu Vanu', true, true, 'バヌバヌ']
+  vanuVanu: ['Vanu Vanu', true, true, 'バヌバヌ'],
+  vath: ['Vath', true, 'Vathe', 'ヴァス'],
+  moogle: ["Moogle", "Mogry", "Mog", "モーグリ"]
 }
 
 const item = {
@@ -88,6 +92,10 @@ const craftItem = {
     icon: 12583,
     name: ["Birch Lumber", "Birken-Bauholz", "Madrier de bouleau", "バーチ材"]
   },
+  bloodPepper: {
+    icon: 13754,
+    name: ["Blood Pepper", "Blutpfeffer", "Piment sanglant", "ブラッドペッパー"]
+  },
   broombush: {
     icon: 7776,
     name: ['Broombush', 'Ginsterstrauch', 'Genêt', 'ホウキグサ']
@@ -96,6 +104,10 @@ const craftItem = {
     icon: 7609,
     name: ['Cashmere Cloth', 'Kaschmir', 'Étoffe de cachemire', 'カシミヤ織物']
   },
+  chimericalFelt: {
+    icon: 12592,
+    name: ["Chimerical Felt", "Chimärenfilz", "Étoffe de feutre chimérique", "キマイラフェルト"]
+  },
   chocoboFeather: {
     icon: 5359,
     name: ['Chocobo Feather', 'Chocobo-Feder', 'Plume de chocobo', 'チョコボの羽根']
@@ -103,6 +115,10 @@ const craftItem = {
   cottonBoll: {
     icon: 5343,
     name: ['Cotton Boll', 'Baumwoll-Samenkapsel', 'Fleur de coton', '草綿']
+  },
+  crawlerSilk: {
+    icon: 12596,
+    name: ["Crawler Silk", "Kriecher-Seidengarn", "Fil de soie de chenille", "クロウラーの絹糸"]
   },
   darksteelNugget: {
     icon: 5061,
@@ -136,6 +152,10 @@ const craftItem = {
     icon: 5105,
     name: ['Garlean Steel Plate', 'Garleische Leichtmetall-Platte', 'Plaque d\'acier léger impérial', '帝国製軽金属板']
   },
+  garudasFeather: {
+    icon: 6160,
+    name: ["Garuda's Feather", "Garuda-Feder", "Plume de Garuda", "ガルーダの羽根"]
+  },
   gelatoFlesh: {
     icon: 12635,
     name: ["Gelato Flesh", "Gelato-Fleisch", "Viande de gelato", "ジェラートの肉"]
@@ -156,6 +176,14 @@ const craftItem = {
     icon: 3,
     name: ['Ice Shard', 'Eisscherbe', 'Éclat de glace', 'アイスシャード']
   },
+  iceTear: {
+    icon: 9377,
+    name: ["Ice Tear", "Eisträne", "Larme de Shiva", "シヴァの涙"]
+  },
+  ifritsHorn: {
+    icon: 6158,
+    name: ["Ifrit's Horn", "Ifrit-Horn", "Corne d'Ifrit", "イフリートの角"]
+  },
   ironGiantCore: {
     icon: 13003,
     name: ["Iron Giant Core", "Eisengiganten-Kern", "Cœur de géant d'acier", "鉄巨人のコア"]
@@ -167,6 +195,14 @@ const craftItem = {
   juteYarn: {
     icon: 7777,
     name: ['Jute Yarn', 'Jutegarn', 'Toile de jute', 'ジュート繊維']
+  },
+  leviathansBarb: {
+    icon: 7159,
+    name: ["Leviathan's Barb", "Bartel Leviathans", "Barbillon de Léviathan", "リヴァイアサンの棘"]
+  },
+  levinOrb: {
+    icon: 8019,
+    name: ["Levin Orb", "Ramuh-Kugel", "Orbe de Ramuh", "ラムウのオーブ"]
   },
   lightningShard: {
     icon: 6,
@@ -187,6 +223,14 @@ const craftItem = {
   stuffedGoblin: {
     icon: 7966,
     name: ["Stuffed Goblin", "Stoff-Goblin", "Gobelin en peluche", "ゴブリンのぬいぐるみ"]
+  },
+  titaniumIngot: {
+    icon: 12525,
+    name: ["Titanium Ingot", "Titan-Barren", "Lingot de titane", "チタンインゴット"]
+  },
+  titansHeart: {
+    icon: 6162,
+    name: ["Titan's Heart", "Herz des Titan", "Roc de Titan", "タイタンの岩塊"]
   },
   twinthread: {
     icon: 5330,
@@ -228,6 +272,7 @@ const location = {
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   lotusStand: ['Lotus Stand', 'Wasserrosentisch', 'Chaire Du Lotus', '不語仙の座卓'],
   lowerLaNoscea: ['Lower La Noscea', 'Unteres La Noscea', 'Basse-Noscea', '低地ラノシア'],
+  matoyasCave: ["Matoya's Cave", "Matoyas Höhle", "Caverne De Matoya", "マトーヤの洞窟"],
   morDhona: ['Mor Dhona', true, true, 'モードゥナ'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
   northShroud: ['North Shroud', 'Nordwald', 'Forêt Du Nord', '黒衣森：北部森林'],
@@ -236,9 +281,12 @@ const location = {
   outerLaNoscea: ['Outer La Noscea', 'Äußeres La Noscea', 'Noscea Extérieure', '地ラノシア'],
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
   southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
+  theChurningMists: ["The Churning Mists", "Wallende Nebel", "L'Écume Des Cieux De Dravania", "ドラヴァニア雲海"],
   theDiadem: ['The Diadem', 'Das Diadem', 'Le Diadème', 'ディアデム諸島'],
+  theDravanianForelands: ["The Dravanian Forelands", "Dravanisches Vorland", "Avant-pays Dravanien", "高地ドラヴァニア"],
   theForgottenKnight: ["The Forgotten Knight", "Der Vergessene Ritter", "Le Chevalier Oublié", "忘れられた騎士亭"],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
+  thePillars: ["The Pillars", "Strebewerk", "Ishgard - Les Contreforts", "イシュガルド：上層"],
   theRisingStones: ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
   theSeaOfClouds: ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
@@ -246,6 +294,7 @@ const location = {
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
+    alexanderBurdenOfTheSonSavage: ["Alexander - The Burden Of The Son (Savage)", "Alexander - Last Des Sohnes (episch)", "Alexander - Le Fardeau Du Fils (sadique)", "機工城アレキサンダー零式：律動編4"],
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
     battleInTheBigKeep: ["Battle In The Big Keep", "Revanche In Den Ruinen", "Revanche Au Vieux Château", "真ギルガメッシュ討滅戦"],
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
@@ -254,16 +303,21 @@ const location = {
     neverreap: ["Neverreap", "Nimmerreich", "Nalloncques", "神域浮島 ネバーリープ"],
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
     sohmAl: ["Sohm Al", "Sohm Al", "Sohm Al", "霊峰踏破 ソーム・アル"],
+    saintMociannesArboretum: ["Saint Mocianne's Arboretum", "Sankt Mocianne-Arboretum", "L'Arboretum Sainte-Mocianne", "草木庭園 聖モシャーヌ植物園"],
     syrcusTower: ['Syrcus Tower', 'Kristallturm - Der Syrcus-Turm', 'La Tour De Cristal - Tour De Syrcus', 'クリスタルタワー：シルクスの塔'],
     theAery: ["The Aery", "Nest Des Drachen", "L'Aire", "邪竜血戦 ドラゴンズエアリー"],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
+    theAntitower: ["The Antitower", "Antiturm", "L'Antitour", "星海観測 逆さの塔"],
     theDragonsNeck: ["The Dragon's Neck", "Das Drachenhals-Kolosseum", "Le Col Du Dragon", "アマジナ杯闘技会決勝戦"],
+    theFeast: ["The Feast", true, true, "ザ・フィースト"],
     theFractalContinuum: ["The Fractal Continuum", "Die Fraktal-Kontinuum", "Le Continuum Fractal", "博物戦艦 フラクタル・コンティニアム"],
     theGreatGubalLibrary: ["The Great Gubal Library", "Große Gubal-Bibliothek", "La Grande Bibliothèque De Gubal", "禁書回収 グブラ幻想図書館"],
+    theLostCityOfAmdaporHard: ["The Lost City Of Amdapor (Hard)", "Historisches Amdapor (schwer)", "Les Vestiges De La Cité D'Amdapor (brutal)", "神聖遺跡 古アムダプール市街 (Hard)"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
     theSunkenTempleOfQarnHard: ['The Sunken Temple of Qarn (Hard)', 'Versunkener Tempel Von Qarn (schwer)', 'Le Temple Enseveli De Qarn (brutal)', '遺跡救援 カルン埋没寺院 (Hard)'],
     theVault: ["The Vault", "Erzbasilika", "La Voûte", "強硬突入 イシュガルド教皇庁"],
+    theVoidArk: ["The Void Ark", "Die Nichts-Arche", "L'Arche Du Néant", "魔航船ヴォイドアーク"],
     theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス'],
     theWorldOfDarkness: ['The World Of Darkness', 'Die Welt Der Dunkelheit', 'La Tour De Cristal - Monde Des Ténèbres', 'クリスタルタワー：闇の世界']
   },
@@ -276,7 +330,9 @@ const location = {
 
 const _npc = {
   minionTrader: ['Minion Trader', 'Trabantenhändlerin', 'Marchande De Mascottes', 'ミニオントレーダー'],
-  lunaVanu: ["Luna Vanu", true, true, "商人のルナバヌ"]
+  lunaVanu: ["Luna Vanu", true, true, "商人のルナバヌ"],
+  vathStickpeddler: ["Vath Stickpeddler", "Krämer", "Camelot", "アキンド"],
+  mogmulMogbelly: ["Mogmul Mogbelly", "Mogmul Mogbauch", "Mogmul", "大食いのモグムリ"]
 }
 
 const timewornMap = {
@@ -586,6 +642,15 @@ const helper = {
       true
     )
   },
+  pvp: (name, level, expansion, available, promo) => {
+    return o(
+      'pvp',
+      [level, pvpImage, name],
+      expansion,
+      available,
+      promo
+    )
+  },
   quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
     return o(
       'quest',
@@ -647,7 +712,7 @@ const helper = {
   trial: (name, level, expansion, available, promo) => {
     return o(
       'trial',
-      [level, dutyImage, name],
+      [level, trialImage, name],
       expansion,
       available,
       promo
@@ -1918,11 +1983,15 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 145:
-      return helper.eventQuest(
-        15,
-        ["A World Away", "Welten Entfernt", "Si Loin, Si Proche", "新生祭と鎮魂の夜空"],
-        expansions.ARR
-      );
+    case 150:
+      return [
+        helper.eventQuest(
+          15,
+          ["A World Away", "Welten Entfernt", "Si Loin, Si Proche", "新生祭と鎮魂の夜空"],
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
     
     case 146:
       return [
@@ -1944,12 +2013,234 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 1, ...craftItem.dawnborneAethersand }
         ]
       );
+    
+    case 148:
+      return o(
+        'purchase',
+        [
+          400, centurioSeals, centurioSealsImage,
+          ["Ardolain", true, true, "アルドラン"],
+          ['(Centurio Seals I)', '(Centurio-Abzeichen I)', '(Insigne Centurio I)', '（セントリオ記章（その他））'],
+          locationImage,
+          location.theForgottenKnight,
+          13, 11
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 149:
+      return helper.quest(
+        60,
+        locale('Heavensward'),
+        ["Do It For Gilly", "Zurück Auf Den Rechten Weg", "Le Musée Des Machines", "博物戦艦 フラクタル・コンティニアム"],
+        ["Notrelchamps", true, true, "ノトレルシャン"],
+        location.thePillars,
+        26, 23.6,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 151:
+      return helper.squareEnixStore(
+        ['Emerald Carbuncle Plush', true, true, true],
+        ['Sunday, December 31, 2017', 'Sonntag, 31. Dezember 2017', 'Dimanche 31 décembre 2017', '2017年12月31日']
+      );
+    
+    case 152:
+      return helper.squareEnixStore(
+        ['Topaz Carbuncle Plush', true, true, true],
+        ['Sunday, December 31, 2017', 'Sonntag, 31. Dezember 2017', 'Dimanche 31 décembre 2017', '2017年12月31日']
+      );
+    
+    case 154:
+      return helper.fate(
+        57,
+        ["On Dangerous Ground", "Wider Die Eigene Natur", "Défi: Mangeur De Terre Gardée", "暴食の岩人形「グランズイーター」"],
+        location.theSeaOfClouds,
+        21, 12,
+        expansions.HW
+      );
+    
+    case 155:
+      return helper.squareEnixStore(
+        ['Before The Fall：FINAL FANTASY XIV Original Soundtrack[映像付サントラ／Blu-ray Disc Music]', true, true, true],
+        ['Saturday, December 31, 2016', 'Samstag, 31. Dezember 2016', 'Samedi 31 décembre 2016', '2016年12月31日']
+      );
+    
+    case 156:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.vath,
+          35000, gil, gilImage,
+          _npc.vathStickpeddler,
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
+          locationImage,
+          location.theDravanianForelands,
+          23.7, 19.1
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 157:
+      return [
+        helper.timewornMap(...timewornMap.dragonskin),
+        helper.aquapolis(),
+        helper.itemAccursedHoard(item.bronzeTrimmedSack)
+      ];
+    
+    case 158:
+      return helper.craft(
+        60,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.titaniumIngot },
+          { quantity: 1, ...craftItem.chimericalFelt },
+          { quantity: 1, ...craftItem.crawlerSilk },
+          { quantity: 1, ...craftItem.bloodPepper }
+        ]
+      );
+
+    case 159:
+      return [
+        helper.eventQuest(
+          20,
+          ["Joining The Circus", "Großer Verwandlungszirkus", "Des Biscuits Porte-bonheur", "おかしなオカシと守護天節"],
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
+    
+    case 160:
+      return helper.trial(location.duty.theVoidArk, 60, expansions.HW, true, false);
+    
+    case 161:
+      return helper.squareEnixStore(
+        ['Heavensward Art Book (The Art of Ishgard - Stone and Steel)', true, true, true],
+        ['Sunday, December 31, 2017', 'Sonntag, 31. Dezember 2017', 'Dimanche 31 décembre 2017', '2017年12月31日']
+      );
+    
+    case 162:
+      return helper.fate(
+        60,
+        ["On The Inside", "Die Schlitzer Vom Diadem", "Défi: L'éventreur De L'azur", "美食の凶鳥「ガルピュデス」"],
+        location.theDiadem,
+        null, null,
+        expansions.HW
+      );
+
+    case 163:
+      return helper.achievementReward(1382, expansions.ARealmReborn, true, false);
+
+    case 164:
+      return helper.achievementReward(1385, expansions.ARealmReborn, true, false);
+
+    case 165:
+      return helper.achievementReward(1380, expansions.ARealmReborn, true, false);
+    
+    case 166:
+      return helper.dungeon(location.duty.saintMociannesArboretum, 60, null, null, expansions.HW, true, false);
 
     case 167: 
       return [
         helper.veteranReward(960),
         helper.achievementCertificate(2)
-      ]
+      ];
+    
+    case 168:
+      return helper.craft(
+        60,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.ifritsHorn },
+          { quantity: 1, ...craftItem.chimericalFelt },
+          { quantity: 1, ...craftItem.crawlerSilk },
+          { quantity: 1, ...craftItem.bloodPepper }
+        ]
+      );
+    
+    case 169:
+      return helper.craft(
+        60,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.garudasFeather },
+          { quantity: 1, ...craftItem.chimericalFelt },
+          { quantity: 1, ...craftItem.crawlerSilk },
+          { quantity: 1, ...craftItem.bloodPepper }
+        ]
+      );
+    
+    case 170:
+      return helper.craft(
+        60,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.titansHeart },
+          { quantity: 1, ...craftItem.chimericalFelt },
+          { quantity: 1, ...craftItem.crawlerSilk },
+          { quantity: 1, ...craftItem.bloodPepper }
+        ]
+      );
+    
+    case 171:
+      return helper.craft(
+        60,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.leviathansBarb },
+          { quantity: 1, ...craftItem.chimericalFelt },
+          { quantity: 1, ...craftItem.crawlerSilk },
+          { quantity: 1, ...craftItem.bloodPepper }
+        ]
+      );
+    
+    case 172:
+      return o(
+        'beastTribe',
+        [
+          rank.sworn,
+          beastTribe.vanuVanu,
+          30000, gil, gilImage,
+          _npc.lunaVanu,
+          ["(Purchase Items (Sworn-Bloodsworn))", "(Waren (Solidarisch/Solidarisch★))", "(Objets (rangs Assermenté à Assermenté★))", "(アイテムの取引(友好関係：誓約～誓約★))"],
+          locationImage,
+          location.theSeaOfClouds,
+          7, 14.3
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 173:
+      return helper.quest(
+        60,
+        locale('Heavensward'),
+        ["As Goes Light, So Goes Darkness", "Licht Und Dunkel", "Entre Lumière Et Ténèbres", "光と闇の境界"],
+        ["Lucia", true, true, "ルキア"],
+        location.foundation,
+        13.8, 11.1,
+        expansions.HW,
+        true,
+        false
+      );
     
     case 174:
     case 187:
@@ -1957,6 +2248,115 @@ module.exports = (minion, achievementsIn) => {
         helper.goldSaucerPrizeExchange(30000),
         helper.goldSaucerMinionsMGP(30000)
       ];
+
+    case 175:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.vath,
+          30000, gil, gilImage,
+          _npc.vathStickpeddler,
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
+          locationImage,
+          location.theDravanianForelands,
+          23.7, 19.1
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 176:
+      return helper.trial(location.duty.alexanderBurdenOfTheSonSavage, 60, expansions.HW, true, false);
+
+    case 177:
+      return [
+        helper.eventQuest(
+          15,
+          ["After The Curtain Falls", "Ein Wahrer Held", "À La Gloire De La Lumière", "新生祭の英雄賛歌"],
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
+    
+    case 178:
+    case 179:
+      return helper.dungeon(location.duty.theAntitower, 60, null, null, expansions.HW, true, false);
+
+    case 180:
+      return helper.dungeon(location.duty.theLostCityOfAmdaporHard, 60, null, null, expansions.HW, true, false);
+    
+    case 181:
+      return helper.quest(
+        60,
+        locale('Heavensward'),
+        ["The Word Of The Mother", "Zwiesprache Mit Dem Planeten", "La Voix De La Planète", "星の呼び声"],
+        ["Alphinaud", true, true, "アルフィノ"],
+        location.matoyasCave,
+        6.5, 6.3,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 182:
+      return helper.squareEnixStore(
+        ['Heavensward：FINAL FANTASY XIV Original Soundtrack[映像付サントラ／Blu-ray Disc Music]', true, true, true],
+        ['Sunday, December 31, 2017', 'Sonntag, 31. Dezember 2017', 'Dimanche 31 décembre 2017', '2017年12月31日']
+      );
+    
+    case 183:
+      return [
+        helper.pvp(location.duty.theFeast, 60, expansions.HW, false, false),
+        helper.pvp(location.duty.theFeast, 30, expansions.ARR, true, false)
+      ];
+    
+    case 184:
+      return o(
+        'beastTribe',
+        [
+          rank.sworn,
+          beastTribe.moogle,
+          30000, gil, gilImage,
+          _npc.vathStickpeddler,
+          ['(Purchase Items (Sworn))', '(Waren (Solidarisch))', '(Objets (rang Assermenté))', '(アイテムの取引(友好関係：誓約))'],
+          locationImage,
+          location.theChurningMists,
+          16, 28.5
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 185:
+      return helper.craft(
+        60,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.levinOrb },
+          { quantity: 1, ...craftItem.chimericalFelt },
+          { quantity: 1, ...craftItem.crawlerSilk },
+          { quantity: 1, ...craftItem.bloodPepper }
+        ]
+      );
+    
+    case 186:
+      return helper.craft(
+        60,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 99, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.iceTear },
+          { quantity: 1, ...craftItem.chimericalFelt },
+          { quantity: 1, ...craftItem.crawlerSilk },
+          { quantity: 1, ...craftItem.bloodPepper }
+        ]
+      );
     
     case 236:
       return o(

@@ -18,6 +18,8 @@ module.exports = async function() {
     resolve(data);
   })).then(data => mountsList = JSON.parse(data).data);
 
+  const achievementsWithTitles = achievementsList.filter(data => data.reward && data.reward.title);
+
   const data = {
     achievements: {
       total: achievementsList.length,
@@ -34,8 +36,8 @@ module.exports = async function() {
       unknown: mountsList.filter(data => !data.ref).length
     },
     titles: {
-      total: achievementsList.filter(data => data.reward && data.reward.title).length,
-      unavailable: 'todo'
+      total: achievementsWithTitles.length,
+      unavailable: achievementsWithTitles.filter(data => data.unavailable).length
     }
   }
 

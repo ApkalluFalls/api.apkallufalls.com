@@ -1,11 +1,13 @@
 const Helper = require('../_helper');
 const createList = require('../_list');
+const _isAvailable = require('./_isAvailable');
 const _isCumulative = require('./_isCumulative');
 const _getWeight = require('./_getWeight');
 
 module.exports = new Helper("Achievement", "achievements", {
   api: 'achievement',
   columns: [
+    "achievement_category",
     "icon",
     "id",
     "item",
@@ -37,6 +39,10 @@ module.exports = new Helper("Achievement", "achievements", {
           patch: entry.patch,
           weight: _getWeight(entry)
         }
+
+        const unavailable = _isAvailable(entry);
+        if (unavailable)
+          response.unavailable = unavailable;
 
         if (entry.item || entry.title) {
           response.reward = {};

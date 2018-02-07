@@ -53,6 +53,12 @@ const update = async function (args) {
     await require('./mounts/list.js').fetch();
   }
 
+  // Totals.
+  if (!config || config.totals) {
+    message('Totals');
+    require('./totals/list.js')();
+  }
+
   if (!config || config.icons) {
     message('Icons');
     await require('./icons/achievements.js').fetch();

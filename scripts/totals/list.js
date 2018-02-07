@@ -25,11 +25,13 @@ module.exports = async function() {
     },
     minions: {
       total: minionsList.length,
-      unavailable: 'todo'
+      unavailable: minionsList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
+      unknown: minionsList.filter(data => !data.ref).length
     },
     mounts: {
       total: mountsList.length,
-      unavailable: 'todo'
+      unavailable: mountsList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
+      unknown: mountsList.filter(data => !data.ref).length
     },
     titles: {
       total: achievementsList.filter(data => data.reward && data.reward.title).length,

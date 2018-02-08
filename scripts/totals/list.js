@@ -23,7 +23,11 @@ module.exports = async function() {
   const data = {
     achievements: {
       total: achievementsList.length,
-      unavailable: achievementsList.filter(data => data.unavailable).length
+      unavailable: achievementsList.filter(data => data.unavailable).length,
+      points: {
+        total: achievementsList.map(a => a.points).reduce((a, b) => a + b),
+        unavailable: achievementsList.filter(data => data.unavailable).map(a => a.points).reduce((a, b) => a + b)
+      }
     },
     minions: {
       total: minionsList.length,

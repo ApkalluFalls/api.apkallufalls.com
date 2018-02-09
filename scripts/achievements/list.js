@@ -36,8 +36,8 @@ module.exports = new Helper("Achievement", "achievements", {
         const prev = getPrev(filtered, achievement.order - 1, []);
         const next = getNext(filtered, achievement.order + 1, []);
     
-        if (next || prev)
-          data.series = [...prev, achievement.id, ...next];
+        if (next.length || prev.length)
+          achievement.series = [...prev, achievement.id, ...next];
       }
     );
 

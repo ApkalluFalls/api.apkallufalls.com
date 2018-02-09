@@ -15,6 +15,7 @@ module.exports = new Helper("Achievement", "achievements", {
     "name_en",
     "name_fr",
     "name_ja",
+    "order",
     "patch",
     "points",
     "requirement_1",
@@ -24,6 +25,32 @@ module.exports = new Helper("Achievement", "achievements", {
   ],
   list: true,
   format: (data) => {
+    data.forEach(
+      achievement => {
+        const filtered = data.filter(
+          a => a.achievement_category === achievement.achievement_category
+               && a.type === achievement.type
+               && a.requirement_1 === achievement.requirement_1
+        );
+
+        if (filtered.length) {
+          const prev = filtered.filter(
+            b => b.order === achievement.order - 1
+          )[0];
+          
+          if (prev)
+            achievement.prev = prev.id;
+
+          const next = filtered.filter(
+            b => b.order === achievement.order + 1
+          )[0];
+
+          if (next)
+            achievement.next = next.id;
+        }
+      }
+    )
+
     return {
       data: data.map(entry => {
         let response = {
@@ -36,6 +63,8 @@ module.exports = new Helper("Achievement", "achievements", {
             fr: entry.name_fr,
             jp: entry.name_ja
           },
+          prev: entry.prev,
+          next: entry.next,
           patch: entry.patch,
           weight: _getWeight(entry)
         }

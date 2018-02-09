@@ -46,6 +46,7 @@ module.exports = new Helper("Achievement", "achievements", {
         let response = {
           id: entry.id,
           icon: entry.icon,
+          order: entry.order,
           points: entry.points,
           name: {
             de: entry.name_de,

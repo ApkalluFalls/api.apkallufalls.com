@@ -32,24 +32,14 @@ module.exports = new Helper("Achievement", "achievements", {
                && a.type === achievement.type
                && a.requirement_1 === achievement.requirement_1
         );
-
-        if (filtered.length) {
-          const prev = filtered.filter(
-            b => b.order === achievement.order - 1
-          )[0];
-          
-          if (prev)
-            achievement.prev = prev.id;
-
-          const next = filtered.filter(
-            b => b.order === achievement.order + 1
-          )[0];
-
-          if (next)
-            achievement.next = next.id;
-        }
+    
+        const prev = getPrev(filtered, achievement.order - 1, []);
+        const next = getNext(filtered, achievement.order + 1, []);
+    
+        if (next || prev)
+          data.series = [...prev, achievement.id, ...next];
       }
-    )
+    );
 
     return {
       data: data.map(entry => {
@@ -63,8 +53,7 @@ module.exports = new Helper("Achievement", "achievements", {
             fr: entry.name_fr,
             jp: entry.name_ja
           },
-          prev: entry.prev,
-          next: entry.next,
+          series: entry.series,
           patch: entry.patch,
           weight: _getWeight(entry)
         }
@@ -93,3 +82,27 @@ module.exports = new Helper("Achievement", "achievements", {
 }, (data, base, _helperCreateJSONFn) => {
   createList("achievements", data, base, _helperCreateJSONFn);
 });
+
+function getPrev(filtered, offset, result) {
+  const prev = filtered.filter(
+    b => b.order === offset
+  )[0];
+
+  if (!prev)
+    return result;
+
+  result.unshift(prev.id);
+  return getPrev(filtered, offset - 1, result);
+}
+
+function getNext(filtered, offset, result) {
+  const next = filtered.filter(
+    b => b.order === offset
+  )[0];
+
+  if (!next)
+    return result;
+
+  result.push(next.id);
+  return getNext(filtered, offset + 1, result);
+}

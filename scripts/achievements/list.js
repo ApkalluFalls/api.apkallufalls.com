@@ -93,7 +93,8 @@ module.exports = new Helper("Achievement", "achievements", {
             entry.requirement_6,
             entry.requirement_7,
             entry.requirement_8,
-            entry.requirement_9
+            entry.requirement_9,
+            entry.id
           ].filter(e => e !== 0);
 
         if (_isCumulative(entry))

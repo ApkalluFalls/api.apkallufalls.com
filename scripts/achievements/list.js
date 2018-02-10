@@ -21,6 +21,13 @@ module.exports = new Helper("Achievement", "achievements", {
     "points",
     "requirement_1",
     "requirement_2",
+    "requirement_3",
+    "requirement_4",
+    "requirement_5",
+    "requirement_6",
+    "requirement_7",
+    "requirement_8",
+    "requirement_9",
     "title",
     "type"
   ],
@@ -73,6 +80,21 @@ module.exports = new Helper("Achievement", "achievements", {
           if (entry.title)
             response.reward.title = entry.title;
         }
+
+        // Entry type 2 is an achievement which requires multiple
+        // different achievements to unlock (e.g. Mastering War I).
+        if (entry.type === 2)
+          response.series = [
+            entry.requirement_1,
+            entry.requirement_2,
+            entry.requirement_3,
+            entry.requirement_4,
+            entry.requirement_5,
+            entry.requirement_6,
+            entry.requirement_7,
+            entry.requirement_8,
+            entry.requirement_9
+          ].filter(e => e !== 0);
 
         if (_isCumulative(entry))
           response.cumulative = true;

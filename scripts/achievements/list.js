@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const Helper = require('../_helper');
 const createList = require('../_list');
 const _isAvailable = require('./_isAvailable');
@@ -81,7 +82,35 @@ module.exports = new Helper("Achievement", "achievements", {
     }
   }
 }, (data, base, _helperCreateJSONFn) => {
-  createList("achievements", data, base, _helperCreateJSONFn);
+  fetch(
+    'http://api.xivdb.com/item?columns=id,icon,name_de,name_en,name_fr,name_ja,connect_achievement',
+    {
+      method: 'GET',
+      mode: 'cors'
+    }
+  )
+    .then(response => response.json())
+    .then(items => {
+      items = items.filter(i => i.connect_achievement !== 0);
+      data.forEach(achievement => {
+        const item = items.filter(i => i.id === achievement.item)[0];
+        if (item)
+          achievement.item = {
+            icon: item.icon,
+            id: item.id,
+            name: {
+              de: item.name_de,
+              en: item.name_en,
+              fr: item.name_fr,
+              jp: item.name_ja
+            }
+          }
+      })
+      createList("achievements", data, base, _helperCreateJSONFn);
+    })
+    .catch(e => {
+      throw new Error(e)
+    });
 });
 
 function getPrev(filtered, offset, result) {

@@ -53,6 +53,11 @@ const update = async function (args) {
     await require('./mounts/list.js').fetch();
   }
 
+  // Titles.
+  if (config && config.titlesList) {
+    await require('./titles/list.js').fetch();
+  }
+
   // Totals.
   if (!config || config.totals) {
     message('Totals');

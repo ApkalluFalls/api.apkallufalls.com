@@ -84,7 +84,7 @@ module.exports = new Helper("Achievement", "achievements", {
         // Entry type 2 is an achievement which requires multiple
         // different achievements to unlock (e.g. Mastering War I).
         if (entry.type === 2)
-          response.series = [
+          response.mastery = [
             entry.requirement_1,
             entry.requirement_2,
             entry.requirement_3,

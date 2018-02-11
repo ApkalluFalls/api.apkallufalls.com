@@ -24,6 +24,7 @@ module.exports = {
   timewornMap: { en: 'Randomly awarded from the treasure chest after completing a level {0} (solo) {img1} {i2}.' },
   timewornMapFullParty: { en: 'Randomly awarded from the treasure chest after completing a level {0} (full party) {img1} {i2}.' },
   craft: { en: 'Crafted from a level {0} {i1} recipe{2} with {3}.' },
+  craftShort: { en: 'Crafted from a level {0} {i1} recipe{2}.' },
   fishing: { en: 'Gathered by a {i0} at {1} in {img2} {i3} (x: {4}, y: {5}) using {6} as bait (level {7}).' },
   fishingDesynth: { en: 'Desynthesise {i0} as a {i1}, gathered by a {i2} at {3} in {img4} {i5} (x: {6}, y: {7}) mooching {8} (level {9}).' },
   achievementCertificate: { en: 'Purchase for {i0} {i1} {img2} from {3} at {4} in {img5} {6} (x: {7}, y: {8}).' },

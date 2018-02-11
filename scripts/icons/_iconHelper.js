@@ -5,6 +5,7 @@ const imagemin = require('imagemin');
 const imageminPngquant = require('imagemin-pngquant');
 const imageminPngcrush = require('imagemin-pngcrush');
 const imageminOptipng = require('imagemin-optipng');
+const imageminAdvpng = require('imagemin-advpng');
 const Spritesmith = require('spritesmith');
 
 let createdImages;
@@ -24,9 +25,12 @@ function process(type, data, resolve) {
     console.info("Minifying " + createdImages.length + " new " + type + " icons @ " + saveFolder + ".");
     return imagemin(createdImages, saveFolder, {
       plugins: [
-          imageminPngquant({ quality: '5-10' }),
-          imageminPngcrush({ reduce: true }),
-          imageminOptipng()
+        imageminPngquant({ quality: '5-10' }),
+        imageminPngcrush({ reduce: true }),
+        imageminOptipng()
+      ],
+      use: [
+        imageminAdvpng()
       ]
     }).then(() => {
       console.info("Minification of " + type + " finished.");
@@ -35,7 +39,8 @@ function process(type, data, resolve) {
           { src: files.map(file => saveFolder + file) },
           (err, result) => {
             console.info("Creating icon spritesheet @ " + saveFolder);
-            console.info(err);
+            if (err)
+              return console.error(err);
 
             const coordinates = {};
             Object.keys(result.coordinates).forEach(k => {
@@ -56,7 +61,18 @@ function process(type, data, resolve) {
 
             fs.writeFileSync('../docs/icons/' + type + 's.png', result.image);
             fs.writeFileSync('../docs/icons/' + type + 's.json', JSON.stringify(coordinates));
-            resolve();
+            
+            console.info("Optimising icon spritesheet @ " + saveFolder);
+
+            imagemin(['../docs/icons/' + type + 's.png'], '../docs/icons/', {
+              plugins: [
+                imageminPngquant({ quality: '5-10', speed: 1, floyd: 0.1 }),
+                imageminPngcrush({ reduce: true }),
+                imageminOptipng()
+              ]
+            }).then(() => {
+              resolve();
+            })
           }
         )
       })

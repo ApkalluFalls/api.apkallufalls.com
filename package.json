@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "imagemin": "^5.3.1",
+    "imagemin-advpng": "^4.0.0",
     "imagemin-optipng": "^5.2.1",
     "imagemin-pngcrush": "^5.1.0",
     "imagemin-pngout": "^2.0.0",

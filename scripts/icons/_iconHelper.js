@@ -5,6 +5,7 @@ const imagemin = require('imagemin');
 const imageminPngquant = require('imagemin-pngquant');
 const imageminPngcrush = require('imagemin-pngcrush');
 const imageminOptipng = require('imagemin-optipng');
+const Spritesmith = require('spritesmith');
 
 let createdImages;
 
@@ -29,7 +30,36 @@ function process(type, data, resolve) {
       ]
     }).then(() => {
       console.info("Minification of " + type + " finished.");
-      resolve()
+      fs.readdir(saveFolder, (err, files) => {        
+        Spritesmith.run(
+          { src: files.map(file => saveFolder + file) },
+          (err, result) => {
+            console.info("Creating icon spritesheet @ " + saveFolder);
+            console.info(err);
+
+            const coordinates = {};
+            Object.keys(result.coordinates).forEach(k => {
+              const { x, y, width, height } = result.coordinates[k];
+              const response = [
+                x,
+                y
+              ]
+              
+              if (width !== 40)
+                response.push(width);
+
+              if (height !== 40)
+                response.push(height);
+
+              coordinates[k.replace(/^\.\.\/docs\/icons\/\w+\/|\.png$/g, '')] = response;
+            });
+
+            fs.writeFileSync('../docs/icons/' + type + 's.png', result.image);
+            fs.writeFileSync('../docs/icons/' + type + 's.json', JSON.stringify(coordinates));
+            resolve();
+          }
+        )
+      })
     });
   }
 

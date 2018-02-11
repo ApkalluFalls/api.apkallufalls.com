@@ -66,9 +66,9 @@ const update = async function (args) {
 
   if (!config || config.icons) {
     message('Icons');
-    //await require('./icons/achievements.js').fetch();
-    //await require('./icons/minions.js').fetch();
-    //await require('./icons/mounts.js').fetch();
+    await require('./icons/achievements.js').fetch();
+    await require('./icons/minions.js').fetch();
+    await require('./icons/mounts.js').fetch();
     await require('./icons/items.js').fetch();
   }
 

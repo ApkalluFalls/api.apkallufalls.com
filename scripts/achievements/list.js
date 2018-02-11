@@ -33,6 +33,7 @@ module.exports = new Helper("Achievement", "achievements", {
   ],
   list: true,
   format: (data) => {
+    // Create the series array, if applicable.
     data.forEach(
       achievement => {
         const filtered = data.filter(
@@ -40,12 +41,22 @@ module.exports = new Helper("Achievement", "achievements", {
                && a.type === achievement.type
                && a.requirement_1 === achievement.requirement_1
         );
-    
-        const prev = getPrev(filtered, achievement.order - 1, []);
-        const next = getNext(filtered, achievement.order + 1, []);
-    
-        if (next.length || prev.length)
-          achievement.series = [...prev, achievement.id, ...next];
+
+        // If it has no Order set, and it has a requirement_1 property, the
+        // achievements are already in order for us.
+        if (achievement.order === 0 && achievement.requirement_1) {
+          const series = filtered.filter(a => a.requirement_1 === achievement.requirement_1);
+          if (series.length > 1)
+            achievement.series = series.map(a => a.id);
+        }
+        // Otherwise, the Order is incremental.
+        else {
+          const prev = getPrev(filtered, achievement.order - 1, []);
+          const next = getNext(filtered, achievement.order + 1, []);
+      
+          if (next.length || prev.length)
+            achievement.series = [...prev, achievement.id, ...next];
+        }
       }
     );
 

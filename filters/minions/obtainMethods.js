@@ -694,7 +694,7 @@ const helper = {
       promo
     )
   },
-  raid: (name, level, x, y, expansion, available, promo) => {
+  raid: (name, level, expansion, available, promo) => {
     return o(
       'raid',
       [level, dutyImage, name],

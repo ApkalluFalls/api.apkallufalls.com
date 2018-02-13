@@ -270,6 +270,7 @@ const craftItem = {
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
+  azysLla: ["Azys Lla", true, true, "アジス・ラー"],
   chamber5: ['5th Chamber', 'Fünfte Kammer', 'Cinquième Salle', '第五区画'],
   coerthasCentralHighlands: ['Coerthas Central Highlands', 'Zentrales Hochland Von Coerthas', 'Hautes Terres Du Coerthas Central', 'クルザス中央高地'],
   coerthasWesternHighlands: ["Coerthas Western Highlands", "Westliches Hochland Von Coerthas", "Hautes Terres Du Coerthas Occidental", "クルザス西部高地"],
@@ -566,26 +567,22 @@ const helper = {
     )
   },
   fanFestival: (year, location) => {
-    return [
-      o(
-        'fanFestival',
-        [year, location],
-        expansions.ARR,
-        false,
-        true
-      )
-    ]
+    return o(
+      'fanFestival',
+      [year, location],
+      expansions.ARR,
+      false,
+      true
+    )
   },
   fanFestivalStream: (year, location) => {
-    return [
-      o(
-        'fanFestivalStream',
-        [year, location],
-        expansions.ARR,
-        false,
-        true
-      )
-    ]
+    return o(
+      'fanFestivalStream',
+      [year, location],
+      expansions.ARR,
+      false,
+      true
+    )
   },
   fate: (level, fate, loc, x, y, expansion) => {
     return o(

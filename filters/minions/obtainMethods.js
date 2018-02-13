@@ -23,6 +23,7 @@ const locationImage = 'loc';
 const dutyImage = 'duty';
 const pvpImage = 'pvp';
 const trialImage = 'trial';
+const raidImage = 'raid';
 const timewornImage = 'map';
 const elixirImage = '4559';
 const hiElixirImage = '4560';
@@ -697,7 +698,7 @@ const helper = {
   raid: (name, level, expansion, available, promo) => {
     return o(
       'raid',
-      [level, dutyImage, name],
+      [level, raidImage, name],
       expansion,
       available,
       promo

@@ -53,6 +53,7 @@ const item = {
   hiElixir: ['Hi-Elixir', 'Super-Elixier', 'Super élixir', 'ハイエリクサー'],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
   bait: {
+    bruteLeech: ["Brute Leech", "Grobegel", "Sangsue bestiale", "ブルートリーチ"],
     northernKrill: ['Northern Krill', 'Nordkrill', 'Krill polaire', 'ポーラークリル'],
     topwaterFrog: ['Topwater Frog', 'Schwimmfrosch', 'Grenouille sèche', 'トップウォーターフロッグ']
   },
@@ -264,6 +265,7 @@ const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
   chamber5: ['5th Chamber', 'Fünfte Kammer', 'Cinquième Salle', '第五区画'],
   coerthasCentralHighlands: ['Coerthas Central Highlands', 'Zentrales Hochland Von Coerthas', 'Hautes Terres Du Coerthas Central', 'クルザス中央高地'],
+  coerthasWesternHighlands: ["Coerthas Western Highlands", "Westliches Hochland Von Coerthas", "Hautes Terres Du Coerthas Occidental", "クルザス西部高地"],
   commandRoom: ['Command Room', 'Admiralsbrücke', 'Salon De L\'Amiral', 'アドミラルブリッジ：提督室'],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
@@ -302,6 +304,7 @@ const location = {
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
     hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
+    hullbreakerIsleHard: ["Hullbreaker Isle (Hard)", "Schiffbrecher-Insel (schwer)", "L'Île De Crèvecarène (brutal)", "黒渦伝説 ハルブレーカー・アイル (Hard)"],
     neverreap: ["Neverreap", "Nimmerreich", "Nalloncques", "神域浮島 ネバーリープ"],
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
     sohmAl: ["Sohm Al", "Sohm Al", "Sohm Al", "霊峰踏破 ソーム・アル"],
@@ -324,6 +327,7 @@ const location = {
     theWorldOfDarkness: ['The World Of Darkness', 'Die Welt Der Dunkelheit', 'La Tour De Cristal - Monde Des Ténèbres', 'クリスタルタワー：闇の世界']
   },
   fishing: {
+    southBanepool: ["South Banepool", "Südlicher Bannpfuhl", "Malétang (berge Sud)", "ベーンプール南"],
     theBurningWall: ['The Burning Wall', 'Der Feuerwall', 'Mur Incandescent', 'バーニングウォール'],
     theSaltStrand: ['The Salt Strand', 'Der Salzstrand', 'Atolls De Sel', 'ソルトストランド'],
     theTangle: ["The Tangle", "Der Schlingwald", "L'Enchevêtrement", "タングル湿林"]
@@ -504,6 +508,15 @@ const helper = {
       {
         job: job[0]
       }
+    )
+  },
+  diademFate: (level, fate, expansion) => {
+    return o(
+      'diademFate',
+      [level, dutyImage, location.duty.theDiadem, fateImage, fate],
+      expansion,
+      true,
+      false
     )
   },
   dungeon: (name, level, x, y, expansion, available, promo) => {
@@ -2374,6 +2387,26 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 1, ...craftItem.crawlerSilk },
           { quantity: 1, ...craftItem.bloodPepper }
         ]
+      );
+    
+    case 188:
+      return helper.fishing(
+        location.fishing.southBanepool,
+        location.coerthasWesternHighlands,
+        21, 11,
+        item.bait.bruteLeech,
+        53,
+        expansions.HW
+      );
+
+    case 189:
+      return helper.dungeon(location.duty.hullbreakerIsleHard, 60, null, null, expansions.HW, true, false);
+
+    case 190:
+      return helper.diademFate(
+        60,
+        ["Secret Of The Lost Legend", "Geheimnis Der Verschollenen Legende", "Défi: Brachiosaures En Famille", "星呼の古代獣「ブラキオレイドス」"],
+        expansions.HW
       );
     
     case 236:

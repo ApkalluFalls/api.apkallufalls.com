@@ -37,6 +37,6 @@ module.exports = {
   retainerVenture: { en: 'Randomly awarded from the {1} level {0} {i2} {i3} retainer venture.' },
   gardening: { en: 'Cultivate {img0} {i1}.' },
   wondrousTails: { en: 'Randomly awarded when completing {0} lines of {img1} {i2}.' },
-  fanFestival: { en: 'Attend the {0} fan festival in {1}.' },
-  fanFestivalStream: { en: 'Purchase the online live stream of the {0} fan festival in {1}.' }
+  fanFestival: { en: 'Attend the {y0} fan festival in {1}.' },
+  fanFestivalStream: { en: 'Purchase the online live stream of the {y0} fan festival in {1}.' }
 };

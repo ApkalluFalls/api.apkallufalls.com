@@ -130,6 +130,11 @@ module.exports = {
     fr: 'Quêtes du Mog postier',
     jp: 'レターモーグリ'
   },
+  'Dragonsong War': {
+    de: 'Drachenkrieg',
+    fr: 'Guerre Du Chant Des Dragons - Épilogue',
+    jp: '竜詩戦争 完結編'
+  },
   'Gridanian Sidequests': {
     de: 'Aufträge Finsterwald',
     fr: 'Sombrelinceul',

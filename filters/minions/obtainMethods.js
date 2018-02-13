@@ -14,6 +14,7 @@ const expansions = {
 
 const gilImage = 'gil';
 const companySealsImage = 'cs';
+const wolfMarksImage = 'wm';
 const mgpImage = 'mgp';
 const poeticsImage = 'poetics';
 const achievementCertificate = 'ac';
@@ -30,6 +31,8 @@ const centurioSealsImage = 'cnts';
 const seedImage = 'seed';
 const questImage = 'quest';
 const msqImage = 'msq';
+const brassSkyPirateSpoilsImage = 'bsps';
+const gelmorranPotsherdImage = 'gp';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '友好関係：誓約'],
@@ -293,6 +296,7 @@ const location = {
   thePillars: ["The Pillars", "Strebewerk", "Ishgard - Les Contreforts", "イシュガルド：上層"],
   theRisingStones: ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
   theSeaOfClouds: ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
+  theWolvesDen: ['The Wolves\' Den', 'Wolfshöhle', 'L\'Antre des loups', 'ウルヴズジェイル'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
@@ -324,6 +328,7 @@ const location = {
     theVault: ["The Vault", "Erzbasilika", "La Voûte", "強硬突入 イシュガルド教皇庁"],
     theVoidArk: ["The Void Ark", "Die Nichts-Arche", "L'Arche Du Néant", "魔航船ヴォイドアーク"],
     theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス'],
+    theWeepingCityOfMhach: ["The Weeping City Of Mhach", "Die Stadt Der Tränen", "La Cité Défendue De Mhach", "禁忌都市マハ"],
     theWorldOfDarkness: ['The World Of Darkness', 'Die Welt Der Dunkelheit', 'La Tour De Cristal - Monde Des Ténèbres', 'クリスタルタワー：闇の世界']
   },
   fishing: {
@@ -338,7 +343,9 @@ const _npc = {
   minionTrader: ['Minion Trader', 'Trabantenhändlerin', 'Marchande De Mascottes', 'ミニオントレーダー'],
   lunaVanu: ["Luna Vanu", true, true, "商人のルナバヌ"],
   vathStickpeddler: ["Vath Stickpeddler", "Krämer", "Camelot", "アキンド"],
-  mogmulMogbelly: ["Mogmul Mogbelly", "Mogmul Mogbauch", "Mogmul", "大食いのモグムリ"]
+  mogmulMogbelly: ["Mogmul Mogbelly", "Mogmul Mogbauch", "Mogmul", "大食いのモグムリ"],
+  stormSegeant: ["Storm Sergeant", "Sturmmaat", "Sergent Des Tempêtes", "黒渦団甲軍曹"],
+  spoilsCollector: ["Spoils Collector", "Andenkenhändlerin", "Négociante D'espoilles", "スポイル取引窓口"]
 }
 
 const timewornMap = {
@@ -379,6 +386,9 @@ const poetics = ['Allagan Tomestone of Poetics', 'Allagischer Stein der Poesie',
 const mgp = ['MGP', true, 'Point du Gold Saucer', 'マンダヴィル・ゴールドソーサーポイント'];
 const alliedSeals = ['Allied Seal', 'Jagdabzeichen', 'Insigne allié', '同盟記章'];
 const centurioSeals = ["Centurio Seal", "Centurio-Abzeichen", "Insigne Centurio", "セントリオ記章"];
+const wolfMarks = ["Wolf Marks", "Wolfsmarken", "Marques De Loup", "対人戦績の取引"];
+const brassSkyPirateSpoils = ["Brass Sky Pirate Spoil", "Messing-Piratenandenken", "Espoille de pirate des cieux en laiton", "スカイパイレーツスポイル:真鍮"];
+const gelmorranPotsherd = ["Gelmorran Potsherd", "Gelmorra-Scherbe", "Tesson de poterie gelmorraine", "ゲルモラ土器片"];
 
 const helper = {
   achievementCertificate: (quantity) => {
@@ -513,7 +523,7 @@ const helper = {
   diademFate: (level, fate, expansion) => {
     return o(
       'diademFate',
-      [level, dutyImage, location.duty.theDiadem, fateImage, fate],
+      [level, dutyImage, location.theDiadem, fateImage, fate],
       expansion,
       true,
       false
@@ -1135,11 +1145,9 @@ module.exports = (minion, achievementsIn) => {
             { quantity: 1, ...craftItem.chocoboFeather }
           ]
         ),
-        helper.fate(
+        helper.diademFate(
           60,
           ['Where\'s The Beef', 'Aufgebrachte Herde', 'Défi: Le Bovin Mythique', '古の巨獣「フォゴットン・ウィセント」'],
-          location.theDiadem,
-          null, null,
           expansions.HW
         )
       ];
@@ -2407,6 +2415,111 @@ module.exports = (minion, achievementsIn) => {
         60,
         ["Secret Of The Lost Legend", "Geheimnis Der Verschollenen Legende", "Défi: Brachiosaures En Famille", "星呼の古代獣「ブラキオレイドス」"],
         expansions.HW
+      );
+
+    case 191:
+      return o(
+        'purchase',
+        [
+          15000, wolfMarks, wolfMarksImage,
+          _npc.stormSegeant,
+          wolfMarks.map(w => '(' + w + ')'),
+          locationImage,
+          location.theWolvesDen,
+          4.4, 6.1
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 192:
+      return [
+        helper.eventQuest(
+          15,
+          ["After The Curtain Falls", "Ein Wahrer Held", "À La Gloire De La Lumière", "新生祭の英雄賛歌"],
+          'eq6',
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
+    
+    case 193:
+      return helper.msq(
+        60,
+        locale('Dragonsong War'),
+        ["Litany Of Peace", "Das Ende Eines Langen Weges", "Un Chant Pour L'avenir", "最期の咆哮"],
+        ["Aymeric", true, true, "アイメリク"],
+        location.foundation,
+        13.7, 11.3,
+        expansions.HW,
+        true,
+        false
+      );
+
+    case 194:
+      return [
+        o(
+          'purchase',
+          [
+            50, brassSkyPirateSpoils, brassSkyPirateSpoilsImage,
+            _npc.spoilsCollector,
+            ["(Spoils Exchange (Other))", "(Messing-/Stahl-Piratenandenken (Anderes))", "(Espoilles En Acier/laiton (autres))", "(スポイル：真鍮・鋼鉄の取引（その他）)"],
+            locationImage,
+            location.thePillars,
+            26.1, 22.3
+          ],
+          expansions.HW,
+          true,
+          false
+        ),
+        helper.diademFate(
+          60,
+          ["Blood Wings", "Sanfte Gewalt", "À Tire D'aile", "翼をさずける"],
+          expansions.HW
+        )
+      ];
+    
+    case 195:
+      return helper.raid(location.duty.theWeepingCityOfMhach, 60, expansions.HW, true, false);
+    
+    case 196:
+    case 198:
+      return o(
+        'purchase',
+        [
+          3, gelmorranPotsherd, gelmorranPotsherdImage,
+          ["E-Una-Kotor", "E-Una-Kotor", "E-Una-Kotor", "エ・ウナ・コトロ"],
+          ["(Gelmorran Potsherd Exchange)", "(Gelmorra-Scherben)", "(Tessons De Poterie Gelmorraine)", "(ゲルモラ土器片の取引)"],
+          locationImage,
+          location.southShroud,
+          21.5, 21.5
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 197:
+      return helper.aquapolis();
+    
+    case 200:
+    case 201:
+    case 202:
+    case 203:
+    case 204:
+    case 205:
+    case 206:
+    case 207:
+    case 208:
+    case 209:
+    case 210:
+    case 211:
+    case 212:
+      return helper.eventQuestPurchase(
+        ["Wandering Executive", "Fahrend[a] Geschäftsmann", "Patron Errant", "異邦の社長"],
+        ["Yo-kai Watch", true, true, "妖怪ウォッチ"],
+        expansions.ARR
       );
     
     case 236:

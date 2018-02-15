@@ -30,6 +30,9 @@ module.exports = async function() {
         unavailable: achievementsList.filter(data => data.unavailable).map(a => a.points).reduce((a, b) => a + b)
       }
     },
+    levels: {
+      total: 25 * 70
+    },
     minions: {
       total: minionsList.length,
       unavailable: minionsList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
@@ -79,6 +82,9 @@ module.exports = async function() {
   data.levequests.battle = achievementsList.filter(d => d.id === data.levequests.ids.battle[data.levequests.ids.battle.length - 1])[0].weight;
   data.levequests.crafting = achievementsList.filter(d => d.id === data.levequests.ids.crafting.CRP[data.levequests.ids.crafting.CRP.length - 1])[0].weight * Object.keys(data.levequests.ids.crafting).length;
   data.levequests.gathering = achievementsList.filter(d => d.id === data.levequests.ids.gathering.BTN[data.levequests.ids.gathering.BTN.length - 1])[0].weight * Object.keys(data.levequests.ids.gathering).length;
+  data.levequests.grandCompany = achievementsList.filter(d => d.id === data.levequests.ids.grandCompany.Maelstrom[data.levequests.ids.grandCompany.Maelstrom.length - 1])[0].weight * Object.keys(data.levequests.ids.grandCompany).length;
+
+  data.levequests.total = data.levequests.battle + data.levequests.crafting + data.levequests.gathering + data.levequests.grandCompany;
 
   fs.writeFile("../docs/totals.json", JSON.stringify(data), 'utf8', () => {
     console.log("Totals updated.");

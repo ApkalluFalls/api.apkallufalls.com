@@ -60,6 +60,11 @@ module.exports = async function() {
           BTN: [638, 639, 640, 1351, 1867],
           MIN: [635, 636, 637, 1350, 1868],
           FSH: [641, 642, 643, 1352, 1869]
+        },
+        grandCompany: {
+          Maelstrom: [686, 687, 688],
+          TwinAdder: [689, 690, 691],
+          ImmortalFlames: [692, 693, 694]
         }
       }
     }

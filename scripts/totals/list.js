@@ -42,8 +42,33 @@ module.exports = async function() {
     titles: {
       total: achievementsWithTitles.length,
       unavailable: achievementsWithTitles.filter(data => data.unavailable).length
+    },
+    levequests: {
+      ids: {
+        battle: [608, 609, 610, 1341],
+        crafting: {
+          CRP: [611, 612, 613, 1342, 1859],
+          BSM: [614, 615, 616, 1343, 1860],
+          ARM: [617, 618, 619, 1344, 1861],
+          GSM: [620, 621, 622, 1345, 1862],
+          LTW: [623, 624, 625, 1346, 1863],
+          WVR: [626, 627, 628, 1347, 1864],
+          ALC: [629, 630, 631, 1348, 1865],
+          CUL: [632, 633, 634, 1349, 1866]
+        },
+        gathering: {
+          BTN: [638, 639, 640, 1351, 1867],
+          MIN: [635, 636, 637, 1350, 1868],
+          FSH: [641, 642, 643, 1352, 1869]
+        }
+      }
     }
   }
+
+  // Node doesn't support array.reverse() :(
+  data.levequests.battle = achievementsList.filter(d => d.id === data.levequests.ids.battle[data.levequests.ids.battle.length - 1])[0].weight;
+  data.levequests.crafting = achievementsList.filter(d => d.id === data.levequests.ids.crafting.CRP[data.levequests.ids.crafting.CRP.length - 1])[0].weight * Object.keys(data.levequests.ids.crafting).length;
+  data.levequests.gathering = achievementsList.filter(d => d.id === data.levequests.ids.gathering.BTN[data.levequests.ids.gathering.BTN.length - 1])[0].weight * Object.keys(data.levequests.ids.gathering).length;
 
   fs.writeFile("../docs/totals.json", JSON.stringify(data), 'utf8', () => {
     console.log("Totals updated.");

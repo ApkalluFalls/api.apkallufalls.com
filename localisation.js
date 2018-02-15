@@ -125,10 +125,20 @@ module.exports = {
   },
 
   // Quest
+  'Anima Weapons': {
+    de: 'Anima-Waffen',
+    fr: 'Armes Anima',
+    jp: 'アニマウェポン'
+  },
   'Delivery Moogle Quests': {
     de: 'Mogry-Post',
     fr: 'Quêtes du Mog postier',
     jp: 'レターモーグリ'
+  },
+  'Dragonsong War': {
+    de: 'Drachenkrieg',
+    fr: 'Guerre Du Chant Des Dragons - Épilogue',
+    jp: '竜詩戦争 完結編'
   },
   'Gridanian Sidequests': {
     de: 'Aufträge Finsterwald',
@@ -144,6 +154,11 @@ module.exports = {
     de: 'Aufträge La Noscea',
     fr: 'Noscea',
     jp: 'サブクエスト：ラノシア'
+  },
+  'Post-Dragonsong War': {
+    de: 'Nach Dem Drachenkrieg',
+    fr: 'Après-guerre Du Chant Des Dragons',
+    jp: '竜詩戦争 戦後編'
   },
   'Seasonal Events': {
     de: 'Saisonale Aufträge',
@@ -231,5 +246,10 @@ module.exports = {
     de: true,
     fr: true,
     jp: 'G22'
+  },
+  'Wondrous Tails': {
+    de: 'Khloes Abenteueralbum',
+    fr: 'Aventures imaginaires de Khloe',
+    jp: 'クロの空想帳'
   }
 }

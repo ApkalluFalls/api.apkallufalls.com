@@ -14,6 +14,7 @@ const expansions = {
 
 const gilImage = 'gil';
 const companySealsImage = 'cs';
+const wolfMarksImage = 'wm';
 const mgpImage = 'mgp';
 const poeticsImage = 'poetics';
 const achievementCertificate = 'ac';
@@ -22,6 +23,7 @@ const locationImage = 'loc';
 const dutyImage = 'duty';
 const pvpImage = 'pvp';
 const trialImage = 'trial';
+const raidImage = 'raid';
 const timewornImage = 'map';
 const elixirImage = '4559';
 const hiElixirImage = '4560';
@@ -30,10 +32,14 @@ const centurioSealsImage = 'cnts';
 const seedImage = 'seed';
 const questImage = 'quest';
 const msqImage = 'msq';
+const brassSkyPirateSpoilsImage = 'bsps';
+const gelmorranPotsherdImage = 'gp';
+const wondrousTailsImage = 'wt';
 
 const rank = {
-  sworn: ['Sworn', 'Solidarisch', 'Assermenté', '友好関係：誓約'],
+  sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
   trusted: ['Trusted', 'Vertraut', 'Estimé', '信頼'],
+  allied: ['Allied', 'Verbündet', 'Allié', '盟友']
 }
 
 const beastTribe = {
@@ -51,8 +57,10 @@ const item = {
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
   elixir: ['Elixir', 'Elixier', 'Élixir', 'エリクサー'],
   hiElixir: ['Hi-Elixir', 'Super-Elixier', 'Super élixir', 'ハイエリクサー'],
+  ironTrimmedSack: ["Iron-trimmed Sack", "Gefundener Schatz II", "Trésor mystérieux de grade II", "埋もれた財宝G2"],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
   bait: {
+    bruteLeech: ["Brute Leech", "Grobegel", "Sangsue bestiale", "ブルートリーチ"],
     northernKrill: ['Northern Krill', 'Nordkrill', 'Krill polaire', 'ポーラークリル'],
     topwaterFrog: ['Topwater Frog', 'Schwimmfrosch', 'Grenouille sèche', 'トップウォーターフロッグ']
   },
@@ -262,14 +270,17 @@ const craftItem = {
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
+  azysLla: ["Azys Lla", true, true, "アジス・ラー"],
   chamber5: ['5th Chamber', 'Fünfte Kammer', 'Cinquième Salle', '第五区画'],
   coerthasCentralHighlands: ['Coerthas Central Highlands', 'Zentrales Hochland Von Coerthas', 'Hautes Terres Du Coerthas Central', 'クルザス中央高地'],
+  coerthasWesternHighlands: ["Coerthas Western Highlands", "Westliches Hochland Von Coerthas", "Hautes Terres Du Coerthas Occidental", "クルザス西部高地"],
   commandRoom: ['Command Room', 'Admiralsbrücke', 'Salon De L\'Amiral', 'アドミラルブリッジ：提督室'],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   fogfens: ["Fogfens", "Nebelmoor", "Fangebrume", "迷霧湿原"],
   foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
+  idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   lotusStand: ['Lotus Stand', 'Wasserrosentisch', 'Chaire Du Lotus', '不語仙の座卓'],
@@ -291,17 +302,22 @@ const location = {
   thePillars: ["The Pillars", "Strebewerk", "Ishgard - Les Contreforts", "イシュガルド：上層"],
   theRisingStones: ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
   theSeaOfClouds: ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
+  theWolvesDen: ['The Wolves\' Den', 'Wolfshöhle', 'L\'Antre des loups', 'ウルヴズジェイル'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
   upperLaNoscea: ['Upper La Noscea', 'Oberes La Noscea', 'Haute-Noscea', '高地ラノシア'],
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
     alexanderBurdenOfTheSonSavage: ["Alexander - The Burden Of The Son (Savage)", "Alexander - Last Des Sohnes (episch)", "Alexander - Le Fardeau Du Fils (sadique)", "機工城アレキサンダー零式：律動編4"],
+    alexanderSoulOfTheCreator: ["Alexander - The Soul Of The Creator", "Alexander - Seele Des Schöpfers", "Alexander - L'Âme Du Créateur", "機工城アレキサンダー：天動編4"],
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
+    baelsarsWall: ["Baelsar's Wall", "Baelsar-Wall", "La Muraille De Baelsar", "巨大防壁 バエサルの長城"],
     battleInTheBigKeep: ["Battle In The Big Keep", "Revanche In Den Ruinen", "Revanche Au Vieux Château", "真ギルガメッシュ討滅戦"],
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
+    dunScaith: ["Dun Scaith", true, true, "影の国ダン・スカー"],
     hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
+    hullbreakerIsleHard: ["Hullbreaker Isle (Hard)", "Schiffbrecher-Insel (schwer)", "L'Île De Crèvecarène (brutal)", "黒渦伝説 ハルブレーカー・アイル (Hard)"],
     neverreap: ["Neverreap", "Nimmerreich", "Nalloncques", "神域浮島 ネバーリープ"],
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
     sohmAl: ["Sohm Al", "Sohm Al", "Sohm Al", "霊峰踏破 ソーム・アル"],
@@ -321,9 +337,12 @@ const location = {
     theVault: ["The Vault", "Erzbasilika", "La Voûte", "強硬突入 イシュガルド教皇庁"],
     theVoidArk: ["The Void Ark", "Die Nichts-Arche", "L'Arche Du Néant", "魔航船ヴォイドアーク"],
     theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス'],
-    theWorldOfDarkness: ['The World Of Darkness', 'Die Welt Der Dunkelheit', 'La Tour De Cristal - Monde Des Ténèbres', 'クリスタルタワー：闇の世界']
+    theWeepingCityOfMhach: ["The Weeping City Of Mhach", "Die Stadt Der Tränen", "La Cité Défendue De Mhach", "禁忌都市マハ"],
+    theWorldOfDarkness: ['The World Of Darkness', 'Die Welt Der Dunkelheit', 'La Tour De Cristal - Monde Des Ténèbres', 'クリスタルタワー：闇の世界'],
+    xelphatol: ["Xelphatol", "Xelphatol", "Xelphatol", "峻厳渓谷 ゼルファトル"]
   },
   fishing: {
+    southBanepool: ["South Banepool", "Südlicher Bannpfuhl", "Malétang (berge Sud)", "ベーンプール南"],
     theBurningWall: ['The Burning Wall', 'Der Feuerwall', 'Mur Incandescent', 'バーニングウォール'],
     theSaltStrand: ['The Salt Strand', 'Der Salzstrand', 'Atolls De Sel', 'ソルトストランド'],
     theTangle: ["The Tangle", "Der Schlingwald", "L'Enchevêtrement", "タングル湿林"]
@@ -334,7 +353,9 @@ const _npc = {
   minionTrader: ['Minion Trader', 'Trabantenhändlerin', 'Marchande De Mascottes', 'ミニオントレーダー'],
   lunaVanu: ["Luna Vanu", true, true, "商人のルナバヌ"],
   vathStickpeddler: ["Vath Stickpeddler", "Krämer", "Camelot", "アキンド"],
-  mogmulMogbelly: ["Mogmul Mogbelly", "Mogmul Mogbauch", "Mogmul", "大食いのモグムリ"]
+  mogmulMogbelly: ["Mogmul Mogbelly", "Mogmul Mogbauch", "Mogmul", "大食いのモグムリ"],
+  stormSegeant: ["Storm Sergeant", "Sturmmaat", "Sergent Des Tempêtes", "黒渦団甲軍曹"],
+  spoilsCollector: ["Spoils Collector", "Andenkenhändlerin", "Négociante D'espoilles", "スポイル取引窓口"]
 }
 
 const timewornMap = {
@@ -375,6 +396,9 @@ const poetics = ['Allagan Tomestone of Poetics', 'Allagischer Stein der Poesie',
 const mgp = ['MGP', true, 'Point du Gold Saucer', 'マンダヴィル・ゴールドソーサーポイント'];
 const alliedSeals = ['Allied Seal', 'Jagdabzeichen', 'Insigne allié', '同盟記章'];
 const centurioSeals = ["Centurio Seal", "Centurio-Abzeichen", "Insigne Centurio", "セントリオ記章"];
+const wolfMarks = ["Wolf Marks", "Wolfsmarken", "Marques De Loup", "対人戦績の取引"];
+const brassSkyPirateSpoils = ["Brass Sky Pirate Spoil", "Messing-Piratenandenken", "Espoille de pirate des cieux en laiton", "スカイパイレーツスポイル:真鍮"];
+const gelmorranPotsherd = ["Gelmorran Potsherd", "Gelmorra-Scherbe", "Tesson de poterie gelmorraine", "ゲルモラ土器片"];
 
 const helper = {
   achievementCertificate: (quantity) => {
@@ -506,6 +530,15 @@ const helper = {
       }
     )
   },
+  diademFate: (level, fate, expansion) => {
+    return o(
+      'diademFate',
+      [level, dutyImage, location.theDiadem, fateImage, fate],
+      expansion,
+      true,
+      false
+    )
+  },
   dungeon: (name, level, x, y, expansion, available, promo) => {
     return o(
       x && y ? 'duty' : 'dutyFinalChest',
@@ -531,6 +564,24 @@ const helper = {
       expansion,
       false,
       false
+    )
+  },
+  fanFestival: (year, location) => {
+    return o(
+      'fanFestival',
+      [year, location],
+      expansions.ARR,
+      false,
+      true
+    )
+  },
+  fanFestivalStream: (year, location) => {
+    return o(
+      'fanFestivalStream',
+      [year, location],
+      expansions.ARR,
+      false,
+      true
     )
   },
   fate: (level, fate, loc, x, y, expansion) => {
@@ -671,10 +722,10 @@ const helper = {
       promo
     )
   },
-  raid: (name, level, x, y, expansion, available, promo) => {
+  raid: (name, level, expansion, available, promo) => {
     return o(
       'raid',
-      [level, dutyImage, name],
+      [level, raidImage, name],
       expansion,
       available,
       promo
@@ -735,6 +786,15 @@ const helper = {
       [locale('Veteran Reward'), days],
       expansions.ARR,
       false,
+      false
+    )
+  },
+  wondrousTails: (lines) => {
+    return o(
+      'wondrousTails',
+      [lines, wondrousTailsImage, locale('Wondrous Tails')],
+      expansions.HW,
+      true,
       false
     )
   }
@@ -835,13 +895,13 @@ module.exports = (minion, achievementsIn) => {
       ];
     
     case 6:
-      return helper.achievementReward(736, expansions.ARealmReborn, true, false);
+      return helper.achievementReward(736, expansions.ARR, true, false);
       
     case 7:
-      return helper.achievementReward(737, expansions.ARealmReborn, true, false);
+      return helper.achievementReward(737, expansions.ARR, true, false);
       
     case 8:
-      return helper.achievementReward(738, expansions.ARealmReborn, true, false);
+      return helper.achievementReward(738, expansions.ARR, true, false);
     
     case 9:
       return helper.companySeals(20000, 'Maelstrom');
@@ -1122,17 +1182,15 @@ module.exports = (minion, achievementsIn) => {
             { quantity: 1, ...craftItem.chocoboFeather }
           ]
         ),
-        helper.fate(
+        helper.diademFate(
           60,
           ['Where\'s The Beef', 'Aufgebrachte Herde', 'Défi: Le Bovin Mythique', '古の巨獣「フォゴットン・ウィセント」'],
-          location.theDiadem,
-          null, null,
           expansions.HW
         )
       ];
     
     case 40:
-      return helper.achievementReward(929, expansions.ARealmReborn, true, false);
+      return helper.achievementReward(929, expansions.ARR, true, false);
 
     case 41:
       return helper.msq(
@@ -1458,7 +1516,7 @@ module.exports = (minion, achievementsIn) => {
       ];
     
     case 75:
-      return helper.achievementReward(859, expansions.ARealmReborn, true, false);
+      return helper.achievementReward(859, expansions.ARR, true, false);
 
     case 76:
       return [
@@ -1729,7 +1787,7 @@ module.exports = (minion, achievementsIn) => {
       );
 
     case 118:
-      return helper.achievementReward(1040, expansions.ARealmReborn, true, false);
+      return helper.achievementReward(1040, expansions.ARR, true, false);
 
     case 119:
       return helper.msq(
@@ -2155,13 +2213,13 @@ module.exports = (minion, achievementsIn) => {
       );
 
     case 163:
-      return helper.achievementReward(1382, expansions.ARealmReborn, true, false);
+      return helper.achievementReward(1382, expansions.ARR, true, false);
 
     case 164:
-      return helper.achievementReward(1385, expansions.ARealmReborn, true, false);
+      return helper.achievementReward(1385, expansions.ARR, true, false);
 
     case 165:
-      return helper.achievementReward(1380, expansions.ARealmReborn, true, false);
+      return helper.achievementReward(1380, expansions.ARR, true, false);
     
     case 166:
       return helper.dungeon(location.duty.saintMociannesArboretum, 60, null, null, expansions.HW, true, false);
@@ -2337,7 +2395,7 @@ module.exports = (minion, achievementsIn) => {
           rank.sworn,
           beastTribe.moogle,
           30000, gil, gilImage,
-          _npc.vathStickpeddler,
+          _npc.mogmulMogbelly,
           ['(Purchase Items (Sworn))', '(Waren (Solidarisch))', '(Objets (rang Assermenté))', '(アイテムの取引(友好関係：誓約))'],
           locationImage,
           location.theChurningMists,
@@ -2374,6 +2432,263 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 1, ...craftItem.crawlerSilk },
           { quantity: 1, ...craftItem.bloodPepper }
         ]
+      );
+    
+    case 188:
+      return helper.fishing(
+        location.fishing.southBanepool,
+        location.coerthasWesternHighlands,
+        21, 11,
+        item.bait.bruteLeech,
+        53,
+        expansions.HW
+      );
+
+    case 189:
+      return helper.dungeon(location.duty.hullbreakerIsleHard, 60, null, null, expansions.HW, true, false);
+
+    case 190:
+      return helper.diademFate(
+        60,
+        ["Secret Of The Lost Legend", "Geheimnis Der Verschollenen Legende", "Défi: Brachiosaures En Famille", "星呼の古代獣「ブラキオレイドス」"],
+        expansions.HW
+      );
+
+    case 191:
+      return o(
+        'purchase',
+        [
+          15000, wolfMarks, wolfMarksImage,
+          _npc.stormSegeant,
+          wolfMarks.map(w => '(' + w + ')'),
+          locationImage,
+          location.theWolvesDen,
+          4.4, 6.1
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 192:
+      return [
+        helper.eventQuest(
+          15,
+          ["After The Curtain Falls", "Ein Wahrer Held", "À La Gloire De La Lumière", "新生祭の英雄賛歌"],
+          'eq6',
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
+    
+    case 193:
+      return helper.msq(
+        60,
+        locale('Dragonsong War'),
+        ["Litany Of Peace", "Das Ende Eines Langen Weges", "Un Chant Pour L'avenir", "最期の咆哮"],
+        ["Aymeric", true, true, "アイメリク"],
+        location.foundation,
+        13.7, 11.3,
+        expansions.HW,
+        true,
+        false
+      );
+
+    case 194:
+      return [
+        o(
+          'purchase',
+          [
+            50, brassSkyPirateSpoils, brassSkyPirateSpoilsImage,
+            _npc.spoilsCollector,
+            ["(Spoils Exchange (Other))", "(Messing-/Stahl-Piratenandenken (Anderes))", "(Espoilles En Acier/laiton (autres))", "(スポイル：真鍮・鋼鉄の取引（その他）)"],
+            locationImage,
+            location.thePillars,
+            26.1, 22.3
+          ],
+          expansions.HW,
+          true,
+          false
+        ),
+        helper.diademFate(
+          60,
+          ["Blood Wings", "Sanfte Gewalt", "À Tire D'aile", "翼をさずける"],
+          expansions.HW
+        )
+      ];
+    
+    case 195:
+      return helper.raid(location.duty.theWeepingCityOfMhach, 60, expansions.HW, true, false);
+    
+    case 196:
+    case 198:
+      return o(
+        'purchase',
+        [
+          3, gelmorranPotsherd, gelmorranPotsherdImage,
+          ["E-Una-Kotor", "E-Una-Kotor", "E-Una-Kotor", "エ・ウナ・コトロ"],
+          ["(Gelmorran Potsherd Exchange)", "(Gelmorra-Scherben)", "(Tessons De Poterie Gelmorraine)", "(ゲルモラ土器片の取引)"],
+          locationImage,
+          location.southShroud,
+          21.5, 21.5
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 197:
+      return helper.aquapolis();
+    
+    case 200:
+    case 201:
+    case 202:
+    case 203:
+    case 204:
+    case 205:
+    case 206:
+    case 207:
+    case 208:
+    case 209:
+    case 210:
+    case 211:
+    case 212:
+      return helper.eventQuestPurchase(
+        ["Wandering Executive", "Fahrend[a] Geschäftsmann", "Patron Errant", "異邦の社長"],
+        ["Yo-kai Watch", true, true, "妖怪ウォッチ"],
+        expansions.ARR
+      );
+    
+    case 214:
+      return helper.squareEnixStore(
+        ['ENCYCLOPAEDIA EORZEA - THE WORLD OF FINAL FANTASY XIV - [BOOK]', true, true, true],
+        ['Monday, December 31, 2018', 'Montag, 31. Dezember 2018', 'Lundi 31 décembre 2018', '2018年12月31日']
+      );
+    
+    case 215:
+      return helper.raid(location.duty.alexanderSoulOfTheCreator, 60, expansions.HW, true, false);
+
+    case 216:
+      return helper.dungeon(location.duty.xelphatol, 60, null, null, expansions.HW, true, false);
+
+    case 217:
+    case 218:
+    case 228:
+    case 260:
+    case 264:
+      return helper.wondrousTails(2);
+    
+    case 219:
+      return helper.itemAccursedHoard(item.ironTrimmedSack);
+
+    case 220:
+      return [
+        helper.fanFestival(2016, ['Frankfurt', true, 'Francfort', 'フランクフルト']),
+        helper.fanFestivalStream(2016, ['Frankfurt', true, 'Francfort', 'フランクフルト'])
+      ];
+
+    case 221:
+      return [
+        helper.fanFestival(2016, ['Las Vegas', true, true, 'ラスベガス']),
+        helper.fanFestivalStream(2016, ['Las Vegas', true, true, 'ラスベガス'])
+      ];
+
+    case 222:
+      return [
+        helper.fanFestival(2016, ['Tokyo', 'Tokio', true, '東京']),
+        helper.fanFestivalStream(2016, ['Tokyo', 'Tokio', true, '東京'])
+      ];
+    
+    case 224:
+      return helper.msq(
+        60,
+        locale('Post-Dragonsong War'),
+        ["An Ending To Mark A New Beginning", "Wege In Die Zukunft", "Les Gardiens Des âmes", "魂を継ぐ者"],
+        ["Alphinaud", "Alphinaud", "Alphinaud", "アルフィノ"],
+        location.southernThanalan,
+        21.5, 21.4,
+        expansions.HW,
+        true,
+        false
+      );
+
+    case 225:
+      return helper.eventQuestPurchase(
+        ["Seasonal Event Prizes", "Saisonale Gegenstände", "Récompenses D'événements Saisonniers", "シーズナルイベント報酬の交換"],
+        ["All Saints' Wake (2016)", true, true, "守護天節 (2016)"],
+        expansions.ARR
+      );
+
+    case 226:
+      return helper.dungeon(location.duty.baelsarsWall, 60, null, null, expansions.HW, true, false);
+
+    case 227:
+      return helper.eventQuestPurchase(
+        ["House Valentione Maid", "Dienstmädchen[p] Des Hauses Valention", "Soubrette Des Valention", "ヴァレンティオン家のメイド"],
+        ["Valentione's Day (2017)", "Valention (2017)", "La Valention (2017)", "ヴァレンティオン (2017)"],
+        expansions.ARR
+      );
+    
+    case 229:
+      return helper.squareEnixStore(
+        ['FINAL FANTASY® XIV HEAVENSWARD™ – THE SCARS OF WAR', true, true, true],
+        ['Monday, December 31, 2018', 'Montag, 31. Dezember 2018', 'Lundi 31 décembre 2018', '2018年12月31日']
+      );
+    
+    case 230:
+      return helper.quest(
+        60,
+        locale('Hildibrand Quests'),
+        ["If I Could Turn Back Time", "Nobody Is Perfect - Außer Hildi", "Chacun Son Meilleur Jour", "理想の毎日"],
+        ["Hildibrand", true, true, "ヒルディブランド"],
+        location.idyllshire,
+        6.4, 7.7,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 231:
+      return helper.quest(
+        60,
+        locale('Anima Weapons'),
+        ["Body And Soul", "Es Lebe Der Kommerz", "Un Esprit Qui Fait Corps", "研究の終わりに"],
+        ["Automaton", "Marionette", "Pantin", "からくり人形"],
+        location.azysLla,
+        7.5, 11.6,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 232:
+      return helper.raid(location.duty.dunScaith, 60, expansions.HW, true, false);
+    
+    case 233:
+      return helper.squareEnixStore(
+        ['THE FAR EDGE OF FATE: FINAL FANTASY XIV ORIGINAL SOUNDTRACK', true, true, true],
+        ['Monday, December 31, 2018', 'Montag, 31. Dezember 2018', 'Lundi 31 décembre 2018', '2018年12月31日']
+      );
+    
+    case 234:
+      return helper.achievementReward(1749, expansions.HW, true, false);
+    
+    case 235:
+      return o(
+        'beastTribe',
+        [
+          rank.allied,
+          beastTribe.moogle,
+          25000, gil, gilImage,
+          _npc.mogmulMogbelly,
+          ["(Purchase Items (Allied))", "(Waren (Verbündet))", "(Objets (rang Allié))", "(アイテムの取引(友好関係：盟友))"],
+          locationImage,
+          location.theChurningMists,
+          16, 28.5
+        ],
+        expansions.HW,
+        true,
+        false
       );
     
     case 236:

@@ -74,7 +74,7 @@ module.exports = new Helper(name, plural, {
 
         result.summon = {
           de: data.summon_de,
-          en: data.summon_en,
+          en: data.summon_en.replace(new RegExp(`Summon your ${data.name_en}( minion)?\\. `, "i"), ''),
           fr: data.summon_fr,
           jp: data.summon_ja
         };

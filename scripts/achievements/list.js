@@ -4,6 +4,7 @@ const createList = require('../_list');
 const _isAvailable = require('./_isAvailable');
 const _isCumulative = require('./_isCumulative');
 const _getWeight = require('./_getWeight');
+const _getMountIdFromItem = require('./_getMountIdFromItem');
 
 module.exports = new Helper("Achievement", "achievements", {
   api: 'achievement',
@@ -117,33 +118,75 @@ module.exports = new Helper("Achievement", "achievements", {
   }
 }, (data, base, _helperCreateJSONFn) => {
   fetch(
-    'http://api.xivdb.com/item?columns=id,icon,name_de,name_en,name_fr,name_ja,connect_achievement',
+    'http://api.xivdb.com/minion',
     {
       method: 'GET',
       mode: 'cors'
     }
   )
     .then(response => response.json())
-    .then(items => {
-      items = items.filter(i => i.connect_achievement !== 0);
-      data.forEach(achievement => {
-        const item = items.filter(i => i.id === achievement.item)[0];
-        if (item)
-          achievement.item = {
-            icon: item.icon,
-            id: item.id,
-            name: {
-              de: item.name_de,
-              en: item.name_en,
-              fr: item.name_fr,
-              jp: item.name_ja
+    .then(minions => {
+      fetch(
+        'http://api.xivdb.com/mount',
+        {
+          method: 'GET',
+          mode: 'cors'
+        }
+      )
+        .then(response => response.json())
+        .then(mounts => {
+          fetch(
+            'http://api.xivdb.com/item?columns=id,icon,name_de,name_en,name_fr,name_ja,connect_achievement,item_ui_category',
+            {
+              method: 'GET',
+              mode: 'cors'
             }
-          }
-      })
-      createList("achievements", data, base, _helperCreateJSONFn);
-    })
-    .catch(e => {
-      throw new Error(e)
+          )
+            .then(response => response.json())
+            .then(items => {
+              items = items.filter(i => i.connect_achievement !== 0);
+              data.forEach(achievement => {
+                const item = items.filter(i => i.id === achievement.item)[0];
+                if (item) {
+                  achievement.item = {
+                    icon: item.icon,
+                    id: item.id,
+                    name: {
+                      de: item.name_de,
+                      en: item.name_en,
+                      fr: item.name_fr,
+                      jp: item.name_ja
+                    }
+                  }
+
+                  switch (item.item_ui_category) {
+                    case 81:
+                      const match = minions.filter(m => m.name_en.toLowerCase() === item.name_en.toLowerCase())[0];
+                      if (!match) {
+                        console.info(item);
+                        throw new Error('Minion name not matched to item name.');
+                      }
+                      achievement.item.special = {
+                        type: 'minion',
+                        id: match.id
+                      };
+                      break;
+
+                    case 63:
+                      achievement.item.special = {
+                        type: 'mount',
+                        id: _getMountIdFromItem(mounts, item)
+                      };
+                      break;
+                  }
+                }
+              })
+              createList("achievements", data, base, _helperCreateJSONFn);
+            })
+            .catch(e => {
+              throw new Error(e)
+            });
+        });
     });
 });
 

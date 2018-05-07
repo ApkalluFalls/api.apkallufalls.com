@@ -61,12 +61,16 @@ const item = {
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
   bait: {
     bruteLeech: ["Brute Leech", "Grobegel", "Sangsue bestiale", "ブルートリーチ"],
+    lugworm: ["Lugworm", "Wattwurm", "Ver de vase", "ラグワーム"],
     northernKrill: ['Northern Krill', 'Nordkrill', 'Krill polaire', 'ポーラークリル'],
     topwaterFrog: ['Topwater Frog', 'Schwimmfrosch', 'Grenouille sèche', 'トップウォーターフロッグ']
   },
   fish: {
     assassinBetta: ["Assassin Betta", "Kampffisch", "Betta assassin", "アサシンベタ"],
-    ninjaBetta: ["Ninja Betta", "Ninja-Kampffisch", "Betta ninja", "ニンジャベタ"]
+    merlthorGoby: ["Merlthor Goby", "Merlthor-Grundel", "Gobie de Merlthor", "メルトールゴビー"],
+    ninjaBetta: ["Ninja Betta", "Ninja-Kampffisch", "Betta ninja", "ニンジャベタ"],
+    wahoo: ["Wahoo", "Räubermakrele", "Thazard noir", "ワフー"]
+
   },
   seeds: {
     eggplantKnight: ['Eggplant Knight Seeds', 'Ritter-Aubergine-Samen', 'Graines du Chevalier aubergine', 'エッグナイトの種'],
@@ -342,6 +346,7 @@ const location = {
     xelphatol: ["Xelphatol", "Xelphatol", "Xelphatol", "峻厳渓谷 ゼルファトル"]
   },
   fishing: {
+    northIsleOfEndlessSummer: ["North Isle Of Endless Summer", "Insel Des Ewigen Sommers (Nord)", "Île De L'Éternel été (nord)", "常夏の島北"],
     southBanepool: ["South Banepool", "Südlicher Bannpfuhl", "Malétang (berge Sud)", "ベーンプール南"],
     theBurningWall: ['The Burning Wall', 'Der Feuerwall', 'Mur Incandescent', 'バーニングウォール'],
     theSaltStrand: ['The Salt Strand', 'Der Salzstrand', 'Atolls De Sel', 'ソルトストランド'],
@@ -606,6 +611,15 @@ const helper = {
     return o(
       'fishingDesynth',
       [item, locale('Culinarian'), locale('Fisher'), waters, locationImage, loc, x, y, bait, level]
+    )
+  },
+  fishingDoubleMooch: (waters, loc, x, y, bait, level, expansion, fish1, fish2) => {
+    return o(
+      'fishingDoubleMooch',
+      [locale('Fisher'), waters, locationImage, loc, x, y, bait, level, fish1, fish2],
+      expansion,
+      true,
+      false
     )
   },
   gardening: (seeds) => {
@@ -2705,6 +2719,16 @@ module.exports = (minion, achievementsIn) => {
         expansions.ARR,
         true,
         false
+      );
+    
+    case 237:
+      return helper.fishingDoubleMooch(
+        location.fishing.northIsleOfEndlessSummer,
+        location.easternLaNoscea,
+        36, 26,
+        item.bait.lugworm,
+        63,
+        expansions.SB
       );
 
     default:

@@ -160,10 +160,9 @@ module.exports = new Helper("Achievement", "achievements", {
                   }
 
                   switch (item.item_ui_category) {
-                    case 81:
+                    case 81: {
                       const match = minions.filter(m => m.name_en.toLowerCase() === item.name_en.toLowerCase())[0];
                       if (!match) {
-                        console.info(item);
                         throw new Error('Minion name not matched to item name.');
                       }
                       achievement.item.special = {
@@ -171,13 +170,17 @@ module.exports = new Helper("Achievement", "achievements", {
                         id: match.id
                       };
                       break;
+                    }
 
-                    case 63:
-                      achievement.item.special = {
-                        type: 'mount',
-                        id: _getMountIdFromItem(mounts, item)
-                      };
+                    case 63: {
+                      const match = _getMountIdFromItem(mounts, item);
+                      if (match)
+                        achievement.item.special = {
+                          type: 'mount',
+                          id: match
+                        };
                       break;
+                      }
                   }
                 }
               })

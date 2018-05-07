@@ -2728,7 +2728,9 @@ module.exports = (minion, achievementsIn) => {
         36, 26,
         item.bait.lugworm,
         63,
-        expansions.SB
+        expansions.SB,
+        item.fish.merlthorGoby,
+        item.fish.wahoo
       );
 
     default:

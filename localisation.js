@@ -242,6 +242,16 @@ module.exports = {
     fr: true,
     jp: 'G19'
   },
+  'XX': {
+    de: true,
+    fr: true,
+    jp: 'G20'
+  },
+  'XXI': {
+    de: true,
+    fr: true,
+    jp: 'G21'
+  },
   'XXII': {
     de: true,
     fr: true,

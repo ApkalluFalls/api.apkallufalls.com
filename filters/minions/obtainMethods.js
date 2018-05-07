@@ -1750,11 +1750,11 @@ module.exports = (minion, achievementsIn) => {
 
     case 111:
       return [
-        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XIV'),
-        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XV'),
-        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XVI'),
-        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XVII'),
-        helper.retainerVenture(50, 'Fisher', 'Woodland Exploration', 'XVIII')
+        helper.retainerVenture(50, 'Botanist', 'Woodland Exploration', 'XIV'),
+        helper.retainerVenture(50, 'Botanist', 'Woodland Exploration', 'XV'),
+        helper.retainerVenture(50, 'Botanist', 'Woodland Exploration', 'XVI'),
+        helper.retainerVenture(50, 'Botanist', 'Woodland Exploration', 'XVII'),
+        helper.retainerVenture(50, 'Botanist', 'Woodland Exploration', 'XVIII')
       ];
 
     case 112: 
@@ -2732,6 +2732,42 @@ module.exports = (minion, achievementsIn) => {
         item.fish.merlthorGoby,
         item.fish.wahoo
       );
+    
+    case 238:
+      return helper.collectorsEdition(locale('Stormblood'), expansions.SB, true);
+
+    case 239:
+      return [
+        o(
+          'preOrder',
+          [
+            locale('Pre-order'),
+            locale('Stormblood'),
+            ['Tuesday, June 20, 2017', 'Seinstag, 20. Juni 2017', 'Mardi 20 juin 2017', '2017年6月20日']
+          ],
+          expansions.SB,
+          false,
+          true
+        )
+      ];
+    
+    case 240:
+      return helper.achievementReward(1754, expansions.ARR, true, false);
+
+    case 241:
+      return [
+        helper.retainerVenture(60, 'Fisher', 'Waterside Exploration', 'XIX'),
+        helper.retainerVenture(61, 'Fisher', 'Waterside Exploration', 'XX'),
+        helper.retainerVenture(65, 'Fisher', 'Waterside Exploration', 'XXI'),
+        helper.retainerVenture(60, 'Miner', 'Highland Exploration', 'XIX'),
+        helper.retainerVenture(61, 'Miner', 'Highland Exploration', 'XX'),
+        helper.retainerVenture(65, 'Miner', 'Highland Exploration', 'XXI'),
+        helper.retainerVenture(70, 'Miner', 'Highland Exploration', 'XXII'),
+        helper.retainerVenture(60, 'Botanist', 'Woodland Exploration', 'XIX'),
+        helper.retainerVenture(61, 'Botanist', 'Woodland Exploration', 'XX'),
+        helper.retainerVenture(65, 'Botanist', 'Woodland Exploration', 'XXI'),
+        helper.retainerVenture(70, 'Botanist', 'Woodland Exploration', 'XXII')
+      ];
 
     default:
       //console.log("Unknown method for minion " + minion.id);

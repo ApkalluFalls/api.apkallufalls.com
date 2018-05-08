@@ -19,6 +19,7 @@ const mgpImage = 'mgp';
 const poeticsImage = 'poetics';
 const achievementCertificate = 'ac';
 const fateImage = 'fate';
+const eurekaAnemosFateImage = 'fate2';
 const locationImage = 'loc';
 const dutyImage = 'duty';
 const pvpImage = 'pvp';
@@ -133,6 +134,10 @@ const craftItem = {
   broombush: {
     icon: 7776,
     name: ['Broombush', 'Ginsterstrauch', 'Genêt', 'ホウキグサ']
+  },
+  byakkosMane: {
+    icon: 22307,
+    name: ["Byakko's Mane", "Byakko-Mäne", "Crinière du Tigre blanc", "白虎のタテガミ"]
   },
   cashmereCloth: {
     icon: 7609,
@@ -370,6 +375,7 @@ const location = {
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
+  eurekaAnemos: ["Eureka Anemos", "Eureka Anemos", "Eurêka Anemos", "エウレカ：アネモス帯"],
   fogfens: ["Fogfens", "Nebelmoor", "Fangebrume", "迷霧湿原"],
   foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
@@ -425,6 +431,8 @@ const location = {
     sohmAl: ["Sohm Al", "Sohm Al", "Sohm Al", "霊峰踏破 ソーム・アル"],
     saintMociannesArboretum: ["Saint Mocianne's Arboretum", "Sankt Mocianne-Arboretum", "L'Arboretum Sainte-Mocianne", "草木庭園 聖モシャーヌ植物園"],
     shisuiOfTheVioletTides: ["Shisui Of The Violet Tides", "Shisui", "Le Palais Aux Marées Violettes", "海底宮殿 紫水宮"],
+    sigmascapev40: ["Sigmascape V4.0", "Sigmametrie 4.0", "Sigmastice V4.0", "次元の狭間オメガ：シグマ編4"],
+    sigmascapev40Savage: ["Sigmascape V4.0 (Savage)", "Sigmametrie 4.0 (episch)", "Sigmastice V4.0 (sadique)", "次元の狭間オメガ零式：シグマ編4"],
     syrcusTower: ['Syrcus Tower', 'Kristallturm - Der Syrcus-Turm', 'La Tour De Cristal - Tour De Syrcus', 'クリスタルタワー：シルクスの塔'],
     theAery: ["The Aery", "Nest Des Drachen", "L'Aire", "邪竜血戦 ドラゴンズエアリー"],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
@@ -654,6 +662,15 @@ const helper = {
       'diademFate',
       [level, dutyImage, location.theDiadem, fateImage, fate],
       expansion,
+      true,
+      false
+    )
+  },
+  eurekaAnemosFate: (level, fate) => {
+    return o(
+      'diademFate',
+      [level, dutyImage, location.eurekaAnemos, eurekaAnemosFateImage, fate],
+      expansions.SB,
       true,
       false
     )
@@ -3233,6 +3250,33 @@ module.exports = (minion, achievementsIn) => {
         ["Uneggseptable Losses", "Wundersame Eierdiebe", "Pas De Fête Sans Cacher Des Prœufs", "エッグハントの大事件"],
         'eq7',
         expansions.ARR
+      );
+
+    case 281:
+      return [
+        helper.raid(location.duty.sigmascapev40, 70, expansions.SB, true, false),
+        helper.raid(location.duty.sigmascapev40Savage, 70, expansions.SB, true, false)
+      ];
+
+    case 284:
+      return helper.craft(
+        70,
+        locale('Weaver'),
+        2,
+        [
+          { quantity: 7, ...craftItem.windCrystal },
+          { quantity: 7, ...craftItem.lightningCrystal },
+          { quantity: 1, ...craftItem.byakkosMane },
+          { quantity: 1, ...craftItem.royalFern },
+          { quantity: 1, ...craftItem.twinsilk },
+          { quantity: 1, ...craftItem.worstedYarn }
+        ]
+      );
+    
+    case 285:
+      return helper.eurekaAnemosFate(
+        17,
+        ["Wine And Honey", "Schlafende Drachen Soll Man Nicht Wecken", "Défi: Le Dragon Démentiel", "狂乱の暗竜「ファヴニル」"]
       );
 
     default:

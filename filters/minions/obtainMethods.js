@@ -36,6 +36,7 @@ const brassSkyPirateSpoilsImage = 'bsps';
 const gelmorranPotsherdImage = 'gp';
 const wondrousTailsImage = 'wt';
 const sasshoSekiFragmentImage = 'ssf';
+const ventureImage = 'v';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -772,7 +773,7 @@ const helper = {
 
     return o(
       'retainerVenture',
-      [level, locale(jobType), locale(type), locale(number)],
+      [level, locale(jobType), ventureImage, locale(type), locale(number)],
       expansion,
       true,
       false

@@ -36,7 +36,7 @@ module.exports = {
   mogStation: { en: 'Purchase directly from the {i0}.' },
   beastTribe: { en: 'Achieve {0} reputation with the {i1} Beast Tribe, then purchase for {img4} {i2} {i3} from {5} {6} in {img7} {8} (x: {9}, y: {10}).'},
   squareEnixStore: { en: 'Purchase {i0} on the {i1} and register the promotional code on or before {2}.' },
-  retainerVenture: { en: 'Randomly awarded from the {1} level {0} {i2} {i3} retainer venture.' },
+  retainerVenture: { en: 'Randomly awarded from the {1} level {0} {img2} {i3} {i4} retainer venture.' },
   gardening: { en: 'Cultivate {img0} {i1}.' },
   wondrousTails: { en: 'Randomly awarded when completing {0} lines of {img1} {i2}.' },
   fanFestival: { en: 'Attend the {y0} fan festival in {1}.' },

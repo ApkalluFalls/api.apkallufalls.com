@@ -3268,7 +3268,7 @@ module.exports = (minion, achievementsIn) => {
         helper.raid(location.duty.sigmascapev40Savage, 70, expansions.SB, true, false)
       ];
     
-    case 282:
+    case 283:
       return helper.freeCompanySubaquaticVoyage(
         ['Deep-sea Site 3', '?Deep-sea Site 3?', '?Deep-sea Site 3?', '?Deep-sea Site 3?']
       );

@@ -9,6 +9,7 @@ module.exports = {
   // Unlock the __achievement__ achievement, then speak to Jonathas at Apkallu Falls in Old Gridania (x: 10.5, y: 6.3).
   achievement: { en: 'Unlock the __achievement__ achievement, then speak to {0} at {1} in {img2} {3} (x: {4}, y: {5}).' },
   aquapolis: { en: 'Randomly awarded from treasure chests in {img0} {i1} from {2} onwards.' },
+  hiddenCanalsOfUznair: { en: 'Randomly awarded from treasure chests in {img0} {i1}.' },
   duty: { en: 'Randomly awarded from a treasure chest in the level {0} duty {img1} \'{i2}\' (x: {3}, y: {4}).' },
   dutyFinalChest: { en: 'Randomly awarded from a treasure chest in level {0} duty {img1} \'{i2}\' (final chest).' },
   raid: { en: 'Randomly awarded from a treasure chest in level {0} raid {img1} \'{i2}\' (final chest).' },

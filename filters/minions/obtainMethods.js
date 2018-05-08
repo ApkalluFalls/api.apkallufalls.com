@@ -405,6 +405,7 @@ const location = {
     theFeast: ["The Feast", true, true, "ザ・フィースト"],
     theFractalContinuum: ["The Fractal Continuum", "Die Fraktal-Kontinuum", "Le Continuum Fractal", "博物戦艦 フラクタル・コンティニアム"],
     theGreatGubalLibrary: ["The Great Gubal Library", "Große Gubal-Bibliothek", "La Grande Bibliothèque De Gubal", "禁書回収 グブラ幻想図書館"],
+    theHiddenCanalsOfUznair: ["The Hidden Canals Of Uznair", "Vergessene Kanäle Von Uznair", "Les Canaux Cachés D'Uznair", "宝物庫 ウズネアカナル深層"],
     theLostCityOfAmdaporHard: ["The Lost City Of Amdapor (Hard)", "Historisches Amdapor (schwer)", "Les Vestiges De La Cité D'Amdapor (brutal)", "神聖遺跡 古アムダプール市街 (Hard)"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
     theSirensongSea: ["The Sirensong Sea", "Sirenen-See", "La Mer Du Chant Des Sirènes", "漂流海域 セイレーン海"],
@@ -786,6 +787,18 @@ const helper = {
         location.duty.thePalaceOfTheDead
       ],
       expansions.ARR,
+      true,
+      false
+    )
+  },
+  hiddenCanalsOfUznair: () => {
+    return o(
+      'hiddenCanalsOfUznair',
+      [
+        dutyImage,
+        location.duty.theHiddenCanalsOfUznair
+      ],
+      expansions.SB,
       true,
       false
     )
@@ -3072,6 +3085,15 @@ module.exports = (minion, achievementsIn) => {
         true,
         false
       );
+    
+    case 267:
+      return helper.retainerVenture(70, 'Miner', 'Highland Exploration', 'XXII');
+    
+    case 268:
+      return helper.retainerVenture(70, 'Disciples of War and Magic', 'Field Exploration', 'XXII');
+
+    case 269:
+      return helper.hiddenCanalsOfUznair();
 
     default:
       //console.log("Unknown method for minion " + minion.id);

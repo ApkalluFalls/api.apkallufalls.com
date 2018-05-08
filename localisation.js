@@ -160,6 +160,11 @@ module.exports = {
     fr: 'Après-guerre Du Chant Des Dragons',
     jp: '竜詩戦争 戦後編'
   },
+  'Post-Ala Mhigan Liberation': {
+    de: 'Nach Dem Befreiungskampf',
+    fr: 'Après La Tempête De Sang',
+    jp: '解放戦争 戦後編'
+  },
   'Seasonal Events': {
     de: 'Saisonale Aufträge',
     fr: 'Événements Saisonniers',

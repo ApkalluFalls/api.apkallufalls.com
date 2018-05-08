@@ -38,6 +38,8 @@ const wondrousTailsImage = 'wt';
 const sasshoSekiFragmentImage = 'ssf';
 const ventureImage = 'v';
 const kojinSangoImage = 'ks';
+const ixionHornImage = 'ih';
+const anantaDreamstaffImage = 'ad';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -55,7 +57,8 @@ const beastTribe = {
   vanuVanu: ['Vanu Vanu', true, true, 'バヌバヌ'],
   vath: ['Vath', true, 'Vathe', 'ヴァス'],
   moogle: ["Moogle", "Mogry", "Mog", "モーグリ"],
-  kojin: ["Kojin", true, true, "コウジン"]
+  kojin: ["Kojin", true, true, "コウジン"],
+  ananta: ["Ananta", true, true, "アナンタ"]
 }
 
 const item = {
@@ -267,9 +270,17 @@ const craftItem = {
     icon: 5414,
     name: ['Rosewood Branch', 'Palisanderast', 'Branche de palissandre', 'ローズウッドの枝']
   },
+  royalFern: {
+    icon: 20793,
+    name: ["Royal Fern", "Königsfarn", "Fougère royale", "マナゼンマイ"]
+  },
   sewingThread: {
     icon: 14188,
     name: ["Sewing Thread", "Nähfaden", "Fil à coudre", "刺繍糸"]
+  },
+  shinryusScales: {
+    icon: 21090,
+    name: ["Shinryu's Scales", "Shinryu-Schuppe", "Écaille de Shinryu", "神龍の鱗"]
   },
   steelMainspring: {
     icon: 12648,
@@ -365,6 +376,7 @@ const location = {
   theDiadem: ['The Diadem', 'Das Diadem', 'Le Diadème', 'ディアデム諸島'],
   theDravanianForelands: ["The Dravanian Forelands", "Dravanisches Vorland", "Avant-pays Dravanien", "高地ドラヴァニア"],
   theForgottenKnight: ["The Forgotten Knight", "Der Vergessene Ritter", "Le Chevalier Oublié", "忘れられた騎士亭"],
+  theFringes: ["The Fringes", "Abanisches Grenzland", "Les Marges", "ギラバニア辺境地帯"],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   thePillars: ["The Pillars", "Strebewerk", "Ishgard - Les Contreforts", "イシュガルド：上層"],
   theRisingStones: ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
@@ -402,6 +414,7 @@ const location = {
     theAquapolis: ['The Aquapolis', 'Aquapolis', 'L\'Aquapole', '宝物庫 アクアポリス'],
     theAntitower: ["The Antitower", "Antiturm", "L'Antitour", "星海観測 逆さの塔"],
     theDragonsNeck: ["The Dragon's Neck", "Das Drachenhals-Kolosseum", "Le Col Du Dragon", "アマジナ杯闘技会決勝戦"],
+    theDrownedCityOfSkalla: ["The Drowned City Of Skalla", "Die Versunkene Stadt Skalla", "La Cité Engloutie De Skalla", "水没遺構 スカラ"],
     theFeast: ["The Feast", true, true, "ザ・フィースト"],
     theFractalContinuum: ["The Fractal Continuum", "Die Fraktal-Kontinuum", "Le Continuum Fractal", "博物戦艦 フラクタル・コンティニアム"],
     theGreatGubalLibrary: ["The Great Gubal Library", "Große Gubal-Bibliothek", "La Grande Bibliothèque De Gubal", "禁書回収 グブラ幻想図書館"],
@@ -486,6 +499,8 @@ const brassSkyPirateSpoils = ["Brass Sky Pirate Spoil", "Messing-Piratenandenken
 const gelmorranPotsherd = ["Gelmorran Potsherd", "Gelmorra-Scherbe", "Tesson de poterie gelmorraine", "ゲルモラ土器片"];
 const sasshoSekiFragment = ["Sassho-seki Fragment", "Sassho-seki-Fragment", "Fragment de la Roche meurtrière", "殺生石の欠片"];
 const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン珊瑚貨"];
+const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
+const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
 
 const helper = {
   achievementCertificate: (quantity) => {
@@ -849,6 +864,9 @@ const helper = {
     )
   },
   retainerVenture: (level, jobType, type, number) => {
+    if (level === 'quick')
+      return o('retainerVentureQuick')
+
     let expansion;
 
     if (level <= 50)
@@ -3094,6 +3112,80 @@ module.exports = (minion, achievementsIn) => {
 
     case 269:
       return helper.hiddenCanalsOfUznair();
+    
+    case 271:
+      return [
+        helper.retainerVenture(70, 'Botanist', 'Woodland Exploration', 'XXII'),
+        helper.retainerVenture('quick')
+      ];
+
+    case 272:
+      return helper.dungeon(location.duty.theDrownedCityOfSkalla, 70, null, null, expansions.SB, true, false);
+
+    case 273:
+      return helper.retainerVenture(70, 'Fisher', 'Waterside Exploration', 'XXII');
+
+    case 274:
+      return o(
+        'purchase',
+        [
+          5, ixionHorn, ixionHornImage,
+          ["Eschina", true, true, "エシナ"],
+          ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
+          locationImage,
+          location.rhalgrsReach,
+          13.9, 11.8
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 275:
+      return helper.craft(
+        70,
+        locale('Weaver'),
+        2,
+        [
+          { quantity: 50, ...craftItem.windShard },
+          { quantity: 50, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.shinryusScales },
+          { quantity: 1, ...craftItem.royalFern },
+          { quantity: 1, ...craftItem.twinsilk },
+          { quantity: 1, ...craftItem.worstedYarn }
+        ]
+      );
+    
+    case 276:
+      return helper.quest(
+        70,
+        locale('Post-Ala Mhigan Liberation'),
+        ["Return Of The Bull", "Die Versammlung", "Retour Au Bercail", "英雄の帰還"],
+        ["Raubahn", true, true, "ラウバーン"],
+        location.rhalgrsReach,
+        14.7, 9.4,
+        expansions.SB,
+        true,
+        false
+      );
+    
+    case 277:
+      return o(
+        'beastTribe',
+        [
+          rank.respected,
+          beastTribe.ananta,
+          5, anantaDreamstaff, anantaDreamstaffImage,
+          ["Madhura", true, true, "マドゥラ"],
+          ["(Ananta Dreamstaff Exchange)", "(Ananta-Traumstäbe)", "(Échange De Barrettes Béatifiques Anantas)", "(アナンタ魔金錫貨の取引)"],
+          locationImage,
+          location.theFringes,
+          20.9, 26.1
+        ],
+        expansions.SB,
+        true,
+        false
+      );
 
     default:
       //console.log("Unknown method for minion " + minion.id);

@@ -12,17 +12,18 @@ module.exports = (methodText, methodValues, expansion, available, promo, extra) 
   const result = {
     method: {
       text: methodText,
-      values: methodValues.map(v => {
-        if (v instanceof Array)
-          return {
-            de: v[1] === true ? v[0] : v[1],
-            en: v[0],
-            fr: v[2] === true ? v[0] : v[2],
-            jp: v[3] === true ? v[0] : v[3]
-          }
-        
-        return v;
-      })
+      values: methodValues
+        ? methodValues.map(v => {
+          if (v instanceof Array)
+            return {
+              de: v[1] === true ? v[0] : v[1],
+              en: v[0],
+              fr: v[2] === true ? v[0] : v[2],
+              jp: v[3] === true ? v[0] : v[3]
+            }
+          
+          return v;
+        }) : undefined
     },
     available: available,
     promo: promo,

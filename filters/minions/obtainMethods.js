@@ -864,9 +864,6 @@ const helper = {
     )
   },
   retainerVenture: (level, jobType, type, number) => {
-    if (level === 'quick')
-      return o('retainerVentureQuick')
-
     let expansion;
 
     if (level <= 50)
@@ -875,6 +872,9 @@ const helper = {
       expansion = expansions.HW;
     else if (level <= 70)
       expansion = expansions.SB;
+
+    if (jobType === 'quick')
+      return o('retainerVentureQuick', [], expansion, true, false);
 
     return o(
       'retainerVenture',
@@ -3116,7 +3116,7 @@ module.exports = (minion, achievementsIn) => {
     case 271:
       return [
         helper.retainerVenture(70, 'Botanist', 'Woodland Exploration', 'XXII'),
-        helper.retainerVenture('quick')
+        helper.retainerVenture(70, 'quick')
       ];
 
     case 272:

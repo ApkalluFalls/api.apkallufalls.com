@@ -35,6 +35,7 @@ const msqImage = 'msq';
 const brassSkyPirateSpoilsImage = 'bsps';
 const gelmorranPotsherdImage = 'gp';
 const wondrousTailsImage = 'wt';
+const sasshoSekiFragmentImage = 'ssf';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -67,10 +68,10 @@ const item = {
   },
   fish: {
     assassinBetta: ["Assassin Betta", "Kampffisch", "Betta assassin", "アサシンベタ"],
+    bashfulBatfish: ["Bashful Batfish", "Fledermausfisch", "Platax ombré", "アカククリ"],
     merlthorGoby: ["Merlthor Goby", "Merlthor-Grundel", "Gobie de Merlthor", "メルトールゴビー"],
     ninjaBetta: ["Ninja Betta", "Ninja-Kampffisch", "Betta ninja", "ニンジャベタ"],
     wahoo: ["Wahoo", "Räubermakrele", "Thazard noir", "ワフー"]
-
   },
   seeds: {
     eggplantKnight: ['Eggplant Knight Seeds', 'Ritter-Aubergine-Samen', 'Graines du Chevalier aubergine', 'エッグナイトの種'],
@@ -285,6 +286,7 @@ const location = {
   fogfens: ["Fogfens", "Nebelmoor", "Fangebrume", "迷霧湿原"],
   foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
+  kugane:  ["Kugane", true, true, "クガネ"],
   limsaLowerDecks: ['Limsa Lominsa Lower Decks', 'Untere Decks', 'Limsa Lominsa - L\'Entrepont', 'リムサ・ロミンサ：下甲板層'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   lotusStand: ['Lotus Stand', 'Wasserrosentisch', 'Chaire Du Lotus', '不語仙の座卓'],
@@ -296,6 +298,7 @@ const location = {
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   outerLaNoscea: ['Outer La Noscea', 'Äußeres La Noscea', 'Noscea Extérieure', '地ラノシア'],
+  rhalgrsReach: ["Rhalgr's Reach", "Rhalgrs Wacht", "Temple Du Poing (entrée)", "ラールガーズリーチ"],
   southShroud: ['South Shroud', 'Südwald', 'Forêt Du Sud', '黒衣森：南部森林'],
   southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
   theChurningMists: ["The Churning Mists", "Wallende Nebel", "L'Écume Des Cieux De Dravania", "ドラヴァニア雲海"],
@@ -305,6 +308,7 @@ const location = {
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   thePillars: ["The Pillars", "Strebewerk", "Ishgard - Les Contreforts", "イシュガルド：上層"],
   theRisingStones: ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
+  theRubySea: ["The Ruby Sea", "Rubinsee", "Mer De Rubis", "紅玉海"],
   theSeaOfClouds: ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
   theWolvesDen: ['The Wolves\' Den', 'Wolfshöhle', 'L\'Antre des loups', 'ウルヴズジェイル'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
@@ -349,6 +353,7 @@ const location = {
     northIsleOfEndlessSummer: ["North Isle Of Endless Summer", "Insel Des Ewigen Sommers (Nord)", "Île De L'Éternel été (nord)", "常夏の島北"],
     southBanepool: ["South Banepool", "Südlicher Bannpfuhl", "Malétang (berge Sud)", "ベーンプール南"],
     theBurningWall: ['The Burning Wall', 'Der Feuerwall', 'Mur Incandescent', 'バーニングウォール'],
+    theKobayashiMaru: ["The Kobayashi Maru", "Die Kobayashi-maru", "Le Kobayashi Maru", "小林丸"],
     theSaltStrand: ['The Salt Strand', 'Der Salzstrand', 'Atolls De Sel', 'ソルトストランド'],
     theTangle: ["The Tangle", "Der Schlingwald", "L'Enchevêtrement", "タングル湿林"]
   }
@@ -404,6 +409,7 @@ const centurioSeals = ["Centurio Seal", "Centurio-Abzeichen", "Insigne Centurio"
 const wolfMarks = ["Wolf Marks", "Wolfsmarken", "Marques De Loup", "対人戦績の取引"];
 const brassSkyPirateSpoils = ["Brass Sky Pirate Spoil", "Messing-Piratenandenken", "Espoille de pirate des cieux en laiton", "スカイパイレーツスポイル:真鍮"];
 const gelmorranPotsherd = ["Gelmorran Potsherd", "Gelmorra-Scherbe", "Tesson de poterie gelmorraine", "ゲルモラ土器片"];
+const sasshoSekiFragment = ["Sassho-seki Fragment", "Sassho-seki-Fragment", "Fragment de la Roche meurtrière", "殺生石の欠片"];
 
 const helper = {
   achievementCertificate: (quantity) => {
@@ -617,6 +623,15 @@ const helper = {
     return o(
       'fishingDoubleMooch',
       [locale('Fisher'), waters, locationImage, loc, x, y, bait, level, fish1, fish2],
+      expansion,
+      true,
+      false
+    )
+  },
+  fishingSpearfishing: (gig1, waters, loc, x, y, level, expansion, fishQuantity, fish, gig2) => {
+    return o(
+      'fishingSpearfishing',
+      [locale('swimming shadows'), locale('Fisher'), gig1, waters, locationImage, loc, x, y, fishQuantity, fish, level, gig2],
       expansion,
       true,
       false
@@ -2768,6 +2783,68 @@ module.exports = (minion, achievementsIn) => {
         helper.retainerVenture(65, 'Botanist', 'Woodland Exploration', 'XXI'),
         helper.retainerVenture(70, 'Botanist', 'Woodland Exploration', 'XXII')
       ];
+
+    case 242:
+      return o(
+        'purchase',
+        [
+          3, sasshoSekiFragment, sasshoSekiFragmentImage,
+          ["Eschina", true, true, "エシナ"],
+          ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
+          locationImage,
+          location.rhalgrsReach,
+          13.9, 11.8
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+    
+    case 243:
+    case 256:
+      return [
+        o(
+          'purchase',
+          [
+            800, centurioSeals, centurioSealsImage,
+            ["Estrild", true, true, "エストリルド"],
+            ['(Centurio Seal Exchange I)', '(Centurio-Abzeichen I)', '(Insignes Centurio)', '（セントリオ記章の取引）'],
+            locationImage,
+            location.kugane,
+            10.4, 10.3
+          ],
+          expansions.SB,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            800, centurioSeals, centurioSealsImage,
+            ["Leuekin", true, true, "リューキン"],
+            ['(Centurio Seal Exchange I)', '(Centurio-Abzeichen I)', '(Insignes Centurio)', '（セントリオ記章の取引）'],
+            locationImage,
+            location.rhalgrsReach,
+            13.1, 11.8
+          ],
+          expansions.SB,
+          true,
+          false
+        )
+      ];
+    
+    case 244:
+      return helper.fishingSpearfishing(
+        locale('Large Gig'),
+        location.fishing.theKobayashiMaru,
+        location.theRubySea,
+        38.8, 6.3,
+        70,
+        expansions.SB,
+        10,
+        item.fish.bashfulBatfish,
+        locale('Small Gig')
+      );
 
     default:
       //console.log("Unknown method for minion " + minion.id);

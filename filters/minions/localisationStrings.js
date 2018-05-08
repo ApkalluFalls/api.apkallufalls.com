@@ -29,6 +29,7 @@ module.exports = {
   fishing: { en: 'Gathered by a {i0} at {1} in {img2} {i3} (x: {4}, y: {5}) using {6} as bait (level {7}).' },
   fishingDesynth: { en: 'Desynthesise {i0} as a {i1}, gathered by a {i2} at {3} in {img4} {i5} (x: {6}, y: {7}) mooching {8} (level {9}).' },
   fishingDoubleMooch: { en: 'Double-mooched by a {i0} at {1} in {img2} {i3} (x: {4}, y: {5}) using {6} as bait (level {7}) to catch a {8}, mooched to catch a {9}.'},
+  fishingSpearfishing: { en: 'Spearfished from a {0} node by a {i1} using a {2} at {3} in {img4} {i5} (x: {6}, y: {7}) after catching {8} {9} (level {10}) with a {11}.' },
   achievementCertificate: { en: 'Purchase for {i0} {i1} {img2} from {3} at {4} in {img5} {6} (x: {7}, y: {8}).' },
   veteranReward: { en: 'Received as mail from a {i0} for subscribing for {1} days.' },
   gather: { en: 'Gathered by a level {0} {i1} at an unspoiled node{2} in {img3} {4} (x: {5}, y: {6}) at {7} (slot {8}).' },

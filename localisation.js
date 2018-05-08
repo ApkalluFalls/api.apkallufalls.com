@@ -261,5 +261,20 @@ module.exports = {
     de: 'Khloes Abenteueralbum',
     fr: 'Aventures imaginaires de Khloe',
     jp: 'クロの空想帳'
+  },
+  'swimming shadows': {
+    de: 'Wasserwirbel',
+    fr: 'courant poissonneux',
+    jp: '魚影'
+  },
+  'Large Gig': {
+    de: '?Large Gig?',
+    fr: '?Large Gig?',
+    jp: '?Large Gig?'
+  },
+  'Small Gig': {
+    de: '?Small Gig?',
+    fr: '?Small Gig?',
+    jp: '?Small Gig?'
   }
 }

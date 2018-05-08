@@ -729,6 +729,15 @@ const helper = {
       false
     )
   },
+  freeCompanySubaquaticVoyage: (voyage) => {
+    return o(
+      'freeCompanySubaquaticVoyage',
+      [voyage],
+      expansions.SB,
+      true,
+      false
+    )
+  },
   fishing: (waters, loc, x, y, bait, level, expansion) => {
     return o(
       'fishing',
@@ -3258,6 +3267,11 @@ module.exports = (minion, achievementsIn) => {
         helper.raid(location.duty.sigmascapev40, 70, expansions.SB, true, false),
         helper.raid(location.duty.sigmascapev40Savage, 70, expansions.SB, true, false)
       ];
+    
+    case 282:
+      return helper.freeCompanySubaquaticVoyage(
+        ['Deep-sea Site 3', '?Deep-sea Site 3?', '?Deep-sea Site 3?', '?Deep-sea Site 3?']
+      );
 
     case 284:
       return helper.craft(

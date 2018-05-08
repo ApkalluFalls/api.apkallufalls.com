@@ -43,5 +43,6 @@ module.exports = {
   gardening: { en: 'Cultivate {img0} {i1}.' },
   wondrousTails: { en: 'Randomly awarded when completing {0} lines of {img1} {i2}.' },
   fanFestival: { en: 'Attend the {y0} fan festival in {1}.' },
-  fanFestivalStream: { en: 'Purchase the online live stream of the {y0} fan festival in {1}.' }
+  fanFestivalStream: { en: 'Purchase the online live stream of the {y0} fan festival in {1}.' },
+  freeCompanySubaquaticVoyage: { en: 'Randomly obtained from Free Company {i0} Subaquatic Voyages.'}
 };

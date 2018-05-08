@@ -321,16 +321,19 @@ const location = {
     alexanderSoulOfTheCreator: ["Alexander - The Soul Of The Creator", "Alexander - Seele Des Schöpfers", "Alexander - L'Âme Du Créateur", "機工城アレキサンダー：天動編4"],
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
     baelsarsWall: ["Baelsar's Wall", "Baelsar-Wall", "La Muraille De Baelsar", "巨大防壁 バエサルの長城"],
+    bardamsMettle: ["Bardam's Mettle", "Bardams Probe", "La Force De Bardam", "伝統試練 バルダム覇道"],
     battleInTheBigKeep: ["Battle In The Big Keep", "Revanche In Den Ruinen", "Revanche Au Vieux Château", "真ギルガメッシュ討滅戦"],
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
     dunScaith: ["Dun Scaith", true, true, "影の国ダン・スカー"],
     hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
     hullbreakerIsleHard: ["Hullbreaker Isle (Hard)", "Schiffbrecher-Insel (schwer)", "L'Île De Crèvecarène (brutal)", "黒渦伝説 ハルブレーカー・アイル (Hard)"],
+    kuganeCastle: ["Kugane Castle", "Schloss Kugane", "Le Château De Kugane", "悪党成敗 クガネ城"],
     neverreap: ["Neverreap", "Nimmerreich", "Nalloncques", "神域浮島 ネバーリープ"],
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
     sohmAl: ["Sohm Al", "Sohm Al", "Sohm Al", "霊峰踏破 ソーム・アル"],
     saintMociannesArboretum: ["Saint Mocianne's Arboretum", "Sankt Mocianne-Arboretum", "L'Arboretum Sainte-Mocianne", "草木庭園 聖モシャーヌ植物園"],
+    shisuiOfTheVioletTides: ["Shisui Of The Violet Tides", "Shisui", "Le Palais Aux Marées Violettes", "海底宮殿 紫水宮"],
     syrcusTower: ['Syrcus Tower', 'Kristallturm - Der Syrcus-Turm', 'La Tour De Cristal - Tour De Syrcus', 'クリスタルタワー：シルクスの塔'],
     theAery: ["The Aery", "Nest Des Drachen", "L'Aire", "邪竜血戦 ドラゴンズエアリー"],
     theAurumVale: ['The Aurum Vale', 'Goldklamm', 'Le Val D\'Aurum', '霧中行軍 オーラムヴェイル'],
@@ -2846,6 +2849,29 @@ module.exports = (minion, achievementsIn) => {
         item.fish.bashfulBatfish,
         locale('Small Gig')
       );
+
+    case 245:
+      return helper.dungeon(location.duty.shisuiOfTheVioletTides, 63, null, null, expansions.SB, true, false);
+
+    case 246:
+      return [
+        helper.retainerVenture(61, 'Disciples of War and Magic', 'Field Exploration', 'XX'),
+        helper.retainerVenture(70, 'Disciples of War and Magic', 'Field Exploration', 'XXII')
+      ];
+
+    case 247:
+      return helper.dungeon(location.duty.bardamsMettle, 65, null, null, expansions.SB, true, false);
+
+    case 248:
+      return helper.eventQuest(
+        15,
+        ["A Reoccurring Bug", "Wiedergeburt Der Bugs", "Le Chevalier Du Labyrinthe", "新生祭と監獄の魔洞"],
+        'eq6',
+        expansions.ARR
+      );
+
+    case 249:
+      return helper.dungeon(location.duty.kuganeCastle, 70, null, null, expansions.SB, true, false);
 
     default:
       //console.log("Unknown method for minion " + minion.id);

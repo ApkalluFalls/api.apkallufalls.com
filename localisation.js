@@ -281,5 +281,10 @@ module.exports = {
     de: '?Small Gig?',
     fr: '?Small Gig?',
     jp: '?Small Gig?'
+  },
+  'Quick Exploration': {
+    de: '?Quick Exploration?',
+    fr: '?Quick Exploration?',
+    jp: '?Quick Exploration?'
   }
 }

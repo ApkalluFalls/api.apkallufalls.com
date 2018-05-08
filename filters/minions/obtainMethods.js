@@ -146,6 +146,14 @@ const craftItem = {
     icon: 5359,
     name: ['Chocobo Feather', 'Chocobo-Feder', 'Plume de chocobo', 'チョコボの羽根']
   },
+  chromiteIngot: {
+    icon: 19949,
+    name: ["Chromite Ingot", "Chromeisen-Barren", "Lingot de chromite", "クロマイトインゴット"]
+  },
+  colossusSlab: {
+    icon: 22442,
+    name: ["Colossus Slab", "Kolossus-Platte", "Fragment de statue colossale", "巨像の欠片"]
+  },
   cottonBoll: {
     icon: 5343,
     name: ['Cotton Boll', 'Baumwoll-Samenkapsel', 'Fleur de coton', '草綿']
@@ -166,6 +174,10 @@ const craftItem = {
     icon: 12630,
     name: ["Dragon Blood", "Drachenblut", "Sang de dragon", "竜族の血"]
   },
+  earthCrystal: {
+    icon: 11,
+    name: ["Earth Crystal", "Erdkristall", "Cristal de terre", "アースクリスタル"]
+  },
   earthShard: {
     icon: 5,
     name: ["Earth Shard", "Erdscherbe", "Éclat de terre", "アースシャード"]
@@ -173,6 +185,10 @@ const craftItem = {
   expanseBaleen: {
     icon: 12257,
     name: ["Expanse Baleen", "Himmels-Barte", "Corne du Migrateur des brumes", "雲神ビスマルクの角"]
+  },
+  fireCrystal: {
+    icon: 8,
+    name: ["Fire Crystal", "Feuerkristall", "Cristal de feu", "ファイアクリスタル"]
   },
   fireShard: {
     icon: 2,
@@ -400,6 +416,7 @@ const location = {
     deltascapev40: ["Deltascape V4.0", "Deltametrie 4.0", "Deltastice V4.0", "次元の狭間オメガ：デルタ編4"],
     domaCastle: ["Doma Castle", "Burg Doma", "Le Château De Doma", "解放決戦 ドマ城"],
     dunScaith: ["Dun Scaith", true, true, "影の国ダン・スカー"],
+    hellsLid: ["Hells' Lid", "Höllenspund", "Le Couvercle Des Enfers", "紅玉火山 獄之蓋"],
     hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
     hullbreakerIsleHard: ["Hullbreaker Isle (Hard)", "Schiffbrecher-Insel (schwer)", "L'Île De Crèvecarène (brutal)", "黒渦伝説 ハルブレーカー・アイル (Hard)"],
     kuganeCastle: ["Kugane Castle", "Schloss Kugane", "Le Château De Kugane", "悪党成敗 クガネ城"],
@@ -874,7 +891,13 @@ const helper = {
       expansion = expansions.SB;
 
     if (jobType === 'quick')
-      return o('retainerVentureQuick', [], expansion, true, false);
+      return o(
+        'retainerVentureQuick',
+        [ventureImage, locale('Quick Exploration')],
+        expansion,
+        true,
+        false
+      );
 
     return o(
       'retainerVenture',
@@ -3185,6 +3208,31 @@ module.exports = (minion, achievementsIn) => {
         expansions.SB,
         true,
         false
+      );
+
+    case 278:
+      return helper.craft(
+        70,
+        locale('Blacksmith'),
+        2,
+        [
+          { quantity: 7, ...craftItem.fireCrystal },
+          { quantity: 7, ...craftItem.earthCrystal },
+          { quantity: 2, ...craftItem.colossusSlab },
+          { quantity: 1, ...craftItem.royalFern },
+          { quantity: 2, ...craftItem.chromiteIngot }
+        ]
+      );
+
+    case 279:
+      return helper.dungeon(location.duty.hellsLid, 70, null, null, expansions.SB, true, false);
+
+    case 280:
+      return helper.eventQuest(
+        15,
+        ["Uneggseptable Losses", "Wundersame Eierdiebe", "Pas De Fête Sans Cacher Des Prœufs", "エッグハントの大事件"],
+        'eq7',
+        expansions.ARR
       );
 
     default:

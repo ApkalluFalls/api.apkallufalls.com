@@ -39,7 +39,7 @@ module.exports = {
   squareEnixStore: { en: 'Purchase {i0} on the {i1} and register the promotional code on or before {2}.' },
   squareEnixStoreNoExpiration: { en: 'Purchase {i0} on the {i1} and register the promotional code.' },
   retainerVenture: { en: 'Randomly awarded from the {1} level {0} {img2} {i3} {i4} retainer venture.' },
-  retainerVentureQuick: { en: 'Randomly awarded from a Quick Exploration retainer venture.' },
+  retainerVentureQuick: { en: 'Randomly awarded from a {img0} {i1} retainer venture.' },
   gardening: { en: 'Cultivate {img0} {i1}.' },
   wondrousTails: { en: 'Randomly awarded when completing {0} lines of {img1} {i2}.' },
   fanFestival: { en: 'Attend the {y0} fan festival in {1}.' },

@@ -84,6 +84,10 @@ const item = {
 }
 
 const craftItem = {
+  allaganCatalyst: {
+    icon: 9376,
+    name: ["Allagan Catalyst", "Allagischer Katalysator", "Catalyseur allagois", "アラグの魔触媒"]
+  },
   ancientLumber: {
     icon: 7606,
     name: ['Ancient Lumber', 'Götterholz', 'Madrier de morta', '神代木']
@@ -220,6 +224,10 @@ const craftItem = {
     icon: 8019,
     name: ["Levin Orb", "Ramuh-Kugel", "Orbe de Ramuh", "ラムウのオーブ"]
   },
+  lightningCrystal: {
+    icon: 12,
+    name: ["Lightning Crystal", "Blitzkristall", "Cristal de foudre", "ライトニングクリスタル"]
+  },
   lightningShard: {
     icon: 6,
     name: ['Lightning Shard', 'Blitzscherbe', 'Éclat de foudre', 'ライトニングシャード']
@@ -228,6 +236,10 @@ const craftItem = {
     icon: 5414,
     name: ['Rosewood Branch', 'Palisanderast', 'Branche de palissandre', 'ローズウッドの枝']
   },
+  sewingThread: {
+    icon: 14188,
+    name: ["Sewing Thread", "Nähfaden", "Fil à coudre", "刺繍糸"]
+  },
   steelMainspring: {
     icon: 12648,
     name: ["Steel Mainspring", "Stahl-Triebfeder", "Ressort moteur en acier", "ゼンマイバネ"]
@@ -235,6 +247,10 @@ const craftItem = {
   steelWheelBearing: {
     icon: 12649,
     name: ["Steel Wheel Bearing", "Stahl-Radlager", "Roulement de roue en acier", "ホイールベアリング"]
+  },
+  steppeSerge: {
+    icon: 19983,
+    name: ["Steppe Serge", "Steppen-Serge", "Étoffe de serge des steppes", "ステップサージ"]
   },
   stuffedGoblin: {
     icon: 7966,
@@ -247,6 +263,10 @@ const craftItem = {
   titansHeart: {
     icon: 6162,
     name: ["Titan's Heart", "Herz des Titan", "Roc de Titan", "タイタンの岩塊"]
+  },
+  twinsilk: {
+    icon: 19987,
+    name: ["Twinsilk", "Doppelseide", "Étoffe de doublesoie", "玉糸紬"]
   },
   twinthread: {
     icon: 5330,
@@ -263,6 +283,10 @@ const craftItem = {
   waterShard: {
     icon: 7,
     name: ["Water Shard", "Wasserscherbe", "Éclat d'eau", "ウォーターシャード"]
+  },
+  windCrystal: {
+    icon: 10,
+    name: ["Wind Crystal", "Windkristall", "Cristal de vent", "ウィンドクリスタル"]
   },
   windShard: {
     icon: 4,
@@ -325,6 +349,7 @@ const location = {
     battleInTheBigKeep: ["Battle In The Big Keep", "Revanche In Den Ruinen", "Revanche Au Vieux Château", "真ギルガメッシュ討滅戦"],
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
+    domaCastle: ["Doma Castle", "Burg Doma", "Le Château De Doma", "解放決戦 ドマ城"],
     dunScaith: ["Dun Scaith", true, true, "影の国ダン・スカー"],
     hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
     hullbreakerIsleHard: ["Hullbreaker Isle (Hard)", "Schiffbrecher-Insel (schwer)", "L'Île De Crèvecarène (brutal)", "黒渦伝説 ハルブレーカー・アイル (Hard)"],
@@ -346,6 +371,7 @@ const location = {
     theLostCityOfAmdaporHard: ["The Lost City Of Amdapor (Hard)", "Historisches Amdapor (schwer)", "Les Vestiges De La Cité D'Amdapor (brutal)", "神聖遺跡 古アムダプール市街 (Hard)"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
     theSunkenTempleOfQarnHard: ['The Sunken Temple of Qarn (Hard)', 'Versunkener Tempel Von Qarn (schwer)', 'Le Temple Enseveli De Qarn (brutal)', '遺跡救援 カルン埋没寺院 (Hard)'],
+    theTempleOfTheFist: ["The Temple Of The Fist", "Tempel Der Faust", "Le Temple Du Poing", "壊神修行 星導山寺院"],
     theVault: ["The Vault", "Erzbasilika", "La Voûte", "強硬突入 イシュガルド教皇庁"],
     theVoidArk: ["The Void Ark", "Die Nichts-Arche", "L'Arche Du Néant", "魔航船ヴォイドアーク"],
     theWanderersPalace: ['The Wanderer\'s Palace', 'Palast Des Wanderers', 'Le Palais Du Vagabond', '旅神聖域 ワンダラーパレス'],
@@ -402,6 +428,12 @@ const timewornMap = {
     true,
     ['Timeworn Dragonskin Map', 'Vergilbte Drachenleder-Karte', 'Vieille carte en peau de dragon', '古ぼけた地図G8'],
     expansions.HW
+  ],
+  gazelleskin: [
+    70,
+    true,
+    ["Timeworn Gazelleskin Map", "Vergilbte Gazellenleder-Karte", "Vieille carte en peau de gazelle", "古ぼけた地図G10"],
+    expansions.SB
   ]
 }
 
@@ -786,6 +818,15 @@ const helper = {
     return o(
       'squareEnixStore',
       [item, locale('Square Enix Store'), expiration],
+      expansions.ARR,
+      false,
+      true
+    )
+  },
+  squareEnixStoreNoExpiration: (item, expiration) => {
+    return o(
+      'squareEnixStore',
+      [item, locale('Square Enix Store')],
       expansions.ARR,
       false,
       true
@@ -2863,6 +2904,7 @@ module.exports = (minion, achievementsIn) => {
       return helper.dungeon(location.duty.bardamsMettle, 65, null, null, expansions.SB, true, false);
 
     case 248:
+    case 250:
       return helper.eventQuest(
         15,
         ["A Reoccurring Bug", "Wiedergeburt Der Bugs", "Le Chevalier Du Labyrinthe", "新生祭と監獄の魔洞"],
@@ -2872,6 +2914,36 @@ module.exports = (minion, achievementsIn) => {
 
     case 249:
       return helper.dungeon(location.duty.kuganeCastle, 70, null, null, expansions.SB, true, false);
+    
+    case 251:
+      return helper.squareEnixStoreNoExpiration(
+        ['FINAL FANTASY® XIV: STORMBLOOD™ ART OF THE REVOLUTION - WESTERN MEMORIES [ARTBOOK]', true, true, true]
+      );
+
+    case 252:
+      return helper.dungeon(location.duty.domaCastle, 67, null, null, expansions.SB, true, false);
+
+    case 253:
+      return helper.timewornMap(...timewornMap.gazelleskin);
+
+    case 254:
+      return helper.dungeon(location.duty.theTempleOfTheFist, 70, null, null, expansions.SB, true, false);
+
+    case 255:
+      return helper.craft(
+        70,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 6, ...craftItem.windCrystal },
+          { quantity: 6, ...craftItem.lightningCrystal },
+          { quantity: 1, ...craftItem.allaganCatalyst },
+          { quantity: 2, ...craftItem.chimericalFelt },
+          { quantity: 2, ...craftItem.sewingThread },
+          { quantity: 2, ...craftItem.steppeSerge },
+          { quantity: 2, ...craftItem.twinsilk }
+        ]
+      );
 
     default:
       //console.log("Unknown method for minion " + minion.id);

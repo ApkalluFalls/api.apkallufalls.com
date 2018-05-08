@@ -23,7 +23,7 @@ module.exports = (methodText, methodValues, expansion, available, promo, extra) 
             }
           
           return v;
-        }) : undefined
+        }) : []
     },
     available: available,
     promo: promo,

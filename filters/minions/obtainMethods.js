@@ -3151,6 +3151,7 @@ module.exports = (minion, achievementsIn) => {
       return helper.retainerVenture(70, 'Disciples of War and Magic', 'Field Exploration', 'XXII');
 
     case 269:
+    case 289:
       return helper.hiddenCanalsOfUznair();
     
     case 271:
@@ -3278,6 +3279,21 @@ module.exports = (minion, achievementsIn) => {
         17,
         ["Wine And Honey", "Schlafende Drachen Soll Man Nicht Wecken", "Défi: Le Dragon Démentiel", "狂乱の暗竜「ファヴニル」"]
       );
+    
+    case 286:
+      return helper.eurekaAnemosFate(
+        11,
+        ["Short Serket 2", "Wütend Wie Ein Hurrikan", "Défi: Le Scorpion Mythique", "幻の魔蠍「セルケト」"]
+      );
+    
+    case 287:
+      return helper.eurekaAnemosFate(
+        2,
+        ["The Shadow Over Anemos", "Küssen Verboten", "Défi: Le Seigneur De La Terre Interdite", "大蛸の王者「ロード・オブ・アネモス」"]
+      );
+
+    case 288:
+      return helper.achievementCertificate(2);
 
     default:
       //console.log("Unknown method for minion " + minion.id);

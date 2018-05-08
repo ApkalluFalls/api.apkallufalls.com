@@ -37,11 +37,13 @@ const gelmorranPotsherdImage = 'gp';
 const wondrousTailsImage = 'wt';
 const sasshoSekiFragmentImage = 'ssf';
 const ventureImage = 'v';
+const kojinSangoImage = 'ks';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
   trusted: ['Trusted', 'Vertraut', 'Estimé', '信頼'],
-  allied: ['Allied', 'Verbündet', 'Allié', '盟友']
+  allied: ['Allied', 'Verbündet', 'Allié', '盟友'],
+  respected: ['Respected', 'Respektierte', 'Respecté', '尊敬する']
 }
 
 const beastTribe = {
@@ -52,7 +54,8 @@ const beastTribe = {
   sylph: ['Sylph', 'Sylphen', 'Sylphe', 'シルフ'],
   vanuVanu: ['Vanu Vanu', true, true, 'バヌバヌ'],
   vath: ['Vath', true, 'Vathe', 'ヴァス'],
-  moogle: ["Moogle", "Mogry", "Mog", "モーグリ"]
+  moogle: ["Moogle", "Mogry", "Mog", "モーグリ"],
+  kojin: ["Kojin", true, true, "コウジン"]
 }
 
 const item = {
@@ -112,6 +115,14 @@ const craftItem = {
     icon: 12583,
     name: ["Birch Lumber", "Birken-Bauholz", "Madrier de bouleau", "バーチ材"]
   },
+  bladeOfRevelry: {
+    icon: 19123,
+    name: ["Blade of Revelry", "Verspielte Klinge", "Lame de Susano", "豪神スサノオの刃"]
+  },
+  blissfulShroud: {
+    icon: 19124,
+    name: ["Blissful Shroud", "Gepflegtes Tuch", "Étole de Lakshmi", "美神ラクシュミの羽衣"]
+  },
   bloodPepper: {
     icon: 13754,
     name: ["Blood Pepper", "Blutpfeffer", "Piment sanglant", "ブラッドペッパー"]
@@ -151,6 +162,14 @@ const craftItem = {
   dragonBlood: {
     icon: 12630,
     name: ["Dragon Blood", "Drachenblut", "Sang de dragon", "竜族の血"]
+  },
+  earthShard: {
+    icon: 5,
+    name: ["Earth Shard", "Erdscherbe", "Éclat de terre", "アースシャード"]
+  },
+  expanseBaleen: {
+    icon: 12257,
+    name: ["Expanse Baleen", "Himmels-Barte", "Corne du Migrateur des brumes", "雲神ビスマルクの角"]
   },
   fireShard: {
     icon: 2,
@@ -192,6 +211,10 @@ const craftItem = {
     icon: 12608,
     name: ["Growth Formula Zeta", "Wachstumsformel Zeta", "Formule de croissance zêta", "グロースフォーミュラ・ゼータ"]
   },
+  hiveForewing: {
+    icon: 12259,
+    name: ["Hive Forewing", "Kolonie-Schwinge", "Aile du Maître des lames", "武神ラーヴァナの翅"]
+  },
   iceShard: {
     icon: 3,
     name: ['Ice Shard', 'Eisscherbe', 'Éclat de glace', 'アイスシャード']
@@ -216,6 +239,10 @@ const craftItem = {
     icon: 7777,
     name: ['Jute Yarn', 'Jutegarn', 'Toile de jute', 'ジュート繊維']
   },
+  kyanite: {
+    icon: 19963,
+    name: ["Kyanite", "Kyanit", "Disthène", "カイヤナイト"]
+  },
   leviathansBarb: {
     icon: 7159,
     name: ["Leviathan's Barb", "Bartel Leviathans", "Barbillon de Léviathan", "リヴァイアサンの棘"]
@@ -231,6 +258,10 @@ const craftItem = {
   lightningShard: {
     icon: 6,
     name: ['Lightning Shard', 'Blitzscherbe', 'Éclat de foudre', 'ライトニングシャード']
+  },
+  palladiumNugget: {
+    icon: 19946,
+    name: ["Palladium Nugget", "Palladium-Nugget", "Pépite de palladium", "パラースナゲット"]
   },
   rosewoodBranch: {
     icon: 5414,
@@ -295,6 +326,10 @@ const craftItem = {
   wootzIngot: {
     icon: 9358,
     name: ['Wootz Ingot', 'Wootz-Barren', 'Lingot de wootz', 'ウーツインゴット']
+  },
+  worstedYarn: {
+    icon: 19984,
+    name: ["Worsted Yarn", "Kammgarn", "Laine peignée", "梳毛糸"]
   }
 }
 
@@ -348,7 +383,9 @@ const location = {
     bardamsMettle: ["Bardam's Mettle", "Bardams Probe", "La Force De Bardam", "伝統試練 バルダム覇道"],
     battleInTheBigKeep: ["Battle In The Big Keep", "Revanche In Den Ruinen", "Revanche Au Vieux Château", "真ギルガメッシュ討滅戦"],
     brayfloxsLongstopHard: ['Brayflox\'s Longstop (Hard)', 'Brüllvolx\' Langrast (schwer)', 'Le Bivouac De Brayflox (brutal)', '盟友支援 ブレイフロクスの野営地 (Hard)'],
+    castrumAbania: ["Castrum Abania", "Castrum Abania", "Castrum Abania", "巨砲要塞 カストルム・アバニア"],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
+    deltascapev40: ["Deltascape V4.0", "Deltametrie 4.0", "Deltastice V4.0", "次元の狭間オメガ：デルタ編4"],
     domaCastle: ["Doma Castle", "Burg Doma", "Le Château De Doma", "解放決戦 ドマ城"],
     dunScaith: ["Dun Scaith", true, true, "影の国ダン・スカー"],
     hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
@@ -370,6 +407,7 @@ const location = {
     theGreatGubalLibrary: ["The Great Gubal Library", "Große Gubal-Bibliothek", "La Grande Bibliothèque De Gubal", "禁書回収 グブラ幻想図書館"],
     theLostCityOfAmdaporHard: ["The Lost City Of Amdapor (Hard)", "Historisches Amdapor (schwer)", "Les Vestiges De La Cité D'Amdapor (brutal)", "神聖遺跡 古アムダプール市街 (Hard)"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
+    theSirensongSea: ["The Sirensong Sea", "Sirenen-See", "La Mer Du Chant Des Sirènes", "漂流海域 セイレーン海"],
     theSunkenTempleOfQarnHard: ['The Sunken Temple of Qarn (Hard)', 'Versunkener Tempel Von Qarn (schwer)', 'Le Temple Enseveli De Qarn (brutal)', '遺跡救援 カルン埋没寺院 (Hard)'],
     theTempleOfTheFist: ["The Temple Of The Fist", "Tempel Der Faust", "Le Temple Du Poing", "壊神修行 星導山寺院"],
     theVault: ["The Vault", "Erzbasilika", "La Voûte", "強硬突入 イシュガルド教皇庁"],
@@ -446,6 +484,7 @@ const wolfMarks = ["Wolf Marks", "Wolfsmarken", "Marques De Loup", "対人戦績
 const brassSkyPirateSpoils = ["Brass Sky Pirate Spoil", "Messing-Piratenandenken", "Espoille de pirate des cieux en laiton", "スカイパイレーツスポイル:真鍮"];
 const gelmorranPotsherd = ["Gelmorran Potsherd", "Gelmorra-Scherbe", "Tesson de poterie gelmorraine", "ゲルモラ土器片"];
 const sasshoSekiFragment = ["Sassho-seki Fragment", "Sassho-seki-Fragment", "Fragment de la Roche meurtrière", "殺生石の欠片"];
+const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン珊瑚貨"];
 
 const helper = {
   achievementCertificate: (quantity) => {
@@ -828,7 +867,7 @@ const helper = {
       'squareEnixStore',
       [item, locale('Square Enix Store')],
       expansions.ARR,
-      false,
+      true,
       true
     )
   },
@@ -2943,6 +2982,95 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 2, ...craftItem.steppeSerge },
           { quantity: 2, ...craftItem.twinsilk }
         ]
+      );
+
+    case 257:
+      return helper.dungeon(location.duty.castrumAbania, 69, null, null, expansions.SB, true, false);
+
+    case 258:
+      return helper.dungeon(location.duty.theSirensongSea, 61, null, null, expansions.SB, true, false);
+
+    case 259:
+      return helper.raid(location.duty.deltascapev40, 70, expansions.SB, true, false);
+
+    case 261:
+      return helper.craft(
+        70,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 50, ...craftItem.lightningShard },
+          { quantity: 50, ...craftItem.waterShard },
+          { quantity: 1, ...craftItem.bloodPepper },
+          { quantity: 1, ...craftItem.bladeOfRevelry },
+          { quantity: 1, ...craftItem.kyanite },
+          { quantity: 2, ...craftItem.steppeSerge },
+          { quantity: 1, ...craftItem.worstedYarn }
+        ]
+      );
+
+    case 262:
+      return helper.craft(
+        70,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 50, ...craftItem.windShard },
+          { quantity: 50, ...craftItem.earthShard },
+          { quantity: 1, ...craftItem.bloodPepper },
+          { quantity: 1, ...craftItem.blissfulShroud },
+          { quantity: 1, ...craftItem.palladiumNugget },
+          { quantity: 2, ...craftItem.steppeSerge },
+          { quantity: 1, ...craftItem.worstedYarn }
+        ]
+      );
+
+    case 263:
+      return helper.craft(
+        60,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 50, ...craftItem.windShard },
+          { quantity: 50, ...craftItem.waterShard },
+          { quantity: 1, ...craftItem.bloodPepper },
+          { quantity: 1, ...craftItem.chimericalFelt },
+          { quantity: 1, ...craftItem.crawlerSilk },
+          { quantity: 1, ...craftItem.expanseBaleen }
+        ]
+      );
+
+    case 265:
+      return helper.craft(
+        60,
+        locale('Weaver'),
+        1,
+        [
+          { quantity: 50, ...craftItem.fireShard },
+          { quantity: 50, ...craftItem.earthShard },
+          { quantity: 1, ...craftItem.bloodPepper },
+          { quantity: 1, ...craftItem.chimericalFelt },
+          { quantity: 1, ...craftItem.crawlerSilk },
+          { quantity: 1, ...craftItem.hiveForewing }
+        ]
+      );
+    
+    case 266:
+      return o(
+        'beastTribe',
+        [
+          rank.respected,
+          beastTribe.kojin,
+          5, kojinSango, kojinSangoImage,
+          ["Shikitahe", "Shikitahe", "Shikitahe", "シキタヘ"],
+          ["(Kojin Sango Exchange)", "(Kojin-Korallen)", "(Échange De Sango Kojin)", "(コウジン珊瑚貨の取引)"],
+          locationImage,
+          location.theRubySea,
+          29.4, 16.9
+        ],
+        expansions.SB,
+        true,
+        false
       );
 
     default:

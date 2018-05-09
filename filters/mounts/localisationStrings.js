@@ -8,5 +8,6 @@ module.exports = {
   legacyStatus: { en: 'Given at the launch of A Realm Reborn to any players who had at least 90 cumulative days of subscription at any point during the final 9 months of Legacy.' },
   achievementCertificate: { en: 'Purchase for {i0} {i1} {img2} from {3} at {4} in {img5} {6} (x: {7}, y: {8}).' },
   trial: { en: 'Randomly awarded from a treasure chest in level {0} trial {img1} \'{i2}\' (final chest).' },
-  veteranReward: { en: 'Received as mail from a {i0} for subscribing for {1} days.' }
+  veteranReward: { en: 'Received as mail from a {i0} for subscribing for {1} days.' },
+  recruitAFriend: { en: 'Rewarded for having a friend subscribe for 90 days during the Recruit A Friend Campaign.' }
 };

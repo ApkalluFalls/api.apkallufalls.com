@@ -86,7 +86,8 @@ const location = {
   duty: {
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
-    theNavel: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"]
+    theNavelExtreme: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"],
+    theWhorleaterExtreme: ["The Whorleater (Extreme)", "Zenit Der Götter - Leviathan", "Le Briseur De Marées (extrême)", "極リヴァイアサン討滅戦"]
   }
 }
 
@@ -152,6 +153,15 @@ const helper = {
   legacyStatus: () => {
     return o(
       'legacyStatus',
+      [],
+      expansions.ARR,
+      false,
+      true
+    )
+  },
+  recruitAFriend: () => {
+    return o(
+      'recruitAFriend',
       [],
       expansions.ARR,
       false,
@@ -267,6 +277,7 @@ module.exports = (mount, achievementsIn) => {
       );
     
     case 8:
+    case 25:
       return [
         helper.collectorsEdition(locale('Legacy (1.0)'), expansions.Legacy, false),
         helper.collectorsEdition(locale('A Realm Reborn'), expansions.ARR, true)
@@ -340,8 +351,65 @@ module.exports = (mount, achievementsIn) => {
       return [
         helper.trial(location.duty.theBowlOfEmbersExtreme, 50, expansions.ARR, true, false),
         helper.trial(location.duty.theHowlingEyeExtreme, 50, expansions.ARR, true, false),
-        helper.trial(location.duty.theNavel, 50, expansions.ARR, true, false)
+        helper.trial(location.duty.theNavelExtreme, 50, expansions.ARR, true, false)
       ];
+    
+    case 26:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.sahagin,
+          120000, gil, gilImage,
+          ['Sahagin Vendor', 'Sahagin-Händler', 'Vendeur Sahuagin', 'サハギン族のよろず屋'],
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
+          locationImage,
+          location.westernLaNoscea,
+          17, 22.4
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 27:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.kobold,
+          120000, gil, gilImage,
+          ['Kobold Vendor', 'Kobold-Händler', 'Vendeur Kobold', 'コボルド族のよろず屋'],
+          ["(Purchase Items (Allied))", "(Waren (Verbündet))", "(Objets (rang Allié))", "(アイテムの取引(友好関係：盟友))"],
+          locationImage,
+          location.outerLaNoscea,
+          21.6, 17.8
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 28:
+      return helper.trial(location.duty.theBowlOfEmbersExtreme, 50, expansions.ARR, true, false);
+    
+    case 29:
+      return helper.trial(location.duty.theHowlingEyeExtreme, 50, expansions.ARR, true, false);
+    
+    case 30:
+      return helper.trial(location.duty.theNavelExtreme, 50, expansions.ARR, true, false);
+    
+    case 31:
+      return helper.trial(location.duty.theWhorleaterExtreme, 50, expansions.ARR, true, false);
+    
+    case 32:
+      return helper.achievementReward(921, expansions.ARR, true, false);
+    
+    case 33:
+      return helper.achievementReward(924, expansions.ARR, true, false);
+    
+    case 34:
+      return helper.recruitAFriend();
 
     default:
       //console.log("Unknown method for minion " + minion.id);

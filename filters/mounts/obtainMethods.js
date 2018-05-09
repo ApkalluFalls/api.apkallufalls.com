@@ -66,10 +66,42 @@ const location = {
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
+  northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊']
 }
 
 const helper = {
+  achievementCertificate: (quantity) => {
+    return o(
+      'achievementCertificate',
+      [
+        quantity + 'x',
+        ['Achievement Certificate', 'Errungenschaftszertifikat', 'Jeton de hauts faits', 'アチーブメントスクリップ'],
+        achievementCertificate,
+        ['Jonathas', true, true, 'ジョナサス'],
+        location.apkalluFalls,
+        locationImage,
+        location.oldGridania,
+        10.6, 6.3
+      ],
+      expansions.ARR,
+      true,
+      false
+    )
+  },
+  collectorsEdition: (expansionText, expansion, available) => {
+    return o(
+      'collectorsEdition',
+      [
+        ['Collector\'s Edition', true, true, 'コレクターズエディション'],
+        expansionText,
+        locale('Mog Station')
+      ],
+      expansion,
+      available,
+      true
+    );
+  },
   legacyGift: (level, npc, loc, x, y, expansion) => {
     return o(
       'legacyGift',
@@ -96,7 +128,25 @@ const helper = {
       available,
       promo
     )
-  }
+  },
+  msq: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
+    return o(
+      'msq',
+      [level, type, msqImage, quest, npc, locationImage, loc, x, y],
+      expansion,
+      available,
+      promo
+    )
+  },
+  veteranReward: (days) => {
+    return o(
+      'veteranReward',
+      [locale('Veteran Reward'), days],
+      expansions.ARR,
+      false,
+      false
+    )
+  },
 }
 
 let value;
@@ -155,6 +205,31 @@ module.exports = (mount, achievementsIn) => {
     
     case 5:
       return helper.legacyStatus();
+    
+    case 6:
+      return helper.msq(
+        50,
+        locale('Seventh Umbral Era'),
+        ["The Ultimate Weapon", "Die Ultimative Waffe", "L'ultime Passe D'armes", "究極幻想アルテマウェポン"],
+        ["Raubahn", true, "Raubahn Aldynn", "ラウバーン"],
+        location.northernThanalan,
+        15.6, 17,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 8:
+      return [
+        helper.collectorsEdition(locale('Legacy (1.0)'), expansions.Legacy, false),
+        helper.collectorsEdition(locale('A Realm Reborn'), expansions.ARR, true)
+      ];
+
+    case 9:
+      return [
+        helper.veteranReward(90),
+        helper.achievementCertificate(6)
+      ]
 
     default:
       //console.log("Unknown method for minion " + minion.id);

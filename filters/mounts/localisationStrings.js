@@ -9,5 +9,5 @@ module.exports = {
   achievementCertificate: { en: 'Purchase for {i0} {i1} {img2} from {3} at {4} in {img5} {6} (x: {7}, y: {8}).' },
   trial: { en: 'Randomly awarded from a treasure chest in level {0} trial {img1} \'{i2}\' (final chest).' },
   veteranReward: { en: 'Received as mail from a {i0} for subscribing for {1} days.' },
-  recruitAFriend: { en: 'Rewarded for having a friend subscribe for 90 days during the Recruit A Friend Campaign.' }
+  recruitAFriend: { en: 'Rewarded for having a friend subscribe for 90 days during the {i0}.' }
 };

@@ -286,5 +286,10 @@ module.exports = {
     de: '?Quick Exploration?',
     fr: '?Quick Exploration?',
     jp: '?Quick Exploration?'
+  },
+  'Recruit a Friend Campaign': {
+    de: 'Lade einen Freund ein',
+    fr: 'Campagne d\'invitation d\'ami',
+    jp: '友達招待キャンペーン'
   }
 }

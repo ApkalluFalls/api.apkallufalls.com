@@ -162,10 +162,10 @@ const helper = {
   recruitAFriend: () => {
     return o(
       'recruitAFriend',
-      [],
+      [locale('Recruit a Friend Campaign')],
       expansions.ARR,
-      false,
-      true
+      true,
+      false
     )
   },
   quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {

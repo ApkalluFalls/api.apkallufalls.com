@@ -1,5 +1,7 @@
 const Helper = require('../_helper');
 const createList = require('../_list');
+const obtainMethod = require('../../filters/mounts/obtainMethods');
+const localisationStrings = require('../../filters/mounts/localisationStrings');
 
 module.exports = new Helper("Mount", "mounts", {
   api: 'mount',
@@ -14,9 +16,15 @@ module.exports = new Helper("Mount", "mounts", {
     "patch"
   ],
   list: true,
-  format: (data) => {
+  format: (data, args) => {
     return {
+      localisation: localisationStrings,
       data: data.map(entry => {
+        let method = obtainMethod(entry, args && args[0]);
+
+        if (method && !(method instanceof Array))
+          method = [method];
+
         return {
           id: entry.id,
           icon: entry.icon,
@@ -27,7 +35,8 @@ module.exports = new Helper("Mount", "mounts", {
             jp: entry.name_ja
           },
           patch: entry.patch,
-          canFly: entry.can_fly_extra
+          canFly: entry.can_fly_extra,
+          ref: method
         }
       })
     };

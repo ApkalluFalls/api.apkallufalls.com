@@ -3310,7 +3310,7 @@ module.exports = (minion, achievementsIn) => {
       return helper.achievementCertificate(2);
 
     default:
-      //console.log("Unknown method for minion " + minion.id);
+      console.log("Unknown method for minion " + minion.id);
       return null;
   }
 }

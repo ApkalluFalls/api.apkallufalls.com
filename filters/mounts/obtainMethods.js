@@ -63,12 +63,22 @@ const beastTribe = {
 }
 
 const location = {
+  easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊']
 }
 
 const helper = {
+  legacyGift: (level, npc, loc, x, y, expansion) => {
+    return o(
+      'legacyGift',
+      [level, npc, locationImage, loc, x, y],
+      expansion,
+      false,
+      false
+    )
+  },
   quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
     return o(
       'quest',
@@ -124,6 +134,15 @@ module.exports = (mount, achievementsIn) => {
           false
         )
       ];
+    
+    case 2:
+      return helper.legacyGift(
+        30,
+        ["Wandering Minstrel", "Fahrend[a] Sänger", "Ménestrel Errant", "異邦の詩人"],
+        location.easternLaNoscea,
+        36, 25,
+        expansions.Legacy
+      );
 
     default:
       //console.log("Unknown method for minion " + minion.id);

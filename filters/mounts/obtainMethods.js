@@ -79,6 +79,15 @@ const helper = {
       false
     )
   },
+  legacyStatus: () => {
+    return o(
+      'legacyStatus',
+      [],
+      expansions.ARR,
+      false,
+      true
+    )
+  },
   quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
     return o(
       'quest',
@@ -143,6 +152,9 @@ module.exports = (mount, achievementsIn) => {
         36, 25,
         expansions.Legacy
       );
+    
+    case 5:
+      return helper.legacyStatus();
 
     default:
       //console.log("Unknown method for minion " + minion.id);

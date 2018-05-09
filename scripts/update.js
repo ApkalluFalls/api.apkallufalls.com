@@ -47,10 +47,10 @@ const update = async function (args) {
   if (!config || config.mounts) {
     message('Mounts');
     await require('./mounts/data.js').fetch();
-    await require('./mounts/list.js').fetch();
+    await require('./mounts/list.js').fetch(achievementsList);
   }
   if (config && config.mountsList) {
-    await require('./mounts/list.js').fetch();
+    await require('./mounts/list.js').fetch(achievementsList);
   }
 
   // Titles.

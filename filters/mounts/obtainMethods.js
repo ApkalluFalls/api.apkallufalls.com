@@ -76,12 +76,18 @@ const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イク�
 const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
 
 const location = {
+  apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
-  uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊']
+  uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
+  duty: {
+    theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
+    theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
+    theNavel: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"]
+  }
 }
 
 const helper = {
@@ -101,6 +107,24 @@ const helper = {
       expansions.ARR,
       true,
       false
+    )
+  },
+  achievementReward: (achievementId, expansion, available, promo) => {
+    return o(
+      'achievement',
+      [
+        ['Jonathas', true, true, 'ジョナサス'],
+        ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
+        locationImage,
+        location.oldGridania,
+        10.6, 6.3
+      ],
+      expansion,
+      available,
+      promo,
+      {
+        achievement: getAchievement(achievements, achievementId)
+      }
     )
   },
   collectorsEdition: (expansionText, expansion, available) => {
@@ -147,6 +171,15 @@ const helper = {
     return o(
       'msq',
       [level, type, msqImage, quest, npc, locationImage, loc, x, y],
+      expansion,
+      available,
+      promo
+    )
+  },
+  trial: (name, level, expansion, available, promo) => {
+    return o(
+      'trial',
+      [level, trialImage, name],
       expansion,
       available,
       promo
@@ -281,6 +314,34 @@ module.exports = (mount, achievementsIn) => {
         true,
         false
       );
+    
+    case 20:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.sylph,
+          120000, gil, gilImage,
+          ['Sylphic Vendor', 'Sylphen-Händlerin', 'Vendeur Sylphe', 'シルフ族のよろず屋'],
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
+          locationImage,
+          location.eastShroud,
+          22.4, 26.4
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 21:
+      return helper.achievementReward(862, expansions.ARR, true, false);
+    
+    case 22:
+      return [
+        helper.trial(location.duty.theBowlOfEmbersExtreme, 50, expansions.ARR, true, false),
+        helper.trial(location.duty.theHowlingEyeExtreme, 50, expansions.ARR, true, false),
+        helper.trial(location.duty.theNavel, 50, expansions.ARR, true, false)
+      ];
 
     default:
       //console.log("Unknown method for minion " + minion.id);

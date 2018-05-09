@@ -62,6 +62,19 @@ const beastTribe = {
   ananta: ["Ananta", true, true, "アナンタ"]
 }
 
+const gil = ['Gil', true, true, 'ギル'];
+const poetics = ['Allagan Tomestone of Poetics', 'Allagischer Stein der Poesie', 'Mémoquartz allagois poétique', 'アラガントームストーン:詩学'];
+const mgp = ['MGP', true, 'Point du Gold Saucer', 'マンダヴィル・ゴールドソーサーポイント'];
+const alliedSeals = ['Allied Seal', 'Jagdabzeichen', 'Insigne allié', '同盟記章'];
+const centurioSeals = ["Centurio Seal", "Centurio-Abzeichen", "Insigne Centurio", "セントリオ記章"];
+const wolfMarks = ["Wolf Marks", "Wolfsmarken", "Marques De Loup", "対人戦績の取引"];
+const brassSkyPirateSpoils = ["Brass Sky Pirate Spoil", "Messing-Piratenandenken", "Espoille de pirate des cieux en laiton", "スカイパイレーツスポイル:真鍮"];
+const gelmorranPotsherd = ["Gelmorran Potsherd", "Gelmorra-Scherbe", "Tesson de poterie gelmorraine", "ゲルモラ土器片"];
+const sasshoSekiFragment = ["Sassho-seki Fragment", "Sassho-seki-Fragment", "Fragment de la Roche meurtrière", "殺生石の欠片"];
+const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン珊瑚貨"];
+const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
+const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
+
 const location = {
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
@@ -229,7 +242,44 @@ module.exports = (mount, achievementsIn) => {
       return [
         helper.veteranReward(90),
         helper.achievementCertificate(6)
-      ]
+      ];
+    
+    case 15:
+      return helper.quest(
+        30,
+        locale('Gridanian Sidequests'),
+        ["Unicorn Power", "Ein Einzigartiges Pferd", "Ma Petite Licorne", "我が唯一つの望み"],
+        ["Braya", true, true, "ブレイヤ"],
+        location.oldGridania,
+        6.4, 11.1,
+        expansions.ARR,
+        true,
+        false
+      );
+
+    case 18:
+      return [
+        helper.veteranReward(270),
+        helper.achievementCertificate(6)
+      ];
+    
+    case 19:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.amaljaa,
+          120000, gil, gilImage,
+          ['Amalj\'aa Vendor', 'Amalj\'aa-Händler', 'Vendeur Amalj\'aa', 'アマルジャ族のよろず屋'],
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
+          locationImage,
+          location.southernThanalan,
+          23.3, 14.2
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
 
     default:
       //console.log("Unknown method for minion " + minion.id);

@@ -135,7 +135,7 @@ module.exports = (mount, achievementsIn) => {
         )
       ];
     
-    case 2:
+    case 4:
       return helper.legacyGift(
         30,
         ["Wandering Minstrel", "Fahrend[a] Sänger", "Ménestrel Errant", "異邦の詩人"],

@@ -78,15 +78,20 @@ const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette bé
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
+  eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
+  northShroud: ['North Shroud', 'Nordwald', 'Forêt Du Nord', '黒衣森：北部森林'],
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
+  outerLaNoscea: ['Outer La Noscea', 'Äußeres La Noscea', 'Noscea Extérieure', '地ラノシア'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
+  westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
     theNavelExtreme: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"],
+    theStrikingTreeExtreme: ["The Striking Tree (Extreme)", "Zenit Der Götter - Ramuh", "L'Arbre Du Jugement (extrême)", "極ラムウ討滅戦"],
     theWhorleaterExtreme: ["The Whorleater (Extreme)", "Zenit Der Götter - Leviathan", "Le Briseur De Marées (extrême)", "極リヴァイアサン討滅戦"]
   }
 }
@@ -410,6 +415,49 @@ module.exports = (mount, achievementsIn) => {
     
     case 34:
       return helper.recruitAFriend();
+    
+    case 35:
+      return o(
+        'beastTribe',
+        [
+          rank.sworn,
+          beastTribe.ixal,
+          120000, gil, gilImage,
+          ['Ixali Vendor', 'Ixal-Händler', 'Vendeur Ixal', 'イクサル族のよろず屋'],
+          ['(Purchase Items (Sworn))', '(Waren (Solidarisch))', '(Objets (rang Assermenté))', '(アイテムの取引(友好関係：誓約))'],
+          locationImage,
+          location.northShroud,
+          25, 22.8
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 36:
+      return helper.achievementReward(939, expansions.ARR, true, false);
+    
+    case 37:
+      return helper.achievementReward(945, expansions.ARR, true, false);
+    
+    case 38:
+      return helper.achievementReward(951, expansions.ARR, true, false);
+    
+    case 40:
+      return helper.trial(location.duty.theStrikingTreeExtreme, 50, expansions.ARR, true, false);
+    
+    case 41:
+      return helper.quest(
+        1,
+        locale('Special Quests'),
+        ["The Ties That Bind", "Ein Bund Fürs Leben", "Jusqu'à Ce Que Le Destin Vous Sépare", "時がふたりを分かつまで"],
+        ["Claribel", true, true, "介添人 クラリベル"],
+        location.eastShroud,
+        17.6, 18.3,
+        expansions.ARR,
+        true,
+        false
+      );
 
     default:
       //console.log("Unknown method for minion " + minion.id);

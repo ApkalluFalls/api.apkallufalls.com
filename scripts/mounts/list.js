@@ -20,7 +20,7 @@ module.exports = new Helper("Mount", "mounts", {
     return {
       localisation: localisationStrings,
       data: data.map(entry => {
-        let method = obtainMethod(entry, args && args[0]);
+        let method = obtainMethod(entry, args && args[0], data);
 
         if (method && !(method instanceof Array))
           method = [method];

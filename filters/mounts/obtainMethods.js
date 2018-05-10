@@ -3,6 +3,7 @@ const getAchievement = require('../_getAchievement');
 const locale = require('../_locale');
 
 let achievements;
+let mounts;
 
 const expansions = {
   Unknown: 'X',
@@ -202,7 +203,7 @@ const helper = {
       promo
     )
   },
-  questAfterMount: (level, type, quest, npc, loc, x, y, mounts, expansion, available, promo) => {
+  questAfterMount: (level, type, quest, npc, loc, x, y, mountArray, expansion, available, promo) => {
     return o(
       'questAfterMount',
       [level, type, questImage, quest, npc, locationImage, loc, x, y],
@@ -210,7 +211,18 @@ const helper = {
       available,
       promo,
       {
-        mounts: mounts
+        mounts: mountArray.map(id => {
+          const mount = mounts.filter(mount => mount.id === id);
+          return {
+            id: id,
+            name: {
+              de: mount.name_de,
+              en: mount.name_en,
+              fr: mount.name_fr,
+              jp: mount.name_ja
+            }
+          };
+        })
       }
     )
   },
@@ -257,8 +269,9 @@ let value;
 /* Returns information about how minions are obtained.
  * Corresponds to ../../docs/obtainMethods.json.
  */
-module.exports = (mount, achievementsIn) => {
+module.exports = (mount, achievementsIn, mountsIn) => {
   achievements = achievementsIn;
+  mounts = mountsIn;
   switch (+mount.id) {
     case 1:
       return [

@@ -212,7 +212,7 @@ const helper = {
       promo,
       {
         mounts: mountArray.map(id => {
-          const mount = mounts.filter(mount => mount.id === id);
+          const mount = mounts.filter(mount => mount.id === id)[0];
           return {
             id: id,
             name: {

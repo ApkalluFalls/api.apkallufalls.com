@@ -190,6 +190,11 @@ module.exports = {
     fr: 'Thanalan',
     jp: 'サブクエスト：ザナラーン'
   },
+  'Mor Dhonan Sidequests': {
+    de: 'Nebenaufträge Mor Dhona',
+    fr: 'Mor Dhona',
+    jp: 'サブクエスト：モードゥナ'
+  },
 
   // Retainer venture
   'Field Exploration': {

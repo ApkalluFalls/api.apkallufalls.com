@@ -79,15 +79,19 @@ const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
+  fortempsManor: ["Fortemps Manor", "Anwesen Der Fortemps", "Manoir Des Fortemps", "フォルタン伯爵邸"],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
+  morDhona: ["Mor Dhona", true, true, "モードゥナ"],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
   northShroud: ['North Shroud', 'Nordwald', 'Forêt Du Nord', '黒衣森：北部森林'],
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   outerLaNoscea: ['Outer La Noscea', 'Äußeres La Noscea', 'Noscea Extérieure', '地ラノシア'],
+  southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
+    akhAfahAmphitheatre: ["Akh Afah Amphitheatre (Extreme)", "Zenit Der Götter - Shiva", "L'Amphithéâtre D'Akh Afah (extrême)", "極シヴァ討滅戦"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
     theNavelExtreme: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"],
@@ -146,6 +150,22 @@ const helper = {
       true
     );
   },
+  goldSaucerPrizeExchange: (cost) => {
+    return o(
+      'purchase',
+      [
+        cost, mgp, mgpImage,
+        ['Gold Saucer Attendant', 'Sonderartikel-Händlerin', 'Préposée Aux Lots', '景品交換窓口'],
+        ['(Prize Exchange I)', '(Gewinne I)', '(Lots (1))', '（景品の交換（その1））'],
+        locationImage,
+        location.theGoldSaucer,
+        5.4, 6.7
+      ],
+      expansions.ARR,
+      true,
+      false
+    )
+  },
   legacyGift: (level, npc, loc, x, y, expansion) => {
     return o(
       'legacyGift',
@@ -180,6 +200,27 @@ const helper = {
       expansion,
       available,
       promo
+    )
+  },
+  questAfterMount: (level, type, quest, npc, loc, x, y, mounts, expansion, available, promo) => {
+    return o(
+      'questAfterMount',
+      [level, type, questImage, quest, npc, locationImage, loc, x, y],
+      expansion,
+      available,
+      promo,
+      {
+        mounts: mounts
+      }
+    )
+  },
+  mogStation: () => {
+    return o(
+      'mogStation',
+      [locale('Mog Station')],
+      expansions.ARR,
+      true,
+      true
     )
   },
   msq: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
@@ -454,6 +495,45 @@ module.exports = (mount, achievementsIn) => {
         ["Claribel", true, true, "介添人 クラリベル"],
         location.eastShroud,
         17.6, 18.3,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 42:
+      return helper.mogStation();
+    
+    case 43:
+      return helper.trial(location.duty.akhAfahAmphitheatre, 50, expansions.ARR, true, false);
+
+    case 44:
+      return helper.achievementReward(1036, expansions.ARR, true, false);
+    
+    case 45:
+      return helper.msq(
+        50,
+        locale('Heavensward'),
+        ["Divine Intervention", "Das Gottesurteil", "Les Chevaliers De L'Azur", "蒼天の騎士"],
+        ["House Fortemps Steward", "Diener[p] Der Fortemps", "Majordome Des Fortemps", "フォルタン家の家令"],
+        location.fortempsManor,
+        6.2, 6.2,
+        expansions.HW,
+        true,
+        false
+      );
+
+    case 46:
+      return helper.goldSaucerPrizeExchange(10000);
+
+    case 47:
+      return helper.questAfterMount(
+        1,
+        locale('Mor Dhonan Sidequests'),
+        ["A Legend For A Legend", "Eine Legende Für Eine Legende", "Qui Se Ressemble S'assemble", "麒麟、現世に降り立たん"],
+        ["Wandering Minstrel", "Fahrend[a] Sänger", "Ménestrel Errant", "異邦の詩人"],
+        location.morDhona,
+        21.8, 8.8,
+        [28, 43, 31, 30, 40, 29],
         expansions.ARR,
         true,
         false

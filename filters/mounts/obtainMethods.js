@@ -171,7 +171,7 @@ const helper = {
         ],
         expansions.ARR,
         true,
-        false
+        true
       ),
       o(
         'goldChocoboFeather',
@@ -186,7 +186,7 @@ const helper = {
         ],
         expansions.ARR,
         true,
-        false
+        true
       ),
       o(
         'goldChocoboFeather',
@@ -201,7 +201,7 @@ const helper = {
         ],
         expansions.ARR,
         true,
-        false
+        true
       )
     ]
   },

@@ -12,5 +12,6 @@ module.exports = {
   veteranReward: { en: 'Received as mail from a {i0} for subscribing for {1} days.' },
   mogStation: { en: 'Purchase directly from the {i0}.' },
   purchase: { en: 'Purchase for {img2} {i0} {i1} from {3} {4} in {img5} {6} (x: {7}, y: {8}).' },
-  recruitAFriend: { en: 'Rewarded for having a friend subscribe for 90 days during the {i0}.' }
+  recruitAFriend: { en: 'Rewarded for having a friend subscribe for 90 days during the {i0}.' },
+  purchase: { en: 'Purchase for {img2} {i0} {i1}, awarded from the {i9}, from {3} {4} in {img5} {6} (x: {7}, y: {8}).' },
 };

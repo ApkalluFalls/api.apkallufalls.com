@@ -42,6 +42,7 @@ const ventureImage = 'v';
 const kojinSangoImage = 'ks';
 const ixionHornImage = 'ih';
 const anantaDreamstaffImage = 'ad';
+const goldChocoboFeatherImage = 'gcf';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -75,12 +76,15 @@ const sasshoSekiFragment = ["Sassho-seki Fragment", "Sassho-seki-Fragment", "Fra
 const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン珊瑚貨"];
 const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
 const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
+const goldChocoboFeather = ["Gold Chocobo Feather", "Goldene Chocobo-Feder", "Penne de chocobo doré", "ゴールドチョコボの羽根"];
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
+  azysLla: ["Azys Lla", true, true, "アジス・ラー"],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   fortempsManor: ["Fortemps Manor", "Anwesen Der Fortemps", "Manoir Des Fortemps", "フォルタン伯爵邸"],
+  theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   morDhona: ["Mor Dhona", true, true, "モードゥナ"],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
@@ -90,6 +94,7 @@ const location = {
   outerLaNoscea: ['Outer La Noscea', 'Äußeres La Noscea', 'Noscea Extérieure', '地ラノシア'],
   southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
+  uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
     akhAfahAmphitheatre: ["Akh Afah Amphitheatre (Extreme)", "Zenit Der Götter - Shiva", "L'Amphithéâtre D'Akh Afah (extrême)", "極シヴァ討滅戦"],
@@ -150,6 +155,55 @@ const helper = {
       available,
       true
     );
+  },
+  goldChocoboFeatherExchange: (cost) => {
+    return [
+      o(
+        'goldChocoboFeather',
+        [
+          cost, goldChocoboFeather, goldChocoboFeatherImage,
+          ["Calamity Salvager", "Fundsachen-Verwalter", "Consigneur", "遺失物管理人"],
+          ["(Chocobo Feather Exchange I)", "(Chocobo-Federn I)", "(Plumes De Chocobo (1))", "(特殊チョコボの羽根の取引（その1）)"],
+          locationImage,
+          location.oldGridania,
+          10, 8.4,
+          locale('Recruit a Friend Campaign')
+        ],
+        expansions.ARR,
+        true,
+        false
+      ),
+      o(
+        'goldChocoboFeather',
+        [
+          cost, goldChocoboFeather, goldChocoboFeatherImage,
+          ["Calamity Salvager", "Fundsachen-Verwalter", "Consigneur", "遺失物管理人"],
+          ["(Chocobo Feather Exchange I)", "(Chocobo-Federn I)", "(Plumes De Chocobo (1))", "(特殊チョコボの羽根の取引（その1）)"],
+          locationImage,
+          location.limsaUpperDecks,
+          11.4, 14.4,
+          locale('Recruit a Friend Campaign')
+        ],
+        expansions.ARR,
+        true,
+        false
+      ),
+      o(
+        'goldChocoboFeather',
+        [
+          cost, goldChocoboFeather, goldChocoboFeatherImage,
+          ["Calamity Salvager", "Fundsachen-Verwalter", "Consigneur", "遺失物管理人"],
+          ["(Chocobo Feather Exchange I)", "(Chocobo-Federn I)", "(Plumes De Chocobo (1))", "(特殊チョコボの羽根の取引（その1）)"],
+          locationImage,
+          location.uldahStepsOfThal,
+          12.7, 13.2,
+          locale('Recruit a Friend Campaign')
+        ],
+        expansions.ARR,
+        true,
+        false
+      )
+    ]
   },
   goldSaucerPrizeExchange: (cost) => {
     return o(
@@ -536,7 +590,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       );
 
     case 46:
-      return helper.goldSaucerPrizeExchange(10000);
+      return helper.goldSaucerPrizeExchange(200000);
 
     case 47:
       return helper.questAfterMount(
@@ -551,6 +605,28 @@ module.exports = (mount, achievementsIn, mountsIn) => {
         true,
         false
       );
+
+    case 48:
+      return helper.achievementReward(1132, expansions.ARR, true, false);
+    
+    case 49:
+      return helper.goldSaucerPrizeExchange(1000000);
+    
+    case 50:
+      return helper.quest(
+        1,
+        locale('Heavensward'),
+        ["Fetters Of Lament", "Fesseln Der Reue", "Un Dragon Aux Fers", "翼、広げて"],
+        ["Guidance Node", "Wegleitsystem", "Sphère De Guidage", "誘導システム"],
+        location.azysLla,
+        18.6, 31.7,
+        expansions.ARR,
+        true,
+        false
+      );
+
+    case 52:
+      return helper.goldChocoboFeatherExchange(8);
 
     default:
       //console.log("Unknown method for minion " + minion.id);

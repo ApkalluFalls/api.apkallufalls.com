@@ -13,5 +13,5 @@ module.exports = {
   mogStation: { en: 'Purchase directly from the {i0}.' },
   purchase: { en: 'Purchase for {img2} {i0} {i1} from {3} {4} in {img5} {6} (x: {7}, y: {8}).' },
   recruitAFriend: { en: 'Rewarded for having a friend subscribe for 90 days during the {i0}.' },
-  purchase: { en: 'Purchase for {img2} {i0} {i1}, awarded from the {i9}, from {3} {4} in {img5} {6} (x: {7}, y: {8}).' },
+  goldChocoboFeather: { en: 'Purchase for {img2} {i0} {i1}, awarded from the {i9}, from {3} {4} in {img5} {6} (x: {7}, y: {8}).' },
 };

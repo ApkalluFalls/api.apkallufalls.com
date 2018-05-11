@@ -13,6 +13,15 @@ const expansions = {
   SB: 4
 };
 
+const _npc = {
+  minionTrader: ['Minion Trader', 'Trabantenhändlerin', 'Marchande De Mascottes', 'ミニオントレーダー'],
+  lunaVanu: ["Luna Vanu", true, true, "商人のルナバヌ"],
+  vathStickpeddler: ["Vath Stickpeddler", "Krämer", "Camelot", "アキンド"],
+  mogmulMogbelly: ["Mogmul Mogbelly", "Mogmul Mogbauch", "Mogmul", "大食いのモグムリ"],
+  stormSegeant: ["Storm Sergeant", "Sturmmaat", "Sergent Des Tempêtes", "黒渦団甲軍曹"],
+  spoilsCollector: ["Spoils Collector", "Andenkenhändlerin", "Négociante D'espoilles", "スポイル取引窓口"]
+}
+
 const gilImage = 'gil';
 const companySealsImage = 'cs';
 const wolfMarksImage = 'wm';
@@ -84,6 +93,7 @@ const location = {
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   fortempsManor: ["Fortemps Manor", "Anwesen Der Fortemps", "Manoir Des Fortemps", "フォルタン伯爵邸"],
+  foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   morDhona: ["Mor Dhona", true, true, "モードゥナ"],
@@ -98,6 +108,7 @@ const location = {
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
   duty: {
     akhAfahAmphitheatre: ["Akh Afah Amphitheatre (Extreme)", "Zenit Der Götter - Shiva", "L'Amphithéâtre D'Akh Afah (extrême)", "極シヴァ討滅戦"],
+    alexanderTheBurdenOfTheFatherSavage: ["Alexander - The Burden Of The Father (Savage)", "Alexander - Last Des Vaters (episch)", "Alexander - Le Fardeau Du Père (sadique)", "機工城アレキサンダー零式：起動編4"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
     theNavelExtreme: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"],
@@ -278,6 +289,15 @@ const helper = {
           };
         })
       }
+    )
+  },
+  raid: (name, level, expansion, available, promo) => {
+    return o(
+      'raid',
+      [level, raidImage, name],
+      expansion,
+      available,
+      promo
     )
   },
   mogStation: () => {
@@ -564,7 +584,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
         17.6, 18.3,
         expansions.ARR,
         true,
-        false
+        true
       );
     
     case 42:
@@ -620,7 +640,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
         ["Guidance Node", "Wegleitsystem", "Sphère De Guidage", "誘導システム"],
         location.azysLla,
         18.6, 31.7,
-        expansions.ARR,
+        expansions.HW,
         true,
         false
       );
@@ -628,6 +648,46 @@ module.exports = (mount, achievementsIn, mountsIn) => {
     case 52:
       return helper.goldChocoboFeatherExchange(8);
 
+    case 53:
+      return o(
+        'beastTribe',
+        [
+          rank.sword,
+          beastTribe.vanuVanu,
+          200000, gil, gilImage,
+          _npc.lunaVanu,
+          ["(Purchase Items (Trusted-Honored))", "(Waren (Vertraut))", "(Objets (rangs Estimé à émérite))", "(アイテムの取引(友好関係：信頼～名誉))"],
+          locationImage,
+          location.theSeaOfClouds,
+          7, 14.3
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+
+    case 54:
+      return helper.collectorsEdition(locale('Heavensward'), expansions.HW, true);
+    
+    case 55:
+      return helper.msq(
+        55,
+        locale('Heavensward'),
+        ["Into The Aery", "Mit Den Augen Eines Drachen", "La Colère Du Dragon", "邪竜狩り"],
+        ["Estinien", true, true, "エスティニアン"],
+        location.foundation,
+        13.4, 11.1,
+        expansions.HW,
+        true,
+        false
+      );
+
+    case 56:
+      return helper.achievementReward(1195, expansions.HW, true, false);
+    
+    case 58:
+      return helper.raid(location.duty.alexanderTheBurdenOfTheFatherSavage, 60, expansions.HW, true, false);
+    
     default:
       //console.log("Unknown method for minion " + minion.id);
       return null;

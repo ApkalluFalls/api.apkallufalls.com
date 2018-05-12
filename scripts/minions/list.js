@@ -47,8 +47,7 @@ module.exports = new Helper("Minion", "minions", {
           // Populate method on all others.
           default: {
             const method = obtainMethod(entry, args && args[0]);
-            if (method && !(method instanceof Array))
-              response.ref = [method];
+            response.ref = method && !(method instanceof Array) ? [method] : method;
             break;
           }
         }

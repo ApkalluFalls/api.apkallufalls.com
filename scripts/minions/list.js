@@ -19,12 +19,7 @@ module.exports = new Helper("Minion", "minions", {
     return {
       localisation: localisationStrings,
       data: data.map(entry => {
-        let method = obtainMethod(entry, args && args[0]);
-
-        if (method && !(method instanceof Array))
-          method = [method];
-        
-        return {
+        const response = {
           id: entry.id,
           icon: entry.icon,
           name: {
@@ -33,9 +28,32 @@ module.exports = new Helper("Minion", "minions", {
             fr: entry.name_fr,
             jp: entry.name_ja
           },
-          patch: entry.patch,
-          ref: method
+          patch: entry.patch
         }
+
+        switch (response.id) {
+          // Ignore child minions.
+          // Individual Minion Of Light minions.
+          case 68:
+          case 69:
+          case 70:
+          // Individual Wind-up Leader minions.
+          case 72:
+          case 73:
+          case 74:
+            response.hasParent = true;
+            break;
+
+          // Populate method on all others.
+          default: {
+            const method = obtainMethod(entry, args && args[0]);
+            if (method && !(method instanceof Array))
+              response.ref = [method];
+            break;
+          }
+        }
+
+        return response;
       })
     }
   }

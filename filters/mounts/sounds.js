@@ -22,7 +22,7 @@ module.exports = (mount) => {
 
   switch (mount.id) {
     case 4:
-      return override('(bâillement)', '(yawning');
+      return override('(bâillement)', '(yawn)');
 
     case 6:
     case 141:

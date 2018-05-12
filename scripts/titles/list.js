@@ -35,6 +35,7 @@ module.exports = new Helper("Patch", "patches", {
           response.achievement = args[0].data.filter(achievement => (
             achievement.reward && achievement.reward.title === entry.id
           )).map(achievement => ({
+            icon: achievement.icon,
             id: achievement.id,
             name: achievement.name,
             patch: achievement.patch

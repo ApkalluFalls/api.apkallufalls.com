@@ -27,7 +27,8 @@ module.exports = new Helper("Patch", "patches", {
             en: entry.name_en,
             fr: entry.name_fr,
             jp: entry.name_ja
-          }
+          },
+          prefix: entry.is_prefix
         }
 
         if (args && args[0]) {

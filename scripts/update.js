@@ -55,7 +55,7 @@ const update = async function (args) {
 
   // Titles.
   if (config && config.titlesList) {
-    await require('./titles/list.js').fetch();
+    await require('./titles/list.js').fetch(achievementsList);
   }
 
   // Totals.

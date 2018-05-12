@@ -13,10 +13,11 @@ module.exports = new Helper("Patch", "patches", {
     'name_female_en',
     'name_female_fr',
     'name_female_ja',
-    'is_prefix'
+    'is_prefix',
+    'patch'
   ],
   list: true,
-  format: (data) => {
+  format: (data, args) => {
     return {
       data: data.map(entry => {
         const response = {
@@ -26,7 +27,17 @@ module.exports = new Helper("Patch", "patches", {
             en: entry.name_en,
             fr: entry.name_fr,
             jp: entry.name_ja
-          }
+          },
+          patch: entry.patch
+        }
+
+        if (args && args[0]) {
+          response.achievement = args[0].data.filter(achievement => (
+            achievement.reward && achievement.reward.title === entry.id
+          )).map(achievement => ({
+            id: achievement.id,
+            name: achievement.name
+          }))[0];
         }
 
         if (entry.name_en !== entry.name_female_en)

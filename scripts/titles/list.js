@@ -38,6 +38,7 @@ module.exports = new Helper("Patch", "patches", {
             icon: achievement.icon,
             id: achievement.id,
             name: achievement.name,
+            unavailable: achievement.unavailable,
             patch: achievement.patch
           }))[0];
         }

@@ -27,8 +27,7 @@ module.exports = new Helper("Patch", "patches", {
             en: entry.name_en,
             fr: entry.name_fr,
             jp: entry.name_ja
-          },
-          patch: entry.patch
+          }
         }
 
         if (args && args[0]) {
@@ -36,8 +35,14 @@ module.exports = new Helper("Patch", "patches", {
             achievement.reward && achievement.reward.title === entry.id
           )).map(achievement => ({
             id: achievement.id,
-            name: achievement.name
+            name: achievement.name,
+            patch: achievement.patch
           }))[0];
+        }
+
+        if (response.achievement) {
+          response.patch = response.achievement.patch;
+          delete response.achievement.patch;
         }
 
         if (entry.name_en !== entry.name_female_en)

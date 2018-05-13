@@ -10,6 +10,7 @@ module.exports = new Helper("Achievement", "achievements", {
   api: 'achievement',
   columns: [
     "achievement_category",
+    "achievement_kind",
     "icon",
     "id",
     "item",
@@ -64,6 +65,8 @@ module.exports = new Helper("Achievement", "achievements", {
     return {
       data: data.map(entry => {
         let response = {
+          category: entry.achievement_category,
+          kind: entry.achievement_kind,
           id: entry.id,
           icon: entry.icon,
           order: entry.order,

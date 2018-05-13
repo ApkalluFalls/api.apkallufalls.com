@@ -1,3 +1,4 @@
+const fs = require('fs');
 const Helper = require('../_helper');
 const recursiveFetch = require('../_recursive');
 const config = require('../_config');
@@ -6,6 +7,9 @@ const api = "achievement";
 const base = 'achievement';
 const name = "Achievement";
 const plural = "achievements";
+
+const categories = {};
+const kinds = {};
 
 module.exports = new Helper(name, plural, {
   api,
@@ -20,6 +24,15 @@ module.exports = new Helper(name, plural, {
       api: api + '/' + entry.id,
       base,
       format: (data) => {
+        const categoryId = data.category_id === null ? 'unknown' : data.category_id;
+        const kindId = data.kind_id === null ? 'unknown' : data.kind_id;
+  
+        if (!categories[categoryId])
+          categories[categoryId] = data.category_name || 'Unknown';
+
+        if (!kinds[kindId])
+          kinds[categoryId] = data.kind_name || 'Unknown';
+
         return {
           id: data.id,
           category: {
@@ -40,5 +53,18 @@ module.exports = new Helper(name, plural, {
         }
       }
     }
-  }, resolve)
+  }, () => {
+    fs.writeFile(
+      "../docs/achievement_categories.json",
+      JSON.stringify({
+        categories,
+        kinds
+      }),
+      'utf8',
+      () => {
+        console.log("Achievement categories updated.");
+        resolve();
+      }
+    );
+  })
 });

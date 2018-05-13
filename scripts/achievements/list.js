@@ -34,8 +34,7 @@ module.exports = new Helper("Achievement", "achievements", {
     "type"
   ],
   list: true,
-  format: (data) => {
-    // Create the series array, if applicable.
+  format: (data, args) => {
     data.forEach(
       achievement => {
         const filtered = data.filter(
@@ -63,10 +62,10 @@ module.exports = new Helper("Achievement", "achievements", {
     );
 
     return {
+      tags: args && args[0],
       data: data.map(entry => {
         let response = {
-          category: entry.achievement_category,
-          kind: entry.achievement_kind,
+          tag: [entry.achievement_category, entry.achievement_kind],
           id: entry.id,
           icon: entry.icon,
           order: entry.order,

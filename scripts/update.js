@@ -11,7 +11,12 @@ const update = async function (args) {
   else
     config = false;
   
+  let achievementCategories;
   let achievementsList;
+
+  await new Promise((resolve) => fs.readFile('../docs/achievement_categories.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => achievementCategories = JSON.parse(data));
 
   await new Promise((resolve) => fs.readFile('../docs/achievements.json', 'utf8', (e, data) => {
     resolve(data);
@@ -27,10 +32,10 @@ const update = async function (args) {
   if (!config || config.achievements) {
     message('Achievements');
     await require('./achievements/data.js').fetch();
-    await require('./achievements/list.js').fetch();
+    await require('./achievements/list.js').fetch(achievementCategories);
   }
   if (config && config.achievementsList) {
-    await require('./achievements/list.js').fetch();
+    await require('./achievements/list.js').fetch(achievementCategories);
   }
 
   // Minions.

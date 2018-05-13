@@ -12,9 +12,9 @@
     "imagemin-optipng": "^5.2.1",
     "imagemin-pngcrush": "^5.1.0",
     "imagemin-pngout": "^2.0.0",
-    "imagemin-pngquant": "^5.0.1",
+    "imagemin-pngquant": "^5.1.0",
     "node-fetch": "^1.7.3",
-    "request": "^2.83.0",
+    "request": "^2.85.0",
     "spritesmith": "^3.3.0"
   }
 }

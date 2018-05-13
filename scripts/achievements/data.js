@@ -31,7 +31,7 @@ module.exports = new Helper(name, plural, {
           categories[categoryId] = data.category_name || 'Unknown';
 
         if (!kinds[kindId])
-          kinds[categoryId] = data.kind_name || 'Unknown';
+          kinds[kindId] = data.kind_name || 'Unknown';
 
         return {
           id: data.id,

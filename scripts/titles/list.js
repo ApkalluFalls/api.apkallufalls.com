@@ -21,6 +21,7 @@ module.exports = new Helper("Patch", "patches", {
   list: true,
   format: (data, args) => {
     return {
+      tags: args && args[1],
       localisation: localisationStrings,
       data: data.map(entry => {
         const response = {
@@ -38,13 +39,7 @@ module.exports = new Helper("Patch", "patches", {
         if (args && args[0]) {
           achievement = args[0].data.filter(achievement => (
             achievement.reward && achievement.reward.title === entry.id
-          )).map(achievement => ({
-            icon: achievement.icon,
-            id: achievement.id,
-            name: achievement.name,
-            unavailable: achievement.unavailable,
-            patch: achievement.patch
-          }))[0];
+          ))[0];
         }
 
         if (achievement) {
@@ -56,6 +51,7 @@ module.exports = new Helper("Patch", "patches", {
           response.icon = achievement.icon;
           response.patch = achievement.patch;
           response.ref = method;
+          response.tag = achievement.tag;
         }
 
         if (entry.name_en !== entry.name_female_en)

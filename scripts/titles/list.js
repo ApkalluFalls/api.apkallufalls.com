@@ -1,5 +1,7 @@
 const Helper = require('../_helper');
 const createList = require('../_list');
+const obtainMethod = require('../../filters/titles/obtainMethods');
+const localisationStrings = require('../../filters/titles/localisationStrings');
 
 module.exports = new Helper("Patch", "patches", {
   api: 'title',
@@ -19,6 +21,7 @@ module.exports = new Helper("Patch", "patches", {
   list: true,
   format: (data, args) => {
     return {
+      localisation: localisationStrings,
       data: data.map(entry => {
         const response = {
           id: entry.id,
@@ -31,8 +34,9 @@ module.exports = new Helper("Patch", "patches", {
           prefix: entry.is_prefix
         }
 
+        let achievement;
         if (args && args[0]) {
-          response.achievement = args[0].data.filter(achievement => (
+          achievement = args[0].data.filter(achievement => (
             achievement.reward && achievement.reward.title === entry.id
           )).map(achievement => ({
             icon: achievement.icon,
@@ -43,9 +47,12 @@ module.exports = new Helper("Patch", "patches", {
           }))[0];
         }
 
-        if (response.achievement) {
-          response.patch = response.achievement.patch;
-          delete response.achievement.patch;
+        if (achievement) {
+          let method = obtainMethod(entry, args && args[0], achievement);
+          if (method && !(method instanceof Array))
+            method = [method];
+          response.ref = method;
+          response.patch = achievement.patch;
         }
 
         if (entry.name_en !== entry.name_female_en)

@@ -12,7 +12,7 @@ module.exports = (methodText, methodValues, expansion, available, promo, extra) 
   const result = {
     method: {
       text: methodText,
-      values: methodValues
+      values: methodValues && methodValues.length
         ? methodValues.map(v => {
           if (v instanceof Array)
             return {

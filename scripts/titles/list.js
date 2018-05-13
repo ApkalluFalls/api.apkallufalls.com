@@ -49,10 +49,13 @@ module.exports = new Helper("Patch", "patches", {
 
         if (achievement) {
           let method = obtainMethod(entry, args && args[0], achievement);
+
           if (method && !(method instanceof Array))
             method = [method];
-          response.ref = method;
+
+          response.icon = achievement.icon;
           response.patch = achievement.patch;
+          response.ref = method;
         }
 
         if (entry.name_en !== entry.name_female_en)

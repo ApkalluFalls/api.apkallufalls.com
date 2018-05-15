@@ -47,7 +47,7 @@ module.exports = new Helper(name, plural, {
           },
           help: {
             de: content.Description_de,
-            en: content.Description,
+            en: content.Description_en,
             fr: content.Description_fr,
             jp: content.Description_ja
           },

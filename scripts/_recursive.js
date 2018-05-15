@@ -2,12 +2,12 @@
 
 const Helper = require('./_helper');
 
-module.exports = function(data, name, getConfig, resolve, v3) {
+module.exports = function(data, name, getConfig, resolve) {
   const all = data.slice(0);
   recursiveFetch(all, ...arguments);
 }
 
-function recursiveFetch(all, data, name, getConfig, resolve, v3) {
+function recursiveFetch(all, data, name, getConfig, resolve) {
   const entry = data.shift();
   new Helper(
     name + " " + entry.id,
@@ -18,5 +18,5 @@ function recursiveFetch(all, data, name, getConfig, resolve, v3) {
         return recursiveFetch(...arguments);
       resolve();
     }
-  ).fetch(v3 || false);
+  ).fetch();
 }

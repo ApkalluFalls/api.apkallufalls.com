@@ -15,13 +15,15 @@ module.exports = new Helper(name, plural, {
   api,
   base,
   columns: [
-    "id"
+    "ID"
   ],
-  useCallback: true
+  useCallback: true,
+  v3: true
 }, (data, resolve) => {
   recursiveFetch(data, name, (entry, all) => {
     return {
-      api: api + '/' + entry.id,
+      v3: true,
+      api: api + '/' + entry.ID,
       base,
       format: (data) => {
         const content = data.content;
@@ -68,5 +70,5 @@ module.exports = new Helper(name, plural, {
         resolve();
       }
     );
-  }, true)
+  })
 });

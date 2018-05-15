@@ -4,12 +4,14 @@ const fs = require('fs');
 module.exports = class Helper {
   constructor(name, plural, config, callback) {
     this.api = config.api;
+    console.info(this.api);
     this.base = "../docs/" + (config.base ? config.base + "/" : '');
     this.columns = config.columns;
     this.details = config.details;
     this.format = config.format;
     this.list = !!config.list;
     this.useCallback = config.useCallback;
+    this.v3 = config.v3;
 
     this.name = name;
     this.plural = plural;
@@ -20,37 +22,16 @@ module.exports = class Helper {
     this.updated = 0;
     this.processed = 0;
     this.toProcess = 0;
-
-    this.v3 = false;
   }
 
-  fetch(v3) {
-    if (v3 === true) {
-      this.v3 = true;
-      const args = arguments;
-      if (args instanceof Array) {
-        args.shift();
-        this.args = args;
-      }
-
-      return new Promise((resolve) => {
-        this.resolve = resolve;
-        const apiPath = 'http://api.xivdb-staging.com/' + this.api.charAt(0).toUpperCase() + this.api.slice(1);
-        const columns = this.columns && this.columns.length
-                        ? "?columns=" + this.columns.join(',')
-                        : "";
-
-        console.info(apiPath + columns);
-
-        callApi(apiPath, columns, process.bind(this));
-      })
-    }
-
+  fetch() {
     this.args = arguments;
 
     return new Promise((resolve) => {
       this.resolve = resolve;
-      const apiPath = "https://api.xivdb.com/" + this.api;
+      const apiPath = this.v3
+      ? "http://api.xivdb-staging.com/" + this.api.charAt(0).toUpperCase() + this.api.slice(1)
+      : "https://api.xivdb.com/" + this.api;
       const columns = this.columns && this.columns.length
                     ? "?columns=" + this.columns.join(',')
                     : "";
@@ -80,6 +61,13 @@ function callApi(apiPath, columns, callback) {
 function process(data) {
   if (data && typeof data === "object" && data.error)
     return console.error(data.error);
+
+  if (this.v3) {
+    if (data instanceof Array)
+      data = data.filter(d => d.ID !== null);
+    else if (data && typeof data === 'object' && data.content instanceof Array)
+      data.content = data.content.filter(d => d.ID !== null);
+  }
 
   // If we should ignore everything and use a callback, do that.
   if (this.useCallback)

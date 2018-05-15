@@ -20,9 +20,32 @@ module.exports = class Helper {
     this.updated = 0;
     this.processed = 0;
     this.toProcess = 0;
+
+    this.v3 = false;
   }
 
-  fetch() {
+  fetch(v3) {
+    if (v3 === true) {
+      this.v3 = true;
+      const args = arguments;
+      if (args instanceof Array) {
+        args.shift();
+        this.args = args;
+      }
+
+      return new Promise((resolve) => {
+        this.resolve = resolve;
+        const apiPath = 'http://api.xivdb-staging.com/' + this.api.charAt(0).toUpperCase() + this.api.slice(1);
+        const columns = this.columns && this.columns.length
+                        ? "?columns=" + this.columns.join(',')
+                        : "";
+
+        console.info(apiPath + columns);
+
+        callApi(apiPath, columns, process.bind(this));
+      })
+    }
+
     this.args = arguments;
 
     return new Promise((resolve) => {
@@ -71,7 +94,7 @@ function process(data) {
   }
   
   const processData = (d) => {
-    const fileName = d.id;
+    const fileName = this.v3 ? d.content.ID : d.id;
     const filePath = this.base + fileName + ".json";
     let logMessage = this.name + " @ " + filePath + " ";
   

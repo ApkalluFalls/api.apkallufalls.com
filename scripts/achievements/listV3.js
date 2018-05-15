@@ -14,7 +14,7 @@ module.exports = new Helper("Achievement", "achievements", {
     "ID",
     "Item",
     "Name_de",
-    "Name",
+    "Name_en",
     "Name_fr",
     "Name_ja",
     "Order",

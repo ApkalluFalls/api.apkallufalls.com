@@ -63,9 +63,9 @@ function process(data) {
 
   if (this.v3) {
     if (data instanceof Array)
-      data = data.filter(d => d.ID !== null);
+      data = data.filter(d => d.ID !== 0);
     else if (data && typeof data === 'object' && data.content instanceof Array)
-      data.content = data.content.filter(d => d.ID !== null);
+      data.content = data.content.filter(d => d.ID !== 0);
   }
 
   // If we should ignore everything and use a callback, do that.
@@ -124,7 +124,7 @@ function process(data) {
 
 function createJSON(fileName, data, logMessage, isNew) {
   data = formatData.call(this, data);
-  fs.writeFile(this.base + (this.v3 ? 'v3/' : '') + fileName + ".json", JSON.stringify(data), 'utf8', () => {
+  fs.writeFile(this.base + (this.list && this.v3 ? 'v3/' : '') + fileName + ".json", JSON.stringify(data), 'utf8', () => {
     console.log(logMessage);
 
     if (this.list)

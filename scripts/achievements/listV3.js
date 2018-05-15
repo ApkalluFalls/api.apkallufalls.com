@@ -1,9 +1,9 @@
 const fetch = require('node-fetch');
 const Helper = require('../_helper');
 const createList = require('../_list');
-const _isAvailable = require('./_isAvailable');
-const _isCumulative = require('./_isCumulative');
-const _getWeight = require('./_getWeight');
+const _isAvailable = require('./_isAvailableV3');
+const _isCumulative = require('./_isCumulativeV3');
+const _getWeight = require('./_getWeightV3');
 const _getMountIdFromItem = require('./_getMountIdFromItem');
 
 module.exports = new Helper("Achievement", "achievements", {
@@ -33,29 +33,30 @@ module.exports = new Helper("Achievement", "achievements", {
     "Type"
   ],
   list: true,
+  v3: true,
   format: (data, args) => {
     data.forEach(
       achievement => {
         const filtered = data.filter(
-          a => a.achievement_category === achievement.achievement_category
-               && a.type === achievement.type
-               && a.requirement_1 === achievement.requirement_1
+          a => a.AchievementCategory === achievement.AchievementCategory
+               && a.type === achievement.Type
+               && a.requirement_1 === achievement.Requirement_1
         );
 
         // If it has no Order set, and it has a requirement_1 property, the
         // achievements are already in order for us.
-        if (achievement.order === 0 && achievement.requirement_1) {
-          const series = filtered.filter(a => a.requirement_1 === achievement.requirement_1);
+        if (achievement.Order === 0 && achievement.Requirement_1) {
+          const series = filtered.filter(a => a.requirement_1 === achievement.Requirement_1);
           if (series.length > 1)
-            achievement.series = series.map(a => a.id);
+            achievement.Series = series.map(a => a.id);
         }
         // Otherwise, the Order is incremental.
         else {
-          const prev = getPrev(filtered, achievement.order - 1, []);
-          const next = getNext(filtered, achievement.order + 1, []);
+          const prev = getPrev(filtered, achievement.Order - 1, []);
+          const next = getNext(filtered, achievement.Order + 1, []);
       
           if (next.length || prev.length)
-            achievement.series = [...prev, achievement.id, ...next];
+            achievement.Series = [...prev, achievement.ID, ...next];
         }
       }
     );
@@ -64,19 +65,19 @@ module.exports = new Helper("Achievement", "achievements", {
       tags: args && args[0],
       data: data.map(entry => {
         let response = {
-          tag: [entry.achievement_category, entry.achievement_kind],
-          id: entry.id,
-          icon: entry.icon,
-          order: entry.order,
-          points: entry.points,
+          tag: [entry.AchievementCategory, entry.Type],
+          id: entry.ID,
+          icon: entry.Icon,
+          order: entry.Order,
+          points: entry.Points,
           name: {
-            de: entry.name_de,
-            en: entry.name_en,
-            fr: entry.name_fr,
-            jp: entry.name_ja
+            de: entry.Name_de,
+            en: entry.Name_en,
+            fr: entry.Name_fr,
+            jp: entry.Name_ja
           },
-          series: entry.series,
-          patch: entry.patch,
+          series: entry.Series,
+          patch: entry.Patch,
           weight: _getWeight(entry)
         }
 
@@ -84,30 +85,30 @@ module.exports = new Helper("Achievement", "achievements", {
         if (unavailable)
           response.unavailable = unavailable;
 
-        if (entry.item || entry.title) {
+        if (entry.Item || entry.Title) {
           response.reward = {};
 
-          if (entry.item)
-            response.reward.item = entry.item;
+          if (entry.Item)
+            response.reward.item = entry.Item;
             
-          if (entry.title)
-            response.reward.title = entry.title;
+          if (entry.Title)
+            response.reward.title = entry.Title;
         }
 
         // Entry type 2 is an achievement which requires multiple
         // different achievements to unlock (e.g. Mastering War I).
         if (entry.type === 2)
           response.mastery = [
-            entry.requirement_1,
-            entry.requirement_2,
-            entry.requirement_3,
-            entry.requirement_4,
-            entry.requirement_5,
-            entry.requirement_6,
-            entry.requirement_7,
-            entry.requirement_8,
-            entry.requirement_9,
-            entry.id
+            entry.Data_0,
+            entry.Data_1,
+            entry.Data_2,
+            entry.Data_3,
+            entry.Data_4,
+            entry.Data_5,
+            entry.Data_6,
+            entry.Data_7,
+            entry.Data_8,
+            entry.ID
           ].filter(e => e !== 0);
 
         if (_isCumulative(entry))
@@ -147,7 +148,7 @@ module.exports = new Helper("Achievement", "achievements", {
             .then(items => {
               items = items.filter(i => i.connect_achievement !== 0);
               data.forEach(achievement => {
-                const item = items.filter(i => i.id === achievement.item)[0];
+                const item = items.filter(i => i.id === achievement.Item)[0];
                 if (item) {
                   achievement.item = {
                     icon: item.icon,
@@ -185,6 +186,7 @@ module.exports = new Helper("Achievement", "achievements", {
                   }
                 }
               })
+              console.info(base);
               createList("achievements", data, base, _helperCreateJSONFn);
             })
             .catch(e => {

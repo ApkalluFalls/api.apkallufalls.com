@@ -77,6 +77,16 @@ const update = async function (args) {
     await require('./icons/items.js').fetch();
   }
 
+  // // Achievements V3.
+  if (!config || config.achievementsV3) {
+    message('Achievements');
+    await require('./achievements/dataV3.js').fetch();
+    await require('./achievements/listV3.js').fetch(achievementCategories);
+  }
+  if (config && config.achievementsListV3) {
+    await require('./achievements/listV3.js').fetch(achievementCategories);
+  }
+
   // Cache bust.
   cacheBust();
 }

@@ -4,7 +4,7 @@ const recursiveFetch = require('../_recursive');
 const config = require('../_config');
 
 const api = "achievement";
-const base = 'achievement';
+const base = 'v3/achievement';
 const name = "Achievement";
 const plural = "achievements";
 
@@ -29,20 +29,21 @@ module.exports = new Helper(name, plural, {
         const content = data.content;
 
         const achievementCategory = content.AchievementCategory;
+        const achievementKind = achievementCategory.AchievementKind;
         const categoryId = achievementCategory.ID === null ? 'unknown' : achievementCategory.ID;
-        const kindId = achievementCategory.AchievementKind === null ? 'unknown' : achievementCategory.AchievementKind;
+        const kindId = achievementKind.ID === null ? 'unknown' : achievementKind.ID;
   
         if (!categories[categoryId])
-          categories[categoryId] = achievementCategory.Name || 'Unknown';
+          categories[categoryId] = achievementCategory.Name_en || 'Unknown';
 
         if (!kinds[kindId])
-          kinds[kindId] = achievementCategory.AchievementKind || 'Unknown';
+          kinds[kindId] = achievementKind.Name_en || 'Unknown';
 
         return {
           id: content.ID,
           category: {
-            name: achievementCategory.AchievementKind,
-            subset: achievementCategory.Name
+            name: achievementKind.Name_en,
+            subset: achievementCategory.Name_en
           },
           help: {
             de: content.Description_de,
@@ -59,7 +60,7 @@ module.exports = new Helper(name, plural, {
   }, () => {
     throw new Error('enough');
     fs.writeFile(
-      "../docs/achievement_categories.json",
+      "../docs/v3/achievement_categories.json",
       JSON.stringify({
         categories,
         kinds

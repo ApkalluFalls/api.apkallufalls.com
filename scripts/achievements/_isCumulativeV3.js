@@ -5,30 +5,30 @@
 // will have already completed 10/100 on the other achievement, thus making it cumulative.
 module.exports = function(achievement) {
 	// The following are all cumulative.
-	if (achievement.Type == 3
-		|| achievement.Type == 4
-		|| achievement.Type == 10
-		|| achievement.Type == 12
-		|| achievement.Type == 13
-		|| achievement.Type == 17
-		|| achievement.Type == 19)
+	if (achievement.type == 3
+		|| achievement.type == 4
+		|| achievement.type == 10
+		|| achievement.type == 12
+		|| achievement.type == 13
+		|| achievement.type == 17
+		|| achievement.type == 19)
 		return true;
 
 	// The following are not cumulative.
-	if (achievement.Type == 2
-		|| achievement.Type == 5
-		|| achievement.Type == 6
-		|| achievement.Type == 7
-		|| achievement.Type == 8
-		|| achievement.Type == 9
-		|| achievement.Type == 14
-		|| achievement.Type == 20
-		|| achievement.Type == 23
-		|| achievement.Type == 24)
+	if (achievement.type == 2
+		|| achievement.type == 5
+		|| achievement.type == 6
+		|| achievement.type == 7
+		|| achievement.type == 8
+		|| achievement.type == 9
+		|| achievement.type == 14
+		|| achievement.type == 20
+		|| achievement.type == 23
+		|| achievement.type == 24)
 		return false;
 
 	// The rest are cumulative if their requirement_1 property contains any of the following values.
-	const data_0_cumulative_keys = [
+	const requirement_1_cumulative_keys = [
 		"0","1","2","3","4","5","6","7","8","11",
 		"12","13","14","15","16","17","18","19","20","21",
 		"22","138","139","140","141","142","143","144","145","146",
@@ -47,5 +47,5 @@ module.exports = function(achievement) {
 		"549","567"
 	];
 
-	return data_0_cumulative_keys.indexOf("" + achievement.Data_0) !== -1
+	return requirement_1_cumulative_keys.indexOf("" + achievement.requirement_1) !== -1
 }

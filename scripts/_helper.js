@@ -4,7 +4,6 @@ const fs = require('fs');
 module.exports = class Helper {
   constructor(name, plural, config, callback) {
     this.api = config.api;
-    console.info(this.api);
     this.base = "../docs/" + (config.base ? config.base + "/" : '');
     this.columns = config.columns;
     this.details = config.details;
@@ -78,7 +77,7 @@ function process(data) {
     if (typeof this.callback !== 'function')
       throw new Error("list detected with no callback.");
     
-    return this.callback(data, this.base, createJSON.bind(this));
+    return this.callback(data, this.base + (this.v3 ? 'v3/' : ''), createJSON.bind(this));
   }
   
   const processData = (d) => {
@@ -125,7 +124,7 @@ function process(data) {
 
 function createJSON(fileName, data, logMessage, isNew) {
   data = formatData.call(this, data);
-  fs.writeFile(this.base + fileName + ".json", JSON.stringify(data), 'utf8', () => {
+  fs.writeFile(this.base + (this.v3 ? 'v3/' : '') + fileName + ".json", JSON.stringify(data), 'utf8', () => {
     console.log(logMessage);
 
     if (this.list)

@@ -9,7 +9,10 @@ const _getMountIdFromItem = require('./_getMountIdFromItem');
 module.exports = new Helper("Achievement", "achievements", {
   api: 'achievement',
   columns: [
-    "AchievementCategory",
+    "AchievementCategory.ID",
+    "AchievementCategory.Name",
+    "AchievementCategory.AchievementKind.ID",
+    "AchievementCategory.AchievementKind.Name",
     "Icon",
     "ID",
     "Item",
@@ -38,7 +41,7 @@ module.exports = new Helper("Achievement", "achievements", {
     data.forEach(
       achievement => {
         const filtered = data.filter(
-          a => a.AchievementCategory === achievement.AchievementCategory
+          a => a["AchievementCategory.ID"] === achievement["AchievementCategory.ID"]
                && a.type === achievement.Type
                && a.requirement_1 === achievement.Requirement_1
         );
@@ -65,7 +68,10 @@ module.exports = new Helper("Achievement", "achievements", {
       tags: args && args[0],
       data: data.map(entry => {
         let response = {
-          tag: [entry.AchievementCategory, entry.Type],
+          tag: [
+            entry["AchievementCategory.ID"],
+            entry["AchievementKind.ID"]
+          ],
           id: entry.ID,
           icon: entry.Icon,
           order: entry.Order,

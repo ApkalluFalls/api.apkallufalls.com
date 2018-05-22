@@ -66,11 +66,7 @@ module.exports = new Helper("Achievement", "achievements", {
 
     return {
       data: data
-        .filter(entry => {
-          return entry.Icon !== null
-              && entry.Points !== 0
-              && entry.Order !== 1
-        })
+        .filter(entry => entry.Icon !== null)
         .map(entry => {
           let response = {
             tag: [

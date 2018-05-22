@@ -2,6 +2,7 @@ const fs = require('fs');
 const Helper = require('../_helper');
 const recursiveFetch = require('../_recursiveV3');
 const config = require('../_config');
+const localisation = require('../../localisation');
 
 const api = "achievement";
 const base = 'v3/achievement';
@@ -18,6 +19,7 @@ module.exports = new Helper(name, plural, {
     "ID"
   ],
   useCallback: true,
+  list: true,
   v3: true
 }, (data, resolve) => {
   recursiveFetch(data, name, (entry, all) => {
@@ -33,17 +35,23 @@ module.exports = new Helper(name, plural, {
         const kindId = achievementKind && achievementKind.ID === null ? 'unknown' : achievementKind.ID;
   
         if (!categories[categoryId])
-          categories[categoryId] = achievementCategory && achievementCategory.Name_en || 'Unknown';
+          categories[categoryId] = achievementCategory && {
+            de: achievementCategory.Name_de,
+            en: achievementCategory.Name_en,
+            fr: achievementCategory.Name_fr,
+            jp: achievementCategory.Name_jp
+          } || localisation['Unknown'];
 
         if (!kinds[kindId])
-          kinds[kindId] = achievementKind && achievementKind.Name_en || 'Unknown';
+          kinds[kindId] = achievementKind && {
+            de: achievementKind.Name_de,
+            en: achievementKind.Name_en,
+            fr: achievementKind.Name_fr,
+            jp: achievementKind.Name_ja
+          } || localisation['Unknown'];
 
         return {
           id: content.ID,
-          category: {
-            name: kinds[kindId],
-            subset: categories[categoryId]
-          },
           help: {
             de: content.Description_de,
             en: content.Description_en,

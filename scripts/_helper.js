@@ -29,13 +29,38 @@ module.exports = class Helper {
     return new Promise((resolve) => {
       this.resolve = resolve;
       const apiPath = this.v3
-      ? "http://api.xivdb-staging.com/" + this.api.charAt(0).toUpperCase() + this.api.slice(1)
-      : "https://api.xivdb.com/" + this.api;
+                    ? "http://api.xivdb-staging.com/" + this.api.charAt(0).toUpperCase() + this.api.slice(1)
+                    : "https://api.xivdb.com/" + this.api;
       const columns = this.columns && this.columns.length
                     ? "?columns=" + this.columns.join(',')
                     : "";
 
-      callApi(apiPath, columns, process.bind(this));
+      if (!this.v3 || !this.list)
+        return callApi(apiPath, columns, process.bind(this));
+      
+      Promise.all([
+        callApiPaginated(apiPath, columns, 1),
+        callApiPaginated(apiPath, columns, 2),
+        callApiPaginated(apiPath, columns, 3),
+        callApiPaginated(apiPath, columns, 4),
+        callApiPaginated(apiPath, columns, 5),
+        callApiPaginated(apiPath, columns, 6),
+        callApiPaginated(apiPath, columns, 7),
+        callApiPaginated(apiPath, columns, 8),
+        callApiPaginated(apiPath, columns, 9),
+        callApiPaginated(apiPath, columns, 10)
+      ]).then(data => {
+        let response = [];
+
+        data
+          .filter(d => d instanceof Array)
+          .forEach(d => response = [
+            ...response,
+            ...d
+          ]);
+        
+        process.call(this, response);
+      })
     });
   }
 }
@@ -54,6 +79,22 @@ function callApi(apiPath, columns, callback) {
     .then(callback)
     .catch(e => {
       throw new Error(e)
+    });
+}
+
+function callApiPaginated(apiPath, columns, page) {
+  const config = {
+    method: 'GET',
+    mode: 'cors'
+  }
+
+  return fetch(
+    apiPath + columns + '&page=' + page,
+    config
+  )
+    .then(response => response.json())
+    .catch(e => {
+      // Intentionally ignore errors.
     });
 }
   

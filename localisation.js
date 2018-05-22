@@ -1,4 +1,10 @@
 module.exports = {
+  'Unknown': {
+    de: 'Unbekannte',
+    fr: 'Inconnu',
+    jp: '不明'
+  },
+
   // Game
   'Legacy (1.0)': {
     de: true,

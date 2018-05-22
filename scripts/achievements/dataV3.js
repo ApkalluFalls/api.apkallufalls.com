@@ -31,8 +31,8 @@ module.exports = new Helper(name, plural, {
         const content = data.content;
         const achievementCategory = content.AchievementCategory;
         const achievementKind = achievementCategory && achievementCategory.AchievementKind;
-        const categoryId = achievementCategory && achievementCategory.ID === null ? 'unknown' : achievementCategory.ID;
-        const kindId = achievementKind && achievementKind.ID === null ? 'unknown' : achievementKind.ID;
+        const categoryId = !achievementCategory || achievementCategory.ID === null ? "0" : achievementCategory.ID;
+        const kindId = !achievementKind || achievementKind.ID === null ? "0" : achievementKind.ID;
         const unknown = localisation['Unknown'];
 
         if (!categories[categoryId])
@@ -44,8 +44,8 @@ module.exports = new Helper(name, plural, {
           } || {
             en: 'Unknown',
             de: unknown.de,
-            de: unknown.fr,
-            de: unknown.jp
+            fr: unknown.fr,
+            jp: unknown.jp
           };
 
         if (!kinds[kindId])
@@ -57,8 +57,8 @@ module.exports = new Helper(name, plural, {
           } || {
             en: 'Unknown',
             de: unknown.de,
-            de: unknown.fr,
-            de: unknown.jp
+            fr: unknown.fr,
+            jp: unknown.jp
           };
 
         return {

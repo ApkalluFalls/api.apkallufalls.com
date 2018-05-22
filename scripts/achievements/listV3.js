@@ -65,62 +65,68 @@ module.exports = new Helper("Achievement", "achievements", {
     );
 
     return {
-      data: data.map(entry => {
-        let response = {
-          tag: [
-            entry["AchievementCategory.ID"],
-            entry["AchievementKind.ID"]
-          ],
-          id: entry.ID,
-          icon: entry.Icon,
-          order: entry.Order,
-          points: entry.Points,
-          name: {
-            de: entry.Name_de,
-            en: entry.Name_en,
-            fr: entry.Name_fr,
-            jp: entry.Name_ja
-          },
-          series: entry.Series,
-          patch: entry.Patch,
-          weight: _getWeight(entry)
-        }
+      data: data
+        .filter(entry => {
+          return entry.Icon !== null
+              && entry.Points !== 0
+              && entry.Order !== 1
+        })
+        .map(entry => {
+          let response = {
+            tag: [
+              entry["AchievementCategory.ID"],
+              entry["AchievementKind.ID"]
+            ],
+            id: entry.ID,
+            icon: entry.Icon,
+            order: entry.Order,
+            points: entry.Points,
+            name: {
+              de: entry.Name_de,
+              en: entry.Name_en,
+              fr: entry.Name_fr,
+              jp: entry.Name_ja
+            },
+            series: entry.Series,
+            patch: entry.Patch,
+            weight: _getWeight(entry)
+          }
 
-        const unavailable = _isAvailable(entry);
-        if (unavailable)
-          response.unavailable = unavailable;
+          const unavailable = _isAvailable(entry);
+          if (unavailable)
+            response.unavailable = unavailable;
 
-        if (entry.Item || entry.Title) {
-          response.reward = {};
+          if (entry.Item || entry.Title) {
+            response.reward = {};
 
-          if (entry.Item)
-            response.reward.item = entry.Item;
-            
-          if (entry.Title)
-            response.reward.title = entry.Title;
-        }
+            if (entry.Item)
+              response.reward.item = entry.Item;
+              
+            if (entry.Title)
+              response.reward.title = entry.Title;
+          }
 
-        // Entry type 2 is an achievement which requires multiple
-        // different achievements to unlock (e.g. Mastering War I).
-        if (entry.type === 2)
-          response.mastery = [
-            entry.Data_0,
-            entry.Data_1,
-            entry.Data_2,
-            entry.Data_3,
-            entry.Data_4,
-            entry.Data_5,
-            entry.Data_6,
-            entry.Data_7,
-            entry.Data_8,
-            entry.ID
-          ].filter(e => e !== 0);
+          // Entry type 2 is an achievement which requires multiple
+          // different achievements to unlock (e.g. Mastering War I).
+          if (entry.type === 2)
+            response.mastery = [
+              entry.Data_0,
+              entry.Data_1,
+              entry.Data_2,
+              entry.Data_3,
+              entry.Data_4,
+              entry.Data_5,
+              entry.Data_6,
+              entry.Data_7,
+              entry.Data_8,
+              entry.ID
+            ].filter(e => e !== 0);
 
-        if (_isCumulative(entry))
-          response.cumulative = true;
+          if (_isCumulative(entry))
+            response.cumulative = true;
 
-        return response;
-      })
+          return response;
+        })
     }
   }
 }, (data, base, _helperCreateJSONFn) => {

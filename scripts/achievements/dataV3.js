@@ -33,14 +33,20 @@ module.exports = new Helper(name, plural, {
         const achievementKind = achievementCategory && achievementCategory.AchievementKind;
         const categoryId = achievementCategory && achievementCategory.ID === null ? 'unknown' : achievementCategory.ID;
         const kindId = achievementKind && achievementKind.ID === null ? 'unknown' : achievementKind.ID;
-  
+        const unknown = localisation['Unknown'];
+
         if (!categories[categoryId])
           categories[categoryId] = achievementCategory && {
             de: achievementCategory.Name_de,
             en: achievementCategory.Name_en,
             fr: achievementCategory.Name_fr,
-            jp: achievementCategory.Name_jp
-          } || localisation['Unknown'];
+            jp: achievementCategory.Name_ja
+          } || {
+            en: 'Unknown',
+            de: unknown.de,
+            de: unknown.fr,
+            de: unknown.jp
+          };
 
         if (!kinds[kindId])
           kinds[kindId] = achievementKind && {
@@ -48,7 +54,12 @@ module.exports = new Helper(name, plural, {
             en: achievementKind.Name_en,
             fr: achievementKind.Name_fr,
             jp: achievementKind.Name_ja
-          } || localisation['Unknown'];
+          } || {
+            en: 'Unknown',
+            de: unknown.de,
+            de: unknown.fr,
+            de: unknown.jp
+          };
 
         return {
           id: content.ID,

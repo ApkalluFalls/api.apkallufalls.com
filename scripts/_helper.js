@@ -12,6 +12,8 @@ module.exports = class Helper {
     this.useCallback = config.useCallback;
     this.v3 = config.v3;
 
+    this.errors = 0;
+
     this.name = name;
     this.plural = plural;
 
@@ -78,7 +80,12 @@ function callApi(apiPath, columns, callback) {
     .then(response => response.json())
     .then(callback)
     .catch(e => {
-      throw new Error(e)
+      if (this.errors > 10)
+        throw new Error(e);
+
+      ++this.errors;
+      console.info("API retry attempt ", this.errors);
+      callApi(apiPath, columns, callback);
     });
 }
 

@@ -21,7 +21,6 @@ module.exports = new Helper("Patch", "patches", {
   list: true,
   format: (data, args) => {
     return {
-      tags: args && args[1],
       localisation: localisationStrings,
       data: data.map(entry => {
         const response = {

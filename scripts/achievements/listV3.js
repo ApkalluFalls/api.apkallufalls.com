@@ -65,7 +65,6 @@ module.exports = new Helper("Achievement", "achievements", {
     );
 
     return {
-      tags: args && args[0],
       data: data.map(entry => {
         let response = {
           tag: [

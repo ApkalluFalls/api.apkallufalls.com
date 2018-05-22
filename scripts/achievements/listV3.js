@@ -71,7 +71,7 @@ module.exports = new Helper("Achievement", "achievements", {
           let response = {
             tag: [
               entry["AchievementCategory.ID"],
-              entry["AchievementKind.ID"]
+              entry["AchievementCategory.AchievementKind.ID"]
             ],
             id: entry.ID,
             icon: entry.Icon,

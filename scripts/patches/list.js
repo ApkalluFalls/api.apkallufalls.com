@@ -47,7 +47,9 @@ module.exports = new Helper("Patch", "patches", {
           };
 
           counts.achievements.percent = (
-            Math.round(((100/totalAchievements) * achievementsChange) * 10) / 10
+            totalAchievements - achievementsChange === 0
+            ? '∞'
+            : Math.round(((100/totalAchievements - achievementsChange) * achievementsChange) * 10) / 10
           );
         }
 
@@ -61,7 +63,9 @@ module.exports = new Helper("Patch", "patches", {
           };
 
           counts.minions.percent = (
-            Math.round(((100/totalMinions) * minionsChange) * 10) / 10
+            totalMinions - minionsChange === 0
+            ? '∞'
+            : Math.round(((100/totalMinions - minionsChange) * minionsChange) * 10) / 10
           );
         }
 
@@ -75,7 +79,9 @@ module.exports = new Helper("Patch", "patches", {
           };
 
           counts.mounts.percent = (
-            Math.round(((100/totalMounts) * mountsChange) * 10) / 10
+            totalMounts - mountsChange === 0
+            ? '∞'
+            : Math.round(((100/totalMounts - mountsChange) * mountsChange) * 10) / 10
           );
         }
 
@@ -89,7 +95,9 @@ module.exports = new Helper("Patch", "patches", {
           };
 
           counts.titles.percent = (
-            Math.round(((100/totalTitles) * titlesChange) * 10) / 10
+            totalTitles - titlesChange === 0
+            ? '∞'
+            : Math.round(((100/totalTitles - titlesChange) * titlesChange) * 10) / 10
           );
         }
 

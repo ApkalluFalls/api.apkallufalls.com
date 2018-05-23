@@ -175,6 +175,10 @@ const craftItem = {
     icon: 12937,
     name: ["Dawnborne Aethersand", "Morgengrauen-Seelensand", "Sable éthéréen de l'aurore", "暁光の霊砂"]
   },
+  dotharliCloth: {
+    icon: 23372,
+    name: ["Dotharl-Tuch", "Dotharli Cloth", "Étoffe dotharl", "ドタール族の生地"]
+  },
   dragonBlood: {
     icon: 12630,
     name: ["Dragon Blood", "Drachenblut", "Sang de dragon", "竜族の血"]
@@ -282,6 +286,10 @@ const craftItem = {
   lightningShard: {
     icon: 6,
     name: ['Lightning Shard', 'Blitzscherbe', 'Éclat de foudre', 'ライトニングシャード']
+  },
+  oroniriCloth: {
+    icon: 23371,
+    name: ["Oronir-Tuch", "Oroniri Cloth", "Étoffe oronir", "オロニル族の生地"]
   },
   palladiumNugget: {
     icon: 19946,
@@ -3267,6 +3275,21 @@ module.exports = (minion, achievementsIn) => {
         helper.raid(location.duty.sigmascapev40, 70, expansions.SB, true, false),
         helper.raid(location.duty.sigmascapev40Savage, 70, expansions.SB, true, false)
       ];
+
+    case 282:
+      return helper.craft(
+        70,
+        locale('Weaver'),
+        2,
+        [
+          { quantity: 9, ...craftItem.windShard },
+          { quantity: 10, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.worstedYarn },
+          { quantity: 1, ...craftItem.twinsilk },
+          { quantity: 1, ...craftItem.royalFern },
+          { quantity: 1, ...craftItem.oroniriCloth }
+        ]
+      );
     
     case 283:
       return helper.freeCompanySubaquaticVoyage(
@@ -3308,6 +3331,37 @@ module.exports = (minion, achievementsIn) => {
 
     case 288:
       return helper.achievementCertificate(2);
+    
+    case 291:
+      return o(
+        'purchase',
+        [
+          15000, wolfMarks, wolfMarksImage,
+          _npc.stormSegeant,
+          wolfMarks.map(w => '(' + w + ')'),
+          locationImage,
+          location.theWolvesDen,
+          4.4, 6.1
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+
+    case 294:
+      return helper.craft(
+        70,
+        locale('Weaver'),
+        2,
+        [
+          { quantity: 9, ...craftItem.windShard },
+          { quantity: 10, ...craftItem.lightningShard },
+          { quantity: 1, ...craftItem.worstedYarn },
+          { quantity: 1, ...craftItem.twinsilk },
+          { quantity: 1, ...craftItem.royalFern },
+          { quantity: 1, ...craftItem.dotharliCloth }
+        ]
+      );
 
     default:
       console.log("Unknown method for minion " + minion.id);

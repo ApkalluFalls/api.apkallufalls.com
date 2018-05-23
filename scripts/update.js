@@ -14,6 +14,9 @@ const update = async function (args) {
   let achievementCategories;
   let achievementsList;
 
+  let achievementCategoriesV3;
+  let achievementsListV3;
+
   await new Promise((resolve) => fs.readFile('../docs/achievement_categories.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => achievementCategories = JSON.parse(data));
@@ -21,6 +24,14 @@ const update = async function (args) {
   await new Promise((resolve) => fs.readFile('../docs/achievements.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => achievementsList = JSON.parse(data));
+
+  await new Promise((resolve) => fs.readFile('../docs/v3/achievement_categories.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => achievementCategoriesV3 = JSON.parse(data));
+
+  await new Promise((resolve) => fs.readFile('../docs/v3/achievements.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => achievementsListV3 = JSON.parse(data));
 
   // // Patches
   if (!config || config.patches) {
@@ -81,10 +92,15 @@ const update = async function (args) {
   if (!config || config.achievementsV3) {
     message('Achievements');
     await require('./achievements/dataV3.js').fetch();
-    await require('./achievements/listV3.js').fetch(achievementCategories);
+    await require('./achievements/listV3.js').fetch(achievementCategoriesV3);
   }
   if (config && config.achievementsListV3) {
-    await require('./achievements/listV3.js').fetch(achievementCategories);
+    await require('./achievements/listV3.js').fetch(achievementCategoriesV3);
+  }
+
+  // Titles V3.
+  if (config && config.titlesListV3) {
+    await require('./titles/listV3.js').fetch(achievementsListV3, achievementCategoriesV3);
   }
 
   // Cache bust.

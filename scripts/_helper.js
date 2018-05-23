@@ -55,10 +55,10 @@ module.exports = class Helper {
         let response = [];
 
         data
-          .filter(d => d instanceof Array)
+          .filter(d => d && d.results instanceof Array)
           .forEach(d => response = [
             ...response,
-            ...d
+            ...d.results
           ]);
         
         process.call(this, response);
@@ -81,7 +81,7 @@ function callApi(apiPath, columns, callback) {
     .then(callback)
     .catch(e => {
       if (this.errors > 10)
-        throw new Error(e);
+        throw new Error("XIVDB API error: " + e);
 
       ++this.errors;
       console.info("API retry attempt ", this.errors);

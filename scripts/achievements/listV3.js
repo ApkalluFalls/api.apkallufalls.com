@@ -15,7 +15,7 @@ module.exports = new Helper("Achievement", "achievements", {
     "AchievementCategory.AchievementKind.Name",
     "Icon",
     "ID",
-    "Item",
+    "Item.ID",
     "Name_de",
     "Name_en",
     "Name_fr",
@@ -32,7 +32,7 @@ module.exports = new Helper("Achievement", "achievements", {
     "Data_6",
     "Data_7",
     "Data_8",
-    "Title",
+    "Title.ID",
     "Type"
   ],
   list: true,
@@ -92,14 +92,14 @@ module.exports = new Helper("Achievement", "achievements", {
           if (unavailable)
             response.unavailable = unavailable;
 
-          if (entry.Item || entry.Title) {
+          if (entry["Item.ID"] || entry["Title.ID"]) {
             response.reward = {};
 
-            if (entry.Item)
-              response.reward.item = entry.Item;
+            if (entry["Item.ID"])
+              response.reward.item = entry["Item.ID"];
               
-            if (entry.Title)
-              response.reward.title = entry.Title;
+            if (entry["Title.ID"])
+              response.reward.title = entry["Title.ID"];
           }
 
           // Entry type 2 is an achievement which requires multiple

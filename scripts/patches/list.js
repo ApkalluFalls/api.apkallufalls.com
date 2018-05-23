@@ -9,7 +9,7 @@ module.exports = new Helper("Patch", "patches", {
   
     Object.keys(data).forEach(k => {
       const patch = data[k];
-      formattedData.push({
+      const response = {
         id: patch.patch,
         version: patch.command,
         date: +new Date(patch.date),
@@ -18,9 +18,14 @@ module.exports = new Helper("Patch", "patches", {
           en: patch.name_en,
           fr: patch.name_fr,
           jp: patch.name_ja
-        },
-        image: patch.banner
-      });
+        }
+      };
+
+      const image = getPatchImage(patch.patch);
+      if (image)
+        response.image = image;
+
+      formattedData.push(response);
     })
 
     if (args) {
@@ -44,3 +49,55 @@ module.exports = new Helper("Patch", "patches", {
 }, (data, base, _helperCreateJSONFn) => {
   createList("patches", data, base, _helperCreateJSONFn);
 });
+
+function getPatchImage(patch) {
+  switch (patch) {
+    case 2:
+      return "/patches/2.0.png";
+
+    case 4:
+      return "/patches/2.1.png";
+
+    case 8:
+      return "/patches/2.2.png";
+
+    case 11:
+      return "/patches/2.3.png";
+
+    case 14:
+      return "/patches/2.4.png";
+
+    case 16:
+      return "/patches/2.5.png";
+
+    case 19:
+      return "/patches/3.0.png";
+
+    case 23:
+      return "/patches/3.1.png";
+
+    case 25:
+      return "/patches/3.2.png";
+
+    case 27:
+      return "/patches/3.3.png";
+
+    case 30:
+      return "/patches/3.4.png";
+
+    case 32:
+      return "/patches/3.5.png";
+
+    case 36:
+      return "/patches/4.0.png";
+
+    case 40:
+      return "/patches/4.1.png";
+
+    case 43:
+      return "/patches/4.2.png";
+
+    case 45:
+      return "/patches/4.3.png";
+  }
+}

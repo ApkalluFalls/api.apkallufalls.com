@@ -39,45 +39,57 @@ module.exports = new Helper("Patch", "patches", {
 
         const achievementsChange = achievements instanceof Array && achievements.filter(a => a.patch === f.id).length || 0;
         if (achievementsChange) {
+          const totalAchievements = achievements.filter(a => a.patch <= f.id).length;
+
           counts.achievements = {
-            change: achievements.filter(a => a.patch === f.id).length || 0
+            change: achievements.filter(a => a.patch === f.id).length || 0,
+            total: totalAchievements
           };
 
           counts.achievements.percent = (
-            Math.round(((100/achievements.filter(a => a.patch <= f.id).length) * achievementsChange) * 10) / 10
+            Math.round(((100/totalAchievements) * achievementsChange) * 10) / 10
           );
         }
 
         const minionsChange = minions instanceof Array && minions.filter(a => a.patch === f.id).length || 0;
         if (minionsChange) {
+          const totalMinions = minions.filter(a => a.patch <= f.id).length;
+
           counts.minions = {
-            change: minionsChange
+            change: minionsChange,
+            total: totalMinions
           };
 
           counts.minions.percent = (
-            Math.round(((100/minions.filter(a => a.patch <= f.id).length) * minionsChange) * 10) / 10
+            Math.round(((100/totalMinions) * minionsChange) * 10) / 10
           );
         }
 
         const mountsChange = mounts instanceof Array && mounts.filter(a => a.patch === f.id).length || 0;
         if (mountsChange) {
+          const totalMounts = mounts.filter(a => a.patch <= f.id).length;
+
           counts.mounts = {
-            change: mountsChange
+            change: mountsChange,
+            total: totalMounts
           };
 
           counts.mounts.percent = (
-            Math.round(((100/mounts.filter(a => a.patch <= f.id).length) * mountsChange) * 10) / 10
+            Math.round(((100/totalMounts) * mountsChange) * 10) / 10
           );
         }
 
         const titlesChange = titles instanceof Array && titles.filter(a => a.patch === f.id).length || 0;
         if (titlesChange) {
+          const totalTitles = titles.filter(a => a.patch <= f.id).length;
+
           counts.titles = {
-            change: titlesChange
+            change: titlesChange,
+            total: totalTitles
           };
 
           counts.titles.percent = (
-            Math.round(((100/titles.filter(a => a.patch <= f.id).length) * titlesChange) * 10) / 10
+            Math.round(((100/totalTitles) * titlesChange) * 10) / 10
           );
         }
 

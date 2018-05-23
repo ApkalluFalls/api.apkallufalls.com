@@ -13,9 +13,13 @@ const update = async function (args) {
   
   let achievementCategories;
   let achievementsList;
+  let minionsList;
+  let mountsList;
+  let titlesList;
 
   let achievementCategoriesV3;
   let achievementsListV3;
+  let titlesListV3;
 
   await new Promise((resolve) => fs.readFile('../docs/achievement_categories.json', 'utf8', (e, data) => {
     resolve(data);
@@ -25,6 +29,18 @@ const update = async function (args) {
     resolve(data);
   })).then(data => achievementsList = JSON.parse(data));
 
+  await new Promise((resolve) => fs.readFile('../docs/minions.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => minionsList = JSON.parse(data));
+
+  await new Promise((resolve) => fs.readFile('../docs/mounts.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => mountsList = JSON.parse(data));
+
+  await new Promise((resolve) => fs.readFile('../docs/titles.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => titlesList = JSON.parse(data));
+
   await new Promise((resolve) => fs.readFile('../docs/v3/achievement_categories.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => achievementCategoriesV3 = JSON.parse(data));
@@ -33,10 +49,19 @@ const update = async function (args) {
     resolve(data);
   })).then(data => achievementsListV3 = JSON.parse(data));
 
+  await new Promise((resolve) => fs.readFile('../docs/v3/titles.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => titlesListV3 = JSON.parse(data));
+
   // // Patches
   if (!config || config.patches) {
     message('Patches');
-    await require('./patches/list.js').fetch();
+    await require('./patches/list.js').fetch(
+      achievementsList,
+      minionsList,
+      mountsList,
+      titlesList
+    );
   }
 
   // // Achievements.
@@ -104,6 +129,7 @@ const update = async function (args) {
   }
 
   // Cache bust.
+  console.info("!! Remember to run patches after all other lists are updated.");
   cacheBust();
 }
 

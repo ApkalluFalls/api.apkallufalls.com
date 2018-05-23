@@ -53,13 +53,22 @@ module.exports = new Helper("Title", "titles", {
           response.tag = achievement.tag;
         }
 
-        if (entry.name_en !== entry.name_female_en)
-          response.female = {
-            de: entry.name_female_de,
-            en: entry.name_female_en,
-            fr: entry.name_female_fr,
-            jp: entry.name_female_ja
-          }
+        const femaleTitles = {};
+
+        if (entry.Name_en !== entry.Name_female_en)
+          femaleTitles.en = entry.Name_female_en;
+
+        if (entry.Name_de !== entry.Name_female_de)
+          femaleTitles.de = entry.Name_female_de;
+
+        if (entry.Name_fr !== entry.Name_female_fr)
+          femaleTitles.fr = entry.Name_female_fr;
+
+        if (entry.Name_ja !== entry.Name_female_ja)
+          femaleTitles.jp = entry.Name_female_ja;
+
+        if (Object.keys(femaleTitles).length)
+          response.female = femaleTitles;
 
         return response;
       })

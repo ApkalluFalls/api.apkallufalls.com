@@ -35,8 +35,8 @@ module.exports = async function() {
     },
     minions: {
       total: minionsList.length,
-      unavailable: minionsList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
-      unknown: minionsList.filter(data => !data.ref).length
+      unavailable: minionsList.filter(data => data.hasParent || (data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0)).length,
+      unknown: minionsList.filter(data => !data.hasParent && !data.ref).length
     },
     mounts: {
       total: mountsList.length,

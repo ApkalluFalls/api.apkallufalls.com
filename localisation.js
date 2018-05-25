@@ -35,7 +35,7 @@ module.exports = {
   },
   'Square Enix Store': {
     de: true,
-    fr: true,
+    fr: 'Square Enix Boutique',
     jp: 'Square Enix e-STORE'
   },
 

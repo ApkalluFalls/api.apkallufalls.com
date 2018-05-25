@@ -100,7 +100,8 @@ module.exports = {
   },
   msq: {
     en: 'Complete the level {0} {1} main scenario quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
-    de: 'Vervollständige das level {0} {1} Hauptszenario {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).'
+    de: 'Vervollständige das level {0} {1} Hauptszenario {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',
+    fr: 'Complétez la quête épopée {1} niveau {0} {img2} \'{i3}\' auprès de {4} à {img5} {6} (x: {7}, y: {8}).'
   },
   timewornMap: {
     en: 'Randomly awarded from the treasure chest after completing a level {0} (solo) {img1} {i2}.',

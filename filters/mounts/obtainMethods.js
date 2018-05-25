@@ -52,6 +52,8 @@ const kojinSangoImage = 'ks';
 const ixionHornImage = 'ih';
 const anantaDreamstaffImage = 'ad';
 const goldChocoboFeatherImage = 'gcf';
+const clanMarkLogsImage = 'cm';
+const ironVoyageSpoilImage = 'iv';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -86,6 +88,8 @@ const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン
 const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
 const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
 const goldChocoboFeather = ["Gold Chocobo Feather", "Goldene Chocobo-Feder", "Penne de chocobo doré", "ゴールドチョコボの羽根"];
+const clanMarkLogs = ["Clan Mark Log", "Clan-Jägertagebuch", "Journal de membre du clan", "クラン員の手記"];
+const ironVoyageSpoil = ["Iron Voyage Spoil", "Eisen-Expeditionsandenken", "Espoille d'expédition en fonte", "ボイジャースポイル:鋳鉄"];
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
@@ -95,14 +99,19 @@ const location = {
   fortempsManor: ["Fortemps Manor", "Anwesen Der Fortemps", "Manoir Des Fortemps", "フォルタン伯爵邸"],
   foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
+  idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
+  mist: ["Mist", "Dorf Des Nebels", "Brumée", "ミスト・ヴィレッジ"],
   morDhona: ["Mor Dhona", true, true, "モードゥナ"],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
   northShroud: ['North Shroud', 'Nordwald', 'Forêt Du Nord', '黒衣森：北部森林'],
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   outerLaNoscea: ['Outer La Noscea', 'Äußeres La Noscea', 'Noscea Extérieure', '地ラノシア'],
+  shirogane: ["Shirogane", true, true, "シロガネ"],
   southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
+  theLavenderBeds: ["The Lavender Beds", "Lavendelbeete", "Lavandière", "ラベンダーベッド"],
+  theGoblet: ["The Goblet", "Kelchkuppe", "La Coupe", "ゴブレットビュート"],
   theSeaOfClouds: ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
@@ -167,6 +176,15 @@ const helper = {
       available,
       true
     );
+  },
+  eventQuest: (level, quest, image, expansion) => {
+    return o(
+      'eventQuest',
+      [level, locale('Seasonal Events'), quest, image],
+      expansion,
+      false,
+      false
+    )
   },
   goldChocoboFeatherExchange: (cost) => {
     return [
@@ -589,6 +607,8 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       );
     
     case 42:
+    case 68:
+    case 69:
       return helper.mogStation();
     
     case 43:
@@ -688,6 +708,144 @@ module.exports = (mount, achievementsIn, mountsIn) => {
     
     case 58:
       return helper.raid(location.duty.alexanderTheBurdenOfTheFatherSavage, 60, expansions.HW, true, false);
+
+    case 59:
+      return helper.goldChocoboFeatherExchange(15);
+    
+    case 62:
+      return [
+        helper.eventQuest(
+          20,
+          ["Sweeping The Meadows", "Aufgeflogen!", "Aux Diables Les Coups De Balai!", "おかしなホウキと守護天節"],
+          'eq1',
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
+    
+    case 67:
+      return o(
+        'purchase',
+        [
+          99, brassSkyPirateSpoils, brassSkyPirateSpoilsImage,
+          _npc.spoilsCollector,
+          ["(Spoils Exchange (Other))", "(Messing-/Stahl-Piratenandenken (Anderes))", "(Espoilles En Acier/laiton (autres))", "(スポイル：真鍮・鋼鉄の取引（その他）)"],
+          locationImage,
+          location.thePillars,
+          26.1, 22.3
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 70:
+      return o(
+        'purchase',
+        [
+          6, clanMarkLogs, clanMarkLogsImage,
+          ["Bertana", true, true, "ベルタナ"],
+          ["(Uncanny Knickknacks)", "(Gegenstände)", "(Objets (divers))", "(アイテムの取引（その他）)"],
+          locationImage,
+          location.idyllshire,
+          5.8, 5.2
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 72:
+      return o(
+        'beastTribe',
+        [
+          rank.trusted,
+          beastTribe.vath,
+          200000, gil, gilImage,
+          _npc.vathStickpeddler,
+          ['(Purchase Items (Trusted))', '(Waren (Vertraut))', '(Objets (rang Estimé))', '(アイテムの取引(友好関係：信頼))'],
+          locationImage,
+          location.theDravanianForelands,
+          23.7, 19.1
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 70:
+      return [
+        o(
+          'purchase',
+          [
+            1, ironVoyageSpoil, ironVoyageSpoilImage,
+            ["Resident Caretaker", "Unterkunftsbeamt[a]", "Officier Du Logement", "居住区担当官"],
+            ["(Items Of Interest)", "(Gegenstände)", "(Objets)", "(アイテムの取引)"],
+            locationImage,
+            location.theLavenderBeds,
+            11.9, 8.3
+          ],
+          expansions.HW,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            1, ironVoyageSpoil, ironVoyageSpoilImage,
+            ["Resident Caretaker", "Unterkunftsbeamt[a]", "Officier Du Logement", "居住区担当官"],
+            ["(Items Of Interest)", "(Gegenstände)", "(Objets)", "(アイテムの取引)"],
+            locationImage,
+            location.mist,
+            11.4, 11.3
+          ],
+          expansions.HW,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            1, ironVoyageSpoil, ironVoyageSpoilImage,
+            ["Resident Caretaker", "Unterkunftsbeamt[a]", "Officier Du Logement", "居住区担当官"],
+            ["(Items Of Interest)", "(Gegenstände)", "(Objets)", "(アイテムの取引)"],
+            locationImage,
+            location.theGoblet,
+            11.3, 9.4
+          ],
+          expansions.HW,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            1, ironVoyageSpoil, ironVoyageSpoilImage,
+            ["Resident Caretaker", "Unterkunftsbeamt[a]", "Officier Du Logement", "居住区担当官"],
+            ["(Items Of Interest)", "(Gegenstände)", "(Objets)", "(アイテムの取引)"],
+            locationImage,
+            location.shirogane,
+            0, 0
+          ],
+          expansions.HW,
+          true,
+          false
+        ),
+        o(
+          'purchase',
+          [
+            1, ironVoyageSpoil, ironVoyageSpoilImage,
+            _npc.spoilsCollector,
+            ["(Spoils Exchange (Other))", "(Messing-/Stahl-Piratenandenken (Anderes))", "(Espoilles En Acier/laiton (autres))", "(スポイル：真鍮・鋼鉄の取引（その他）)"],
+            locationImage,
+            location.thePillars,
+            26.1, 22.3
+          ],
+          expansions.HW,
+          true,
+          false
+        )
+      ];
     
     default:
       //console.log("Unknown method for minion " + minion.id);

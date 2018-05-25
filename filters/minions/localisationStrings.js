@@ -69,7 +69,7 @@ module.exports = {
   },
   gilAfterFate: {
     en: 'Purchase for {img2} {i0} {i1} from {3} in {img4} {5} (x: {6}, y: {7}) after completing the level {8} FATE {img9} \'{i10}\' (x: {11}, y: {12}).',
-    de: ''
+    de: 'Käuflich für {img2} {i0} {i1} von {3} in {img4} {5} (x: {6}, y: {7}) nach abschließen des Level {8} FATEs {img9} \'{i10}\' (x: {11}, y: {12}).'
   },
   itemAccursedHoard: {
     en: 'Randomly awarded from a {i0}, after obtaining a {1} within {img2} {3}.',

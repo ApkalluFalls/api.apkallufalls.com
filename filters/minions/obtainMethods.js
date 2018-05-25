@@ -60,7 +60,8 @@ const beastTribe = {
   vath: ['Vath', true, 'Vathe', 'ヴァス'],
   moogle: ["Moogle", "Mogry", "Mog", "モーグリ"],
   kojin: ["Kojin", true, true, "コウジン"],
-  ananta: ["Ananta", true, true, "アナンタ"]
+  ananta: ["Ananta", true, true, "アナンタ"],
+  namazu: ["Namazu", "Namazuo", true, "ナマズオ"]
 }
 
 const item = {
@@ -3380,7 +3381,7 @@ module.exports = (minion, achievementsIn) => {
         'beastTribe',
         [
           rank.respected,
-          beastTribe.ananta,
+          beastTribe.namazu,
           7, namazuKoban, namazuKobanImage,
           ["Gyosho", true, true, "ギョショウ"],
           ["(Namazu Koban Exchange)", "(Namazuo-Koban)", "(Échange de koban namazu)", "(ナマズオ小判の取引)"],

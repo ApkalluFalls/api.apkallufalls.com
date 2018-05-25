@@ -1372,8 +1372,8 @@ module.exports = (minion, achievementsIn) => {
         50, 'Miner', 1,
         location.easternThanalan,
         28, 22,
-        7,
-        '9:00AM'
+        '9:00AM',
+        7
       );
     
     case 39:

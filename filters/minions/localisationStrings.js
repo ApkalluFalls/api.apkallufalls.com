@@ -2,11 +2,11 @@ module.exports = {
   // Purchase for 2,400 Gil {image} from Maisenta (Purchase Tools) in New Gridania (x11, y11).
   purchase: {
     en: 'Purchase for {img2} {i0} {i1} from {3} {4} in {img5} {6} (x: {7}, y: {8}).',
-    de: 'Kaufe für {img2} {i0} {i1} von {3} {4} in {img5} {6} (x: {7}, y: {8}).'
+    de: 'Erhältlich für {img2} {i0} {i1} von {3} {4} in {img5} {6} (x: {7}, y: {8}).'
   },
   eventQuestPurchase: {
     en: 'Purchase from {0} during the {i1} event.',
-    de: 'Kaufe von {1} während des {i1} Events.'
+    de: 'Erhältlich von {1} während des {i1} Events.'
   },
   // Pre-order A Realm Reborn and register the promotional code on or before Tuesday, 31st December 2013.
   preOrder: {
@@ -21,7 +21,7 @@ module.exports = {
   // Unlock the __achievement__ achievement, then speak to Jonathas at Apkallu Falls in Old Gridania (x: 10.5, y: 6.3).
   achievement: {
     en: 'Unlock the __achievement__ achievement, then speak to {0} at {1} in {img2} {3} (x: {4}, y: {5}).',
-    de: 'Schalte die __achievement__ Errungenschaft frei, dann sprich mit {0} bei {1} in {img2} {3} (x: {4}, y: {5}).'
+    de: 'Schalte die Errungenschaft __achievement__ frei, dann sprich mit {0} bei {1} in {img2} {3} (x: {4}, y: {5}).'
   },
   aquapolis: {
     en: 'Randomly awarded from treasure chests in {img0} {i1} from {2} onwards.',
@@ -40,12 +40,12 @@ module.exports = {
     de: 'Zufällig erhalten von einer Schatztruhe des Level {0} Inhalts {img1} \'{i2}\' (Letzte Schatztruhe)'
   },
   raid: {
-    en: 'Randomly awarded from a treasure chest in level {0} raid {img1} \'{i2}\' (final chest).',
-    de: 'Zufällig erhalten von einer Schatztruhe des Level {0} Raids {img1} \'{i2}\' (Letzte Schatztruhe)'
+    en: 'Awarded from a treasure chest in level {0} raid {img1} \'{i2}\'.',
+    de: 'Erhalten von einer Schatztruhe des Level {0} Raids {img1} \'{i2}\'.'
   },
   trial: {
-    en: 'Randomly awarded from a treasure chest in level {0} trial {img1} \'{i2}\' (final chest).',
-    de: 'Zufällig erhalten von einer Schatztruhe der Level {0} Prüfung {img1} \'{i2}\' (Letzte Schatztruhe)'
+    en: 'Randomly awarded from a treasure chest in level {0} trial {img1} \'{i2}\'.',
+    de: 'Zufällig erhalten von einer Schatztruhe der Level {0} Prüfung {img1} \'{i2}\'.'
   },
   pvp: {
     en: 'Randomly awarded after winning level {0} PvP match {img1} \'{i2}\'.',
@@ -117,7 +117,7 @@ module.exports = {
   },
   achievementCertificate: {
     en: 'Purchase for {i0} {i1} {img2} from {3} at {4} in {img5} {6} (x: {7}, y: {8}).',
-    de: 'Kaufe für {i0} {i1} {img2} von {3} bei {4} in {img5} {6} (x: {7}, y: {8}).'
+    de: 'Erhältlich für {i0} {i1} {img2} von {3} bei {4} in {img5} {6} (x: {7}, y: {8}).'
   },
   veteranReward: {
     en: 'Received as mail from a {i0} for subscribing for {1} days.',
@@ -133,15 +133,15 @@ module.exports = {
   },
   beastTribe: {
     en: 'Achieve {0} reputation with the {i1} Beast Tribe, then purchase for {img4} {i2} {i3} from {5} {6} in {img7} {8} (x: {9}, y: {10}).',
-    de: 'Erreiche {0} Verbundenheit mit dem {i1} Stamm, dann erwerbe {img4} {i2} {i3} von {5} {6} in {img7} {8} (x: {9}, y: {10}).'
+    de: 'Erreiche Verbundenheit {0} mit dem {i1} Stamm, dann erwirb es für {img4} {i2} {i3} von {5} {6} in {img7} {8} (x: {9}, y: {10}).'
   },
   squareEnixStore: {
     en: 'Purchase {i0} on the {i1} and register the promotional code on or before {2}.',
-    de: 'Kaufe {i0} auf dem {i1} und registriere den Aktionscode am oder vor {2}.'
+    de: 'Erhältlich {i0} auf dem {i1} und registriere den Aktionscode am oder vor {2}.'
   },
   squareEnixStoreNoExpiration: {
     en: 'Purchase {i0} on the {i1} and register the promotional code.',
-    de: 'Kaufe {i0} auf dem {i1} und registriere den Aktionscode.'
+    de: 'Erhältlich {i0} auf dem {i1} und registriere den Aktionscode.'
   },
   retainerVenture: {
     en: 'Randomly awarded from the {1} level {0} {img2} {i3} {i4} retainer venture.',
@@ -165,7 +165,7 @@ module.exports = {
   },
   fanFestivalStream: {
     en: 'Purchase the online live stream of the {y0} fan festival in {1}.',
-    de: 'Kaufe den online Live-Stream des {y0} Fanfests in {1}'
+    de: 'Erhältlich den online Live-Stream des {y0} Fanfests in {1}'
   },
   freeCompanySubaquaticVoyage: {
     en: 'Randomly obtained from Free Company {i0} Subaquatic Voyages.',

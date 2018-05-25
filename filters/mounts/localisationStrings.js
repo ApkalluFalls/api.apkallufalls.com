@@ -15,6 +15,10 @@ module.exports = {
     en: 'Complete the level {0} {1} main scenario quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige das level {0} {1} Hauptszenario {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).'
   },
+  eventQuest: {
+    en: 'Complete the level {0} {i1} quest {img3} \'{i2}\'.',
+    de: 'Vervollständige den level  {0} {i1} Aufrag {img3} \'{i2}\'.'
+  },
   quest: {
     en: 'Complete the level {0} {1} quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige den level {0} {1} Auftrag {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).'

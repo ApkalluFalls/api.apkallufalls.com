@@ -41,6 +41,7 @@ const ventureImage = 'v';
 const kojinSangoImage = 'ks';
 const ixionHornImage = 'ih';
 const anantaDreamstaffImage = 'ad';
+const namazuKobanImage = 'nk';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -177,7 +178,7 @@ const craftItem = {
   },
   dotharliCloth: {
     icon: 23372,
-    name: ["Dotharl-Tuch", "Dotharli Cloth", "Étoffe dotharl", "ドタール族の生地"]
+    name: ["Dotharli Cloth", "Dotharl-Tuch", "Étoffe dotharl", "ドタール族の生地"]
   },
   dragonBlood: {
     icon: 12630,
@@ -289,7 +290,7 @@ const craftItem = {
   },
   oroniriCloth: {
     icon: 23371,
-    name: ["Oronir-Tuch", "Oroniri Cloth", "Étoffe oronir", "オロニル族の生地"]
+    name: ["Oroniri Cloth", "Oronir-Tuch", "Étoffe oronir", "オロニル族の生地"]
   },
   palladiumNugget: {
     icon: 19946,
@@ -380,6 +381,7 @@ const location = {
   coerthasCentralHighlands: ['Coerthas Central Highlands', 'Zentrales Hochland Von Coerthas', 'Hautes Terres Du Coerthas Central', 'クルザス中央高地'],
   coerthasWesternHighlands: ["Coerthas Western Highlands", "Westliches Hochland Von Coerthas", "Hautes Terres Du Coerthas Occidental", "クルザス西部高地"],
   commandRoom: ['Command Room', 'Admiralsbrücke', 'Salon De L\'Amiral', 'アドミラルブリッジ：提督室'],
+  dhoroIloh: ["Dhoro Iloh", true, true, "ドーロ・イロー"],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
@@ -454,8 +456,10 @@ const location = {
     theHiddenCanalsOfUznair: ["The Hidden Canals Of Uznair", "Vergessene Kanäle Von Uznair", "Les Canaux Cachés D'Uznair", "宝物庫 ウズネアカナル深層"],
     theLostCityOfAmdaporHard: ["The Lost City Of Amdapor (Hard)", "Historisches Amdapor (schwer)", "Les Vestiges De La Cité D'Amdapor (brutal)", "神聖遺跡 古アムダプール市街 (Hard)"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
+    theRidoranaLighthouse: ["The Ridorana Lighthouse", "Richtfeuer Von Ridorana", "Le Phare De Ridorana", "封じられた聖塔 リドルアナ"],
     theSirensongSea: ["The Sirensong Sea", "Sirenen-See", "La Mer Du Chant Des Sirènes", "漂流海域 セイレーン海"],
     theSunkenTempleOfQarnHard: ['The Sunken Temple of Qarn (Hard)', 'Versunkener Tempel Von Qarn (schwer)', 'Le Temple Enseveli De Qarn (brutal)', '遺跡救援 カルン埋没寺院 (Hard)'],
+    theSwallowsCompass: ["The Swallow's Compass", "Kompass Der Schwalbe", "Le Compas De L'Hirondelle", "風水霊殿 ガンエン廟"],
     theTempleOfTheFist: ["The Temple Of The Fist", "Tempel Der Faust", "Le Temple Du Poing", "壊神修行 星導山寺院"],
     theVault: ["The Vault", "Erzbasilika", "La Voûte", "強硬突入 イシュガルド教皇庁"],
     theVoidArk: ["The Void Ark", "Die Nichts-Arche", "L'Arche Du Néant", "魔航船ヴォイドアーク"],
@@ -534,6 +538,7 @@ const sasshoSekiFragment = ["Sassho-seki Fragment", "Sassho-seki-Fragment", "Fra
 const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン珊瑚貨"];
 const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
 const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
+const namazuKoban = ["Namazu Koban", "Namazuo-Koban", "Koban namazu", "ナマズオ小判"];
 
 const helper = {
   achievementCertificate: (quantity) => {
@@ -2777,6 +2782,7 @@ module.exports = (minion, achievementsIn) => {
     case 228:
     case 260:
     case 264:
+    case 298:
       return helper.wondrousTails(2);
     
     case 219:
@@ -3331,6 +3337,9 @@ module.exports = (minion, achievementsIn) => {
 
     case 288:
       return helper.achievementCertificate(2);
+
+    case 290:
+      return helper.dungeon(location.duty.theSwallowsCompass, 70, null, null, expansions.SB, true, false);
     
     case 291:
       return o(
@@ -3361,6 +3370,27 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 1, ...craftItem.royalFern },
           { quantity: 1, ...craftItem.dotharliCloth }
         ]
+      );
+
+    case 299:
+      return helper.raid(location.duty.theRidoranaLighthouse, 70, expansions.SB, true, false);
+
+    case 302:
+      return o(
+        'beastTribe',
+        [
+          rank.respected,
+          beastTribe.ananta,
+          7, namazuKoban, namazuKobanImage,
+          ["Gyosho", true, true, "ギョショウ"],
+          ["(Namazu Koban Exchange)", "(Namazuo-Koban)", "(Échange de koban namazu)", "(ナマズオ小判の取引)"],
+          locationImage,
+          location.dhoroIloh,
+          5.8, 23.5
+        ],
+        expansions.SB,
+        true,
+        false
       );
 
     default:

@@ -62,5 +62,9 @@ module.exports = {
   goldChocoboFeather: {
     en: 'Purchase for {img2} {i0} {i1}, awarded from the {i9}, from {3} {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Kaufe für {img2} {i0} {i1}, belohn von {i9}, von {3} {4} in {img5} {6} (x: {7}, y: {8}).'
+  },
+  promotional: {
+    en: 'Participate in the "{0}" promotion.',
+    de: 'Nimm an der Aktion "{0}" teil.'
   }
 };

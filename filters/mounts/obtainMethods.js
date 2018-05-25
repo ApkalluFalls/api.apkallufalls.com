@@ -119,11 +119,15 @@ const location = {
   duty: {
     akhAfahAmphitheatre: ["Akh Afah Amphitheatre (Extreme)", "Zenit Der Götter - Shiva", "L'Amphithéâtre D'Akh Afah (extrême)", "極シヴァ討滅戦"],
     alexanderTheBurdenOfTheFatherSavage: ["Alexander - The Burden Of The Father (Savage)", "Alexander - Last Des Vaters (episch)", "Alexander - Le Fardeau Du Père (sadique)", "機工城アレキサンダー零式：起動編4"],
+    containmentBayS1T7Extreme: ["Containment Bay S1T7 (Extreme)", "Zenit Der Götter - Sephirot", "Unité De Contention S1P7 (extrême)", "極魔神セフィロト討滅戦"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
+    theLimitlessBlueExtreme: ["The Limitless Blue (Extreme)", "Zenit Der Götter - Bismarck", "L'Immensité Bleue (extrême)", "極ビスマルク討滅戦"],
+    theMinstrelsBalladThordensReign: ["The Minstrel's Ballad: Thordan's Reign", "Heldenlied Von Thordans Fall", "Le Règne De Thordan", "蒼天幻想 ナイツ・オブ・ラウンド討滅戦"],
     theNavelExtreme: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"],
     theStrikingTreeExtreme: ["The Striking Tree (Extreme)", "Zenit Der Götter - Ramuh", "L'Arbre Du Jugement (extrême)", "極ラムウ討滅戦"],
-    theWhorleaterExtreme: ["The Whorleater (Extreme)", "Zenit Der Götter - Leviathan", "Le Briseur De Marées (extrême)", "極リヴァイアサン討滅戦"]
+    theWhorleaterExtreme: ["The Whorleater (Extreme)", "Zenit Der Götter - Leviathan", "Le Briseur De Marées (extrême)", "極リヴァイアサン討滅戦"],
+    thokAstThokExtreme: ["Thok Ast Thok (Extreme)", "Zenit Der Götter - Ravana", "Thok Ast Thok (extrême)", "極ラーヴァナ討滅戦"]
   }
 }
 
@@ -276,6 +280,15 @@ const helper = {
       expansions.ARR,
       true,
       false
+    )
+  },
+  promotional: (event, expansion) => {
+    return o(
+      'promotional',
+      [event],
+      expansion,
+      false,
+      true
     )
   },
   quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
@@ -609,6 +622,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
     case 42:
     case 68:
     case 69:
+    case 74:
       return helper.mogStation();
     
     case 43:
@@ -846,6 +860,30 @@ module.exports = (mount, achievementsIn, mountsIn) => {
           false
         )
       ];
+    
+    case 75:
+      return helper.trial(location.duty.theLimitlessBlueExtreme, 60, expansions.HW, true, false);
+    
+    case 76:
+      return helper.trial(location.duty.thokAstThokExtreme, 60, expansions.HW, true, false);
+    
+    case 77:
+      return helper.trial(location.duty.theMinstrelsBalladThordensReign, 60, expansions.HW, true, false);
+    
+    case 78:
+      return helper.trial(location.duty.containmentBayS1T7Extreme, 60, expansions.HW, true, false);
+    
+    case 80:
+      return helper.achievementReward(1444, expansions.HW, true, false);
+
+    case 81:
+      return [
+        helper.promotional('いろはす討滅戦2017', expansions.ARR),
+        helper.promotional('FFXIV and Amazon.com® Free DLC Giveaway', expansions.ARR),
+        helper.promotional('ShopTo In-Game Item Campaign', expansions.ARR),
+        helper.promotional('Dr Pepper-Kampagne!', expansions.ARR),
+        helper.promotional('Final Fantasy XIV Events with O2', expansions.ARR)
+      ]
     
     default:
       //console.log("Unknown method for minion " + minion.id);

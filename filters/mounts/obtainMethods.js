@@ -787,7 +787,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
         false
       );
     
-    case 70:
+    case 73:
       return [
         o(
           'purchase',

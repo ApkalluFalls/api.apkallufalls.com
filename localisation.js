@@ -285,22 +285,22 @@ module.exports = {
   },
   'Large Gig': {
     de: 'Große Harpunenspitze',
-    fr: '?Large Gig?',
+    fr: 'Grande Pointe',
     jp: '?Large Gig?'
   },
   'Medium Gig': {
     de: 'Mittlere Harpunenspitze',
-    fr: '?Medium Gig?',
+    fr: 'Pointe Moyenne',
     jp: '?Medium Gig?'
   },
   'Small Gig': {
     de: 'Kleine Harpunenspitze',
-    fr: '?Small Gig?',
+    fr: 'Petite Pointe',
     jp: '?Small Gig?'
   },
   'Quick Exploration': {
     de: 'Schneller Streifzug',
-    fr: '?Quick Exploration?',
+    fr: 'Tâche improvisée',
     jp: '?Quick Exploration?'
   },
   'Recruit a Friend Campaign': {

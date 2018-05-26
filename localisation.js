@@ -284,17 +284,22 @@ module.exports = {
     jp: '魚影'
   },
   'Large Gig': {
-    de: '?Large Gig?',
+    de: 'Große Harpunenspitze',
     fr: '?Large Gig?',
     jp: '?Large Gig?'
   },
+  'Medium Gig': {
+    de: 'Mittlere Harpunenspitze',
+    fr: '?Medium Gig?',
+    jp: '?Medium Gig?'
+  },
   'Small Gig': {
-    de: '?Small Gig?',
+    de: 'Kleine Harpunenspitze',
     fr: '?Small Gig?',
     jp: '?Small Gig?'
   },
   'Quick Exploration': {
-    de: '?Quick Exploration?',
+    de: 'Schneller Streifzug',
     fr: '?Quick Exploration?',
     jp: '?Quick Exploration?'
   },

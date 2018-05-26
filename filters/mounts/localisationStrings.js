@@ -9,7 +9,7 @@ module.exports = {
   },
   collectorsEdition: {
     en: 'Register or digitally upgrade to the {i0} of {i1} on the {2}.',
-    de: 'Registriere oder rüste digital zur {i0} des/der {i1} auf der {2} auf.'
+    de: 'Registriere oder rüste digital zur {i0} von {i1} auf der {2} auf.'
   },
   msq: {
     en: 'Complete the level {0} {1} main scenario quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
@@ -25,7 +25,7 @@ module.exports = {
   },
   questAfterMount: {
     en: 'Complete the level {0} {1} quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}) after obtaining __mounts__.',
-    de: 'Vervollständige den level {0} {1} Auftrag {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}) nach dem Erhalt von __mounts__.'
+    de: 'Vervollständige den level {0} {1} {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}) nach dem Erhalt von __mounts__.'
   },
   legacyGift: {
     en: 'Given as a gift upon reaching level {0} by {1} in {img2} {3} (x: {4}, y: {5})',
@@ -41,11 +41,11 @@ module.exports = {
   },
   raid: {
     en: 'Awarded from a treasure chest in level {0} raid {img1} \'{i2}\'.',
-    de: 'Erhalten von einer Schatztruhe des Level {0} Raids {img1} \'{i2}\'.'
+    de: 'Erhältlich von einer Schatztruhe des Level {0} Raids {img1} \'{i2}\'.'
   },
   trial: {
     en: 'Randomly awarded from a treasure chest in level {0} trial {img1} \'{i2}\'.',
-    de: 'Zufällig erhalten von einer Schatztruhe der Level {0} Prüfung {img1} \'{i2}\'.'
+    de: 'Zufällig erhältlich von einer Schatztruhe der Level {0} Prüfung {img1} \'{i2}\'.'
   },
   veteranReward: {
     en: 'Received as mail from a {i0} for subscribing for {1} days.',
@@ -65,7 +65,7 @@ module.exports = {
   },
   goldChocoboFeather: {
     en: 'Purchase for {img2} {i0} {i1}, awarded from the {i9}, from {3} {4} in {img5} {6} (x: {7}, y: {8}).',
-    de: 'Erhältlich für {img2} {i0} {i1}, belohn von {i9}, von {3} {4} in {img5} {6} (x: {7}, y: {8}).'
+    de: 'Erhältlich für {img2} {i0} {i1}, eine Belohnung von {i9}, von {3} {4} in {img5} {6} (x: {7}, y: {8}).'
   },
   promotional: {
     en: 'Participate in the "{0}" promotion.',

@@ -3300,7 +3300,7 @@ module.exports = (minion, achievementsIn) => {
     
     case 283:
       return helper.freeCompanySubaquaticVoyage(
-        ['Deep-sea Site 3', '?Deep-sea Site 3?', '?Deep-sea Site 3?', '?Deep-sea Site 3?']
+        ['Deep-sea Site 3', 'Tiefsee 3', '?Deep-sea Site 3?', '?Deep-sea Site 3?']
       );
 
     case 284:

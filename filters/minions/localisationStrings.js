@@ -19,7 +19,7 @@ module.exports = {
   // Register or digitially upgrade to the Collector's Edition of A Realm Reborn on the Mog Station.
   collectorsEdition: {
     en: 'Register or digitally upgrade to the {i0} of {i1} on the {2}.',
-    de: 'Registriere oder rüste digital zur {i0} des/der {i1} auf der {2} auf.',
+    de: 'Registriere oder rüste digital zur {i0} von {i1} auf der {2} auf.',
     fr: 'Enregistrez, ou mettez à jour numériquement vers la {i0} de {i1} sur la {2}.'
   },
   // Unlock the __achievement__ achievement, then speak to Jonathas at Apkallu Falls in Old Gridania (x: 10.5, y: 6.3).
@@ -30,22 +30,22 @@ module.exports = {
   },
   aquapolis: {
     en: 'Randomly awarded from treasure chests in {img0} {i1} from {2} onwards.',
-    de: 'Zufällig erhalten von Schatztruhen in  {img0} {i1} von {2} an.',
+    de: 'Zufällig erhältlich von Schatztruhen in  {img0} {i1} von {2} an.',
     fr: 'Récompense aléatoire dans un coffre dans {img0} {i1} à partir de {2}.'
   },
   hiddenCanalsOfUznair: {
     en: 'Randomly awarded from treasure chests in {img0} {i1}.',
-    de: 'Zufällig erhalten von Schatztruhen in {img0} {i1}.',
+    de: 'Zufällig erhältlich von Schatztruhen in {img0} {i1}.',
     fr: 'Récompense aléatoire dans un coffre dans {img0} {i1}.'
   },
   duty: {
     en: 'Randomly awarded from a treasure chest in the level {0} duty {img1} \'{i2}\' (x: {3}, y: {4}).',
-    de: 'Zufällig erhalten von einer Schatztruhe des Level {0} Inhalts {img1} \'{i2}\' (x: {3}, y: {4}).',
+    de: 'Zufällig erhältlich von einer Schatztruhe des Level {0} Inhalts {img1} \'{i2}\' (x: {3}, y: {4}).',
     fr: 'Récompense aléatoire dans un coffre dans la mission de niveau {0} {img1} \'{i2}\' (x: {3}, y: {4}).'
   },
   dutyFinalChest: {
     en: 'Randomly awarded from a treasure chest in level {0} duty {img1} \'{i2}\' (final chest).',
-    de: 'Zufällig erhalten von einer Schatztruhe des Level {0} Inhalts {img1} \'{i2}\' (Letzte Schatztruhe)',
+    de: 'Zufällig erhältlich von einer Schatztruhe des Level {0} Inhalts {img1} \'{i2}\' (Letzte Schatztruhe)',
     fr: 'Récompense aléatoire dans un coffre dans la mission de niveau {0} {img1} \'{i2}\' (x: {3}, y: {4}) (dernier coffre).'
   },
   raid: {
@@ -55,12 +55,12 @@ module.exports = {
   },
   trial: {
     en: 'Randomly awarded from a treasure chest in level {0} trial {img1} \'{i2}\'.',
-    de: 'Zufällig erhalten von einer Schatztruhe der Level {0} Prüfung {img1} \'{i2}\'.',
+    de: 'Zufällig erhältlich von einer Schatztruhe der Level {0} Prüfung {img1} \'{i2}\'.',
     fr: 'Récompense aléatoire dans un coffre dans le défi de niveau {0} {img1} \'{i2}\' (x: {3}, y: {4}).'
   },
   pvp: {
     en: 'Randomly awarded after winning level {0} PvP match {img1} \'{i2}\'.',
-    de: 'Zufällig erhalten nach Gewinnen eines level {0} PvP-Spiels {img1} \'{i2}\'.',
+    de: 'Zufällig erhältlich nach Gewinnen eines level {0} PvP-Spiels {img1} \'{i2}\'.',
     fr: 'Récompense aléatoire après une victoire dans un match JcJ de niveau {0} {img1} \'{i2}\'.'
   },
   eventQuest: {
@@ -75,7 +75,7 @@ module.exports = {
   },
   diademFate: {
     en: 'Randomly awarded after achieving gold rating in the level {0} {img1} {2} FATE {img3} \'{i4}\'.',
-    de: 'Zufällig erhalten nach einer Gold-Bewertung im level {0} {img1} {2} FATE {img3} \'{i4}\'.',
+    de: 'Zufällig erhältlich nach einer Gold-Bewertung im level {0} {img1} {2} FATE {img3} \'{i4}\'.',
     fr: 'Récompense aléatoire après une réussite or sur l\'ALEA niveau {0} {img1} {2} {img3} \'{i4}\'.'
   },
   fateUnknown: {
@@ -90,7 +90,7 @@ module.exports = {
   },
   itemAccursedHoard: {
     en: 'Randomly awarded from a {i0}, after obtaining a {1} within {img2} {3}.',
-    de: 'Zufällig erhalten von einer/einem {i0}, nach erhalten von {1} in {img2} {3}.',
+    de: 'Zufällig erhältlich von einem {i0}, nach erhalten von {1} in {img2} {3}.',
     fr: 'Récompense aléatoire d\'un {i0}, après l\'obtention d\'un {1} dans {img2} {3}.'
   },
   quest: {
@@ -105,12 +105,12 @@ module.exports = {
   },
   timewornMap: {
     en: 'Randomly awarded from the treasure chest after completing a level {0} (solo) {img1} {i2}.',
-    de: 'Zufällig erhalten von einer Schatztruhe nach Vervollständigen von level {0} (solo) {img1} {i2}.',
+    de: 'Zufällig erhältlich von einer Schatztruhe nach Vervollständigen von level {0} (solo) {img1} {i2}.',
     fr: 'Obtenu aléatoirement dans un coffre après avoir complété le niveau {0} (solo) {img1} {i2}.'
   },
   timewornMapFullParty: {
     en: 'Randomly awarded from the treasure chest after completing a level {0} (full party) {img1} {i2}.',
-    de: 'Zufällig erhalten von einer Schatztruhe nach Vervollständigen von level {0} (party) {img1} {i2}.',
+    de: 'Zufällig erhältlich von einer Schatztruhe nach Vervollständigen von level {0} (party) {img1} {i2}.',
     fr: 'Obtenu aléatoirement dans un coffre après avoir complété le niveau {0} (full party) {img1} {i2}.'
   },
   craft: {
@@ -170,17 +170,17 @@ module.exports = {
   },
   squareEnixStore: {
     en: 'Purchase {i0} on the {i1} and register the promotional code on or before {2}.',
-    de: 'Erhältlich {i0} auf dem {i1} und registriere den Aktionscode am oder vor {2}.',
+    de: 'Kaufe {i0} auf dem {i1} und registriere den Aktionscode am oder vor {2}.',
     fr: 'Acheter {i0} sur la {i1} et enregistrer le code promotionnel avant le {2}.'
   },
   squareEnixStoreNoExpiration: {
     en: 'Purchase {i0} on the {i1} and register the promotional code.',
-    de: 'Erhältlich {i0} auf dem {i1} und registriere den Aktionscode.',
+    de: 'Kaufe {i0} auf dem {i1} und registriere den Aktionscode.',
     fr: 'Acheter {i0} sur la {i1} et enregistrer le code promotionnel.'
   },
   retainerVenture: {
     en: 'Randomly awarded from the {1} level {0} {img2} {i3} {i4} retainer venture.',
-    de: 'Zufälig erhalten von der {1} level {img2} {i3} {i4} Unternehmung',
+    de: 'Zufälig erhalten von der {1} {img2} {i3} {i4} Unternehmung',
     fr: 'Récompense aléatoire de la tâche de servant {1} niveau {0} {img2} {i3} {i4}.'
   },
   retainerVentureQuick: {
@@ -210,7 +210,7 @@ module.exports = {
   },
   freeCompanySubaquaticVoyage: {
     en: 'Randomly obtained from Free Company {i0} Subaquatic Voyages.',
-    de: 'Zufällig erhalten von Gesellschafts-{i0} Tauchboot-Erkundungen',
+    de: 'Zufällig erhältlich von Gesellschafts-{i0} Tauchboot-Erkundungen',
     fr: 'Récompense aléatoire d\'expédition sous-marine de Compagnie Libre sur {i0}.'
   }
 };

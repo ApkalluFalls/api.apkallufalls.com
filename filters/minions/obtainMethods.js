@@ -3380,7 +3380,7 @@ module.exports = (minion, achievementsIn) => {
       return o(
         'beastTribe',
         [
-          rank.respected,
+          rank.trusted,
           beastTribe.namazu,
           7, namazuKoban, namazuKobanImage,
           ["Gyosho", true, true, "ギョショウ"],

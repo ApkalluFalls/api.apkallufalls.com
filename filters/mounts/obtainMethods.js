@@ -54,6 +54,13 @@ const anantaDreamstaffImage = 'ad';
 const goldChocoboFeatherImage = 'gcf';
 const clanMarkLogsImage = 'cm';
 const ironVoyageSpoilImage = 'iv';
+const totemImage = 'totem';
+const heavensWardHelmFragmentImage = 'hwhf';
+
+const item = {
+  goldTrimmedSack: ["Gold-trimmed Sack", "Gefundener Schatz IV", "Trésor mystérieux de grade IV", "埋もれた財宝G4"],
+  pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝']
+}
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -90,6 +97,14 @@ const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette bé
 const goldChocoboFeather = ["Gold Chocobo Feather", "Goldene Chocobo-Feder", "Penne de chocobo doré", "ゴールドチョコボの羽根"];
 const clanMarkLogs = ["Clan Mark Log", "Clan-Jägertagebuch", "Journal de membre du clan", "クラン員の手記"];
 const ironVoyageSpoil = ["Iron Voyage Spoil", "Eisen-Expeditionsandenken", "Espoille d'expédition en fonte", "ボイジャースポイル:鋳鉄"];
+const goddessTotem = ["Goddess Totem", "Sophia-Totem", "Totem sophique", "女神のトーテム像"];
+const expanseTotem = ["Expanse Totem", "Bismarck-Totem", "Totem des brumes", "雲神のトーテム像"];
+const hiveTotem = ["Hive Totem", "Ravana-Totem", "Totem des lames", "武神のトーテム像"];
+const heavensWardHelmFragment = ["Heavens' Ward Helm Fragment", "Azurgarden-Helmfragment", "Fragment de casque de l'Azur", "蒼天の甲冑片"];
+const fiendTotem = ["Fiend Totem", "Sephirot-Totem", "Totem séphirotique", "魔神のトーテム像"];
+const hordeTotem = ["Horde Totem", "Horden-Totem", "Totem de la haine millénaire", "邪竜のトーテム像"];
+const demonTotem = ["Demon Totem", "Zurvan-Totem", "Totem zurvanique", "鬼神のトーテム像"];
+
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
@@ -120,10 +135,14 @@ const location = {
   duty: {
     akhAfahAmphitheatre: ["Akh Afah Amphitheatre (Extreme)", "Zenit Der Götter - Shiva", "L'Amphithéâtre D'Akh Afah (extrême)", "極シヴァ討滅戦"],
     alexanderTheBurdenOfTheFatherSavage: ["Alexander - The Burden Of The Father (Savage)", "Alexander - Last Des Vaters (episch)", "Alexander - Le Fardeau Du Père (sadique)", "機工城アレキサンダー零式：起動編4"],
+    alexanderTheSoulOfTheCreatorSavage: ["Alexander - The Soul Of The Creator (Savage)", "Alexander - Seele Des Schöpfers (episch)", "Alexander - L'Âme Du Créateur (sadique)", "機工城アレキサンダー零式：天動編4"],
+    containmentBayP1T6Extreme: ["Containment Bay P1T6 (Extreme)", "Zenit Der Götter - Sophia", "Unité De Contention P1P6 (extrême)", "極女神ソフィア討滅戦"],
     containmentBayS1T7Extreme: ["Containment Bay S1T7 (Extreme)", "Zenit Der Götter - Sephirot", "Unité De Contention S1P7 (extrême)", "極魔神セフィロト討滅戦"],
+    containmentBayZ1T9Extreme: ["Containment Bay Z1T9 (Extreme)", "Zenit Der Götter - Zurvan", "Unité De Contention Z1P9 (extrême)", "極鬼神ズルワーン討滅戦"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
     theLimitlessBlueExtreme: ["The Limitless Blue (Extreme)", "Zenit Der Götter - Bismarck", "L'Immensité Bleue (extrême)", "極ビスマルク討滅戦"],
+    theMinstrelsBalladNidhoggsRage: ["The Minstrel's Ballad: Nidhogg's Rage", "Das Lied Von Nidhoggs Letztem Ruf", "L'ire De Nidhogg", "極ニーズヘッグ征竜戦"],
     theMinstrelsBalladThordensReign: ["The Minstrel's Ballad: Thordan's Reign", "Heldenlied Von Thordans Fall", "Le Règne De Thordan", "蒼天幻想 ナイツ・オブ・ラウンド討滅戦"],
     theNavelExtreme: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"],
     theStrikingTreeExtreme: ["The Striking Tree (Extreme)", "Zenit Der Götter - Ramuh", "L'Arbre Du Jugement (extrême)", "極ラムウ討滅戦"],
@@ -250,6 +269,20 @@ const helper = {
         locationImage,
         location.theGoldSaucer,
         5.4, 6.7
+      ],
+      expansions.ARR,
+      true,
+      false
+    )
+  },
+  itemAccursedHoard: (sack) => {
+    return o(
+      'itemAccursedHoard',
+      [
+        sack,
+        item.pieceOfAccursedHoard,
+        dutyImage,
+        location.duty.thePalaceOfTheDead
       ],
       expansions.ARR,
       true,
@@ -624,6 +657,8 @@ module.exports = (mount, achievementsIn, mountsIn) => {
     case 68:
     case 69:
     case 74:
+    case 84:
+    case 97:
       return helper.mogStation();
     
     case 43:
@@ -682,6 +717,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       );
 
     case 52:
+    case 93:
       return helper.goldChocoboFeatherExchange(8);
 
     case 53:
@@ -863,16 +899,80 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       ];
     
     case 75:
-      return helper.trial(location.duty.theLimitlessBlueExtreme, 60, expansions.HW, true, false);
+      return [
+        helper.trial(location.duty.theLimitlessBlueExtreme, 60, expansions.HW, true, false),
+        o(
+          'purchase',
+          [
+            99, expanseTotem, totemImage,
+            ["Bertana", true, true, "ベルタナ"],
+            ["(Uncanny Knickknacks)", "(Gegenstände)", "(Objets (divers))", "(アイテムの取引（その他）)"],
+            locationImage,
+            location.idyllshire,
+            5.8, 5.2
+          ],
+          expansions.HW,
+          true,
+          false
+        )
+      ];
     
     case 76:
-      return helper.trial(location.duty.thokAstThokExtreme, 60, expansions.HW, true, false);
+      return [
+        helper.trial(location.duty.thokAstThokExtreme, 60, expansions.HW, true, false),
+        o(
+          'purchase',
+          [
+            99, hiveTotem, totemImage,
+            ["Bertana", true, true, "ベルタナ"],
+            ["(Uncanny Knickknacks)", "(Gegenstände)", "(Objets (divers))", "(アイテムの取引（その他）)"],
+            locationImage,
+            location.idyllshire,
+            5.8, 5.2
+          ],
+          expansions.HW,
+          true,
+          false
+        )
+      ];
     
     case 77:
-      return helper.trial(location.duty.theMinstrelsBalladThordensReign, 60, expansions.HW, true, false);
+      return [
+        helper.trial(location.duty.theMinstrelsBalladThordensReign, 60, expansions.HW, true, false),
+        o(
+          'purchase',
+          [
+            99, heavensWardHelmFragment, heavensWardHelmFragmentImage,
+            ["Bertana", true, true, "ベルタナ"],
+            ["(Uncanny Knickknacks)", "(Gegenstände)", "(Objets (divers))", "(アイテムの取引（その他）)"],
+            locationImage,
+            location.idyllshire,
+            5.8, 5.2
+          ],
+          expansions.HW,
+          true,
+          false
+        )
+      ];
     
     case 78:
-      return helper.trial(location.duty.containmentBayS1T7Extreme, 60, expansions.HW, true, false);
+      return [
+        helper.trial(location.duty.containmentBayS1T7Extreme, 60, expansions.HW, true, false),
+        o(
+          'purchase',
+          [
+            99, fiendTotem, totemImage,
+            ["Bertana", true, true, "ベルタナ"],
+            ["(Uncanny Knickknacks)", "(Gegenstände)", "(Objets (divers))", "(アイテムの取引（その他）)"],
+            locationImage,
+            location.idyllshire,
+            5.8, 5.2
+          ],
+          expansions.HW,
+          true,
+          false
+        )
+      ];
     
     case 80:
       return helper.achievementReward(1444, expansions.HW, true, false);
@@ -881,11 +981,143 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return [
         helper.promotional('いろはす討滅戦2017', expansions.ARR),
         helper.promotional('FFXIV and Amazon.com® Free DLC Giveaway', expansions.ARR),
-        helper.promotional('ShopTo In-Game Item Campaign', expansions.ARR),
         helper.promotional('Dr Pepper-Kampagne!', expansions.ARR),
         helper.promotional('Final Fantasy XIV Events with O2', expansions.ARR)
-      ]
+      ];
+
+    case 82:
+      return [
+        helper.promotional('FF14×セブンイレブンコラボ ', expansions.ARR),
+        helper.promotional('FFXIV and Amazon.com® Summer DLC Campaign', expansions.ARR),
+        helper.promotional('In-Game Item Campaign with GamesMaster Magazine', expansions.ARR),
+        helper.promotional('ShopTo In-Game Item Campaign', expansions.ARR)
+      ];
     
+    case 83:
+      return helper.achievementReward(1604, expansions.HW, true, false);
+    
+    case 86:
+      return o(
+        'beastTribe',
+        [
+          rank.sworn,
+          beastTribe.moogle,
+          200000, gil, gilImage,
+          _npc.mogmulMogbelly,
+          ['(Purchase Items (Sworn))', '(Waren (Solidarisch))', '(Objets (rang Assermenté))', '(アイテムの取引(友好関係：誓約))'],
+          locationImage,
+          location.theChurningMists,
+          16, 28.5
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 87:
+      return helper.achievementReward(1573, expansions.ARR, false, true);
+    
+    case 90:
+      return [
+        helper.trial(location.duty.theMinstrelsBalladNidhoggsRage, 60, expansions.HW, true, false),
+        o(
+          'purchase',
+          [
+            99, hordeTotem, totemImage,
+            ["Bertana", true, true, "ベルタナ"],
+            ["(Uncanny Knickknacks)", "(Gegenstände)", "(Objets (divers))", "(アイテムの取引（その他）)"],
+            locationImage,
+            location.idyllshire,
+            5.8, 5.2
+          ],
+          expansions.HW,
+          true,
+          false
+        )
+      ];
+    
+    case 91:
+      return helper.achievementReward(1563, expansions.HW, true, false);
+    
+    case 92:
+      return o(
+        'purchase',
+        [
+          10, gelmorranPotsherd, gelmorranPotsherdImage,
+          ["E-Una-Kotor", "E-Una-Kotor", "E-Una-Kotor", "エ・ウナ・コトロ"],
+          ["(Gelmorran Potsherd Exchange)", "(Gelmorra-Scherben)", "(Tessons De Poterie Gelmorraine)", "(ゲルモラ土器片の取引)"],
+          locationImage,
+          location.southShroud,
+          21.5, 21.5
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 94:
+      return helper.achievementReward(1539, expansions.ARR, false, true);
+    
+    case 95:
+      return helper.achievementReward(1771, expansions.HW, false, true);
+    
+    case 96:
+      return helper.achievementReward(1772, expansions.HW, false, true);
+    
+    case 98:
+      return [
+        helper.trial(location.duty.containmentBayP1T6Extreme, 60, expansions.HW, true, false),
+        o(
+          'purchase',
+          [
+            99, goddessTotem, totemImage,
+            ["Bertana", true, true, "ベルタナ"],
+            ["(Uncanny Knickknacks)", "(Gegenstände)", "(Objets (divers))", "(アイテムの取引（その他）)"],
+            locationImage,
+            location.idyllshire,
+            5.8, 5.2
+          ],
+          expansions.HW,
+          true,
+          false
+        )
+      ];
+
+    case 99:
+      return helper.eventQuest(
+        15,
+        ["Starlight Stakeout", "Bären Und Diebe Im Sternenlicht", "Les Brigands Enguirlandés", "盗人と熊の星芒祭"],
+        'eq7',
+        expansions.ARR
+      );
+    
+    case 100:
+      return helper.itemAccursedHoard(item.goldTrimmedSack);
+    
+    case 101:
+      return helper.raid(location.duty.alexanderTheSoulOfTheCreatorSavage, 60, expansions.HW, true, false);
+    
+    case 102:
+      return helper.achievementReward(1773, expansions.HW, false, true);
+    
+    case 104:
+      return [
+        helper.trial(location.duty.containmentBayZ1T9Extreme, 60, expansions.HW, true, false),
+        o(
+          'purchase',
+          [
+            99, demonTotem, totemImage,
+            ["Bertana", true, true, "ベルタナ"],
+            ["(Uncanny Knickknacks)", "(Gegenstände)", "(Objets (divers))", "(アイテムの取引（その他）)"],
+            locationImage,
+            location.idyllshire,
+            5.8, 5.2
+          ],
+          expansions.HW,
+          true,
+          false
+        )
+      ];
     default:
       //console.log("Unknown method for minion " + minion.id);
       return null;

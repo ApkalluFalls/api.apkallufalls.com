@@ -69,6 +69,7 @@ const item = {
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
+  bloodsworn: ['Bloodsworn', true, true, '?Bloodsworn?'],
   trusted: ['Trusted', 'Vertraut', 'Estimé', '信頼'],
   allied: ['Allied', 'Verbündet', 'Allié', '盟友'],
   respected: ['Respected', 'Respektierte', 'Respecté', '尊敬する']
@@ -369,15 +370,17 @@ const helper = {
     )
   },
   itemAnemosLockbox: () => {
-    'itemAnemosLockbox',
-    [
-      item.anemosLockbox,
-      dutyImage,
-      location.eurekaAnemos
-    ],
-    expansions.SB,
-    true,
-    false
+    return o(
+      'itemAnemosLockbox',
+      [
+        item.anemosLockbox,
+        dutyImage,
+        location.eurekaAnemos
+      ],
+      expansions.SB,
+      true,
+      false
+    )
   },
   legacyGift: (level, npc, loc, x, y, expansion) => {
     return o(
@@ -1419,7 +1422,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return o(
         'beastTribe',
         [
-          rank.allied,
+          rank.bloodsworn,
           beastTribe.kojin,
           12, kojinSango, kojinSangoImage,
           ["Shikitahe", "Shikitahe", "Shikitahe", "シキタヘ"],
@@ -1456,11 +1459,28 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return helper.achievementCertificate(6);
     
     case 146:
+      return o(
+        'beastTribe',
+        [
+          rank.sworn,
+          beastTribe.ananta,
+          18, anantaDreamstaff, anantaDreamstaffImage,
+          ["Madhura", true, true, "マドゥラ"],
+          ["(Ananta Dreamstaff Exchange)", "(Ananta-Traumstäbe)", "(Échange De Barrettes Béatifiques Anantas)", "(アナンタ魔金錫貨の取引)"],
+          locationImage,
+          location.theFringes,
+          20.9, 26.1
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+
     case 148:
       return o(
         'beastTribe',
         [
-          rank.respected,
+          rank.bloodsworn,
           beastTribe.ananta,
           18, anantaDreamstaff, anantaDreamstaffImage,
           ["Madhura", true, true, "マドゥラ"],

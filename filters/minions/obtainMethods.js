@@ -65,6 +65,7 @@ const beastTribe = {
 }
 
 const item = {
+  anemosLockbox: ["Anemos Lockbox", "Anemos-Schließkassette", "Coffre verrouillé d'Anemos", "アネモス帯のロックボックス"],
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
   elixir: ['Elixir', 'Elixier', 'Élixir', 'エリクサー'],
   hiElixir: ['Hi-Elixir', 'Super-Elixier', 'Super élixir', 'ハイエリクサー'],
@@ -859,6 +860,19 @@ const helper = {
         location.duty.thePalaceOfTheDead
       ],
       expansions.ARR,
+      true,
+      false
+    )
+  },
+  itemAnemosLockbox: () => {
+    return o(
+      'itemAnemosLockbox',
+      [
+        item.anemosLockbox,
+        dutyImage,
+        location.eurekaAnemos
+      ],
+      expansions.SB,
       true,
       false
     )
@@ -3319,22 +3333,31 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 285:
-      return helper.eurekaAnemosFate(
-        17,
-        ["Wine And Honey", "Schlafende Drachen Soll Man Nicht Wecken", "Défi: Le Dragon Démentiel", "狂乱の暗竜「ファヴニル」"]
-      );
+      return [
+        helper.eurekaAnemosFate(
+          17,
+          ["Wine And Honey", "Schlafende Drachen Soll Man Nicht Wecken", "Défi: Le Dragon Démentiel", "狂乱の暗竜「ファヴニル」"]
+        ),
+        helper.itemAnemosLockbox()
+      ];
     
     case 286:
-      return helper.eurekaAnemosFate(
-        11,
-        ["Short Serket 2", "Wütend Wie Ein Hurrikan", "Défi: Le Scorpion Mythique", "幻の魔蠍「セルケト」"]
-      );
+      return [
+        helper.eurekaAnemosFate(
+          11,
+          ["Short Serket 2", "Wütend Wie Ein Hurrikan", "Défi: Le Scorpion Mythique", "幻の魔蠍「セルケト」"]
+        ),
+        helper.itemAnemosLockbox()
+      ];
     
     case 287:
-      return helper.eurekaAnemosFate(
-        2,
-        ["The Shadow Over Anemos", "Küssen Verboten", "Défi: Le Seigneur De La Terre Interdite", "大蛸の王者「ロード・オブ・アネモス」"]
-      );
+      return [
+        helper.eurekaAnemosFate(
+          2,
+          ["The Shadow Over Anemos", "Küssen Verboten", "Défi: Le Seigneur De La Terre Interdite", "大蛸の王者「ロード・オブ・アネモス」"]
+        ),
+        helper.itemAnemosLockbox()
+      ];
 
     case 288:
       return helper.achievementCertificate(2);

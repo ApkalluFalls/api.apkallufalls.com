@@ -120,6 +120,6 @@ module.exports = {
     fr: 'Récompense aléatoire d\'un {i0}, après l\'obtention d\'un {1} dans {img2} {3}.'
   },
   itemAnemosLockbox: {
-    en: 'Randomly awarded from an {i0} after completing FATEs within {img1} {2}.'
+    en: 'Randomly awarded from an {i0}, obtained after completing FATEs within {img1} {2}.'
   }
 };

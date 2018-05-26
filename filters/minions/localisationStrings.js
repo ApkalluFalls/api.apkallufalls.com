@@ -93,6 +93,9 @@ module.exports = {
     de: 'Zufällig erhältlich von einem {i0}, nach erhalten von {1} in {img2} {3}.',
     fr: 'Récompense aléatoire d\'un {i0}, après l\'obtention d\'un {1} dans {img2} {3}.'
   },
+  itemAnemosLockbox: {
+    en: 'Randomly awarded from an {i0}, obtained after completing FATEs within {img1} {2}.'
+  },
   quest: {
     en: 'Complete the level {0} {1} quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige den level {0} {1} Auftrag {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',

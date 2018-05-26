@@ -130,6 +130,7 @@ const location = {
   northernThanalan: ['Northern Thanalan', 'Nördliches Thanalan', 'Thanalan Septentrional', '北ザナラーン'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   outerLaNoscea: ['Outer La Noscea', 'Äußeres La Noscea', 'Noscea Extérieure', '地ラノシア'],
+  rhalgrsReach: ["Rhalgr's Reach", "Rhalgrs Wacht", "Temple Du Poing (entrée)", "ラールガーズリーチ"],
   shirogane: ["Shirogane", true, true, "シロガネ"],
   southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
   theAzimSteppe: ["The Azim Steppe", "Azim-Steppe", "Steppe D'Azim", "アジムステップ"],

@@ -14,6 +14,16 @@ module.exports = {
     de: 'Registriere oder rüste digital zur {i0} von {i1} auf der {2} auf.',
     fr: 'Enregistrer, ou mettre à jour numériquement vers la {i0} de {i1} sur la {2}.'
   },
+  craft: {
+    en: 'Crafted from a level {0} {i1} recipe{2} with {3}.',
+    de: 'Synthetisiert von einem level {0} {i1} Rezept {2} mit {3}.',
+    fr: 'Fabriqué par un {i1} via une recette{2} de niveau {0} avec {3}.'
+  },
+  craftShort: {
+    en: 'Crafted from a level {0} {i1} recipe{2}.',
+    de: 'Synthetisiert von einem level {0} {i1} Rezept {2}.',
+    fr: 'Fabriqué par un {i1} via une recette{2} de niveau {0}.'
+  },
   duty: {
     en: 'Randomly awarded from a treasure chest in the level {0} duty {img1} \'{i2}\' (x: {3}, y: {4}).',
     de: 'Zufällig erhältlich von einer Schatztruhe des Level {0} Inhalts {img1} \'{i2}\' (x: {3}, y: {4}).',

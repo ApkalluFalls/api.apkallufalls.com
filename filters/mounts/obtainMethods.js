@@ -59,6 +59,7 @@ const heavensWardHelmFragmentImage = 'hwhf';
 const feastSeasonItemImage = 'feast3';
 const blissTotemImage = 'bt';
 const revelTotemImage = 'rt';
+const shinryuTotemImage = 'st';
 
 const item = {
   goldTrimmedSack: ["Gold-trimmed Sack", "Gefundener Schatz IV", "Trésor mystérieux de grade IV", "埋もれた財宝G4"],
@@ -113,6 +114,28 @@ const feastSeason4Lone = ["Season Four Lone Wolf Voucher C", "Preiscoupon C des 
 const feastSeason4Pack = ["Season Four Pack Wolf Voucher C", "Preiscoupon C des Rudelwolfes (4. Saison)", "Certificat de finaliste de meute S4", "強者の証S4[パーティ]"];
 const blissTotem = ["Bliss Totem", "Lakshmi-Totem", "Totem de la beauté", "美神のトーテム像"];
 const revelTotem = ["Revel Totem", "Susano-Totem", "Totem des tempêtes", "豪神のトーテム像"];
+const shinryuTotem = ["Shinryu Totem", "Shinryu-Totem", "Totem draconique divin", "神龍のトーテム像"];
+
+
+
+const craftItem = {
+  cloudsbreath: {
+    icon: 20791,
+    name: ["Cloudsbreath", "Pustewolken", "Jasmin céleste", "ウキグモソウ"]
+  },
+  lightningCluster: {
+    icon: 18,
+    name: ["Lightning Cluster", "Blitzpolykristall", "Agrégat de foudre", "ライトニングクラスター"]
+  },
+  rivieraArmchair: {
+    icon: 6529,
+    name: ["Riviera Armchair", "Riviera-Polstersessel", "Fauteuil noscéen", "ラノシアン・ソファー"]
+  },
+  waterCluster: {
+    icon: 19,
+    name: ["Water Cluster", "Wasserpolykristall", "Agrégat d'eau", "ウォータークラスター"]
+  }
+}
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
@@ -139,6 +162,7 @@ const location = {
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
   thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
   thePillars: ["The Pillars", "Strebewerk", "Ishgard - Les Contreforts", "イシュガルド：上層"],
+  theRubySea: ["The Ruby Sea", "Rubinsee", "Mer De Rubis", "紅玉海"],
   theSeaOfClouds: ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
@@ -152,11 +176,13 @@ const location = {
     containmentBayP1T6Extreme: ["Containment Bay P1T6 (Extreme)", "Zenit Der Götter - Sophia", "Unité De Contention P1P6 (extrême)", "極女神ソフィア討滅戦"],
     containmentBayS1T7Extreme: ["Containment Bay S1T7 (Extreme)", "Zenit Der Götter - Sephirot", "Unité De Contention S1P7 (extrême)", "極魔神セフィロト討滅戦"],
     containmentBayZ1T9Extreme: ["Containment Bay Z1T9 (Extreme)", "Zenit Der Götter - Zurvan", "Unité De Contention Z1P9 (extrême)", "極鬼神ズルワーン討滅戦"],
+    deltascapev40Extreme: ["Deltascape V4.0 (Savage)", "Deltametrie 4.0 (episch)", "Deltastice V4.0 (sadique)", "次元の狭間オメガ零式：デルタ編4"],
     emanationExtreme: ["Emanation (Extreme)", "Zenit Der Götter - Lakshmi", "Émanation (extrême)", "極ラクシュミ討滅戦"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
     theLimitlessBlueExtreme: ["The Limitless Blue (Extreme)", "Zenit Der Götter - Bismarck", "L'Immensité Bleue (extrême)", "極ビスマルク討滅戦"],
     theMinstrelsBalladNidhoggsRage: ["The Minstrel's Ballad: Nidhogg's Rage", "Das Lied Von Nidhoggs Letztem Ruf", "L'ire De Nidhogg", "極ニーズヘッグ征竜戦"],
+    theMinstrelsBalladShinryusDomain: ["The Minstrel's Ballad: Shinryu's Domain", "Heldenlied Von Shinryu", "Le Domaine De Shinryu", "極神龍討滅戦"],
     theMinstrelsBalladThordensReign: ["The Minstrel's Ballad: Thordan's Reign", "Heldenlied Von Thordans Fall", "Le Règne De Thordan", "蒼天幻想 ナイツ・オブ・ラウンド討滅戦"],
     theNavelExtreme: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"],
     thePoolOfTributeExtreme: ["The Pool Of Tribute (Extreme)", "Zenit Der Götter - Susano", "La Crique Aux Tributs (extrême)", "極スサノオ討滅戦"],
@@ -215,6 +241,31 @@ const helper = {
       available,
       true
     );
+  },
+  craft: (level, job, stars, items, expansion) => {
+    const itemArr = ['', '', '', ''];
+    items.forEach((item, index) => {
+      for (var i = 0; i < 4; i++)
+        itemArr[i] += (index === 0 ? '' : (index === items.length - 1 ? ' and ' : ', '))
+                    + item.quantity + 'x '
+                    + item.name[i]
+                    + ' <img src="https://api.apkallufalls.com/icons/item/' + item.icon + '.png" alt="' + item.name[i] + '" />';
+    });
+    return o(
+      'craft',
+      [
+        level,
+        job,
+        stars ? ' (' + (new Array(stars).fill()).map(s => '★').join('') + ')' : '',
+        itemArr
+      ],
+      expansion,
+      true,
+      false,
+      {
+        job: job[0]
+      }
+    )
   },
   dungeon: (name, level, x, y, expansion, available, promo) => {
     return o(
@@ -683,6 +734,9 @@ module.exports = (mount, achievementsIn, mountsIn) => {
     case 74:
     case 84:
     case 97:
+    case 135:
+    case 138:
+    case 139:
       return helper.mogStation();
     
     case 43:
@@ -1302,6 +1356,78 @@ module.exports = (mount, achievementsIn, mountsIn) => {
         expansions.SB,
         true,
         false
+      );
+    
+    case 126:
+      return helper.raid(location.duty.deltascapev40Extreme, 70, expansions.SB, true, false);
+    
+    case 127:
+      return helper.achievementReward(1922, expansions.SB, true, false);
+
+    case 130:
+      return o(
+        'purchase',
+        [
+          12, ixionHorn, ixionHornImage,
+          ["Eschina", true, true, "エシナ"],
+          ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
+          locationImage,
+          location.rhalgrsReach,
+          13.9, 11.8
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 133:
+      return [
+        helper.trial(location.duty.theMinstrelsBalladShinryusDomain, 70, expansions.SB, true, false),
+        o(
+          'purchase',
+          [
+            99, shinryuTotem, shinryuTotemImage,
+            ["Eschina", true, true, "エシナ"],
+            ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
+            locationImage,
+            location.rhalgrsReach,
+            13.9, 11.8
+          ],
+          expansions.SB,
+          true,
+          false
+        )
+      ];
+    
+    case 136:
+      return o(
+        'beastTribe',
+        [
+          rank.allied,
+          beastTribe.kojin,
+          12, kojinSango, kojinSangoImage,
+          ["Shikitahe", "Shikitahe", "Shikitahe", "シキタヘ"],
+          ["(Kojin Sango Exchange)", "(Kojin-Korallen)", "(Échange De Sango Kojin)", "(コウジン珊瑚貨の取引)"],
+          locationImage,
+          location.theRubySea,
+          29.4, 16.9
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 140:
+      return helper.craft(
+        70,
+        locale('Alchemist'),
+        2,
+        [
+          { quantity: 50, ...craftItem.lightningCluster },
+          { quantity: 50, ...craftItem.waterCluster },
+          { quantity: 1, ...craftItem.rivieraArmchair },
+          { quantity: 8, ...craftItem.cloudsbreath }
+        ]
       );
 
     default:

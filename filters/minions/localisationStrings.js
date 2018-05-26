@@ -20,7 +20,7 @@ module.exports = {
   collectorsEdition: {
     en: 'Register or digitally upgrade to the {i0} of {i1} on the {2}.',
     de: 'Registriere oder rüste digital zur {i0} von {i1} auf der {2} auf.',
-    fr: 'Enregistrez, ou mettez à jour numériquement vers la {i0} de {i1} sur la {2}.'
+    fr: 'Enregistrer, ou mettre à jour numériquement vers la {i0} de {i1} sur la {2}.'
   },
   // Unlock the __achievement__ achievement, then speak to Jonathas at Apkallu Falls in Old Gridania (x: 10.5, y: 6.3).
   achievement: {
@@ -31,7 +31,7 @@ module.exports = {
   aquapolis: {
     en: 'Randomly awarded from treasure chests in {img0} {i1} from {2} onwards.',
     de: 'Zufällig erhältlich von Schatztruhen in  {img0} {i1} von {2} an.',
-    fr: 'Récompense aléatoire dans un coffre dans {img0} {i1} à partir de {2}.'
+    fr: 'Récompense aléatoire dans un coffre dans {img0} {i1} à partir de la {2}.'
   },
   hiddenCanalsOfUznair: {
     en: 'Randomly awarded from treasure chests in {img0} {i1}.',
@@ -96,12 +96,12 @@ module.exports = {
   quest: {
     en: 'Complete the level {0} {1} quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige den level {0} {1} Auftrag {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',
-    fr: 'Complétez la quête {1} niveau {0} {img2} \'{i3}\' auprès de {4} à {img5} {6} (x: {7}, y: {8}).'
+    fr: 'Compléter la quête {1} niveau {0} {img2} \'{i3}\' auprès de {4} à {img5} {6} (x: {7}, y: {8}).'
   },
   msq: {
     en: 'Complete the level {0} {1} main scenario quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige das level {0} {1} Hauptszenario {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',
-    fr: 'Complétez la quête épopée {1} niveau {0} {img2} \'{i3}\' auprès de {4} à {img5} {6} (x: {7}, y: {8}).'
+    fr: 'Compléter la quête épopée {1} niveau {0} {img2} \'{i3}\' auprès de {4} à {img5} {6} (x: {7}, y: {8}).'
   },
   timewornMap: {
     en: 'Randomly awarded from the treasure chest after completing a level {0} (solo) {img1} {i2}.',

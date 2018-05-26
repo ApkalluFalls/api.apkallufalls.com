@@ -44,6 +44,11 @@ module.exports = {
     de: 'Vervollständige den level  {0} {i1} Aufrag {img3} \'{i2}\'.',
     fr: 'Compléter la quête de niveau {0} {i1} {img3} \'{i2}\'.'
   },
+  eventQuestPurchase: {
+    en: 'Purchase from {0} during the {i1} event.',
+    de: 'Erhältlich von {1} während des {i1} Events.',
+    fr: 'Acheté chez {0} pendant l\'évènement {i1}.'
+  },
   quest: {
     en: 'Complete the level {0} {1} quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige den level {0} {1} Auftrag {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',

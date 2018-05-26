@@ -290,6 +290,15 @@ const helper = {
       false
     )
   },
+  eventQuestPurchase: (shop, event, expansion) => {
+    return o(
+      'eventQuestPurchase',
+      [shop, event],
+      expansion,
+      false,
+      false
+    )
+  },
   goldChocoboFeatherExchange: (cost) => {
     return [
       o(
@@ -1496,6 +1505,22 @@ module.exports = (mount, achievementsIn, mountsIn) => {
 
     case 150:
       return helper.itemAnemosLockbox();
+    
+    case 152:
+    case 153:
+      return [
+        helper.eventQuest(
+          15,
+          ["Lessons In Love", "Lektionen Der Liebe", "L'apprentie Messagère De L'amour", "ヴァレンティオンデーと見習い伝道師"],
+          'eq9',
+          expansions.ARR
+        ),
+        helper.eventQuestPurchase(
+          ["House Valentione Maid", "Dienstmädchen[p] Des Hauses Valention", "Soubrette Des Valention", "ヴァレンティオン家のメイド"],
+          ['Valentione\'s Day 2018', 'Valentiontag 2018', 'La Valention 2018', 'ヴァレンティオンデー 2018'],
+          expansions.ARR
+        )
+      ];
 
     default:
       //console.log("Unknown method for minion " + minion.id);

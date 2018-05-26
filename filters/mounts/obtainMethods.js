@@ -51,6 +51,7 @@ const ventureImage = 'v';
 const kojinSangoImage = 'ks';
 const ixionHornImage = 'ih';
 const anantaDreamstaffImage = 'ad';
+const namazuKobanImage = 'nk';
 const goldChocoboFeatherImage = 'gcf';
 const clanMarkLogsImage = 'cm';
 const ironVoyageSpoilImage = 'iv';
@@ -85,7 +86,8 @@ const beastTribe = {
   vath: ['Vath', true, 'Vathe', 'ヴァス'],
   moogle: ["Moogle", "Mogry", "Mog", "モーグリ"],
   kojin: ["Kojin", true, true, "コウジン"],
-  ananta: ["Ananta", true, true, "アナンタ"]
+  ananta: ["Ananta", true, true, "アナンタ"],
+  namazu: ["Namazu", "Namazuo", true, "ナマズオ"]
 }
 
 const gil = ['Gil', true, true, 'ギル'];
@@ -100,6 +102,7 @@ const sasshoSekiFragment = ["Sassho-seki Fragment", "Sassho-seki-Fragment", "Fra
 const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン珊瑚貨"];
 const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
 const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
+const namazuKoban = ["Namazu Koban", "Namazuo-Koban", "Koban namazu", "ナマズオ小判"];
 const goldChocoboFeather = ["Gold Chocobo Feather", "Goldene Chocobo-Feder", "Penne de chocobo doré", "ゴールドチョコボの羽根"];
 const clanMarkLogs = ["Clan Mark Log", "Clan-Jägertagebuch", "Journal de membre du clan", "クラン員の手記"];
 const ironVoyageSpoil = ["Iron Voyage Spoil", "Eisen-Expeditionsandenken", "Espoille d'expédition en fonte", "ボイジャースポイル:鋳鉄"];
@@ -114,6 +117,7 @@ const feastSeason3Lone = ["Season Three Lone Wolf Voucher C", "Preiscoupon C des
 const feastSeason3Pack = ["Season Three Pack Wolf Voucher C", "Preiscoupon C des Rudelwolfes (3. Saison)", "Certificat de finaliste de meute S3", "強者の証S3[パーティ]"];
 const feastSeason4Lone = ["Season Four Lone Wolf Voucher C", "Preiscoupon C des einsamen Wolfes (4. Saison)", "Certificat de finaliste solitaire S4", "強者の証S4[ソロ]"];
 const feastSeason4Pack = ["Season Four Pack Wolf Voucher C", "Preiscoupon C des Rudelwolfes (4. Saison)", "Certificat de finaliste de meute S4", "強者の証S4[パーティ]"];
+const feastSeason7Pack = ["Season Seven Pack Wolf Voucher C", "Preiscoupon C des Rudelwolfes (7. Saison)", "Certificat de finaliste du festin S7", "強者の証S7"];
 const blissTotem = ["Bliss Totem", "Lakshmi-Totem", "Totem de la beauté", "美神のトーテム像"];
 const revelTotem = ["Revel Totem", "Susano-Totem", "Totem des tempêtes", "豪神のトーテム像"];
 const shinryuTotem = ["Shinryu Totem", "Shinryu-Totem", "Totem draconique divin", "神龍のトーテム像"];
@@ -1529,6 +1533,43 @@ module.exports = (mount, achievementsIn, mountsIn) => {
 
     case 158:
       return helper.trial(location.duty.theMinstrelsBalladTsukuyomisPain, 70, expansions.SB, true, false);
+
+    case 162:
+      return o(
+        'purchase',
+        [
+          1, feastSeason7Pack, feastSeasonItemImage,
+          ["Feast Quartermaster", "Versorgungsoffizier[p] Des Mahlstroms", "Officier Magasinier Du Maelstrom", "シーズン報酬支給官"],
+          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+          locationImage,
+          location.wolvesDenPier,
+          4.8, 5.8
+        ],
+        expansions.HW,
+        false,
+        false
+      );
+
+    case 164:
+      return o(
+        'beastTribe',
+        [
+          rank.sworn,
+          beastTribe.namazu,
+          20, namazuKoban, namazuKobanImage,
+          ["Gyosho", true, true, "ギョショウ"],
+          ["(Namazu Koban Exchange)", "(Namazuo-Koban)", "(Échange de koban namazu)", "(ナマズオ小判の取引)"],
+          locationImage,
+          location.dhoroIloh,
+          5.8, 23.5
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+    
+    case 168:
+      return helper.achievementReward(2065, expansions.SB, true, false);
 
     default:
       //console.log("Unknown method for minion " + minion.id);

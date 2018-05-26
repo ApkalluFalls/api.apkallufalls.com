@@ -184,9 +184,9 @@ const location = {
     containmentBayP1T6Extreme: ["Containment Bay P1T6 (Extreme)", "Zenit Der Götter - Sophia", "Unité De Contention P1P6 (extrême)", "極女神ソフィア討滅戦"],
     containmentBayS1T7Extreme: ["Containment Bay S1T7 (Extreme)", "Zenit Der Götter - Sephirot", "Unité De Contention S1P7 (extrême)", "極魔神セフィロト討滅戦"],
     containmentBayZ1T9Extreme: ["Containment Bay Z1T9 (Extreme)", "Zenit Der Götter - Zurvan", "Unité De Contention Z1P9 (extrême)", "極鬼神ズルワーン討滅戦"],
-    deltascapev40Extreme: ["Deltascape V4.0 (Savage)", "Deltametrie 4.0 (episch)", "Deltastice V4.0 (sadique)", "次元の狭間オメガ零式：デルタ編4"],
+    deltascapev40Savage: ["Deltascape V4.0 (Savage)", "Deltametrie 4.0 (episch)", "Deltastice V4.0 (sadique)", "次元の狭間オメガ零式：デルタ編4"],
     emanationExtreme: ["Emanation (Extreme)", "Zenit Der Götter - Lakshmi", "Émanation (extrême)", "極ラクシュミ討滅戦"],
-    sigmascapev40Extreme: ["Sigmascape V4.0 (Savage)", "Sigmametrie 4.0 (episch)", "Sigmastice V4.0 (sadique)", "次元の狭間オメガ零式：シグマ編4"],
+    sigmascapev40Savage: ["Sigmascape V4.0 (Savage)", "Sigmametrie 4.0 (episch)", "Sigmastice V4.0 (sadique)", "次元の狭間オメガ零式：シグマ編4"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
     theJadeStoa: ["The Jade Stoa (Extreme)", "Seelensturm - Byakko", "La Clairière De Jade (extrême)", "極白虎征魂戦"],
@@ -1393,7 +1393,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       );
     
     case 126:
-      return helper.raid(location.duty.deltascapev40Extreme, 70, expansions.SB, true, false);
+      return helper.raid(location.duty.deltascapev40Savage, 70, expansions.SB, true, false);
     
     case 127:
       return helper.achievementReward(1922, expansions.SB, true, false);
@@ -1529,7 +1529,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       ];
     
     case 156:
-      return helper.raid(location.duty.sigmascapev40Extreme, 70, expansions.SB, true, false);
+      return helper.raid(location.duty.sigmascapev40Savage, 70, expansions.SB, true, false);
 
     case 158:
       return helper.trial(location.duty.theMinstrelsBalladTsukuyomisPain, 70, expansions.SB, true, false);

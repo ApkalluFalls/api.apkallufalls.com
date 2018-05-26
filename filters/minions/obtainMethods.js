@@ -424,6 +424,7 @@ const location = {
   duty: {
     alexanderBurdenOfTheSonSavage: ["Alexander - The Burden Of The Son (Savage)", "Alexander - Last Des Sohnes (episch)", "Alexander - Le Fardeau Du Fils (sadique)", "機工城アレキサンダー零式：律動編4"],
     alexanderSoulOfTheCreator: ["Alexander - The Soul Of The Creator", "Alexander - Seele Des Schöpfers", "Alexander - L'Âme Du Créateur", "機工城アレキサンダー：天動編4"],
+    alexanderTheSoulOfTheCreatorSavage: ["Alexander - The Soul Of The Creator (Savage)", "Alexander - Seele Des Schöpfers (episch)", "Alexander - L'Âme Du Créateur (sadique)", "機工城アレキサンダー零式：天動編4"],
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
     baelsarsWall: ["Baelsar's Wall", "Baelsar-Wall", "La Muraille De Baelsar", "巨大防壁 バエサルの長城"],
     bardamsMettle: ["Bardam's Mettle", "Bardams Probe", "La Force De Bardam", "伝統試練 バルダム覇道"],
@@ -432,6 +433,7 @@ const location = {
     castrumAbania: ["Castrum Abania", "Castrum Abania", "Castrum Abania", "巨砲要塞 カストルム・アバニア"],
     copperbellMinesHard: ['Copperbell Mines (Hard)', 'Kupferglocken-Mine (schwer)', 'Les Mines De Clochecuivre (brutal)', '騒乱坑道 カッパーベル銅山 (Hard)'],
     deltascapev40: ["Deltascape V4.0", "Deltametrie 4.0", "Deltastice V4.0", "次元の狭間オメガ：デルタ編4"],
+    deltascapev40Savage: ["Deltascape V4.0 (Savage)", "Deltametrie 4.0 (episch)", "Deltastice V4.0 (sadique)", "次元の狭間オメガ零式：デルタ編4"],
     domaCastle: ["Doma Castle", "Burg Doma", "Le Château De Doma", "解放決戦 ドマ城"],
     dunScaith: ["Dun Scaith", true, true, "影の国ダン・スカー"],
     hellsLid: ["Hells' Lid", "Höllenspund", "Le Couvercle Des Enfers", "紅玉火山 獄之蓋"],
@@ -2416,7 +2418,7 @@ module.exports = (minion, achievementsIn) => {
       ];
     
     case 160:
-      return helper.trial(location.duty.theVoidArk, 60, expansions.HW, true, false);
+      return helper.raid(location.duty.theVoidArk, 60, expansions.HW, true, false);
     
     case 161:
       return helper.squareEnixStore(
@@ -2564,7 +2566,7 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 176:
-      return helper.trial(location.duty.alexanderBurdenOfTheSonSavage, 60, expansions.HW, true, false);
+      return helper.raid(location.duty.alexanderBurdenOfTheSonSavage, 60, expansions.HW, true, false);
 
     case 177:
       return [
@@ -2787,7 +2789,10 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 215:
-      return helper.raid(location.duty.alexanderSoulOfTheCreator, 60, expansions.HW, true, false);
+      return [
+        helper.raid(location.duty.alexanderSoulOfTheCreator, 60, expansions.HW, true, false),
+        helper.raid(location.duty.alexanderTheSoulOfTheCreatorSavage, 60, expansions.HW, true, false)
+      ]
 
     case 216:
       return helper.dungeon(location.duty.xelphatol, 60, null, null, expansions.HW, true, false);
@@ -3100,7 +3105,10 @@ module.exports = (minion, achievementsIn) => {
       return helper.dungeon(location.duty.theSirensongSea, 61, null, null, expansions.SB, true, false);
 
     case 259:
-      return helper.raid(location.duty.deltascapev40, 70, expansions.SB, true, false);
+      return [
+        helper.raid(location.duty.deltascapev40, 70, expansions.SB, true, false),
+        helper.raid(location.duty.deltascapev40Savage, 70, expansions.SB, true, false)
+      ];
 
     case 261:
       return helper.craft(

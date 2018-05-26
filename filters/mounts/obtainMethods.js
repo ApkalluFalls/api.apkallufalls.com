@@ -182,12 +182,14 @@ const location = {
     containmentBayZ1T9Extreme: ["Containment Bay Z1T9 (Extreme)", "Zenit Der Götter - Zurvan", "Unité De Contention Z1P9 (extrême)", "極鬼神ズルワーン討滅戦"],
     deltascapev40Extreme: ["Deltascape V4.0 (Savage)", "Deltametrie 4.0 (episch)", "Deltastice V4.0 (sadique)", "次元の狭間オメガ零式：デルタ編4"],
     emanationExtreme: ["Emanation (Extreme)", "Zenit Der Götter - Lakshmi", "Émanation (extrême)", "極ラクシュミ討滅戦"],
+    sigmascapev40Extreme: ["Sigmascape V4.0 (Savage)", "Sigmametrie 4.0 (episch)", "Sigmastice V4.0 (sadique)", "次元の狭間オメガ零式：シグマ編4"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
     theJadeStoa: ["The Jade Stoa (Extreme)", "Seelensturm - Byakko", "La Clairière De Jade (extrême)", "極白虎征魂戦"],
     theLimitlessBlueExtreme: ["The Limitless Blue (Extreme)", "Zenit Der Götter - Bismarck", "L'Immensité Bleue (extrême)", "極ビスマルク討滅戦"],
     theMinstrelsBalladNidhoggsRage: ["The Minstrel's Ballad: Nidhogg's Rage", "Das Lied Von Nidhoggs Letztem Ruf", "L'ire De Nidhogg", "極ニーズヘッグ征竜戦"],
     theMinstrelsBalladShinryusDomain: ["The Minstrel's Ballad: Shinryu's Domain", "Heldenlied Von Shinryu", "Le Domaine De Shinryu", "極神龍討滅戦"],
+    theMinstrelsBalladTsukuyomisPain: ["The Minstrel's Ballad: Tsukuyomi's Pain", "Zenit Der Götter - Tsukuyomi", "Castrum Fluminis (extrême)", "極ツクヨミ討滅戦"],
     theMinstrelsBalladThordensReign: ["The Minstrel's Ballad: Thordan's Reign", "Heldenlied Von Thordans Fall", "Le Règne De Thordan", "蒼天幻想 ナイツ・オブ・ラウンド討滅戦"],
     theNavelExtreme: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"],
     thePoolOfTributeExtreme: ["The Pool Of Tribute (Extreme)", "Zenit Der Götter - Susano", "La Crique Aux Tributs (extrême)", "極スサノオ討滅戦"],
@@ -1521,6 +1523,12 @@ module.exports = (mount, achievementsIn, mountsIn) => {
           expansions.ARR
         )
       ];
+    
+    case 156:
+      return helper.raid(location.duty.sigmascapev40Extreme, 70, expansions.SB, true, false);
+
+    case 158:
+      return helper.trial(location.duty.theMinstrelsBalladTsukuyomisPain, 70, expansions.SB, true, false);
 
     default:
       //console.log("Unknown method for minion " + minion.id);

@@ -113,5 +113,8 @@ module.exports = {
     en: 'Randomly awarded from a {i0}, after obtaining a {1} within {img2} {3}.',
     de: 'Zufällig erhältlich von einem {i0}, nach erhalten von {1} in {img2} {3}.',
     fr: 'Récompense aléatoire d\'un {i0}, après l\'obtention d\'un {1} dans {img2} {3}.'
+  },
+  itemAnemosLockbox: {
+    en: 'Randomly awarded from a {i0} after completing FATEs within {img1} {2}.'
   }
 };

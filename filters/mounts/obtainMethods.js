@@ -62,6 +62,7 @@ const revelTotemImage = 'rt';
 const shinryuTotemImage = 'st';
 
 const item = {
+  anemosLockbox: ["Anemos Lockbox", "Anemos-Schließkassette", "Coffre verrouillé d'Anemos", "アネモス帯のロックボックス"],
   goldTrimmedSack: ["Gold-trimmed Sack", "Gefundener Schatz IV", "Trésor mystérieux de grade IV", "埋もれた財宝G4"],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝']
 }
@@ -142,6 +143,7 @@ const location = {
   azysLla: ["Azys Lla", true, true, "アジス・ラー"],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
+  eurekaAnemos: ["Eureka Anemos", "Eureka Anemos", "Eurêka Anemos", "エウレカ：アネモス帯"],
   fortempsManor: ["Fortemps Manor", "Anwesen Der Fortemps", "Manoir Des Fortemps", "フォルタン伯爵邸"],
   foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
@@ -157,9 +159,10 @@ const location = {
   shirogane: ["Shirogane", true, true, "シロガネ"],
   southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
   theAzimSteppe: ["The Azim Steppe", "Azim-Steppe", "Steppe D'Azim", "アジムステップ"],
-  theLavenderBeds: ["The Lavender Beds", "Lavendelbeete", "Lavandière", "ラベンダーベッド"],
+  theFringes: ["The Fringes", "Abanisches Grenzland", "Les Marges", "ギラバニア辺境地帯"],
   theGoblet: ["The Goblet", "Kelchkuppe", "La Coupe", "ゴブレットビュート"],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
+  theLavenderBeds: ["The Lavender Beds", "Lavendelbeete", "Lavandière", "ラベンダーベッド"],
   thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
   thePillars: ["The Pillars", "Strebewerk", "Ishgard - Les Contreforts", "イシュガルド：上層"],
   theRubySea: ["The Ruby Sea", "Rubinsee", "Mer De Rubis", "紅玉海"],
@@ -180,6 +183,7 @@ const location = {
     emanationExtreme: ["Emanation (Extreme)", "Zenit Der Götter - Lakshmi", "Émanation (extrême)", "極ラクシュミ討滅戦"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
+    theJadeStoa: ["The Jade Stoa (Extreme)", "Seelensturm - Byakko", "La Clairière De Jade (extrême)", "極白虎征魂戦"],
     theLimitlessBlueExtreme: ["The Limitless Blue (Extreme)", "Zenit Der Götter - Bismarck", "L'Immensité Bleue (extrême)", "極ビスマルク討滅戦"],
     theMinstrelsBalladNidhoggsRage: ["The Minstrel's Ballad: Nidhogg's Rage", "Das Lied Von Nidhoggs Letztem Ruf", "L'ire De Nidhogg", "極ニーズヘッグ征竜戦"],
     theMinstrelsBalladShinryusDomain: ["The Minstrel's Ballad: Shinryu's Domain", "Heldenlied Von Shinryu", "Le Domaine De Shinryu", "極神龍討滅戦"],
@@ -363,6 +367,17 @@ const helper = {
       true,
       false
     )
+  },
+  itemAnemosLockbox: () => {
+    'itemAnemosLockbox',
+    [
+      item.anemosLockbox,
+      dutyImage,
+      location.eurekaAnemos
+    ],
+    expansions.SB,
+    true,
+    false
   },
   legacyGift: (level, npc, loc, x, y, expansion) => {
     return o(
@@ -1252,6 +1267,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       );
 
     case 110:
+    case 142:
       return helper.goldSaucerPrizeExchange(750000);
     
     case 111:
@@ -1423,12 +1439,43 @@ module.exports = (mount, achievementsIn, mountsIn) => {
         locale('Alchemist'),
         2,
         [
-          { quantity: 50, ...craftItem.lightningCluster },
-          { quantity: 50, ...craftItem.waterCluster },
+          { quantity: 30, ...craftItem.lightningCluster },
+          { quantity: 30, ...craftItem.waterCluster },
           { quantity: 1, ...craftItem.rivieraArmchair },
           { quantity: 8, ...craftItem.cloudsbreath }
         ]
       );
+    
+    case 141:
+      return helper.achievementReward(1939, expansions.SB, true, false);
+
+    case 144:
+      return helper.trial(location.duty.theJadeStoa, 70, expansions.SB, true, false);
+
+    case 145:
+      return helper.achievementCertificate(6);
+    
+    case 146:
+    case 148:
+      return o(
+        'beastTribe',
+        [
+          rank.respected,
+          beastTribe.ananta,
+          18, anantaDreamstaff, anantaDreamstaffImage,
+          ["Madhura", true, true, "マドゥラ"],
+          ["(Ananta Dreamstaff Exchange)", "(Ananta-Traumstäbe)", "(Échange De Barrettes Béatifiques Anantas)", "(アナンタ魔金錫貨の取引)"],
+          locationImage,
+          location.theFringes,
+          20.9, 26.1
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 150:
+      return helper.itemAnemosLockbox();
 
     default:
       //console.log("Unknown method for minion " + minion.id);

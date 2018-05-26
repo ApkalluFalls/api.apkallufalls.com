@@ -88,5 +88,10 @@ module.exports = {
     en: 'Participate in the "{0}" promotion.',
     de: 'Nimm an der Aktion "{0}" teil.',
     fr: 'Participer à la promotion "{0}".'
+  },
+  itemAccursedHoard: {
+    en: 'Randomly awarded from a {i0}, after obtaining a {1} within {img2} {3}.',
+    de: 'Zufällig erhältlich von einem {i0}, nach erhalten von {1} in {img2} {3}.',
+    fr: 'Récompense aléatoire d\'un {i0}, après l\'obtention d\'un {1} dans {img2} {3}.'
   }
 };

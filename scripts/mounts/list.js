@@ -19,7 +19,7 @@ module.exports = new Helper("Mount", "mounts", {
   format: (data, args) => {
     return {
       localisation: localisationStrings,
-      data: data.filter(entry => entry.Icon !== null).map(entry => {
+      data: data.filter(entry => entry.icon !== null).map(entry => {
         let method = obtainMethod(entry, args && args[0], data);
 
         if (method && !(method instanceof Array))

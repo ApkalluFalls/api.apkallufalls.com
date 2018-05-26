@@ -56,6 +56,7 @@ const clanMarkLogsImage = 'cm';
 const ironVoyageSpoilImage = 'iv';
 const totemImage = 'totem';
 const heavensWardHelmFragmentImage = 'hwhf';
+const feastSeason3Image = 'feast3';
 
 const item = {
   goldTrimmedSack: ["Gold-trimmed Sack", "Gefundener Schatz IV", "Trésor mystérieux de grade IV", "埋もれた財宝G4"],
@@ -104,6 +105,8 @@ const heavensWardHelmFragment = ["Heavens' Ward Helm Fragment", "Azurgarden-Helm
 const fiendTotem = ["Fiend Totem", "Sephirot-Totem", "Totem séphirotique", "魔神のトーテム像"];
 const hordeTotem = ["Horde Totem", "Horden-Totem", "Totem de la haine millénaire", "邪竜のトーテム像"];
 const demonTotem = ["Demon Totem", "Zurvan-Totem", "Totem zurvanique", "鬼神のトーテム像"];
+const feastSeason3Lone = ["Season Three Lone Wolf Voucher C", "Preiscoupon C des einsamen Wolfes (3. Saison)", "Certificat de finaliste solitaire S3", "強者の証S3[ソロ]"];
+const feastSeason3Pack = ["Season Three Pack Wolf Voucher C", "Preiscoupon C des Rudelwolfes (3. Saison)", "Certificat de finaliste de meute S3", "強者の証S3[パーティ]"];
 
 
 const location = {
@@ -132,6 +135,7 @@ const location = {
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
   uldahStepsOfThal: ['Ul\'dah - Steps of Thal', 'Thal-Kreuzgang', 'Ul\'dah - Faubourg De Thal', 'ウルダハ：ザル回廊'],
   westernLaNoscea: ['Western La Noscea', 'Westilches La Noscea', 'Noscea Occidentale', '西ラノシア'],
+  wolvesDenPier: ["Wolves' Den Pier", "Wolfshöhlen-Pier", "Jetée De L'Antre Des Loups", "ウルヴズジェイル係船場"],
   duty: {
     akhAfahAmphitheatre: ["Akh Afah Amphitheatre (Extreme)", "Zenit Der Götter - Shiva", "L'Amphithéâtre D'Akh Afah (extrême)", "極シヴァ討滅戦"],
     alexanderTheBurdenOfTheFatherSavage: ["Alexander - The Burden Of The Father (Savage)", "Alexander - Last Des Vaters (episch)", "Alexander - Le Fardeau Du Père (sadique)", "機工城アレキサンダー零式：起動編4"],
@@ -1087,7 +1091,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return helper.eventQuest(
         15,
         ["Starlight Stakeout", "Bären Und Diebe Im Sternenlicht", "Les Brigands Enguirlandés", "盗人と熊の星芒祭"],
-        'eq7',
+        'eq8',
         expansions.ARR
       );
     
@@ -1118,6 +1122,73 @@ module.exports = (mount, achievementsIn, mountsIn) => {
           false
         )
       ];
+
+    case 105:
+      return helper.questAfterMount(
+        1,
+        locale('Dravanian Sidequests'),
+        ["Fiery Wings, Fiery Hearts", "Der König Der Lüfte", "Une Brûlante Amitié", "鳳凰、現世に飛来せり"],
+        ["Wandering Minstrel", "Fahrend[a] Sänger", "Ménestrel Errant", "異邦の詩人"],
+        location.idyllshire,
+        12.7, 11.3,
+        [75, 76, 77, 78, 90, 98, 104],
+        expansions.HW,
+        true,
+        false
+      );
+
+    case 106:
+      return helper.eventQuest(
+        15,
+        ["Eggsistential Crisis", "Ein Unbezahlbares Juwel", "Riggy, Il S'appelle Riggy", "エッグハントが生む宝石"],
+        'eq7',
+        expansions.ARR
+      );
+
+    case 108:
+      return o(
+        'purchase',
+        [
+          1, feastSeason3Lone, feastSeason3Image,
+          ["Feast Quartermaster", "Versorgungsoffizier[p] Des Mahlstroms", "Officier Magasinier Du Maelstrom", "シーズン報酬支給官"],
+          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+          locationImage,
+          location.wolvesDenPier,
+          4.8, 5.8
+        ],
+        expansions.HW,
+        false,
+        false
+      );
+
+    case 109:
+      return o(
+        'purchase',
+        [
+          1, feastSeason3Pack, feastSeason3Image,
+          ["Feast Quartermaster", "Versorgungsoffizier[p] Des Mahlstroms", "Officier Magasinier Du Maelstrom", "シーズン報酬支給官"],
+          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+          locationImage,
+          location.wolvesDenPier,
+          4.8, 5.8
+        ],
+        expansions.HW,
+        false,
+        false
+      );
+
+    case 110:
+      return helper.goldSaucerPrizeExchange(750000);
+    
+    case 111:
+      return helper.collectorsEdition(locale('Stormblood'), expansions.SB, true);
+
+    case 112:
+      return helper.promotional(
+        ['Fly the Falcon Mount Campaign', 'Reittier-Kampagne: "Der Falke"', 'Campagne monture mini aéronef Faucon', 'マウント「ファルコン号」GET!キャンペーン'],
+        expansions.ARR
+      );
+
     default:
       //console.log("Unknown method for minion " + minion.id);
       return null;

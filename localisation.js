@@ -161,6 +161,11 @@ module.exports = {
     fr: 'Noscea',
     jp: 'サブクエスト：ラノシア'
   },
+  'Dravanian Sidequests': {
+    de: 'Aufträge Dravania',
+    fr: 'Dravania',
+    jp: 'サブクエスト：ドラヴァニア'
+  },
   'Post-Dragonsong War': {
     de: 'Nach Dem Drachenkrieg',
     fr: 'Après-guerre Du Chant Des Dragons',

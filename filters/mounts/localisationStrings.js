@@ -14,6 +14,16 @@ module.exports = {
     de: 'Registriere oder rüste digital zur {i0} von {i1} auf der {2} auf.',
     fr: 'Enregistrer, ou mettre à jour numériquement vers la {i0} de {i1} sur la {2}.'
   },
+  duty: {
+    en: 'Randomly awarded from a treasure chest in the level {0} duty {img1} \'{i2}\' (x: {3}, y: {4}).',
+    de: 'Zufällig erhältlich von einer Schatztruhe des Level {0} Inhalts {img1} \'{i2}\' (x: {3}, y: {4}).',
+    fr: 'Récompense aléatoire dans un coffre dans la mission de niveau {0} {img1} \'{i2}\' (x: {3}, y: {4}).'
+  },
+  dutyFinalChest: {
+    en: 'Randomly awarded from a treasure chest in level {0} duty {img1} \'{i2}\' (final chest).',
+    de: 'Zufällig erhältlich von einer Schatztruhe des Level {0} Inhalts {img1} \'{i2}\' (Letzte Schatztruhe)',
+    fr: 'Récompense aléatoire dans un coffre dans la mission de niveau {0} {img1} \'{i2}\' (x: {3}, y: {4}) (dernier coffre).'
+  },
   msq: {
     en: 'Complete the level {0} {1} main scenario quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige das level {0} {1} Hauptszenario {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',

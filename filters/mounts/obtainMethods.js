@@ -56,7 +56,9 @@ const clanMarkLogsImage = 'cm';
 const ironVoyageSpoilImage = 'iv';
 const totemImage = 'totem';
 const heavensWardHelmFragmentImage = 'hwhf';
-const feastSeason3Image = 'feast3';
+const feastSeasonItemImage = 'feast3';
+const blissTotemImage = 'bt';
+const revelTotemImage = 'rt';
 
 const item = {
   goldTrimmedSack: ["Gold-trimmed Sack", "Gefundener Schatz IV", "Trésor mystérieux de grade IV", "埋もれた財宝G4"],
@@ -107,7 +109,10 @@ const hordeTotem = ["Horde Totem", "Horden-Totem", "Totem de la haine millénair
 const demonTotem = ["Demon Totem", "Zurvan-Totem", "Totem zurvanique", "鬼神のトーテム像"];
 const feastSeason3Lone = ["Season Three Lone Wolf Voucher C", "Preiscoupon C des einsamen Wolfes (3. Saison)", "Certificat de finaliste solitaire S3", "強者の証S3[ソロ]"];
 const feastSeason3Pack = ["Season Three Pack Wolf Voucher C", "Preiscoupon C des Rudelwolfes (3. Saison)", "Certificat de finaliste de meute S3", "強者の証S3[パーティ]"];
-
+const feastSeason4Lone = ["Season Four Lone Wolf Voucher C", "Preiscoupon C des einsamen Wolfes (4. Saison)", "Certificat de finaliste solitaire S4", "強者の証S4[ソロ]"];
+const feastSeason4Pack = ["Season Four Pack Wolf Voucher C", "Preiscoupon C des Rudelwolfes (4. Saison)", "Certificat de finaliste de meute S4", "強者の証S4[パーティ]"];
+const blissTotem = ["Bliss Totem", "Lakshmi-Totem", "Totem de la beauté", "美神のトーテム像"];
+const revelTotem = ["Revel Totem", "Susano-Totem", "Totem des tempêtes", "豪神のトーテム像"];
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
@@ -127,9 +132,11 @@ const location = {
   outerLaNoscea: ['Outer La Noscea', 'Äußeres La Noscea', 'Noscea Extérieure', '地ラノシア'],
   shirogane: ["Shirogane", true, true, "シロガネ"],
   southernThanalan: ['Southern Thanalan', 'Südliches Thanalan', 'Thanalan Méridional', '南ザナラーン'],
+  theAzimSteppe: ["The Azim Steppe", "Azim-Steppe", "Steppe D'Azim", "アジムステップ"],
   theLavenderBeds: ["The Lavender Beds", "Lavendelbeete", "Lavandière", "ラベンダーベッド"],
   theGoblet: ["The Goblet", "Kelchkuppe", "La Coupe", "ゴブレットビュート"],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
+  thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
   thePillars: ["The Pillars", "Strebewerk", "Ishgard - Les Contreforts", "イシュガルド：上層"],
   theSeaOfClouds: ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
   uldahStepsOfNald: ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'],
@@ -138,17 +145,20 @@ const location = {
   wolvesDenPier: ["Wolves' Den Pier", "Wolfshöhlen-Pier", "Jetée De L'Antre Des Loups", "ウルヴズジェイル係船場"],
   duty: {
     akhAfahAmphitheatre: ["Akh Afah Amphitheatre (Extreme)", "Zenit Der Götter - Shiva", "L'Amphithéâtre D'Akh Afah (extrême)", "極シヴァ討滅戦"],
+    alaMhigo: ["Ala Mhigo", "Ala Mhigo", "Ala Mhigo", "紅蓮決戦 アラミゴ"],
     alexanderTheBurdenOfTheFatherSavage: ["Alexander - The Burden Of The Father (Savage)", "Alexander - Last Des Vaters (episch)", "Alexander - Le Fardeau Du Père (sadique)", "機工城アレキサンダー零式：起動編4"],
     alexanderTheSoulOfTheCreatorSavage: ["Alexander - The Soul Of The Creator (Savage)", "Alexander - Seele Des Schöpfers (episch)", "Alexander - L'Âme Du Créateur (sadique)", "機工城アレキサンダー零式：天動編4"],
     containmentBayP1T6Extreme: ["Containment Bay P1T6 (Extreme)", "Zenit Der Götter - Sophia", "Unité De Contention P1P6 (extrême)", "極女神ソフィア討滅戦"],
     containmentBayS1T7Extreme: ["Containment Bay S1T7 (Extreme)", "Zenit Der Götter - Sephirot", "Unité De Contention S1P7 (extrême)", "極魔神セフィロト討滅戦"],
     containmentBayZ1T9Extreme: ["Containment Bay Z1T9 (Extreme)", "Zenit Der Götter - Zurvan", "Unité De Contention Z1P9 (extrême)", "極鬼神ズルワーン討滅戦"],
+    emanationExtreme: ["Emanation (Extreme)", "Zenit Der Götter - Lakshmi", "Émanation (extrême)", "極ラクシュミ討滅戦"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
     theLimitlessBlueExtreme: ["The Limitless Blue (Extreme)", "Zenit Der Götter - Bismarck", "L'Immensité Bleue (extrême)", "極ビスマルク討滅戦"],
     theMinstrelsBalladNidhoggsRage: ["The Minstrel's Ballad: Nidhogg's Rage", "Das Lied Von Nidhoggs Letztem Ruf", "L'ire De Nidhogg", "極ニーズヘッグ征竜戦"],
     theMinstrelsBalladThordensReign: ["The Minstrel's Ballad: Thordan's Reign", "Heldenlied Von Thordans Fall", "Le Règne De Thordan", "蒼天幻想 ナイツ・オブ・ラウンド討滅戦"],
     theNavelExtreme: ["The Navel (Extreme)", "Zenit Der Götter - Titan", "Le Nombril (extrême)", "極タイタン討滅戦"],
+    thePoolOfTributeExtreme: ["The Pool Of Tribute (Extreme)", "Zenit Der Götter - Susano", "La Crique Aux Tributs (extrême)", "極スサノオ討滅戦"],
     theStrikingTreeExtreme: ["The Striking Tree (Extreme)", "Zenit Der Götter - Ramuh", "L'Arbre Du Jugement (extrême)", "極ラムウ討滅戦"],
     theWhorleaterExtreme: ["The Whorleater (Extreme)", "Zenit Der Götter - Leviathan", "Le Briseur De Marées (extrême)", "極リヴァイアサン討滅戦"],
     thokAstThokExtreme: ["Thok Ast Thok (Extreme)", "Zenit Der Götter - Ravana", "Thok Ast Thok (extrême)", "極ラーヴァナ討滅戦"]
@@ -204,6 +214,15 @@ const helper = {
       available,
       true
     );
+  },
+  dungeon: (name, level, x, y, expansion, available, promo) => {
+    return o(
+      x && y ? 'duty' : 'dutyFinalChest',
+      x && y ? [level, dutyImage, name, x, y] : [level, dutyImage, name],
+      expansion,
+      available,
+      promo
+    )
   },
   eventQuest: (level, quest, image, expansion) => {
     return o(
@@ -1149,7 +1168,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return o(
         'purchase',
         [
-          1, feastSeason3Lone, feastSeason3Image,
+          1, feastSeason3Lone, feastSeasonItemImage,
           ["Feast Quartermaster", "Versorgungsoffizier[p] Des Mahlstroms", "Officier Magasinier Du Maelstrom", "シーズン報酬支給官"],
           ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
           locationImage,
@@ -1165,7 +1184,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return o(
         'purchase',
         [
-          1, feastSeason3Pack, feastSeason3Image,
+          1, feastSeason3Pack, feastSeasonItemImage,
           ["Feast Quartermaster", "Versorgungsoffizier[p] Des Mahlstroms", "Officier Magasinier Du Maelstrom", "シーズン報酬支給官"],
           ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
           locationImage,
@@ -1187,6 +1206,101 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return helper.promotional(
         ['Fly the Falcon Mount Campaign', 'Reittier-Kampagne: "Der Falke"', 'Campagne monture mini aéronef Faucon', 'マウント「ファルコン号」GET!キャンペーン'],
         expansions.ARR
+      );
+
+    case 113:
+      return o(
+        'purchase',
+        [
+          1, feastSeason4Lone, feastSeasonItemImage,
+          ["Feast Quartermaster", "Versorgungsoffizier[p] Des Mahlstroms", "Officier Magasinier Du Maelstrom", "シーズン報酬支給官"],
+          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+          locationImage,
+          location.wolvesDenPier,
+          4.8, 5.8
+        ],
+        expansions.HW,
+        false,
+        false
+      );
+
+    case 114:
+      return o(
+        'purchase',
+        [
+          1, feastSeason4Pack, feastSeasonItemImage,
+          ["Feast Quartermaster", "Versorgungsoffizier[p] Des Mahlstroms", "Officier Magasinier Du Maelstrom", "シーズン報酬支給官"],
+          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+          locationImage,
+          location.wolvesDenPier,
+          4.8, 5.8
+        ],
+        expansions.HW,
+        false,
+        false
+      );
+
+    case 115:
+      return [
+        helper.trial(location.duty.emanationExtreme, 70, expansions.SB, true, false),
+        o(
+          'purchase',
+          [
+            99, blissTotem, blissTotemImage,
+            ["Eschina", true, true, "エシナ"],
+            ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
+            locationImage,
+            location.rhalgrsReach,
+            13.9, 11.8
+          ],
+          expansions.SB,
+          true,
+          false
+        )
+      ];
+
+    case 116:
+      return [
+        helper.trial(location.duty.thePoolOfTributeExtreme, 70, expansions.SB, true, false),
+        o(
+          'purchase',
+          [
+            99, revelTotem, revelTotemImage,
+            ["Eschina", true, true, "エシナ"],
+            ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
+            locationImage,
+            location.rhalgrsReach,
+            13.9, 11.8
+          ],
+          expansions.SB,
+          true,
+          false
+        )
+      ];
+
+    case 121:
+      return helper.dungeon(location.duty.alaMhigo, 70, null, null, expansions.SB, true, false);
+    
+    case 122:
+      return helper.achievementReward(1955, expansions.SB, true, false);
+    
+    case 123:
+      return helper.achievementReward(1958, expansions.SB, true, false);
+    
+    case 124:
+      return helper.achievementReward(1961, expansions.SB, true, false);
+    
+    case 125:
+      return helper.msq(
+        65,
+        locale('Stormblood'),
+        ["In The Footsteps Of Bardam The Brave", "Der Weg Zum Naadam", "La Force De Bardam", "試練のバルダム覇道"],
+        ["Hien", true, true, "ヒエン"],
+        location.theAzimSteppe,
+        11.3, 11.2,
+        expansions.SB,
+        true,
+        false
       );
 
     default:

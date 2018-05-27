@@ -1,4 +1,5 @@
 const Helper = require('../_helper');
+const createHTML = require('../_HTML');
 const createList = require('../_list');
 const obtainMethod = require('../../filters/mounts/obtainMethods');
 const localisationStrings = require('../../filters/mounts/localisationStrings');
@@ -17,7 +18,7 @@ module.exports = new Helper("Mount", "mounts", {
   ],
   list: true,
   format: (data, args) => {
-    return {
+    const response = {
       localisation: localisationStrings,
       data: data.filter(entry => entry.icon).map(entry => {
         let method = obtainMethod(entry, args && args[0], data);
@@ -40,6 +41,20 @@ module.exports = new Helper("Mount", "mounts", {
         }
       })
     };
+
+    const available = response.data.filter(d => {
+      return d.ref && d.ref.filter(r => !r.promo && r.available).length
+    }).length;
+
+    createHTML("mounts", {
+      data: response.data,
+      emoji: "🚲",
+      list: true,
+      title: 'Mounts | Apkallu Falls',
+      description: `${available} mounts are available right now in Final Fantasy XIV. Here's how you obtain all of them.`
+    }, undefined, () => {});
+    
+    return response;
   }
 }, (data, base, _helperCreateJSONFn) => {
   createList("mounts", data, base, _helperCreateJSONFn);

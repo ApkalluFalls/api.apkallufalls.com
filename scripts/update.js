@@ -113,6 +113,10 @@ const update = async function (args) {
     await require('./icons/items.js').fetch();
   }
 
+  if (config && config.characters) {
+    await require('./characters/data.js')();
+  }
+
   // // Achievements V3.
   if (!config || config.achievementsV3) {
     message('Achievements');

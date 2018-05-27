@@ -39,30 +39,10 @@ module.exports = class Helper {
 
       if (!this.v3 || !this.list)
         return callApi(apiPath, columns, process.bind(this));
-      
-      Promise.all([
-        callApiPaginated(apiPath, columns, 1),
-        callApiPaginated(apiPath, columns, 2),
-        callApiPaginated(apiPath, columns, 3),
-        callApiPaginated(apiPath, columns, 4),
-        callApiPaginated(apiPath, columns, 5),
-        callApiPaginated(apiPath, columns, 6),
-        callApiPaginated(apiPath, columns, 7),
-        callApiPaginated(apiPath, columns, 8),
-        callApiPaginated(apiPath, columns, 9),
-        callApiPaginated(apiPath, columns, 10)
-      ]).then(data => {
-        let response = [];
 
-        data
-          .filter(d => d && d.results instanceof Array)
-          .forEach(d => response = [
-            ...response,
-            ...d.results
-          ]);
-        
-        process.call(this, response);
-      })
+      recursiveFetch(1, apiPath + columns, []).then(data => {
+        process.call(this, data);
+      }).catch(e => console.error(e))
     });
   }
 }
@@ -89,20 +69,15 @@ function callApi(apiPath, columns, callback) {
     });
 }
 
-function callApiPaginated(apiPath, columns, page) {
-  const config = {
-    method: 'GET',
-    mode: 'cors'
-  }
+async function recursiveFetch(page, api, result) {
+  const data = await fetch(`${api}&page=${page}`)
+    .then(response => response.json());
 
-  return fetch(
-    apiPath + columns + '&page=' + page,
-    config
-  )
-    .then(response => response.json())
-    .catch(e => {
-      // Intentionally ignore errors.
-    });
+  result = [...result, ...data.results];
+
+  if (data.pagination[0].page_total > page)
+    return recursiveFetch(++page, api, result);
+  return result;
 }
   
 function process(data) {

@@ -42,16 +42,19 @@ module.exports = new Helper("Mount", "mounts", {
       })
     };
 
+    let methods = 0;
     const available = response.data.filter(d => {
-      return d.ref && d.ref.filter(r => !r.promo && r.available).length
+      const m = d.ref && d.ref.filter(r => !r.promo && r.available).length;
+      methods += m || 0;
+      return m;
     }).length;
 
     createHTML("mounts", {
       data: response.data,
       emoji: "🚲",
       list: true,
-      title: 'Mounts | Apkallu Falls',
-      description: `${available} mounts are available right now in Final Fantasy XIV. Here's how you obtain all of them.`
+      title: 'Mounts List | Apkallu Falls',
+      description: `There are ${methods} ways to obtain the ${available} mounts available right now in-game in Final Fantasy XIV. Here's how you obtain all of them.`
     }, undefined, () => {});
     
     return response;

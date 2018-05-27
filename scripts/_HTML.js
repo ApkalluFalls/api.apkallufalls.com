@@ -3,27 +3,25 @@
 const fs = require('fs');
 
 module.exports = function(fileName, content, folder, callback) {
+  const baseFolder = "../../apkallufalls.com";
   const pathPart = (folder ? "/" + folder : "") + "/" + fileName ;
-  let path = "../../apkallufalls.com" + pathPart + "/index.html";
+  let path = baseFolder + pathPart + "/index.html";
   const url = "https://alpha.apkallufalls.com" + pathPart;
 
   const emoji = content.emoji;
   const summary = content.list ? 'summary_large_image' : 'summary';
   const backdrop = 'https://alpha.apkallufalls.com/icon/backdrop-2.0.png?v=2';
-  const twitterImage = content.list ? backdrop : 'https://alpha.apkallufalls.com/icon/apkallu-special.png';
+  const twitterImage = content.list ? backdrop : (
+    content.image
+    ? content.image
+    : 'https://alpha.apkallufalls.com/icon/apkallu-special.png'
+  );
 
-  fs.exists(path, (exists) => {
-    let logMessage = (folder ? "/" + folder : "") + "/" + fileName + " HTML ";
-    
-    if (exists)
-      logMessage += "updated.";
-    else
-      logMessage += "created.";
+  if (!fs.existsSync(baseFolder + pathPart)){
+    fs.mkdirSync(baseFolder + pathPart);
+  }
 
-    logMessage += "\n";
-    
-    fs.writeFile(path, (
-`<!doctype html>
+  fs.writeFile(path, `<!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -58,7 +56,5 @@ module.exports = function(fileName, content, folder, callback) {
   <body>
     <p>If you're seeing this text, please tweet <a href="https://twitter.com/apkallufalls">@ApkalluFalls</a> as this is a bug.</p>
   </body>
-</html>`
-    ), 'utf8', callback);
-  })
+</html>`, 'utf8', callback);
 }

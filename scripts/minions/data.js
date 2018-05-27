@@ -1,4 +1,5 @@
 const Helper = require('../_helper');
+const createHTML = require('../_HTML');
 const recursiveFetch = require('../_recursive');
 const config = require('../_config');
 
@@ -83,6 +84,14 @@ module.exports = new Helper(name, plural, {
 
         if (sound)
           result.sound = sound;
+
+        createHTML(data.id, {
+          data: result,
+          emoji: "🐧",
+          title: `${data.name_en} | Apkallu Falls`,
+          description: `The ${data.name_en} minion on Final Fantasy XIV. ${data.info1_en}.`,
+          image: data.icon
+        }, "minion", () => {});
 
         return result;
       }

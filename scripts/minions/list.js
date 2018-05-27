@@ -1,4 +1,5 @@
 const Helper = require('../_helper');
+const createHTML = require('../_HTML');
 const createList = require('../_list');
 const obtainMethod = require('../../filters/minions/obtainMethods');
 const localisationStrings = require('../../filters/minions/localisationStrings');
@@ -16,7 +17,7 @@ module.exports = new Helper("Minion", "minions", {
   ],
   list: true,
   format: (data, args) => {
-    return {
+    const response = {
       localisation: localisationStrings,
       data: data.map(entry => {
         const response = {
@@ -55,6 +56,23 @@ module.exports = new Helper("Minion", "minions", {
         return response;
       })
     }
+
+    let methods = 0;
+    const available = response.data.filter(d => {
+      const m = d.ref && d.ref.filter(r => !r.promo && r.available).length;
+      methods += m || 0;
+      return m;
+    }).length;
+
+    createHTML("minions", {
+      data: response.data,
+      emoji: "🐧",
+      list: true,
+      title: 'Minions List | Apkallu Falls',
+      description: `There are ${methods} ways to obtain the ${available} minions available right now in-game in Final Fantasy XIV. Here's how you obtain all of them.`
+    }, undefined, () => {});
+
+    return response;
   }
 }, (data, base, _helperCreateJSONFn) => {
   createList("minions", data, base, _helperCreateJSONFn);

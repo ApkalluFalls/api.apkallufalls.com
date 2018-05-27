@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Helper = require('../_helper');
+const createHTML = require('../_HTML');
 const recursiveFetch = require('../_recursive');
 const config = require('../_config');
 
@@ -33,7 +34,7 @@ module.exports = new Helper(name, plural, {
         if (!kinds[kindId])
           kinds[kindId] = data.kind_name || 'Unknown';
 
-        return {
+        const result = {
           id: data.id,
           category: {
             name: data.kind_name,
@@ -51,6 +52,16 @@ module.exports = new Helper(name, plural, {
             return data.icon.replace(config.fullImagePath, "")
           })()
         }
+
+        createHTML(data.id, {
+          data: result,
+          emoji: "🎖️",
+          title: `${data.name_en} | Apkallu Falls`,
+          description: `The “${data.name_en}” achievement on Final Fantasy XIV. ${data.help_en}`,
+          image: data.icon
+        }, "achievement", () => {});
+
+        return result;
       }
     }
   }, () => {

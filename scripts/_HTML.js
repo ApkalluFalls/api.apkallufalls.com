@@ -11,7 +11,7 @@ module.exports = function(fileName, content, folder, callback) {
   const emoji = content.emoji;
   const summary = content.list ? 'summary_large_image' : 'summary';
   const backdrop = 'https://alpha.apkallufalls.com/icon/backdrop-2.0.png?v=2';
-  const twitterImage = content.list ? backdrop : (
+  let twitterImage = content.list ? backdrop : (
     content.image
     ? content.image
     : 'https://alpha.apkallufalls.com/icon/apkallu-special.png'
@@ -19,6 +19,11 @@ module.exports = function(fileName, content, folder, callback) {
 
   if (!fs.existsSync(baseFolder + pathPart)){
     fs.mkdirSync(baseFolder + pathPart);
+  }
+
+  if (content.imageAvatar) {
+    twitterImage = url + "/avatar.png";
+    fs.writeFile(baseFolder + pathPart + "/avatar.png", new Buffer(content.imageAvatar), 'base64', () => {});
   }
 
   fs.writeFile(path, `<!doctype html>

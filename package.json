@@ -13,7 +13,7 @@
     "imagemin-pngcrush": "^5.1.0",
     "imagemin-pngout": "^2.0.0",
     "imagemin-pngquant": "^5.1.0",
-    "node-fetch": "^1.7.3",
+    "node-fetch": "^2.1.2",
     "request": "^2.85.0",
     "spritesmith": "^3.3.0"
   }

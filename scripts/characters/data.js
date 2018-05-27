@@ -2,9 +2,6 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const createHTML = require('../_HTML');
 
-const categories = {};
-const kinds = {};
-
 module.exports = async () => {
   let friends;
   let supporters;
@@ -22,7 +19,7 @@ module.exports = async () => {
     resolve(data);
   })).then(data => translators = JSON.parse(data));
 
-  const processedFriends = await getInfo(0, friends, []);
+  const processedFriends = await getInfo(0, friends, [], "friend");
   fs.writeFile(
     "../docs/friends.json",
     JSON.stringify(processedFriends),
@@ -32,7 +29,7 @@ module.exports = async () => {
     }
   );
 
-  const processedSupporters = await getInfo(0, supporters, []);
+  const processedSupporters = await getInfo(0, supporters, [], "Patreon supporter");
   fs.writeFile(
     "../docs/supporters.json",
     JSON.stringify(processedSupporters),
@@ -42,7 +39,7 @@ module.exports = async () => {
     }
   );
 
-  const processedTranslators = await getInfo(0, translators, []);
+  const processedTranslators = await getInfo(0, translators, [], "translator");
   fs.writeFile(
     "../docs/translators.json",
     JSON.stringify(processedTranslators),
@@ -53,8 +50,7 @@ module.exports = async () => {
   );
 }
 
-async function getInfo(index, content, data) {
-  console.info(index, content[index].id);
+async function getInfo(index, content, data, description) {
   const apiData = await fetch(
     'http://api.xivdb.com/character/' + content[index].id,
     {
@@ -72,8 +68,26 @@ async function getInfo(index, content, data) {
     world: apiData.data.server
   });
 
+  const avatar = await fetch(
+    apiData.data.avatar,
+    {
+      method: 'GET',
+      mode: 'cors'
+    }
+  )
+    .then(response => response.arrayBuffer());
+
+  createHTML(content[index].id, {
+    data: data[index],
+    emoji: "🗡️",
+    title: `${apiData.data.name} | Apkallu Falls`,
+    description: `${apiData.data.name} «${apiData.data.title}» of ${apiData.data.server} is a ${(description === "translator" ? content[index]['?'] + " translator" : description)} of Apkallu Falls.`,
+    image: apiData.data.avatar,
+    imageAvatar: avatar
+  }, "character", () => {});
+
   if (index === content.length - 1)
     return data;
   
-  return getInfo(index += 1, content, data);
+  return getInfo(index += 1, content, data, description);
 }

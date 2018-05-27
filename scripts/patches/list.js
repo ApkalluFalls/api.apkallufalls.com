@@ -1,4 +1,5 @@
 const Helper = require('../_helper');
+const createHTML = require('../_HTML');
 const createList = require('../_list');
 
 module.exports = new Helper("Patch", "patches", {
@@ -105,6 +106,16 @@ module.exports = new Helper("Patch", "patches", {
           f.counts = counts;
       })
     }
+
+    const patchesWithImages = formattedData.filter(d => d.image);
+
+    createHTML("patches", {
+      data: formattedData,
+      emoji: "🔨",
+      list: true,
+      title: 'Patch Breakdown | Apkallu Falls',
+      description: `Apkallu Falls tracks data from ${formattedData.length} different Final Fantasy XIV patches up to Patch ${formattedData[formattedData.length-1].version}, with new content added every time the game updates.`
+    }, undefined, () => {});
 
     return formattedData;
   }

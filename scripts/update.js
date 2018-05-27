@@ -119,6 +119,10 @@ const update = async function (args) {
     await require('./characters/data.js')();
   }
 
+  if (config && config.routes) {
+    await require('./routes.js')();
+  }
+
   // // Achievements V3.
   if (!config || config.achievementsV3) {
     message('Achievements');
@@ -136,6 +140,7 @@ const update = async function (args) {
 
   // Cache bust.
   console.info("!! Remember to run patches after all other lists are updated.");
+  console.info("!! Remember to also update routes whenever new tags or main routes are added.");
   cacheBust();
 }
 

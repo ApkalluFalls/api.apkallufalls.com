@@ -40,9 +40,9 @@ module.exports = class Helper {
       if (!this.v3 || !this.list)
         return callApi(apiPath, columns, process.bind(this));
 
-      recursiveFetch(1, apiPath + columns, []).then(data => {
-        process.call(this, data);
-      }).catch(e => console.error(e))
+      recursiveFetch(apiPath + columns)
+        .then(data => process.call(this, data))
+        .catch(e => console.error(e));
     });
   }
 }
@@ -69,14 +69,14 @@ function callApi(apiPath, columns, callback) {
     });
 }
 
-async function recursiveFetch(page, api, result) {
+async function recursiveFetch(api, result = [], page = 1) {
   const data = await fetch(`${api}&page=${page}`)
     .then(response => response.json());
 
   result = [...result, ...data.results];
 
-  if (data.pagination[0].page_total > page)
-    return recursiveFetch(++page, api, result);
+  if (data.pagination.page_next)
+    return recursiveFetch(api, result, data.pagination.page_next);
   return result;
 }
   

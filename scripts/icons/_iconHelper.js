@@ -61,12 +61,12 @@ function process(type, data, resolve) {
               coordinates[k.replace(/^\.\.\/docs\/icons\/\w+\/|\.png$/g, '')] = response;
             });
 
-            fs.writeFileSync('../docs/icons/' + type + 's.png', result.image);
-            fs.writeFileSync('../docs/icons/' + type + 's.json', JSON.stringify(coordinates));
+            fs.writeFileSync('../docs/icons/' + (type === 'barding' ? type : type + 's') + '.png', result.image);
+            fs.writeFileSync('../docs/icons/' + (type === 'barding' ? type : type + 's') + '.json', JSON.stringify(coordinates));
             
             console.info("Optimising icon spritesheet @ " + saveFolder);
 
-            imagemin(['../docs/icons/' + type + 's.png'], '../docs/icons/', {
+            imagemin(['../docs/icons/' + (type === 'barding' ? type : type + 's') + '.png'], '../docs/icons/', {
               plugins: [
                 imageminPngquant({ quality: '5-10', speed: 1, floyd: 0.1 }),
                 imageminPngcrush({ reduce: true }),

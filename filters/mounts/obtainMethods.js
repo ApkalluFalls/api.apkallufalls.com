@@ -70,7 +70,7 @@ const item = {
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
-  bloodsworn: ['Bloodsworn', true, true, '?Bloodsworn?'],
+  bloodsworn: ['Bloodsworn', 'Solidarisch', 'Assermenté', '?Bloodsworn?'],
   trusted: ['Trusted', 'Vertraut', 'Estimé', '信頼'],
   allied: ['Allied', 'Verbündet', 'Allié', '盟友'],
   respected: ['Respected', 'Respektierte', 'Respecté', '尊敬する']

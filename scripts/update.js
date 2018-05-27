@@ -111,6 +111,7 @@ const update = async function (args) {
     await require('./icons/minions.js').fetch();
     await require('./icons/mounts.js').fetch();
     await require('./icons/items.js').fetch();
+    await require('./icons/emotes.js').fetch();
   }
 
   if (config && config.characters) {

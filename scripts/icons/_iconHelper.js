@@ -34,13 +34,15 @@ function process(type, data, resolve) {
       ]
     }).then(() => {
       console.info("Minification of " + type + " finished.");
-      fs.readdir(saveFolder, (err, files) => {        
+      fs.readdir(saveFolder, (err, files) => {
         Spritesmith.run(
           { src: files.map(file => saveFolder + file) },
           (err, result) => {
             console.info("Creating icon spritesheet @ " + saveFolder);
-            if (err)
+            if (err) {
+              console.info("NOTE TO SELF: INVALID FILE SIGNATURE MEANS AN ICON IS NOT A VALID IMAGE. CHECK ICONS.");
               return console.error(err);
+            }
 
             const coordinates = {};
             Object.keys(result.coordinates).forEach(k => {

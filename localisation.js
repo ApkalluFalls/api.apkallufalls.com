@@ -161,6 +161,11 @@ module.exports = {
     fr: 'Noscea',
     jp: 'サブクエスト：ラノシア'
   },
+  'Coerthan Sidequests': {
+    de: 'Nebenaufträge Coerthas',
+    fr: 'Coerthas',
+    jp: 'サブクエスト：クルザス'
+  },
   'Dravanian Sidequests': {
     de: 'Aufträge Dravania',
     fr: 'Dravania',

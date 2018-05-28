@@ -109,19 +109,19 @@ const helper = {
     switch (company) {
       case 'Maelstrom':
         npc = ['Storm Quartermaster', ...quartermasters];
-        loc = location.limsaUpperDecks;
+        loc = ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'];
         x = 13.1;
         y = 12.7;
         break;
       case 'Order of the Twin Adder':
         npc = ['Serpent Quartermaster', ...quartermasters];
-        loc = location.newGridania;
+        loc = ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'];
         x = 9.8;
         y = 11.0;
         break;
       case 'Immortal Flames':
         npc = ['Flame Quartermaster', ...quartermasters];
-        loc = location.uldahStepsOfNald;
+        loc = ['Ul\'dah - Steps of Nald', 'Nald-Kreuzgang', 'Ul\'dah - Faubourg de Nald', 'ウルダハ：ナル回廊'];
         x = 8.3;
         y = 9.0;
         break;
@@ -209,6 +209,15 @@ const helper = {
     return o(
       'msq',
       [level, type, msqImage, quest, npc, locationImage, loc, x, y],
+      expansion,
+      available,
+      promo
+    )
+  },
+  quest: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
+    return o(
+      'quest',
+      [level, type, questImage, quest, npc, locationImage, loc, x, y],
       expansion,
       available,
       promo
@@ -386,7 +395,20 @@ module.exports = (emote, achievementsIn, emotesIn) => {
         helper.companySeals(10000, 'Maelstrom', emote.item),
         helper.companySeals(10000, 'Order of the Twin Adder', emote.item),
         helper.companySeals(10000, 'Immortal Flames', emote.item)
-      ]
+      ];
+    
+    case 85:
+      return helper.quest(
+        36,
+        locale('Coerthan Sidequests'),
+        ["Toss Fit Workout", "Der Weg Des Schneeballwerfers", "Le Cantinier A Les Boules", "雪原の投擲者"],
+        ["Maucolyn", "Maucolyn", "Maucolyn", "マーコリン"],
+        ["Coerthas Central Highlands", "Zentrales Hochland Von Coerthas", "Hautes Terres Du Coerthas Central", "クルザス中央高地"],
+        25, 27.8,
+        expansions.ARR,
+        true,
+        false
+      );
 
     case 118:
       return helper.goldSaucerPrizeExchange(80000, emote.item);

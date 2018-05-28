@@ -60,7 +60,7 @@ module.exports = new Helper("Emote", "emotes", {
               }))[0]
           }
 
-          const method = obtainMethod(entry, args && args[0]);
+          const method = obtainMethod(data, args && args[0]);
           data.ref = method && !(method instanceof Array) ? [method] : method;
 
           return data;

@@ -216,6 +216,16 @@ module.exports = {
     fr: 'Quêtes Tribales Des Vanu Vanu',
     jp: '蛮族クエスト：バヌバヌ族'
   },
+  'Moogle Quests': {
+    de: 'Aufträge Der Mogrys',
+    fr: 'Quêtes Tribales Des Mogs',
+    jp: '蛮族クエスト：モーグリ族'
+  },
+  'Side Story Quests': {
+    de: 'Szenario Nebenaufträge',
+    fr: 'Histoires Annexes',
+    jp: 'サブストーリークエスト'
+  },
 
   // Retainer venture
   'Field Exploration': {

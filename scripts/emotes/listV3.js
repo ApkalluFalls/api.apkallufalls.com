@@ -34,6 +34,24 @@ module.exports = new Helper("Emote", "emotes", {
           // Until the V3 API is fixed...
           const v2Emote = args[3].filter(p => p.id === entry.ID)[0] || {};
 
+          // Items only point to one emote. Some, like the one which teaches
+          // Red Ranger Pose A and Red Ranger Pose B, have 2 emotes. This
+          // corrects the lack of valid pointer.
+          let itemOffsetId = entry.ID;
+          switch (entry.ID) {
+            case 130:
+              itemOffsetId = 134;
+              break;
+
+            case 131:
+              itemOffsetId = 135;
+              break;
+
+            case 132:
+              itemOffsetId = 136;
+              break;
+          }
+
           const result = {
             category: {
               de: entry['EmoteCategory.Name_de'],
@@ -60,7 +78,7 @@ module.exports = new Helper("Emote", "emotes", {
                 [c.ShortAlias_en, c.ShortAlias_de, c.ShortAlias_fr, c.ShortAlias_ja]
               ]))[0],
             item: items.emotes
-              .filter(item => item.awards === entry.ID)
+              .filter(item => item.awards === itemOffsetId)
               .map(item => ({ name: item.name }))[0]
           }
 

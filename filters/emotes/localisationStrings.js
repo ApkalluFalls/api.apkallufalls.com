@@ -12,6 +12,9 @@ module.exports = {
     de: 'Vervollständige den level  {0} {i1} Aufrag {img3} \'{i2}\'.',
     fr: 'Compléter la quête de niveau {0} {i1} {img3} \'{i2}\'.'
   },
+  eventQuestPurchase: {
+    en: 'Purchase {i2} from {0} during the {i1} event.'
+  },
   grandCompany: {
     en: 'Unlocked when enlisting with Grand Company: {i0}. You can only have one of __emotes__ at a time.'
   },

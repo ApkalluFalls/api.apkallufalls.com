@@ -43,6 +43,7 @@ const kojinSangoImage = 'ks';
 const ixionHornImage = 'ih';
 const anantaDreamstaffImage = 'ad';
 const namazuKobanImage = 'nk';
+const faireVoucherImage = 'fv';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -87,6 +88,7 @@ const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン
 const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
 const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
 const namazuKoban = ["Namazu Koban", "Namazuo-Koban", "Koban namazu", "ナマズオ小判"];
+const faireVoucher = ["Faire Voucher XVI", "Feuermondmarke 2016", "Bon des Feux de la Mort XVI", "紅蓮祭手形:2016"];
 
 const location = {
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー']
@@ -139,6 +141,15 @@ const helper = {
     return o(
       'eventQuest',
       [level, locale('Seasonal Events'), quest, image],
+      expansion,
+      false,
+      false
+    )
+  },
+  eventQuestPurchase: (shop, event, expansion, item) => {
+    return o(
+      'eventQuestPurchase',
+      [shop, event, item.name],
       expansion,
       false,
       false
@@ -364,6 +375,10 @@ module.exports = (emote, achievementsIn, emotesIn) => {
       );
     
     case 62:
+    case 123:
+    case 124:
+    case 128:
+    case 129:
       return helper.mogStation(emote.item);
 
     case 64:
@@ -537,6 +552,83 @@ module.exports = (emote, achievementsIn, emotesIn) => {
         true,
         false
       );
+    
+    case 121:
+      return helper.msq(
+        60,
+        locale('Dragonsong War'),
+        ["Causes And Costs", "Der Preis Der Veränderung", "Le Destin En Marche", "運命の歯車"],
+        ["Alphinaud", "Alphinaud", "Alphinaud", "アルフィノ"],
+        ["Coerthas Western Highlands", "Westliches Hochland Von Coerthas", "Hautes Terres Du Coerthas Occidental", "クルザス西部高地"],
+        32.6, 37.8,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 122:
+      return helper.msq(
+        60,
+        locale('Dragonsong War'),
+        ["A Spectacle For The Ages", "Truppenübung Der Eorzäischen Allianz", "La Grande Manœuvre éorzéenne", "四国合同演習"],
+        ["Lucia", "Lucia", "Lucia", "ルキア"],
+        ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
+        13.5, 11.2,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 125:
+      return helper.eventQuest(
+        15,
+        ["An Inspector's Gadget", "Zeichen Des Dankes", "La Marque Du Détective", "ゴールドソーサーの感謝の証"],
+        'eq11',
+        expansions.ARR
+      )
+    
+    case 126:
+      return helper.quest(
+        50,
+        locale('Moogle Quests'),
+        ["Piecing Together The Past", "In Gedenken An Wahre Freundschaft", "Tout Le Monde Aura Sa Plaque", "岩を砕く修復団！"],
+        ["Master Mogzin", "Vorarbeiter Mogzin", "Mogzin", "団長のモグジン"],
+        ["The Churning Mists", "Wallende Nebel", "L'Écume Des Cieux De Dravania", "ドラヴァニア雲海"],
+        15.7, 28.9,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 127:
+      return helper.quest(
+        60,
+        locale('Side Story Quests'),
+        ["The Burdens We Bear", "Im Gedenken An Einen Freund", "Le Sourire De L'amitié", "友の微笑み"],
+        ["Slowfix", "Schlafix", "Slowfix", "スローフィクス"],
+        ["Slowfix", "Schlafix", "Slowfix", "スローフィクス"],
+        7.7, 6.6,
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 130:
+    case 131:
+    case 132:
+    case 133:
+    case 134:
+    case 135:
+    case 136:
+      return [
+        helper.eventQuestPurchase(
+          ["P'obyano", "P'obyano", "P'obyano", "紅蓮祭実行委員ペ・オビヤノ"],
+          ["Moonfire Faire 2016", "Der Feuermond-Reigen 2016", "Les Feux de la Mort 2016", "紅蓮祭 2016"],
+          expansions.ARR,
+          emote.item
+        ),
+        helper.mogStation(emote.item)
+      ];
 
     default:
       console.log("Unknown method for emote " + emote.id);

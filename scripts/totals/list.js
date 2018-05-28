@@ -3,12 +3,17 @@ const createList = require('../_list');
 
 module.exports = async function() {
   let achievementsList;
+  let emotesList;
   let minionsList;
   let mountsList;
 
   await new Promise((resolve) => fs.readFile('../docs/achievements.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => achievementsList = JSON.parse(data).data);
+
+  await new Promise((resolve) => fs.readFile('../docs/v3/emotes.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => emotesList = JSON.parse(data).data);
 
   await new Promise((resolve) => fs.readFile('../docs/minions.json', 'utf8', (e, data) => {
     resolve(data);
@@ -29,6 +34,11 @@ module.exports = async function() {
         total: achievementsList.map(a => a.points).reduce((a, b) => a + b),
         unavailable: achievementsList.filter(data => data.unavailable).map(a => a.points).reduce((a, b) => a + b)
       }
+    },
+    emotes: {
+      total: emotesList.length,
+      unavailable: emotesList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
+      unknown: emotesList.filter(data => !data.ref).length
     },
     levels: {
       total: 25 * 70

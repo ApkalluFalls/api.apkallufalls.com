@@ -43,7 +43,7 @@ const kojinSangoImage = 'ks';
 const ixionHornImage = 'ih';
 const anantaDreamstaffImage = 'ad';
 const namazuKobanImage = 'nk';
-const faireVoucherImage = 'fv';
+const mythicClanLogMarkImage = 'mc';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -88,7 +88,7 @@ const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン
 const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
 const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
 const namazuKoban = ["Namazu Koban", "Namazuo-Koban", "Koban namazu", "ナマズオ小判"];
-const faireVoucher = ["Faire Voucher XVI", "Feuermondmarke 2016", "Bon des Feux de la Mort XVI", "紅蓮祭手形:2016"];
+const mythicClanMarkLog = ["Mythic Clan Mark Log", "Clan-Mythenjäger-Tagebuch", "Journal de membre émérite du clan", "傑物クラン員の手記"];
 
 const location = {
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー']
@@ -721,7 +721,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
         ["Alisaie", "Alisaie", "Alisaie", "アリゼー"],
         ["The Ruby Sea", "Rubinsee", "Mer De Rubis", "紅玉海"],
         20.3, 9.5,
-        expansions.ARR,
+        expansions.SB,
         true,
         false
       );
@@ -731,6 +731,141 @@ module.exports = (emote, achievementsIn, emotesIn) => {
     case 157:
     case 158:
       return helper.achievementReward(1556, expansions.ARR);
+    
+    case 164:
+    case 165:
+      return [
+        helper.companySeals(40000, 'Maelstrom', emote.item),
+        helper.companySeals(40000, 'Order of the Twin Adder', emote.item),
+        helper.companySeals(40000, 'Immortal Flames', emote.item)
+      ];
+    
+    case 166:
+      return helper.msq(
+        70,
+        locale('Stormblood'),
+        ["Arenvald's Adventure", "Ein Neues Abenteuer", "Une Soif D'aventure", "新たなる冒険"],
+        ["Lyse", "Lyse", "Lyse", "リセ"],
+        ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
+        14.7, 9.4,
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 167:
+      return o(
+        'beastTribe',
+        [
+          rank.respected,
+          beastTribe.kojin,
+          3, kojinSango, kojinSangoImage,
+          ["Shikitahe", "Shikitahe", "Shikitahe", "シキタヘ"],
+          ["(Kojin Sango Exchange)", "(Kojin-Korallen)", "(Échange De Sango Kojin)", "(コウジン珊瑚貨の取引)"],
+          locationImage,
+          ["The Ruby Sea", "Rubinsee", "Mer De Rubis", "紅玉海"],
+          29.4, 16.9
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+    
+    case 169:
+    case 170:
+      return o(
+        'purchase',
+        [
+          5, mythicClanMarkLog, mythicClanLogMarkImage,
+          ["Eschina", true, true, "エシナ"],
+          ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
+          locationImage,
+          ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
+          13.9, 11.8,
+          emote.item
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 171:
+      return o(
+        'purchase',
+        [
+          5000, gil, gilImage,
+          ["Kasumi", "Kasumi", "Kasumi", "カスミ"],
+          ['(Prize Exchange I)', '(Gewinne I)', '(Lots (1))', '（景品の交換（その1））'],
+          locationImage,
+          location.theGoldSaucer,
+          7.2, 7.3,
+          emote.item
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+    
+    case 172:
+      return helper.msq(
+        70,
+        locale('Stormblood'),
+        ["Tidings From The East", "Eilmeldung Aus Kugane", "À L'Est, Du Nouveau", "風雲急を告げる報せ"],
+        ["Lyse", "Lyse", "Lyse", "リセ"],
+        ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
+        14.7, 9.4,
+        expansions.SB,
+        true,
+        false
+      );
+    
+    case 176:
+      return o(
+        'beastTribe',
+        [
+          rank.sworn,
+          beastTribe.namazu,
+          8, namazuKoban, namazuKobanImage,
+          ["Gyosho", true, true, "ギョショウ"],
+          ["(Namazu Koban Exchange)", "(Namazuo-Koban)", "(Échange de koban namazu)", "(ナマズオ小判の取引)"],
+          locationImage,
+          ["Dhoro Iloh", true, true, "ドーロ・イロー"],
+          5.8, 23.5
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 182:
+      return o(
+        'purchase',
+        [
+          15000, wolfMarks, wolfMarksImage,
+          ["Storm Sergeant", "Sturmmaat", "Sergent Des Tempêtes", "黒渦団甲軍曹"],
+          wolfMarks.map(w => '(' + w + ')'),
+          locationImage,
+          ['The Wolves\' Den', 'Wolfshöhle', 'L\'Antre des loups', 'ウルヴズジェイル'],
+          4.4, 6.1,
+          emote.item
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 183:
+      return helper.msq(
+        70,
+        locale('Stormblood'),
+        ["Emissary Of The Dawn", "Der Knabe Der Morgenröte", "Voyage En Terre Hostile", "「暁」の少年"],
+        ["Alisaie", "Alisaie", "Alisaie", "アリゼー"],
+        ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
+        0, 0,
+        expansions.SB,
+        true,
+        false
+      );
 
     default:
       console.log("Unknown method for emote " + emote.id);

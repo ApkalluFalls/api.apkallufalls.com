@@ -146,6 +146,7 @@ const craftItem = {
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
   azysLla: ["Azys Lla", true, true, "アジス・ラー"],
+  dhoroIloh: ["Dhoro Iloh", true, true, "ドーロ・イロー"],
   easternLaNoscea: ['Eastern La Noscea', 'Östliches La Noscea', 'Noscea Orientale', '東ラノシア'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   eurekaAnemos: ["Eureka Anemos", "Eureka Anemos", "Eurêka Anemos", "エウレカ：アネモス帯"],

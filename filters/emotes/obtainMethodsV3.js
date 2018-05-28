@@ -94,9 +94,6 @@ const location = {
 
 const helper = {
   goldSaucerPrizeExchange: (cost, item) => {
-    if (!item || !item.name) {
-      console.error("Emote method implies item. No item found.", item);
-    }
     return o(
       'purchase',
       [
@@ -143,6 +140,27 @@ const helper = {
       expansions.ARR,
       true,
       false
+    )
+  },
+  mogStation: (item) => {
+    return o(
+      'mogStation',
+      [
+        locale('Mog Station'),
+        item.name
+      ],
+      expansions.ARR,
+      true,
+      true
+    )
+  },
+  msq: (level, type, quest, npc, loc, x, y, expansion, available, promo) => {
+    return o(
+      'msq',
+      [level, type, msqImage, quest, npc, locationImage, loc, x, y],
+      expansion,
+      available,
+      promo
     )
   }
 }
@@ -261,6 +279,41 @@ module.exports = (emote, achievementsIn, emotesIn) => {
       return helper.grandCompany(
         locale('Immortal Flames'),
         [55, 56, 57]
+      );
+    
+    case 59:
+      return helper.msq(
+        45,
+        locale('Seventh Umbral Era'),
+        ["Acting The Part", "Kenne Deinen Feind", "Garde à Vous Impérial", "偽りの敬礼"],
+        ["Glaumunt", "Glaumunt", "Glaumunt", "グラウムント"],
+        ["Mor Dhona", "Mor Dhona", "Mor Dhona", "モードゥナ"],
+        22.6, 7.5,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 62:
+      return helper.mogStation(emote.item);
+
+    case 64:
+      return o(
+        'beastTribe',
+        [
+          rank.respected,
+          beastTribe.ananta,
+          5, anantaDreamstaff, anantaDreamstaffImage,
+          ["Madhura", true, true, "マドゥラ"],
+          ["(Ananta Dreamstaff Exchange)", "(Ananta-Traumstäbe)", "(Échange De Barrettes Béatifiques Anantas)", "(アナンタ魔金錫貨の取引)"],
+          locationImage,
+          ["The Fringes", "Abanisches Grenzland", "Les Marges", "ギラバニア辺境地帯"],
+          20.9, 26.1,
+          emote.item
+        ],
+        expansions.SB,
+        true,
+        false
       );
 
     case 81:

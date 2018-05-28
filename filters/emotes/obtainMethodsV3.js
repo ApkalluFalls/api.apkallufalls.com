@@ -93,6 +93,57 @@ const location = {
 }
 
 const helper = {
+  companySeals: (cost, company, item) => {
+    const companySeals = ['Company Seals', 'Staatstaler', 'Sceaux de compagnie', '軍票'];
+
+    let companyName = locale(company);
+    companyName = [company, companyName.de, companyName.fr, companyName.jp];
+
+    let npc;
+    let loc;
+    let x;
+    let y;
+
+    const quartermasters = ['Quartiermeisterin', 'Officier de la logistique', '補給担当官'];
+
+    switch (company) {
+      case 'Maelstrom':
+        npc = ['Storm Quartermaster', ...quartermasters];
+        loc = location.limsaUpperDecks;
+        x = 13.1;
+        y = 12.7;
+        break;
+      case 'Order of the Twin Adder':
+        npc = ['Serpent Quartermaster', ...quartermasters];
+        loc = location.newGridania;
+        x = 9.8;
+        y = 11.0;
+        break;
+      case 'Immortal Flames':
+        npc = ['Flame Quartermaster', ...quartermasters];
+        loc = location.uldahStepsOfNald;
+        x = 8.3;
+        y = 9.0;
+        break;
+    }
+
+    return o(
+      'purchase',
+      [cost, companySeals, companySealsImage, npc, companyName, locationImage, loc, x, y, item.name],
+      expansions.ARR,
+      true,
+      false
+    )
+  },
+  eventQuest: (level, quest, image, expansion, item) => {
+    return o(
+      'eventQuest',
+      [level, locale('Seasonal Events'), quest, image, item.name],
+      expansion,
+      false,
+      false
+    )
+  },
   goldSaucerPrizeExchange: (cost, item) => {
     return o(
       'purchase',
@@ -309,15 +360,33 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           ["The Fringes", "Abanisches Grenzland", "Les Marges", "ギラバニア辺境地帯"],
           20.9, 26.1,
-          emote.item
+          emote.item.name
         ],
         expansions.SB,
         true,
         false
       );
+    
+    case 65:
+    case 66:
+    case 67:
+      return helper.eventQuest(
+        15,
+        ["A Colorful Affair", "Farbe Bekennen", "Concert Participatif", "プリンセスデーの大声援"],
+        'eq5',
+        expansions.ARR,
+        emote.item
+      )
 
     case 81:
       return helper.goldSaucerPrizeExchange(20000, emote.item);
+    
+    case 82:
+      return [
+        helper.companySeals(10000, 'Maelstrom', emote.item),
+        helper.companySeals(10000, 'Order of the Twin Adder', emote.item),
+        helper.companySeals(10000, 'Immortal Flames', emote.item)
+      ]
 
     case 118:
       return helper.goldSaucerPrizeExchange(80000, emote.item);

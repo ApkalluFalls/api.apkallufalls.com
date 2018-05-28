@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const fs = require('fs');
 const cacheBust = require('./_cacheBust');
 
@@ -131,6 +132,20 @@ const update = async function (args) {
   }
   if (config && config.achievementsListV3) {
     await require('./achievements/listV3.js').fetch(achievementCategoriesV3);
+  }
+
+  // Emotes V3.
+  if (config && config.emotesListV3) {
+    const textCommands = await fetch(
+      'https://api.xivdb-staging.com/TextCommand'
+      + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'
+      + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp',
+      {
+        method: 'GET',
+        mode: 'cors'
+      }
+    ).then(response => response.json());
+    await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands);
   }
 
   // Titles V3.

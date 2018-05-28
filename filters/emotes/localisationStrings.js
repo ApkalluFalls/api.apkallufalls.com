@@ -33,5 +33,8 @@ module.exports = {
     en: 'Complete the level {0} {1} quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige den level {0} {1} Auftrag {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',
     fr: 'Compléter la quête {1} niveau {0} {img2} \'{i3}\' auprès de {4} à {img5} {6} (x: {7}, y: {8}).'
-  }
+  },
+  recruitAFriendFirst: {
+    en: 'Rewarded for having a friend subscribe during the {i0}.'
+  },
 };

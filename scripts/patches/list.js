@@ -34,6 +34,7 @@ module.exports = new Helper("Patch", "patches", {
       const minions = args[1] && args[1].data;
       const mounts = args[2] && args[2].data;
       const titles = args[3] && args[3].data;
+      const emotes = args[4] && args[4].data;
 
       formattedData.forEach(f => {
         const counts = {};
@@ -99,6 +100,22 @@ module.exports = new Helper("Patch", "patches", {
             totalTitles - titlesChange === 0
             ? '∞'
             : Math.round(((100/(totalTitles - titlesChange)) * titlesChange) * 10) / 10
+          );
+        }
+
+        const emotesChange = emotes instanceof Array && emotes.filter(a => a.patch === f.id).length || 0;
+        if (emotes) {
+          const totalEmotes = emotes.filter(a => a.patch <= f.id).length;
+
+          counts.emotes = {
+            change: emotesChange,
+            total: totalEmotes
+          };
+
+          counts.emotes.percent = (
+            totalEmotes - emotesChange === 0
+            ? '∞'
+            : Math.round(((100/(totalEmotes - emotesChange)) * emotesChange) * 10) / 10
           );
         }
 

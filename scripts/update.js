@@ -20,6 +20,7 @@ const update = async function (args) {
 
   let achievementCategoriesV3;
   let achievementsListV3;
+  let emotesListV3;
   let titlesListV3;
   let itemsV3;
 
@@ -51,6 +52,10 @@ const update = async function (args) {
     resolve(data);
   })).then(data => achievementsListV3 = JSON.parse(data));
 
+  await new Promise((resolve) => fs.readFile('../docs/v3/emotes.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => emotesListV3 = JSON.parse(data));
+
   await new Promise((resolve) => fs.readFile('../docs/v3/titles.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => titlesListV3 = JSON.parse(data));
@@ -68,7 +73,8 @@ const update = async function (args) {
       achievementsList,
       minionsList,
       mountsList,
-      titlesList
+      titlesList,
+      emotesListV3
     );
   }
 

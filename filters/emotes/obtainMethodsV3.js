@@ -222,7 +222,16 @@ const helper = {
       available,
       promo
     )
-  }
+  },
+  recruitAFriend: () => {
+    return o(
+      'recruitAFriendFirst',
+      [locale('Recruit a Friend Campaign')],
+      expansions.ARR,
+      true,
+      false
+    )
+  },
 }
 
 let value;
@@ -495,6 +504,22 @@ module.exports = (emote, achievementsIn, emotesIn) => {
         true,
         true
       );
+    
+    case 114:
+      return helper.quest(
+        50,
+        locale('Hildibrand Quests'),
+        ["Her Last Vow", "Ruinöse Revanche", "Boucler La Boucle", "事件は砂塵に消ゆ"],
+        ["Julyan", "Julyan", "Julyan", "ジュリアン"],
+        ["Ul'dah - Steps Of Thal", "Thal-Kreuzgang", "Ul'dah - Faubourg De Thal", "ウルダハ：ザル回廊"],
+        12.1, 11.8,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 115:
+      return helper.recruitAFriend();
 
     case 118:
       return helper.goldSaucerPrizeExchange(80000, emote.item);

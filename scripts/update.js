@@ -136,13 +136,13 @@ const update = async function (args) {
     await require('./achievements/listV3.js').fetch(achievementCategoriesV3);
   }
 
+  // Items V3.
+  if (config && config.itemsV3) {
+    await require('./items/listV3.js').fetch();
+  }
+
   // Emotes V3.
   if (config && config.emotesListV3) {
-    const items = await recursiveFetch(
-      'https://api.xivdb-staging.com/Item'
-      + '?columns=ID,Name_de,Name_en,Name_fr,Name_ja,ItemAction.Type,'
-      + 'ItemAction.Data_1,ItemAction.Data_2'
-    ).then(response => response).catch(e => console.error(e));
     const textCommands = await recursiveFetch(
       'https://api.xivdb-staging.com/TextCommand'
       + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'

@@ -27,7 +27,9 @@ module.exports = new Helper("Emote", "emotes", {
         .filter(d => d['TextCommand.ID'])
         .map(entry => {
           const data = {
-            icon: entry.Icon,
+            icon: +entry.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
+              return group;
+            }),
             id: entry.ID,
             name: {
               de: entry.Name_de,

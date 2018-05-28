@@ -211,6 +211,11 @@ module.exports = {
     fr: 'Mor Dhona',
     jp: 'サブクエスト：モードゥナ'
   },
+  'Vanu Vanu Quests': {
+    de: 'Aufträge Der Vanu Vanu',
+    fr: 'Quêtes Tribales Des Vanu Vanu',
+    jp: '蛮族クエスト：バヌバヌ族'
+  },
 
   // Retainer venture
   'Field Exploration': {

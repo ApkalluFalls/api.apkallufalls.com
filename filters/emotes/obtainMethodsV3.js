@@ -522,7 +522,21 @@ module.exports = (emote, achievementsIn, emotesIn) => {
       return helper.recruitAFriend();
 
     case 118:
+    case 119:
       return helper.goldSaucerPrizeExchange(80000, emote.item);
+    
+    case 120:
+      return helper.quest(
+        50,
+        locale('Vanu Vanu Quests'),
+        ["Sundrop The Beat", "Aufgeflogen", "L'admirable Courage", "畏敬されし者"],
+        ["Linu Vali", "Linu Vali", "Linu Vali", "リヌバリ"],
+        ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
+        6.6, 14.4,
+        expansions.HW,
+        true,
+        false
+      );
 
     default:
       console.log("Unknown method for emote " + emote.id);

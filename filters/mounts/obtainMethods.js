@@ -1572,7 +1572,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return helper.achievementReward(2065, expansions.SB, true, false);
 
     default:
-      //console.log("Unknown method for minion " + minion.id);
+      console.log("Unknown method for mount " + mount.id);
       return null;
   }
 }

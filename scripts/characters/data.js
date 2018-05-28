@@ -76,12 +76,14 @@ async function getInfo(index, content, data, description) {
     }
   )
     .then(response => response.arrayBuffer());
+  
+  const title = apiData.data.title;
 
   createHTML(content[index].id, {
     data: data[index],
     emoji: "🗡️",
     title: `${apiData.data.name} | Apkallu Falls`,
-    description: `${apiData.data.name} «${apiData.data.title}» of ${apiData.data.server} is a ${(description === "translator" ? content[index]['?'] + " translator" : description)} of Apkallu Falls.`,
+    description: `${apiData.data.name}${title ? ` «${title}»` : ''} of ${apiData.data.server} is a ${(description === "translator" ? content[index]['?'] + " translator" : description)} of Apkallu Falls.`,
     image: apiData.data.avatar,
     imageAvatar: avatar
   }, "character", () => {});

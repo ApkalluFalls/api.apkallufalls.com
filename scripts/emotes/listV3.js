@@ -54,7 +54,7 @@ module.exports = new Helper("Emote", "emotes", {
                 name: {
                   de: item.Name_de,
                   en: item.Name_en,
-                  fr: item.Name_fr,
+                  fr: item.Name_fr.replace('<Indent/>', ''),
                   jp: item.Name_ja
                 }
               }))[0]

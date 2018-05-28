@@ -149,11 +149,14 @@ const update = async function (args) {
 
   // Items V3.
   if (config && config.itemsV3) {
+    message('Items');
     await require('./items/listV3.js').fetch();
   }
 
   // Emotes V3.
-  if (config && config.emotesListV3) {
+  if (config && config.emotesV3) {
+    message('Emotes');
+    await require('./emotes/dataV3.js').fetch();
     // Until the V3 API is fixed...
     const v2Emotes = await fetch('http://api.xivdb.com/emote?columns=id,patch').then(response => response.json());
     

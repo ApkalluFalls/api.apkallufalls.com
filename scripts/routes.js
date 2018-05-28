@@ -24,6 +24,8 @@ module.exports = () => {
     }, '', () => {});
   });
 
+  console.info('!! Make sure these look correct:', '\n');
+
   // Minion and Mount tags
   // This needs to be synchronised with the website's tag handling method.
   [
@@ -57,25 +59,39 @@ module.exports = () => {
     "grand-company",
     "default"
   ].forEach(tag => {
+    const text = tag
+      .split('-')
+      .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(' ')
+      .replace(' Of ', ' of ')
+      .replace(' The ', ' the ')
+      .replace('Fate', 'FATE')
+      .replace('Msq', 'Main Scenario Quest')
+      .replace('Pvp', 'PvP');
+
+    console.info(tag, '-->', text);
+
     createHTML(tag, {
       emoji: "🐧",
       list: true,
-      title: ` Minions tagged ‘${tag}’ | Apkallu Falls`,
-      description: `This is a list of all minions tagged ‘${tag}’.`
+      title: ` Minions tagged ‘${text}’ | Apkallu Falls`,
+      description: `This is a list of obtain methods for all minions tagged ‘${text}’.`
     }, 'minions/tagged', () => {});
 
     createHTML(tag, {
       emoji: "🚲",
       list: true,
-      title: ` Mounts tagged ‘${tag}’ | Apkallu Falls`,
-      description: `This is a list of all mounts tagged ‘${tag}’.`
+      title: ` Mounts tagged ‘${text}’ | Apkallu Falls`,
+      description: `This is a list of obtain methods for all mounts tagged ‘${text}’.`
     }, 'mounts/tagged', () => {});
 
     createHTML(tag, {
       emoji: "😊",
       list: true,
-      title: ` Emotes tagged ‘${tag}’ | Apkallu Falls`,
-      description: `This is a list of all emotes tagged ‘${tag}’.`
+      title: ` Emotes tagged ‘${text}’ | Apkallu Falls`,
+      description: `This is a list of obtain methods for all emotes tagged ‘${text}’.`
     }, 'emotes/tagged', () => {});
   });
+
+  console.info('\n', '!! Make sure those look correct ^.', '\n');
 }

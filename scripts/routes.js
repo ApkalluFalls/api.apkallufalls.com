@@ -27,33 +27,35 @@ module.exports = () => {
   // Minion and Mount tags
   // This needs to be synchronised with the website's tag handling method.
   [
-    "Achievement",
-    "Achievement Certificate",
-    "Beast Tribe",
-    "Crafting",
-    "Duty",
-    "Event",
-    "Live Event",
-    "FATE",
-    "Instanced FATE",
-    "Legacy",
-    "Promotional",
-    "Gathering",
-    "Desynthesis",
-    "Free Company",
-    "Gardening",
-    "Palace of the Dead",
-    "Main Scenario Quest",
-    "NPC Shop",
-    "PvP",
-    "Side Quest",
-    "Raid",
-    "Retainer Venture",
-    "Treasure Hunt",
-    "Trial",
-    "Veteran Reward",
-    "Wondrous Tails",
-    "Unknown"
+    "achievement",
+    "achievement-certificate",
+    "beast-tribe",
+    "crafting",
+    "duty",
+    "event",
+    "live-Event",
+    "fate",
+    "instanced-fate",
+    "legacy",
+    "promotional",
+    "gathering",
+    "desynthesis",
+    "free-company",
+    "gardening",
+    "palace-of-the-dead",
+    "main-scenario-quest",
+    "npc-shop",
+    "pvp",
+    "side-quest",
+    "raid",
+    "retainer-venture",
+    "treasure-hunt",
+    "trial",
+    "veteran-reward",
+    "wondrous-tails",
+    "unknown",
+    "grand-company",
+    "default"
   ].forEach(tag => {
     createHTML(tag, {
       emoji: "🐧",
@@ -68,5 +70,12 @@ module.exports = () => {
       title: ` Mounts tagged ‘${tag}’ | Apkallu Falls`,
       description: `This is a list of all mounts tagged ‘${tag}’.`
     }, 'mounts/tagged', () => {});
+
+    createHTML(tag, {
+      emoji: "😊",
+      list: true,
+      title: ` Emotes tagged ‘${tag}’ | Apkallu Falls`,
+      description: `This is a list of all emotes tagged ‘${tag}’.`
+    }, 'emotes/tagged', () => {});
   });
 }

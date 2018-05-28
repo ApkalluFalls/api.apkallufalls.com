@@ -40,4 +40,9 @@ module.exports = {
   recruitAFriendFirst: {
     en: 'Rewarded for having a friend subscribe during the {i0}.'
   },
+  squareEnixStoreNoExpiration: {
+    en: 'Purchase {i0} on the {i1} and register the promotional code.',
+    de: 'Kaufe {i0} auf dem {i1} und registriere den Aktionscode.',
+    fr: 'Acheter {i0} sur la {i1} et enregistrer le code promotionnel.'
+  }
 };

@@ -95,6 +95,18 @@ const location = {
 }
 
 const helper = {
+  achievementReward: (achievementId, expansion, available, promo) => {
+    return o(
+      'achievement',
+      [],
+      expansion,
+      available,
+      promo,
+      {
+        achievement: getAchievement(achievements, achievementId)
+      }
+    )
+  },
   companySeals: (cost, company, item) => {
     const companySeals = ['Company Seals', 'Staatstaler', 'Sceaux de compagnie', '軍票'];
 
@@ -243,6 +255,15 @@ const helper = {
       false
     )
   },
+  squareEnixStoreNoExpiration: (item, expiration) => {
+    return o(
+      'squareEnixStore',
+      [item, locale('Square Enix Store')],
+      expansions.ARR,
+      true,
+      true
+    )
+  }
 }
 
 let value;
@@ -334,6 +355,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
     case 140:
     case 141:
     case 150:
+    case 151:
     case 152:
     case 159:
     case 160:
@@ -379,6 +401,9 @@ module.exports = (emote, achievementsIn, emotesIn) => {
     case 124:
     case 128:
     case 129:
+    case 142:
+    case 143:
+    case 153:
       return helper.mogStation(emote.item);
 
     case 64:
@@ -606,7 +631,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
         locale('Side Story Quests'),
         ["The Burdens We Bear", "Im Gedenken An Einen Freund", "Le Sourire De L'amitié", "友の微笑み"],
         ["Slowfix", "Schlafix", "Slowfix", "スローフィクス"],
-        ["Slowfix", "Schlafix", "Slowfix", "スローフィクス"],
+        ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
         7.7, 6.6,
         expansions.HW,
         true,
@@ -629,6 +654,83 @@ module.exports = (emote, achievementsIn, emotesIn) => {
         ),
         helper.mogStation(emote.item)
       ];
+
+    case 138:
+      return helper.squareEnixStoreNoExpiration(
+        ['FINAL FANTASY XIV MEISTER QUALITY FIGURE – ODIN', true, true, true]
+      );
+
+    case 144:
+      return helper.squareEnixStoreNoExpiration(
+        ['FINAL FANTASY XIV MEISTER QUALITY FIGURE – SHIVA', true, true, true]
+      );
+    
+    case 145:
+      return helper.quest(
+        60,
+        locale('Side Story Quests'),
+        ["Eternity, Loyalty, Honesty", "Sieg Der Freundschaft", "Une Amitié Germée Du Chaos Semé", "導かれし盟友たち"],
+        ["Vath Deftarm", "Macher", "Futé", "ウデキキ"],
+        ["The Sea Of Clouds", "Abalathisches Wolkenmeer", "L'Écume Des Cieux D'Abalathia", "アバラシア雲海"],
+        6.7, 14.3,
+        expansions.HW,
+        true,
+        false
+      );
+      
+    case 146:
+      return [
+        helper.eventQuest(
+          15,
+          ["Once More With Feeling", "Eine Liebe Geste", "Épanchement Sentimental", "ヴァレンティオンデーと愛の表現"],
+          'eq9',
+          expansions.ARR
+        ),
+        helper.mogStation(emote.item)
+      ];
+    
+    case 148:
+      return helper.quest(
+        60,
+        locale('Side Story Quests'),
+        ["Letters From No One", "Schmähung Mit Schönheitsfehlern", "Campagne De Diffamation", "怪文書の影に"],
+        ["Theomocent", "Theomocent", "Theomocent", "テオモサン"],
+        ["The Pillars", "Strebewerk", "Ishgard - Les Contreforts", "イシュガルド：上層"],
+        10.5, 9.8,
+        expansions.HW,
+        true,
+        false
+      );
+
+    case 149:
+      return [
+        helper.eventQuest(
+          15,
+          ["Idols Give Back", "Was Lange Währt Wird Spitze", "Le Concert événement Des Églantines", "可憐な公演とプリンセスデー"],
+          'eq5',
+          expansions.ARR
+        ),
+        helper.mogStation(emote.item)
+      ];
+    
+    case 154:
+      return helper.msq(
+        62,
+        locale('Stormblood'),
+        ["Confederate Consternation", "Verhandlung Mit Rasho", "Le Hameau Des Parias", "砦に集いし無頼漢"],
+        ["Alisaie", "Alisaie", "Alisaie", "アリゼー"],
+        ["The Ruby Sea", "Rubinsee", "Mer De Rubis", "紅玉海"],
+        20.3, 9.5,
+        expansions.ARR,
+        true,
+        false
+      );
+
+    case 155:
+    case 156:
+    case 157:
+    case 158:
+      return helper.achievementReward(1556, expansions.ARR);
 
     default:
       console.log("Unknown method for emote " + emote.id);

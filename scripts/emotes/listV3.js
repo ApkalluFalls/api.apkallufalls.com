@@ -14,7 +14,11 @@ module.exports = new Helper("Emote", "emotes", {
     'Name_fr',
     'Name_ja',
     'TextCommand.ID',
-    'Patch'
+    'Patch',
+    'EmoteCategory.Name_de',
+    'EmoteCategory.Name_en',
+    'EmoteCategory.Name_fr',
+    'EmoteCategory.Name_ja'
   ],
   list: true,
   v3: true,
@@ -28,6 +32,12 @@ module.exports = new Helper("Emote", "emotes", {
         .filter(d => d['TextCommand.ID'])
         .map(entry => {
           const data = {
+            category: {
+              de: entry['EmoteCategory.Name_de'],
+              en: entry['EmoteCategory.Name_en'],
+              fr: entry['EmoteCategory.Name_fr'],
+              jp: entry['EmoteCategory.Name_ja']
+            },
             icon: +entry.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
               return group;
             }),

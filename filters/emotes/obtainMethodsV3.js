@@ -135,10 +135,10 @@ const helper = {
       false
     )
   },
-  eventQuest: (level, quest, image, expansion, item) => {
+  eventQuest: (level, quest, image, expansion) => {
     return o(
       'eventQuest',
-      [level, locale('Seasonal Events'), quest, image, item.name],
+      [level, locale('Seasonal Events'), quest, image],
       expansion,
       false,
       false
@@ -383,8 +383,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
         15,
         ["A Colorful Affair", "Farbe Bekennen", "Concert Participatif", "プリンセスデーの大声援"],
         'eq5',
-        expansions.ARR,
-        emote.item
+        expansions.ARR
       )
 
     case 81:
@@ -408,6 +407,93 @@ module.exports = (emote, achievementsIn, emotesIn) => {
         expansions.ARR,
         true,
         false
+      );
+    
+    case 101:
+      return helper.quest(
+        14,
+        locale('Lominsan Sidequests'),
+        ["Good For What Ales You", "Halb Getanzt Ist Ganz Verheimlicht", "Danse Avec Les Fous", "こっそりバッチリ愉快な踊り"],
+        ["Dodozan", "Dodozan", "Dodozan", "ドゥドゥザン"],
+        ["Limsa Lominsa Lower Decks", "Untere Decks", "Limsa Lominsa - L'Entrepont", "リムサ・ロミンサ：下甲板層"],
+        7.5, 12.4,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 102:
+      return helper.quest(
+        14,
+        locale('Gridanian Sidequests'),
+        ["Saw That One Coming", "Steif Wie Ein Brett", "Mais Si On Danse?", "誰がために人は踊る"],
+        ["Eral", "Eral", "Eral", "エラル"],
+        ["New Gridania", "Neu-Gridania", "Nouvelle Gridania", "グリダニア：新市街"],
+        12.1, 13.2,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 103:
+      return helper.quest(
+        14,
+        locale('Ul\'dahn Sidequests'),
+        ["Help Me, Lord Of The Dance", "Die Supertänzer-Abenteurerin", "Juste Une Dernière Danse", "踊り子は次の舞台へ"],
+        ["P'molminn", "Pmolminn", "P'molminn", "ペ・モルミン"],
+        ["Ul'dah - Steps Of Nald", "Nald-Kreuzgang", "Ul'dah - Faubourg De Nald", "ウルダハ：ナル回廊"],
+        10.8, 9.8,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 104:
+      return helper.quest(
+        50,
+        locale('Hildibrand Quests'),
+        ["The Hammer", "Der Teufel Mit Dem Weißen Haar", "Le Démon à La Toison Blanche", "白髪の鬼"],
+        ["Hildibrand", "Hildibrand", "Hildibrand", "ヒルディブランド"],
+        ["Western Thanalan", "Westliches Thanalan", "Thanalan Occidental", "西ザナラーン"],
+        20.1, 24.7,
+        expansions.ARR,
+        true,
+        false
+      );
+    
+    case 109:
+      return [
+        helper.eventQuest(
+          15,
+          ["Remember Me This Moonfire Faire", "Der Mit Dem Feuer Tanzt", "La Flamme D'un Espoir Renaissant", "紅蓮祭とお祭り男"],
+          'eq10',
+          expansions.ARR
+        ),
+        helper.mogStation(emote.item)
+      ];
+    
+    case 110:
+      return [
+        helper.eventQuest(
+          15,
+          ["What Blooms In The Night", "Blüten Der Nacht", "Réminiscence", "エオルゼア新生祭"],
+          'eq6',
+          expansions.ARR
+        ),
+        helper.mogStation(emote.item)
+      ];
+    
+    case 113:
+      return helper.quest(
+        1,
+        locale('Special Quests'),
+        ["The Ties That Bind", "Ein Bund Fürs Leben", "Jusqu'à Ce Que Le Destin Vous Sépare", "時がふたりを分かつまで"],
+        ["Claribel", true, true, "介添人 クラリベル"],
+        location.eastShroud,
+        17.6, 18.3,
+        expansions.ARR,
+        true,
+        true
       );
 
     case 118:

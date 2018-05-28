@@ -20,7 +20,8 @@ module.exports = new Helper("Emote", "emotes", {
   v3: true,
   format: (data, args) => {
     const textCommands = args[1];
-    
+    const items = args[2];
+
     const response = {
       localisation: localisationStrings,
       data: data
@@ -38,13 +39,25 @@ module.exports = new Helper("Emote", "emotes", {
               jp: entry.Name_ja
             },
             patch: entry.Patch || 2,
-            commands: textCommands.results
+            commands: textCommands
               .filter(t => t.ID === entry['TextCommand.ID'])
               .map(c => ([
                 [c.Command_en, c.Command_de, c.Command_fr, c.Command_ja],
                 [c.Alias_en, c.Alias_de, c.Alias_fr, c.Alias_ja],
                 [c.ShortAlias_en, c.ShortAlias_de, c.ShortAlias_fr, c.ShortAlias_ja]
-              ]))[0]
+              ]))[0],
+            item: items
+              .filter(item => item['ItemAction.Data_1'] >= 5100
+                && item['ItemAction.Data_1'] <= 5300
+                && item['ItemAction.Data_2'] === entry.ID
+              ).map(item => ({
+                name: {
+                  de: item.Name_de,
+                  en: item.Name_en,
+                  fr: item.Name_fr,
+                  jp: item.Name_ja
+                }
+              }))[0]
           }
 
           const method = obtainMethod(entry, args && args[0]);

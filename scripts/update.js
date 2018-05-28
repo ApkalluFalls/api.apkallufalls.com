@@ -54,6 +54,8 @@ const update = async function (args) {
     resolve(data);
   })).then(data => titlesListV3 = JSON.parse(data));
 
+  let items;
+
   // // Patches
   if (!config || config.patches) {
     message('Patches');
@@ -136,16 +138,17 @@ const update = async function (args) {
 
   // Emotes V3.
   if (config && config.emotesListV3) {
-    const textCommands = await fetch(
+    const items = await recursiveFetch(
+      'https://api.xivdb-staging.com/Item'
+      + '?columns=ID,Name_de,Name_en,Name_fr,Name_ja,ItemAction.Type,'
+      + 'ItemAction.Data_1,ItemAction.Data_2'
+    ).then(response => response).catch(e => console.error(e));
+    const textCommands = await recursiveFetch(
       'https://api.xivdb-staging.com/TextCommand'
       + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'
-      + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp',
-      {
-        method: 'GET',
-        mode: 'cors'
-      }
-    ).then(response => response.json());
-    await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands);
+      + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp'
+    ).then(response => response).catch(e => console.error(e));
+    await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, items);
   }
 
   // Titles V3.
@@ -164,3 +167,15 @@ function message(type) {
 }
 
 update(process.argv.slice(2));
+
+// Copied from _helper class.
+async function recursiveFetch(api, result = [], page = 1) {
+  const data = await fetch(`${api}&page=${page}`)
+    .then(response => response.json());
+
+  result = [...result, ...data.results];
+
+  if (data.pagination.page_next)
+    return recursiveFetch(api, result, data.pagination.page_next);
+  return result;
+}

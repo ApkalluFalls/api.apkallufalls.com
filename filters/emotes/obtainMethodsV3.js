@@ -3,6 +3,7 @@ const getAchievement = require('../_getAchievement');
 const locale = require('../_locale');
 
 let achievements;
+let emotes;
 
 const expansions = {
   Unknown: 'X',
@@ -112,6 +113,29 @@ const helper = {
       false
     )
   },
+  grandCompany: (gc, emoteArray) => {
+    return o(
+      'grandCompany',
+      [gc],
+      expansions.ARR,
+      true,
+      false,
+      {
+        emotes: emoteArray.map(id => {
+          const emote = emotes.filter(emote => emote.ID === id)[0];
+          return {
+            id: id,
+            name: {
+              de: emote.Name_de,
+              en: emote.Name_en,
+              fr: emote.Name_fr,
+              jp: emote.Name_ja
+            }
+          };
+        })
+      }
+    )
+  },
   isDefault: () => {
     return o(
       'isDefault',
@@ -128,8 +152,9 @@ let value;
 /* Returns information about how minions are obtained.
  * Corresponds to ../../docs/obtainMethods.json.
  */
-module.exports = (emote, achievementsIn) => {
+module.exports = (emote, achievementsIn, emotesIn) => {
   achievements = achievementsIn;
+  emotes = emotesIn;
   switch (+emote.id) {
     case 1:
     case 2:
@@ -180,8 +205,11 @@ module.exports = (emote, achievementsIn) => {
     case 47:
     case 48:
     case 49:
+    case 50:
+    case 52:
     case 54:
     case 58:
+    case 60:
     case 68:
     case 69:
     case 70:
@@ -197,6 +225,7 @@ module.exports = (emote, achievementsIn) => {
     case 80:
     case 83:
     case 84:
+    case 90:
     case 105:
     case 106:
     case 111:
@@ -206,6 +235,7 @@ module.exports = (emote, achievementsIn) => {
     case 139:
     case 140:
     case 141:
+    case 150:
     case 152:
     case 159:
     case 160:
@@ -214,6 +244,24 @@ module.exports = (emote, achievementsIn) => {
     case 163:
     case 184:
       return helper.isDefault();
+
+    case 55:
+      return helper.grandCompany(
+        locale('Maelstrom'),
+        [55, 56, 57]
+      );
+
+    case 56:
+      return helper.grandCompany(
+        locale('Order of the Twin Adder'),
+        [55, 56, 57]
+      );
+    
+    case 57:
+      return helper.grandCompany(
+        locale('Immortal Flames'),
+        [55, 56, 57]
+      );
 
     case 81:
       return helper.goldSaucerPrizeExchange(20000, emote.item);

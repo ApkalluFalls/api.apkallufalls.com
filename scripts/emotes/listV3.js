@@ -31,7 +31,7 @@ module.exports = new Helper("Emote", "emotes", {
       data: data
         .filter(d => d['TextCommand.ID'])
         .map(entry => {
-          const data = {
+          const result = {
             category: {
               de: entry['EmoteCategory.Name_de'],
               en: entry['EmoteCategory.Name_en'],
@@ -61,10 +61,10 @@ module.exports = new Helper("Emote", "emotes", {
               .map(item => ({ name: item.name }))[0]
           }
 
-          const method = obtainMethod(data, args && args[0]);
-          data.ref = method && !(method instanceof Array) ? [method] : method;
+          const method = obtainMethod(result, args && args[0], data);
+          result.ref = method && !(method instanceof Array) ? [method] : method;
 
-          return data;
+          return result;
         })
     }
 

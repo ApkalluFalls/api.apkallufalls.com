@@ -4,6 +4,9 @@ module.exports = {
     de: 'Schalte die Errungenschaft __achievement__ frei.',
     fr: 'Débloquer le haut fait \'__achievement__\'.'
   },
+  grandCompany: {
+    en: 'Unlocked when enlisting with Grand Company: {i0}. You can only have one of __emotes__ at a time.'
+  },
   isDefault: {
     en: 'Unlocked by default.'
   },

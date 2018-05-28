@@ -31,6 +31,9 @@ module.exports = new Helper("Emote", "emotes", {
       data: data
         .filter(d => d['TextCommand.ID'])
         .map(entry => {
+          // Until the V3 API is fixed...
+          const v2Emote = args[3].filter(p => p.id === entry.ID)[0] || {};
+
           const result = {
             category: {
               de: entry['EmoteCategory.Name_de'],
@@ -48,7 +51,7 @@ module.exports = new Helper("Emote", "emotes", {
               fr: entry.Name_fr,
               jp: entry.Name_ja
             },
-            patch: entry.Patch || 2,
+            patch: entry.Patch || v2Emote.patch || 2,
             commands: textCommands
               .filter(t => t.ID === entry['TextCommand.ID'])
               .map(c => ([

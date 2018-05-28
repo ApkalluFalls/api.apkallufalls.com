@@ -104,7 +104,7 @@ module.exports = new Helper("Patch", "patches", {
         }
 
         const emotesChange = emotes instanceof Array && emotes.filter(a => a.patch === f.id).length || 0;
-        if (emotes) {
+        if (emotesChange) {
           const totalEmotes = emotes.filter(a => a.patch <= f.id).length;
 
           counts.emotes = {

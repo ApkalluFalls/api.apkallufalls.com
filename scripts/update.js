@@ -21,6 +21,7 @@ const update = async function (args) {
   let achievementCategoriesV3;
   let achievementsListV3;
   let titlesListV3;
+  let itemsV3;
 
   await new Promise((resolve) => fs.readFile('../docs/achievement_categories.json', 'utf8', (e, data) => {
     resolve(data);
@@ -53,6 +54,10 @@ const update = async function (args) {
   await new Promise((resolve) => fs.readFile('../docs/v3/titles.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => titlesListV3 = JSON.parse(data));
+
+  await new Promise((resolve) => fs.readFile('../docs/v3/items.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => itemsV3 = JSON.parse(data));
 
   let items;
 
@@ -148,7 +153,7 @@ const update = async function (args) {
       + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'
       + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp'
     ).then(response => response).catch(e => console.error(e));
-    await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, items);
+    await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, itemsV3);
   }
 
   // Titles V3.

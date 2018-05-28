@@ -46,18 +46,9 @@ module.exports = new Helper("Emote", "emotes", {
                 [c.Alias_en, c.Alias_de, c.Alias_fr, c.Alias_ja],
                 [c.ShortAlias_en, c.ShortAlias_de, c.ShortAlias_fr, c.ShortAlias_ja]
               ]))[0],
-            item: items
-              .filter(item => item['ItemAction.Data_1'] >= 5100
-                && item['ItemAction.Data_1'] <= 5300
-                && item['ItemAction.Data_2'] === entry.ID
-              ).map(item => ({
-                name: {
-                  de: item.Name_de,
-                  en: item.Name_en,
-                  fr: item.Name_fr.replace('<Indent/>', ''),
-                  jp: item.Name_ja
-                }
-              }))[0]
+            item: items.emotes
+              .filter(item => item.awards === entry.ID)
+              .map(item => ({ name: item.name }))[0]
           }
 
           const method = obtainMethod(data, args && args[0]);

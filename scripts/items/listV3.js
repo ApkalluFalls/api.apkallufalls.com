@@ -23,6 +23,7 @@ module.exports = new Helper("Item", "items", {
       emotes: format(
         data.filter(item => item['ItemAction.Data_1'] >= 5100
           && item['ItemAction.Data_1'] <= 5300
+          && item['ItemAction.Data_2'] !== 0
         ),
         'ItemAction.Data_2'
       ),

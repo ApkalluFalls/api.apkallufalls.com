@@ -764,7 +764,8 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           ["(Kojin Sango Exchange)", "(Kojin-Korallen)", "(Échange De Sango Kojin)", "(コウジン珊瑚貨の取引)"],
           locationImage,
           ["The Ruby Sea", "Rubinsee", "Mer De Rubis", "紅玉海"],
-          29.4, 16.9
+          29.4, 16.9,
+          emote.item.name
         ],
         expansions.SB,
         true,
@@ -782,7 +783,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
           13.9, 11.8,
-          emote.item
+          emote.item.name
         ],
         expansions.SB,
         true,
@@ -799,7 +800,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           location.theGoldSaucer,
           7.2, 7.3,
-          emote.item
+          emote.item.name
         ],
         expansions.SB,
         true,
@@ -830,7 +831,8 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           ["(Namazu Koban Exchange)", "(Namazuo-Koban)", "(Échange de koban namazu)", "(ナマズオ小判の取引)"],
           locationImage,
           ["Dhoro Iloh", true, true, "ドーロ・イロー"],
-          5.8, 23.5
+          5.8, 23.5,
+          emote.item.name
         ],
         expansions.SB,
         true,
@@ -847,7 +849,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           ['The Wolves\' Den', 'Wolfshöhle', 'L\'Antre des loups', 'ウルヴズジェイル'],
           4.4, 6.1,
-          emote.item
+          emote.item.name
         ],
         expansions.ARR,
         true,

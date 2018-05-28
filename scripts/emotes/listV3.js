@@ -35,7 +35,7 @@ module.exports = new Helper("Emote", "emotes", {
               fr: entry.Name_fr,
               jp: entry.Name_ja
             },
-            patch: entry.Patch,
+            patch: entry.Patch || 2,
             commands: textCommands.results
               .filter(t => t.ID === entry['TextCommand.ID'])
               .map(c => ([

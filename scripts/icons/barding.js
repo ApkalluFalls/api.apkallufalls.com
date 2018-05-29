@@ -22,11 +22,7 @@ module.exports = new Helper(name, plural, {
     if (item["ItemAction.Type"] === 1013)
       return true;
     return false;
-  }).map(item => ({
-    icon: +item.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
-      return group;
-    })
-  }))
-  getIcons(base, data, resolve);
+  });
+  getIcons(base, data, resolve, true);
 });
 

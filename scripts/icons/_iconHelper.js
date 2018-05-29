@@ -10,12 +10,12 @@ const Spritesmith = require('spritesmith');
 
 let createdImages;
 
-module.exports = (type, data, resolve) => {
+module.exports = (type, data, resolve, v3) => {
   createdImages = [];
-  process(type, data, resolve);
+  process(type, data, resolve, v3);
 }
 
-function process(type, data, resolve) {
+function process(type, data, resolve, v3) {
   const saveFolder = '../docs/icons/' + type + '/';
 
   if (!data.length) {
@@ -83,18 +83,30 @@ function process(type, data, resolve) {
 
   const entry = data.shift();
 
-  if (entry.icon == 0)
-    return process(type, data, resolve);
+  if ((!v3 && entry.icon == 0) || (v3 && entry.Icon === 0))
+    return process(type, data, resolve, v3);
 
-  const path = config.fullImagePath + pad(Math.floor(entry.icon/1000) * 1000, 6) + "/" + pad(entry.icon, 6) + ".png";
-  const savePath = saveFolder + entry.icon + '.png';
+  let path;
+  let savePath;
+  
+  if (v3) {
+    path = config.fullImagePathV3 + entry.Icon;
+    console.info(path);
+    savePath = saveFolder + entry.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
+      return group;
+    }) + '.png';
+  }
+  else {
+    path = config.fullImagePath + pad(Math.floor(entry.icon/1000) * 1000, 6) + "/" + pad(entry.icon, 6) + ".png";
+    savePath = saveFolder + entry.icon + '.png';
+  }
 
   fs.exists(savePath, (exists) => {
     if (exists)
-      return process(type, data, resolve);
+      return process(type, data, resolve, v3);
     
     getImage(path, savePath, () => {
-      process(type, data, resolve)
+      process(type, data, resolve, v3)
     });
   });
 }

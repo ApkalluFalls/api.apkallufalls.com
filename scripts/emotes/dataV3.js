@@ -45,7 +45,7 @@ module.exports = new Helper(name, plural, {
           })(),
           // targeted: targeted ? parseTargetedString(targeted.Text_en, data.content.ID) : undefined,
           untargeted: untargeted ? parseUntargetedString(untargeted.Text_en, data.content.ID) : undefined,
-          xivdb: data.content.url
+          xivdb: data.content.Url
         }
 
         createHTML(result.id, {

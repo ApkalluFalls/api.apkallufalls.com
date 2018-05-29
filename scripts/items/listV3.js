@@ -10,7 +10,7 @@ module.exports = new Helper("Item", "items", {
     'Name_en',
     'Name_fr',
     'Name_ja',
-    ',ItemAction.Type',
+    'ItemAction.Type',
     'ItemAction.Data_0',
     'ItemAction.Data_1',
     'ItemAction.Data_2',

@@ -152,11 +152,11 @@ function parseUntargetedString(string, id) {
 
     if (str[0] instanceof Array && str[1] instanceof Array && str[0].length === 2 && str[1].length === 4 && str[1][1].split(' your').length === 2) {
       const middleAlt = str[1][1].split(' your')[0];
-      return [
-        str[0][0] + ' ' + str[1][0] + ' your' + end,
-        str[0][1] + ' ' + middleAlt + ' ' + str[1][2] + end,
-        str[0][1] + ' ' + middleAlt + ' ' + str[1][3] + end
-      ]
+      return {
+        self: str[0][0] + ' ' + str[1][0] + ' your' + end,
+        female: str[0][1] + ' ' + middleAlt + ' ' + str[1][2] + end,
+        male: str[0][1] + ' ' + middleAlt + ' ' + str[1][3] + end
+      }
     }
 
     if (str[0] instanceof Array && str[1] instanceof Array && str[0].length === 2 && str[1].length === 5)

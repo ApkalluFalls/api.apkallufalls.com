@@ -4,6 +4,10 @@ const createList = require('../_list');
 module.exports = new Helper("Item", "items", {
   api: 'Item',
   columns: [
+    'Description_de',
+    'Description_en',
+    'Description_fr',
+    'Description_ja',
     'Icon',
     'ID',
     'Name_de',
@@ -47,6 +51,12 @@ function format(data, awardKey) {
   return data.map(entry => ({
     icon: entry.Icon,
     id: entry.ID,
+    info: {
+      de: entry.Description_de,
+      en: entry.Description_en,
+      fr: entry.Description_fr,
+      jp: entry.Description_ja
+    },
     name: {
       de: entry.Name_de,
       en: entry.Name_en,

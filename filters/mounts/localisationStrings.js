@@ -62,7 +62,7 @@ module.exports = {
   legacyGift: {
     en: 'Given as a gift upon reaching level {0} by {1} in {img2} {3} (x: {4}, y: {5})',
     de: 'Als Geschenk vergeben wenn level {0} erreichend von {1} in {img2} {3} (x: {4}, y: {5})',
-    fr: 'Offer par {1} après avoir atteint le niveau {0} à {img2} {3} (x: {4}, y: {5})'
+    fr: 'Offert par {1} après avoir atteint le niveau {0} à {img2} {3} (x: {4}, y: {5})'
   },
   legacyStatus: {
     en: 'Given at the launch of A Realm Reborn to any players who had at least 90 cumulative days of subscription at any point during the final 9 months of Legacy.',
@@ -102,7 +102,7 @@ module.exports = {
   recruitAFriend: {
     en: 'Rewarded for having a friend subscribe for 90 days during the {i0}.',
     de: 'Belohnt wenn ein Freund 90 Tage abonniert hat während des {i0}.',
-    fr: 'Offer lorsqu\'un ami souscrit pour 90 jours d\'abonnement pendant la {i0}.'
+    fr: 'Offert lorsqu\'un ami souscrit pour 90 jours d\'abonnement pendant la {i0}.'
   },
   goldChocoboFeather: {
     en: 'Purchase for {img2} {i0} {i1}, awarded from the {i9}, from {3} {4} in {img5} {6} (x: {7}, y: {8}).',

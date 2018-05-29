@@ -1,5 +1,6 @@
 const fs = require('fs');
 const Helper = require('../_helper');
+const createHTML = require('../_HTML');
 const recursiveFetch = require('../_recursiveV3');
 const config = require('../_config');
 const localisation = require('../../localisation');
@@ -29,23 +30,33 @@ module.exports = new Helper(name, plural, {
         const textCommand = data.content.TextCommand;
         const untargeted = data.content.LogMessage_Untargeted;
         
-        return {
+        const result = {
           info: {
             de: textCommand.Description_de,
             en: textCommand.Description_en,
             fr: textCommand.Description_fr,
             jp: textCommand.Description_ja
           },
-          id: data.id,
+          id: data.content.ID,
           img: (() => {
-            if (!data.icon)
+            if (!data.content.Icon)
               return false;
-            return data.icon.replace(config.fullImagePathV3, "");
+            return config.fullImagePathV3 + data.content.Icon;
           })(),
           // targeted: targeted ? parseTargetedString(targeted.Text_en, data.content.ID) : undefined,
           untargeted: untargeted ? parseUntargetedString(untargeted.Text_en, data.content.ID) : undefined,
           xivdb: data.content.url
         }
+
+        createHTML(result.id, {
+          data: result,
+          emoji: "😊",
+          title: `${data.content.Name_en} | Apkallu Falls`,
+          description: `The ${data.content.Name_en} emote on Final Fantasy XIV.${result.untargeted && result.untargeted.unisex ? ` *${result.untargeted.unisex.replace('CHARACTER', 'Apkallu Falls')}*` : ''}`,
+          image: result.img
+        }, "emote", () => {});
+
+        return result;
       }
     }
   }), () => {
@@ -78,16 +89,16 @@ function parseUntargetedString(string, id) {
 
   if (str.length === 1) {
     if (str[0] instanceof Array && str[0].length === 4)
-      return [
-        str[0][0] + end,
-        str[0][2] + str[0][3] + end
-      ]
+      return {
+        self: str[0][0] + end,
+        unisex: str[0][2] + str[0][3] + end
+      }
 
     if (str[0] instanceof Array && str[0].length === 5)
-      return [
-        str[0][0] + ' ' + str[0][3] + end,
-        str[0][1] + ' ' + str[0][4] + end
-      ]
+      return {
+        self: str[0][0] + ' ' + str[0][3] + end,
+        unisex: str[0][1] + ' ' + str[0][4] + end
+      }
 
     if (str[0] instanceof Array && str[0].length === 6 && str[0][4].split(' her').length === 2) {
       const middleAlt = str[0][4].split(' her')[0];

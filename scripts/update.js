@@ -159,13 +159,21 @@ const update = async function (args) {
     await require('./emotes/dataV3.js').fetch();
     // Until the V3 API is fixed...
     const v2Emotes = await fetch('http://api.xivdb.com/emote?columns=id,patch').then(response => response.json());
-    
     const textCommands = await recursiveFetch(
       'https://api.xivdb-staging.com/TextCommand'
       + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'
       + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp'
     ).then(response => response).catch(e => console.error(e));
-    
+    await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, itemsV3, v2Emotes);
+  }
+  if (config && config.emotesListV3) {
+    // Until the V3 API is fixed...
+    const v2Emotes = await fetch('http://api.xivdb.com/emote?columns=id,patch').then(response => response.json());
+    const textCommands = await recursiveFetch(
+      'https://api.xivdb-staging.com/TextCommand'
+      + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'
+      + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp'
+    ).then(response => response).catch(e => console.error(e));
     await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, itemsV3, v2Emotes);
   }
 

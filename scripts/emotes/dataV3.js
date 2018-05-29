@@ -31,12 +31,6 @@ module.exports = new Helper(name, plural, {
         const untargeted = data.content.LogMessage_Untargeted;
         
         const result = {
-          info: {
-            de: textCommand.Description_de,
-            en: textCommand.Description_en,
-            fr: textCommand.Description_fr,
-            jp: textCommand.Description_ja
-          },
           id: data.content.ID,
           img: (() => {
             if (!data.content.Icon)
@@ -46,6 +40,13 @@ module.exports = new Helper(name, plural, {
           targeted: targeted && (!untargeted || targeted.Text_en !== untargeted.Text_en) ? parseTargetedString(targeted.Text_en, data.content.ID) : undefined,
           untargeted: untargeted ? parseUntargetedString(untargeted.Text_en, data.content.ID) : undefined,
           xivdb: data.content.Url
+        }
+
+        if (textCommand) {
+          result.info = {
+            de: textCommand.Description_de.match(/\n ?→ ?(.*)/)[0].replace(/[\n→]/g, '').trim(),
+            en: textCommand.Description_en.match(/\n ?→ ?(.*)/)[0].replace(/[\n→]/g, '').trim()
+          }
         }
 
         if (result.targeted && result.targeted.self)

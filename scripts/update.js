@@ -127,7 +127,8 @@ const update = async function (args) {
     await require('./icons/items.js').fetch();
     await require('./icons/barding.js').fetch();
     await require('./icons/emotes.js').fetch();
-    await require('./icons/itemsV3.js').fetch();
+    // Not used for now. Image size ends up > 11Mb
+    // await require('./icons/itemsV3.js').fetch();
   }
 
   if (config && config.characters) {

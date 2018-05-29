@@ -45,9 +45,7 @@ module.exports = new Helper("Item", "items", {
 
 function format(data, awardKey) {
   return data.map(entry => ({
-    icon: +entry.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
-      return group;
-    }),
+    icon: entry.Icon,
     id: entry.ID,
     name: {
       de: entry.Name_de,

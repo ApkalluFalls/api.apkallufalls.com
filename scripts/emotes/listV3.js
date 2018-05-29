@@ -72,11 +72,26 @@ module.exports = new Helper("Emote", "emotes", {
             patch: entry.Patch || v2Emote.patch || 2,
             commands: textCommands
               .filter(t => t.ID === entry['TextCommand.ID'])
-              .map(c => ([
-                [c.Command_en, c.Command_de, c.Command_fr, c.Command_ja],
-                [c.Alias_en, c.Alias_de, c.Alias_fr, c.Alias_ja],
-                [c.ShortAlias_en, c.ShortAlias_de, c.ShortAlias_fr, c.ShortAlias_ja]
-              ]))[0],
+              .map(c => ({
+                main: {
+                  de: c.Command_de,
+                  en: c.Command_en,
+                  fr:c.Command_fr,
+                  jp: c.Command_ja
+                },
+                alias: {
+                  de: c.Alias_de,
+                  en: c.Alias_en,
+                  fr: c.Alias_fr,
+                  jp: c.Alias_ja
+                },
+                short: {
+                  de: c.ShortAlias_de,
+                  en: c.ShortAlias_en,
+                  fr: c.ShortAlias_fr,
+                  jp: c.ShortAlias_ja
+                }
+              }))[0],
             item: items.emotes
               .filter(item => item.awards === itemOffsetId)
               .map(item => ({ name: item.name }))[0]

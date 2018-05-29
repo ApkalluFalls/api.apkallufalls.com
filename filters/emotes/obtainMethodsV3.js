@@ -730,7 +730,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
     case 156:
     case 157:
     case 158:
-      return helper.achievementReward(1556, expansions.ARR);
+      return helper.achievementReward(1556, expansions.ARR, true, false);
     
     case 164:
     case 165:

@@ -44,13 +44,17 @@ module.exports = new Helper(name, plural, {
 
         if (textCommand) {
           result.info = {
-            de: textCommand.Description_de.match(/\n ?→ ?(.*)/)[0].replace(/[\n→]/g, '').trim(),
-            en: textCommand.Description_en.match(/\n ?→ ?(.*)/)[0].replace(/[\n→]/g, '').trim()
+            de: textCommand.Description_de.match(/→ ?(.*)/)[0].replace(/[\n→]/g, '').trim(),
+            en: textCommand.Description_en.match(/→ ?(.*)/)[0].replace(/[\n→]/g, '').trim()
           }
         }
 
         if (result.targeted && result.targeted.self)
           result.targeted.self = result.targeted.self.charAt(0).toUpperCase() + result.targeted.self.slice(1);
+
+        // Because of the "you confuse ALTCHARACTER".
+        if (result.targeted && result.targeted.unisex)
+          result.targeted.unisex = result.targeted.unisex.charAt(0).toUpperCase() + result.targeted.unisex.slice(1);
 
         if (result.untargeted && result.untargeted.self)
           result.untargeted.self = result.untargeted.self.charAt(0).toUpperCase() + result.untargeted.self.slice(1);
@@ -177,11 +181,18 @@ function parseTargetedString(string, id) {
           unisex: str[1][1][0] + ' ' + str[1][0][1] + ' ' + str[0][0][0] + end
         }
 
-      if (str[0][0] instanceof Array && str[0][0].length === 2 && str[1][0] instanceof Array && str[1][0].length === 2 && str[1][1].length === 5)
+      if (str[0][0] instanceof Array && str[0][0].length === 2 && str[1][0] instanceof Array && str[1][0].length === 2 && str[1][1].length === 5) {
+        if (str[1][1][4] !== "")
+          return {
+            self: str[0][0][0] + ' ' + str[1][0][0] + ' ' + str[1][1][0] + middle + str[1][1][4] + end,
+            unisex: str[1][1][0] + ' ' + str[1][0][1] + ' ' + str[0][0][0] + middle + str[1][1][4] + end
+          }
+        
         return {
-          self: str[0][0][0] + ' ' + str[1][0][0] + ' ' + str[1][1][0] + middle + str[1][1][4] + ' ' + end,
-          unisex: str[1][1][0] + ' ' + str[1][0][1] + ' ' + str[0][0][0] + middle + str[1][1][4] + ' ' + end
+          self: str[0][0][0] + ' ' + str[1][0][0] + ' ' + str[1][1][0] + middle + str[1][1][3] + end,
+          unisex: str[1][1][3] + ' ' + str[1][0][1] + ' ' + str[1][1][0] + middle + str[0][0][0] + end
         }
+      }
 
       if (str[0][0] instanceof Array && str[0][0].length === 2 && str[1][0] instanceof Array && str[1][0].length === 2 && str[1][1].length === 6)
         return {

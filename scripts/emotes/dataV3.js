@@ -48,6 +48,9 @@ module.exports = new Helper(name, plural, {
           xivdb: data.content.Url
         }
 
+        if (result.targeted && result.targeted.self)
+          result.targeted.self = result.targeted.self.charAt(0).toUpperCase() + result.targeted.self.slice(1);
+
         if (result.untargeted && result.untargeted.self)
           result.untargeted.self = result.untargeted.self.charAt(0).toUpperCase() + result.untargeted.self.slice(1);
 
@@ -109,6 +112,14 @@ function parseTargetedString(string, id) {
         return {
           self: str[0][0][0] + middle + str[0][0][3] + ' ' + str[0][1][0] + end,
           unisex: str[0][1][0] + middle + str[0][0][4] + ' ' + str[0][0][0] + end
+        }
+    }
+
+    if (str[0].length === 4) {
+      if (str[0][0].length === 5 && str[0][1].length === 1 && str[0][2].length === 1 && str[0][3].length === 4)
+        return {
+          self: str[0][0][0] + middle + str[0][0][3] + ' ' + str[0][1][0] + ' ' + str[0][2][0] + ' ' + str[0][3][0] + end,
+          unisex: str[0][3][0] + middle + str[0][0][4]+ ' ' + str[0][1][0] + ' ' + str[0][2][0] + ' ' + str[0][0][0] + end
         }
     }
 
@@ -199,6 +210,15 @@ function parseTargetedString(string, id) {
           self: str[0][0][0] + ' ' + str[1][0][0] + middle + str[1][0][2] + ' ' + str[1][1][0] + ' ' + str[1][2][0] + ' ' + str[1][3][0] + end,
           female: str[1][3][0] + ' ' + str[1][0][0] + middle + str[1][0][3] + ' ' + str[1][1][0] + ' ' + str[1][2][0] + ' ' + str[0][0][0] + end,
           male: str[1][3][0] + ' ' + str[1][0][0] + middle + str[1][0][4] + ' ' + str[1][1][0] + ' ' + str[1][2][0] + ' ' + str[0][0][0] + end
+        }
+    }
+
+    if (str[0].length === 1 && str[1].length === 5) {
+      if (str[0][0] instanceof Array && str[0][0].length === 2 && str[1][0] instanceof Array && str[1][0].length === 5 && str[1][1].length === 1 && str[1][2].length === 1 && str[1][3].length === 1 && str[1][4].length === 4)
+        return {
+          self: str[0][0][0] + ' ' + str[1][0][0] + middle + str[1][0][2] + ' ' + str[1][1][0] + ' ' + str[1][2][0] + ' ' + str[1][3][0] + ' ' + str[1][4][0] + end,
+          female: str[1][4][0] + ' ' + str[1][0][1] + middle + str[1][0][3] + ' ' + str[1][1][0] + ' ' + str[1][2][0] + ' ' + str[1][3][0] + ' ' + str[0][0][0] + end,
+          male: str[1][4][0] + ' ' + str[1][0][1] + middle + str[1][0][4] + ' ' + str[1][1][0] + ' ' + str[1][2][0] + ' ' + str[1][3][0] + ' ' + str[0][0][0] + end
         }
     }
 

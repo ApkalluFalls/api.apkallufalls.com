@@ -322,11 +322,20 @@ function parseUntargetedString(string, id) {
   }
 
   if (str.length === 2) {
-    if (str[0] instanceof Array && str[1] instanceof Array && str[0].length === 2 && str[1].length === 2)
+    if (str[0] instanceof Array && str[1] instanceof Array && str[0].length === 2 && str[1].length === 2) {
+      const split = str[1][1].split(' ');
+
+      if (split.length === 2)
+        return {
+          self: str[0][0] + ' ' + str[1][0] + ' ' + split[1] + end,
+          unisex: str[0][1] + ' ' + str[1][1] + end
+        };
+
       return {
         self: str[0][0] + ' ' + str[1][0] + end,
         unisex: str[0][1] + ' ' + str[1][1] + end
       };
+    }
 
     if (str[0] instanceof Array && str[1] instanceof Array && str[0].length === 2 && str[1].length === 3)
       return {

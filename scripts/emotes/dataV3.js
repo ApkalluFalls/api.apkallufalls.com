@@ -307,6 +307,15 @@ function parseUntargetedString(string, id) {
 
     if (str[0] instanceof Array && str[0].length === 6 && str[0][4].split(' her').length === 2) {
       const middleAlt = str[0][4].split(' her')[0];
+      if (end.length === 1) {
+        const middleAlt2 = str[0][5].split('his ')[1];
+        return {
+          female: str[0][1] + ' ' + middleAlt + ' ' + 'her' + ' ' + middleAlt2 + end,
+          male: str[0][1] + ' ' + middleAlt + ' ' + str[0][5] + end,
+          self: str[0][0] + middle + str[0][3] + end
+        }
+      }
+
       return {
         female: str[0][1] + ' ' + middleAlt + ' ' + 'her' + end,
         male: str[0][1] + ' ' + middleAlt + ' ' + str[0][5] + end,

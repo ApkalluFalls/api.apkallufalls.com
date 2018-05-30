@@ -39,7 +39,7 @@ module.exports = new Helper(name, plural, {
           })(),
           targeted: targeted && (!untargeted || targeted.Text_en !== untargeted.Text_en) ? parseTargetedString(targeted.Text_en, data.content.ID) : undefined,
           untargeted: untargeted ? parseUntargetedString(untargeted.Text_en, data.content.ID) : undefined,
-          xivdb: data.content.Url
+          xivdb: data.content.Url && ('/' + data.content.Url.charAt(1).toLowerCase() + data.content.Url.slice(2))
         }
 
         if (textCommand) {

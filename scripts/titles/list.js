@@ -114,7 +114,8 @@ function processAchievementCategories(achievementCategories, achievements, title
           emoji: "🔖",
           list: true,
           title: ` Titles tagged ‘${kind} → ${category}’ | Apkallu Falls`,
-          description: `This is a list of all titles tagged ‘${kind} → ${category}’. There ${matchingTitles === 1 ? 'is' : 'are'} ${matchingTitles} ${matchingTitles === 1 ? 'title' : 'titles'} with this tag.`
+          description: `This is a list of all titles tagged ‘${kind} → ${category}’. There ${matchingTitles === 1 ? 'is' : 'are'} ${matchingTitles} ${matchingTitles === 1 ? 'title' : 'titles'} with this tag.`,
+          section: "Titles"
         }, 'titles/tagged', () => {});
 
       const matchingAchievements = achievements.data.filter(t => t.tag[0] === +k && t.tag[1] === +j).length;
@@ -124,7 +125,8 @@ function processAchievementCategories(achievementCategories, achievements, title
           emoji: "🎖️",
           list: true,
           title: ` Achievements tagged ‘${kind} → ${category}’ | Apkallu Falls`,
-          description: `This is a list of all achievements tagged ‘${kind} → ${category}’. There ${matchingAchievements === 1 ? 'is' : 'are'} ${matchingAchievements} ${matchingAchievements === 1 ? 'achievement' : 'achievements'} with this tag.`
+          description: `This is a list of all achievements tagged ‘${kind} → ${category}’. There ${matchingAchievements === 1 ? 'is' : 'are'} ${matchingAchievements} ${matchingAchievements === 1 ? 'achievement' : 'achievements'} with this tag.`,
+          section: "Achievements"
         }, 'achievements/tagged', () => {});
     })
   })

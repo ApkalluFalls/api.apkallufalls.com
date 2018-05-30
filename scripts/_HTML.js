@@ -6,15 +6,15 @@ module.exports = function(fileName, content, folder, callback) {
   const baseFolder = "../../apkallufalls.com/docs";
   const pathPart = (folder ? "/" + folder : "") + "/" + fileName ;
   let path = baseFolder + pathPart + "/index.html";
-  const url = "https://alpha.apkallufalls.com" + pathPart;
+  const url = "https://apkallufalls.com" + pathPart;
 
   const emoji = content.emoji;
   const summary = content.list ? 'summary_large_image' : 'summary';
-  const backdrop = 'https://alpha.apkallufalls.com/icon/backdrop-2.0.png?v=2';
+  const backdrop = 'https://apkallufalls.com/icon/backdrop-2.0.png?v=2';
   let twitterImage = content.list ? backdrop : (
     content.image
     ? content.image
-    : 'https://alpha.apkallufalls.com/icon/apkallu-special.png'
+    : 'https://apkallufalls.com/icon/apkallu-special.png'
   );
 
   if (!fs.existsSync(baseFolder + pathPart)){

@@ -258,7 +258,7 @@ const helper = {
   },
   squareEnixStoreNoExpiration: (item, expiration) => {
     return o(
-      'squareEnixStore',
+      'squareEnixStoreNoExpiration',
       [item, locale('Square Enix Store')],
       expansions.ARR,
       true,

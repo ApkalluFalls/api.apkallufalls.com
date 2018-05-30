@@ -117,7 +117,8 @@ module.exports = new Helper("Emote", "emotes", {
       emoji: "😊",
       list: true,
       title: 'Emotes List | Apkallu Falls',
-      description: `There are ${available} emotes available right now in-game in Final Fantasy XIV. Here's how you obtain all of them.`
+      description: `There are ${available} emotes available right now in-game in Final Fantasy XIV. Here's how you obtain all of them.`,
+      section: 'Emotes'
     }, undefined, () => {});
     
     return response;

@@ -69,7 +69,8 @@ module.exports = new Helper("Minion", "minions", {
       emoji: "🐧",
       list: true,
       title: 'Minions List | Apkallu Falls',
-      description: `There are ${methods} ways to obtain the ${available} minions available right now in-game in Final Fantasy XIV. Here's how you obtain all of them.`
+      description: `There are ${methods} ways to obtain the ${available} minions available right now in-game in Final Fantasy XIV. Here's how you obtain all of them.`,
+      section: "Minions"
     }, undefined, () => {});
 
     return response;

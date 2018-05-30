@@ -131,7 +131,8 @@ module.exports = new Helper("Patch", "patches", {
       emoji: "🔨",
       list: true,
       title: 'Patch Breakdown | Apkallu Falls',
-      description: `Apkallu Falls tracks data from ${formattedData.length} different Final Fantasy XIV patches up to Patch ${formattedData[formattedData.length-1].version}, with new content added every time the game updates.`
+      description: `Apkallu Falls tracks data from ${formattedData.length} different Final Fantasy XIV patches up to Patch ${formattedData[formattedData.length-1].version}, with new content added every time the game updates.`,
+      section: "Patches"
     }, undefined, () => {});
 
     return formattedData;

@@ -7,11 +7,13 @@ module.exports = () => {
   [{
     name: "character-select",
     text: "Character Select",
-    description: "Find a character to track on Apkallu Falls, or select from one of your tracked characters."
+    description: "Find a character to track on Apkallu Falls, or select from one of your tracked characters.",
+    section: "Other Pages"
   }, {
     name: "translate",
     text: "Translate",
-    description: "Help us translate Apkallu Falls!"
+    description: "Help us translate Apkallu Falls!",
+    section: "Other Pages"
   }, {
     name: "xivsync",
     text: "Add Character to XIVSync",
@@ -20,7 +22,8 @@ module.exports = () => {
     createHTML(tag.name, {
       list: true,
       title: `${tag.text} | Apkallu Falls`,
-      description: tag.description
+      description: tag.description,
+      section: "Other Pages"
     }, '', () => {});
   });
 
@@ -75,21 +78,24 @@ module.exports = () => {
       emoji: "🐧",
       list: true,
       title: ` Minions tagged ‘${text}’ | Apkallu Falls`,
-      description: `This is a list of obtain methods for all minions tagged ‘${text}’.`
+      description: `This is a list of obtain methods for all minions tagged ‘${text}’.`,
+      section: "Minions"
     }, 'minions/tagged', () => {});
 
     createHTML(tag, {
       emoji: "🚲",
       list: true,
       title: ` Mounts tagged ‘${text}’ | Apkallu Falls`,
-      description: `This is a list of obtain methods for all mounts tagged ‘${text}’.`
+      description: `This is a list of obtain methods for all mounts tagged ‘${text}’.`,
+      section: "Mounts"
     }, 'mounts/tagged', () => {});
 
     createHTML(tag, {
       emoji: "😊",
       list: true,
       title: ` Emotes tagged ‘${text}’ | Apkallu Falls`,
-      description: `This is a list of obtain methods for all emotes tagged ‘${text}’.`
+      description: `This is a list of obtain methods for all emotes tagged ‘${text}’.`,
+      section: "Emotes"
     }, 'emotes/tagged', () => {});
   });
 

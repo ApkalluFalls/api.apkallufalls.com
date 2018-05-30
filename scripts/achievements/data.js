@@ -58,7 +58,8 @@ module.exports = new Helper(name, plural, {
           emoji: "🎖️",
           title: `${data.name_en} | Apkallu Falls`,
           description: `The “${data.name_en}” achievement on Final Fantasy XIV. ${data.help_en}`,
-          image: data.icon
+          image: data.icon,
+          section: "Achievements"
         }, "achievement", () => {});
 
         return result;

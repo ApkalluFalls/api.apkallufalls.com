@@ -85,7 +85,8 @@ async function getInfo(index, content, data, description) {
     title: `${apiData.data.name} | Apkallu Falls`,
     description: `${apiData.data.name}${title ? ` «${title}»` : ''} of ${apiData.data.server} is a ${(description === "translator" ? content[index]['?'] + " translator" : description)} of Apkallu Falls.`,
     image: apiData.data.avatar,
-    imageAvatar: avatar
+    imageAvatar: avatar,
+    section: "Characters"
   }, "character", () => {});
 
   if (index === content.length - 1)

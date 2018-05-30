@@ -54,7 +54,8 @@ module.exports = new Helper("Mount", "mounts", {
       emoji: "🚲",
       list: true,
       title: 'Mounts List | Apkallu Falls',
-      description: `There are ${methods} ways to obtain the ${available} mounts available right now in-game in Final Fantasy XIV. Here's how you obtain all of them.`
+      description: `There are ${methods} ways to obtain the ${available} mounts available right now in-game in Final Fantasy XIV. Here's how you obtain all of them.`,
+      section: "Mounts"
     }, undefined, () => {});
     
     return response;

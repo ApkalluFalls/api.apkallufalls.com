@@ -3,7 +3,7 @@
 const fs = require('fs');
 
 module.exports = function(fileName, content, folder, callback) {
-  const baseFolder = "../../apkallufalls.com";
+  const baseFolder = "../../apkallufalls.com/docs";
   const pathPart = (folder ? "/" + folder : "") + "/" + fileName ;
   let path = baseFolder + pathPart + "/index.html";
   const url = "https://alpha.apkallufalls.com" + pathPart;
@@ -38,12 +38,14 @@ module.exports = function(fileName, content, folder, callback) {
     <meta property="og:type" content="website">
     <meta property="og:image" content="${backdrop}">
     <meta property="og:description" content="${content.description}">
-    <meta name="twitter:card" content="${summary}" />
-    <meta name="twitter:creator" content="@inb4" />
-    <meta name="twitter:site" content="@apkallufalls" />
-    <meta name="twitter:title" content="${(emoji ? emoji + ' ' : '') + content.title}" />
-    <meta name="twitter:description" content="${content.description}" />
-    <meta name="twitter:image" content="${twitterImage}" />
+    <meta property="og:site_name" content="Apkallu Falls">
+    <meta name="twitter:card" content="${summary}">
+    <meta name="twitter:creator" content="@inb4">
+    <meta name="twitter:site" content="@apkallufalls">
+    <meta name="twitter:title" content="${(emoji ? emoji + ' ' : '') + content.title}">
+    <meta name="twitter:description" content="${content.description}">
+    <meta name="twitter:image" content="${twitterImage}">
+    <meta name="article:section" content="${content.section}">
     <title>${content.title}</title>
     <link rel="icon" type="image/png" href="/icon/favicon.png">
     <script>

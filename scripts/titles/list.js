@@ -91,7 +91,8 @@ module.exports = new Helper("Title", "titles", {
       emoji: "🔖",
       list: true,
       title: 'Titles List | Apkallu Falls',
-      description: `${available} achievements award titles which are available right now in-game in Final Fantasy XIV. Here's a list of all of them.`
+      description: `${available} achievements award titles which are available right now in-game in Final Fantasy XIV. Here's a list of all of them.`,
+      section: "Titles"
     }, undefined, () => {});
 
     return response;

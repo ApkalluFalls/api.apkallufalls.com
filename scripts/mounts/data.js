@@ -60,7 +60,8 @@ module.exports = new Helper(name, plural, {
           emoji: "🚲",
           title: `${data.name_en} | Apkallu Falls`,
           description: `The ${data.name_en} mount on Final Fantasy XIV. ${data.info1_en}.`,
-          image: data.icon
+          image: data.icon,
+          section: "Mounts"
         }, "mount", () => {});
 
         return result;

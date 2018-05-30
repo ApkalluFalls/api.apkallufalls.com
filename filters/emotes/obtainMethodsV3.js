@@ -4,6 +4,7 @@ const locale = require('../_locale');
 
 let achievements;
 let emotes;
+let item;
 
 const expansions = {
   Unknown: 'X',
@@ -271,9 +272,10 @@ let value;
 /* Returns information about how minions are obtained.
  * Corresponds to ../../docs/obtainMethods.json.
  */
-module.exports = (emote, achievementsIn, emotesIn) => {
+module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
   achievements = achievementsIn;
   emotes = emotesIn;
+  item = itemsIn;
   switch (+emote.id) {
     case 1:
     case 2:
@@ -404,7 +406,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
     case 142:
     case 143:
     case 153:
-      return helper.mogStation(emote.item);
+      return helper.mogStation(item);
 
     case 64:
       return o(
@@ -418,7 +420,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           ["The Fringes", "Abanisches Grenzland", "Les Marges", "ギラバニア辺境地帯"],
           20.9, 26.1,
-          emote.item.name
+          item.name
         ],
         expansions.SB,
         true,
@@ -436,13 +438,13 @@ module.exports = (emote, achievementsIn, emotesIn) => {
       )
 
     case 81:
-      return helper.goldSaucerPrizeExchange(20000, emote.item);
+      return helper.goldSaucerPrizeExchange(20000, item);
     
     case 82:
       return [
-        helper.companySeals(10000, 'Maelstrom', emote.item),
-        helper.companySeals(10000, 'Order of the Twin Adder', emote.item),
-        helper.companySeals(10000, 'Immortal Flames', emote.item)
+        helper.companySeals(10000, 'Maelstrom', item),
+        helper.companySeals(10000, 'Order of the Twin Adder', item),
+        helper.companySeals(10000, 'Immortal Flames', item)
       ];
     
     case 85:
@@ -518,7 +520,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           'eq10',
           expansions.ARR
         ),
-        helper.mogStation(emote.item)
+        helper.mogStation(item)
       ];
     
     case 110:
@@ -529,7 +531,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           'eq6',
           expansions.ARR
         ),
-        helper.mogStation(emote.item)
+        helper.mogStation(item)
       ];
     
     case 113:
@@ -563,7 +565,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
 
     case 118:
     case 119:
-      return helper.goldSaucerPrizeExchange(80000, emote.item);
+      return helper.goldSaucerPrizeExchange(80000, item);
     
     case 120:
       return helper.quest(
@@ -650,9 +652,9 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           ["P'obyano", "P'obyano", "P'obyano", "紅蓮祭実行委員ペ・オビヤノ"],
           ["Moonfire Faire 2016", "Der Feuermond-Reigen 2016", "Les Feux de la Mort 2016", "紅蓮祭 2016"],
           expansions.ARR,
-          emote.item
+          item
         ),
-        helper.mogStation(emote.item)
+        helper.mogStation(item)
       ];
 
     case 138:
@@ -686,7 +688,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           'eq9',
           expansions.ARR
         ),
-        helper.mogStation(emote.item)
+        helper.mogStation(item)
       ];
     
     case 148:
@@ -710,7 +712,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           'eq5',
           expansions.ARR
         ),
-        helper.mogStation(emote.item)
+        helper.mogStation(item)
       ];
     
     case 154:
@@ -735,9 +737,9 @@ module.exports = (emote, achievementsIn, emotesIn) => {
     case 164:
     case 165:
       return [
-        helper.companySeals(40000, 'Maelstrom', emote.item),
-        helper.companySeals(40000, 'Order of the Twin Adder', emote.item),
-        helper.companySeals(40000, 'Immortal Flames', emote.item)
+        helper.companySeals(40000, 'Maelstrom', item),
+        helper.companySeals(40000, 'Order of the Twin Adder', item),
+        helper.companySeals(40000, 'Immortal Flames', item)
       ];
     
     case 166:
@@ -765,7 +767,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           ["The Ruby Sea", "Rubinsee", "Mer De Rubis", "紅玉海"],
           29.4, 16.9,
-          emote.item.name
+          item.name
         ],
         expansions.SB,
         true,
@@ -783,7 +785,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
           13.9, 11.8,
-          emote.item.name
+          item.name
         ],
         expansions.SB,
         true,
@@ -800,7 +802,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           location.theGoldSaucer,
           7.2, 7.3,
-          emote.item.name
+          item.name
         ],
         expansions.SB,
         true,
@@ -832,7 +834,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           ["Dhoro Iloh", true, true, "ドーロ・イロー"],
           5.8, 23.5,
-          emote.item.name
+          item.name
         ],
         expansions.SB,
         true,
@@ -849,7 +851,7 @@ module.exports = (emote, achievementsIn, emotesIn) => {
           locationImage,
           ['The Wolves\' Den', 'Wolfshöhle', 'L\'Antre des loups', 'ウルヴズジェイル'],
           4.4, 6.1,
-          emote.item.name
+          item.name
         ],
         expansions.ARR,
         true,

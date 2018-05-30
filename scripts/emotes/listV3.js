@@ -92,12 +92,16 @@ module.exports = new Helper("Emote", "emotes", {
                   jp: c.ShortAlias_ja
                 }
               }))[0],
-            item: items.emotes
-              .filter(item => item.awards === itemOffsetId)
-              .map(item => ({ name: item.name }))[0]
           }
 
-          const method = obtainMethod(result, args && args[0], data);
+          const item = items.emotes
+            .filter(item => item.awards === itemOffsetId)
+            .map(item => ({ name: item.name }))[0];
+
+          if (itemOffsetId)
+            result.itemOffset = itemOffsetId
+
+          const method = obtainMethod(result, args && args[0], data, item);
           result.ref = method && !(method instanceof Array) ? [method] : method;
 
           return result;

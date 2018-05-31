@@ -99,11 +99,12 @@ module.exports = new Helper(name, plural, {
         if (sound)
           result.sound = sound;
 
+        const name = data.content.Name_en && data.content.Name_en.split(' ').map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' ');
         createHTML(result.id, {
           data: result,
           emoji: "🐧",
-          title: `${data.content.Name_en} | Apkallu Falls`,
-          description: `The ${data.content.Name_en} minion on Final Fantasy XIV. ${result.info.en}.`,
+          title: `${name} | Apkallu Falls`,
+          description: `The ${name} minion on Final Fantasy XIV. ${result.info.en}.`,
           image: result.img,
           section: "Minions"
         }, "minion", () => {});

@@ -31,7 +31,7 @@ module.exports = new Helper("Minion", "minions", {
           id: entry.ID,
           name: {
             de: entry.Name_de,
-            en: entry.Name_en,
+            en: entry.Name_en && entry.Name_en.split(' ').map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' '),
             fr: entry.Name_fr,
             jp: entry.Name_ja
           },

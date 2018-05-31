@@ -14,11 +14,11 @@ module.exports = new Helper("Emote", "emotes", {
     'Name_fr',
     'Name_ja',
     'TextCommand.ID',
-    'Patch',
     'EmoteCategory.Name_de',
     'EmoteCategory.Name_en',
     'EmoteCategory.Name_fr',
-    'EmoteCategory.Name_ja'
+    'EmoteCategory.Name_ja',
+    'GamePatch.ID'
   ],
   list: true,
   v3: true,
@@ -31,9 +31,6 @@ module.exports = new Helper("Emote", "emotes", {
       data: data
         .filter(d => d['TextCommand.ID'])
         .map(entry => {
-          // Until the V3 API is fixed...
-          const v2Emote = args[3].filter(p => p.id === entry.ID)[0] || {};
-
           // Items only point to one emote. Some, like the one which teaches
           // Red Ranger Pose A and Red Ranger Pose B, have 2 emotes. This
           // corrects the lack of valid pointer.
@@ -69,7 +66,7 @@ module.exports = new Helper("Emote", "emotes", {
               fr: entry.Name_fr,
               jp: entry.Name_ja
             },
-            patch: entry.Patch || v2Emote.patch || 2,
+            patch: entry['GamePatch.ID'] || 2,
             commands: textCommands
               .filter(t => t.ID === entry['TextCommand.ID'])
               .map(c => ({

@@ -30,7 +30,7 @@ module.exports = function(fileName, content, folder, callback) {
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no>
     <meta name="description" content="${content.description}">
     <meta property="fb:app_id" content="157526838114044">
     <meta property="og:url" content="${url}">

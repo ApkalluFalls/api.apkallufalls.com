@@ -71,7 +71,7 @@ module.exports = new Helper(name, plural, {
         return result;
       }
     }
-  }, () => {})
+  }, resolve)
 });
 
 function parseTargetedString(string, id) {

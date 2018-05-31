@@ -18,7 +18,12 @@
  * @returns {(bool|string)} - if it has a sound or a sound override.
  */
 module.exports = (minion) => {
-  const quote = minion.quote.fr;
+  const quote = minion.quote.fr
+    && minion.quote.fr
+      .replace(/\<Indent\/\>/g, '')
+      .replace('<If(PlayerParameter(4))>', '')
+      .replace('</If>', '')
+      .replace('<Else/>', ' / ');
 
   switch (minion.id) {
     case 200:
@@ -250,7 +255,7 @@ module.exports = (minion) => {
       return override('Espèce de...!', 'You ...!');
     
     case 231:
-      return override('Comptez sur moi, Maîtresse!', 'Count on me, Mistress!');
+      return override('Comptez sur moi, Maîtresse / Maître!', 'Count on me, Mistress / Master!');
     
     case 235:
       return override('Répète un peu ça pour voir!', 'Repeat this to see!');
@@ -301,7 +306,7 @@ module.exports = (minion) => {
       return override('Survivras-tu à ma charge!?', 'Will you survive my charge!?');
     
     case 266:
-      return override('Les affaire sont en plein boooom!', 'The business is boooming!');
+      return override('Les affaires tournent rondemeeeent!', 'The business is turning aroooound!');
     
     case 267:
       return override('Wouf! Wouf!', 'Woof! Woof!');
@@ -320,9 +325,30 @@ module.exports = (minion) => {
     
     case 281:
       return override('Je n\'y crois pas', 'I just can\'t believe it');
+    
+    case 282:
+      return override('Où te caches-tu, fille de Nhaamaaa!?', 'Where are you hiding, daughter of Nhaamaaa!?')
+
+    case 285:
+      return override('Triple attaque!', 'Triple attack!');
+
+    case 286:
+      return override('Ce harrrnais scorpion me va comme un gant!', 'This scorpion harness fits me like a glove!')
+
+    case 290:
+      return override('À moi, nuage magique', 'To me, magic cloud');
+
+    case 294:
+      return override('Les Dotharl ne craignent rien, pas même la mort', 'The Dotharl fear nothing, not even death');
+
+    case 298:
+      return override('Merrrci beaucoup', 'Thaaaaank you');
+
+    case 299:
+      return override('J\'ATTENDS VOS ORDRES, MAÎTRE', 'I AM WAITING YOUR ORDERS, MASTER');
 
     default:
-      return true;
+      return quote === minion.quote.fr ? true : quote;
   }
 
   function override(match, replacement, stripNewLines) {

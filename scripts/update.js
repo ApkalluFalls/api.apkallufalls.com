@@ -155,17 +155,27 @@ const update = async function (args) {
     await require('./items/listV3.js').fetch();
   }
 
+  // Minions V3.
+  if (!config || config.minionsV3) {
+    message('Minions');
+    await require('./minions/dataV3.js').fetch();
+    await require('./minions/listV3.js').fetch(achievementsList);
+    console.info("!! Remember to check sounds to filter out French text.");
+  }
+  if (config && config.minionsListV3) {
+    await require('./minions/listV3.js').fetch(achievementsList);
+  }
+
   // Emotes V3.
   if (config && config.emotesV3) {
     message('Emotes');
-    // Until the V3 API is fixed...
+    await require('./emotes/dataV3.js').fetch();
     const textCommands = await recursiveFetch(
       'https://api.xivdb-staging.com/TextCommand'
       + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'
       + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp'
     ).then(response => response).catch(e => console.error(e));
     require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, itemsV3);
-    require('./emotes/dataV3.js').fetch();
   }
   if (config && config.emotesListV3) {
     // Until the V3 API is fixed...

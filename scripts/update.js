@@ -143,9 +143,11 @@ const update = async function (args) {
   if (!config || config.achievementsV3) {
     message('Achievements');
     await require('./achievements/dataV3.js').fetch();
+    await require('./achievements/categoriesV3.js').fetch();
     await require('./achievements/listV3.js').fetch(achievementCategoriesV3);
   }
   if (config && config.achievementsListV3) {
+    await require('./achievements/categoriesV3.js').fetch();
     await require('./achievements/listV3.js').fetch(achievementCategoriesV3);
   }
 

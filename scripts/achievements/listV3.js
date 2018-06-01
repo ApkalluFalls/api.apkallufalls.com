@@ -7,7 +7,7 @@ const _getWeight = require('./_getWeightV3');
 const _getMountIdFromItem = require('./_getMountIdFromItem');
 
 module.exports = new Helper("Achievement", "achievements", {
-  api: 'achievement',
+  api: 'Achievement',
   columns: [
     "AchievementCategory.ID",
     "AchievementCategory.Name",

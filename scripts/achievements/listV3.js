@@ -52,7 +52,7 @@ module.exports = new Helper("Achievement", "achievements", {
         if (achievement.Order === 0 && achievement.Requirement_1) {
           const series = filtered.filter(a => a.requirement_1 === achievement.Requirement_1);
           if (series.length > 1)
-            achievement.Series = series.map(a => a.id);
+            achievement.series = series.map(a => a.id);
         }
         // Otherwise, the Order is incremental.
         else {
@@ -60,7 +60,7 @@ module.exports = new Helper("Achievement", "achievements", {
           const next = getNext(filtered, achievement.Order + 1, []);
       
           if (next.length || prev.length)
-            achievement.Series = [...prev, achievement.ID, ...next];
+            achievement.series = [...prev, achievement.ID, ...next];
         }
       }
     );
@@ -86,7 +86,7 @@ module.exports = new Helper("Achievement", "achievements", {
               fr: entry.Name_fr,
               jp: entry.Name_ja
             },
-            series: entry.Series,
+            series: entry.series,
             patch: entry['GamePatch.ID'] || 2,
             weight: _getWeight(entry)
           }
@@ -109,15 +109,15 @@ module.exports = new Helper("Achievement", "achievements", {
           // different achievements to unlock (e.g. Mastering War I).
           if (entry.type === 2)
             response.mastery = [
-              entry.Data_0,
-              entry.Data_1,
-              entry.Data_2,
-              entry.Data_3,
-              entry.Data_4,
-              entry.Data_5,
-              entry.Data_6,
-              entry.Data_7,
-              entry.Data_8,
+              entry.Data0,
+              entry.Data1,
+              entry.Data2,
+              entry.Data3,
+              entry.Data4,
+              entry.Data5,
+              entry.Data6,
+              entry.Data7,
+              entry.Data8,
               entry.ID
             ].filter(e => e !== 0);
 

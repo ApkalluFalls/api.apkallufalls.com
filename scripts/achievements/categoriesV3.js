@@ -75,7 +75,7 @@ function isCategoryAvailable(kind, category) {
   if (!name)
     return false;
 
-  if (!kind.unavailable)
+  if (kind.unavailable)
     return false;
 
   switch (name) {

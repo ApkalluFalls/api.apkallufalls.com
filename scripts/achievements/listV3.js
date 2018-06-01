@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const Helper = require('../_helper');
+const createHTML = require('../_HTML');
 const createList = require('../_list');
 const _isAvailable = require('./_isAvailableV3');
 const _isCumulative = require('./_isCumulativeV3');
@@ -64,7 +65,7 @@ module.exports = new Helper("Achievement", "achievements", {
       }
     );
 
-    return {
+    const response = {
       data: data
         .filter(entry => entry.Icon)
         .map(entry => {
@@ -126,6 +127,17 @@ module.exports = new Helper("Achievement", "achievements", {
           return response;
         })
     }
+
+    createHTML("achievements", {
+      data: response,
+      emoji: "🎖️",
+      list: true,
+      title: `Achievements | Apkallu Falls`,
+      description: `There are ${response.data.length.toLocaleString()} achievements in Final Fantasy XIV. Apkallu Falls allows you to track which ones you\\'ve unlocked.`,
+      section: "Achievements"
+    }, "achievement", () => {});
+
+    return response;
   }
 }, (data, base, _helperCreateJSONFn, resolve) => {
   fetch(

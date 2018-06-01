@@ -48,6 +48,7 @@ const mythicClanLogMarkImage = 'mc';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
+  honored: ['Honored', 'Geehrt', 'Honoré', '名誉ある'],
   trusted: ['Trusted', 'Vertraut', 'Estimé', '信頼'],
   allied: ['Allied', 'Verbündet', 'Allié', '盟友'],
   respected: ['Respected', 'Respektierte', 'Respecté', '尊敬する']
@@ -779,7 +780,7 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
       return o(
         'purchase',
         [
-          5, mythicClanMarkLog, mythicClanLogMarkImage,
+          6, mythicClanMarkLog, mythicClanLogMarkImage,
           ["Eschina", true, true, "エシナ"],
           ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
           locationImage,
@@ -826,7 +827,7 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
       return o(
         'beastTribe',
         [
-          rank.sworn,
+          rank.honored,
           beastTribe.namazu,
           8, namazuKoban, namazuKobanImage,
           ["Gyosho", true, true, "ギョショウ"],

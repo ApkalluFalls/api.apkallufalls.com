@@ -66,7 +66,7 @@ module.exports = new Helper("Achievement", "achievements", {
 
     return {
       data: data
-        .filter(entry => entry.Icon !== null)
+        .filter(entry => entry.Icon)
         .map(entry => {
           let response = {
             tag: [

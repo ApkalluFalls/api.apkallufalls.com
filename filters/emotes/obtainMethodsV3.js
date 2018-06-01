@@ -48,7 +48,7 @@ const mythicClanLogMarkImage = 'mc';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
-  honored: ['Honored', 'Geachtet', 'Émérite', '誓約'],
+  honored: ['Honored', 'Geachtet', 'Émérite', '名誉'],
   trusted: ['Trusted', 'Vertraut', 'Estimé', '信頼'],
   allied: ['Allied', 'Verbündet', 'Allié', '盟友'],
   respected: ['Respected', 'Respektierte', 'Respecté', '尊敬する']

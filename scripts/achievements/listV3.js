@@ -94,11 +94,11 @@ module.exports = new Helper("Achievement", "achievements", {
           if (unavailable)
             response.unavailable = unavailable;
 
-          if (entry["Item.ID"] || entry["Title.ID"]) {
+          if (entry.item || entry["Title.ID"]) {
             response.reward = {};
 
-            if (entry["Item.ID"])
-              response.reward.item = entry["Item.ID"];
+            if (entry.item)
+              response.reward.item = entry.item;
               
             if (entry["Title.ID"])
               response.reward.title = entry["Title.ID"];
@@ -127,7 +127,7 @@ module.exports = new Helper("Achievement", "achievements", {
         })
     }
   }
-}, (data, base, _helperCreateJSONFn) => {
+}, (data, base, _helperCreateJSONFn, resolve) => {
   fetch(
     'http://api.xivdb.com/minion',
     {
@@ -157,7 +157,8 @@ module.exports = new Helper("Achievement", "achievements", {
             .then(items => {
               items = items.filter(i => i.connect_achievement !== 0);
               data.forEach(achievement => {
-                const item = items.filter(i => i.id === achievement.Item)[0];
+                const item = items.filter(i => i.id === achievement['Item.ID'])[0];
+                
                 if (item) {
                   achievement.item = {
                     icon: item.icon,
@@ -195,8 +196,8 @@ module.exports = new Helper("Achievement", "achievements", {
                   }
                 }
               })
-              console.info(base);
-              createList("achievements", data, base, _helperCreateJSONFn);
+              
+              createList("achievements", data, base, _helperCreateJSONFn, resolve);
             })
             .catch(e => {
               throw new Error(e)

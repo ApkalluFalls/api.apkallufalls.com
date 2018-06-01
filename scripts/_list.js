@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-module.exports = function(fileName, data, base, _helperCreateJSONFn) {
+module.exports = function(fileName, data, base, _helperCreateJSONFn, resolve) {
   fs.exists(base + "/" + fileName + ".json", (exists) => {
     let logMessage = fileName + " list ";
     
@@ -13,6 +13,6 @@ module.exports = function(fileName, data, base, _helperCreateJSONFn) {
 
     logMessage += "\n";
     
-    _helperCreateJSONFn.call(this, fileName, data, logMessage);
+    _helperCreateJSONFn.call(this, fileName, data, logMessage, undefined, resolve);
   })
 }

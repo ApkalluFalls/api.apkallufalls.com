@@ -65,8 +65,8 @@ module.exports = new Helper("achievement category", "achievement categories", {
     
     return response;
   }
-}, (data, base, _helperCreateJSONFn) => {
-  createList("achievement_categories", data, base, _helperCreateJSONFn);
+}, (data, base, _helperCreateJSONFn, resolve) => {
+  createList("achievement_categories", data, base, _helperCreateJSONFn, resolve);
 });
 
 function isCategoryAvailable(kind, category) {

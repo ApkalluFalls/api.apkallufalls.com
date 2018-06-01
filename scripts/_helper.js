@@ -100,7 +100,7 @@ function process(data) {
     if (typeof this.callback !== 'function')
       throw new Error("list detected with no callback.");
     
-    return this.callback(data, this.base + (this.v3 ? 'v3/' : ''), createJSON.bind(this));
+    return this.callback(data, this.base + (this.v3 ? 'v3/' : ''), createJSON.bind(this), this.resolve);
   }
   
   const processData = (d) => {
@@ -145,13 +145,16 @@ function process(data) {
   }
 }
 
-function createJSON(fileName, data, logMessage, isNew) {
+function createJSON(fileName, data, logMessage, isNew, resolve) {
   data = formatData.call(this, data);
   fs.writeFile(this.base + (this.list && this.v3 ? 'v3/' : '') + fileName + ".json", JSON.stringify(data), 'utf8', () => {
     console.log(logMessage);
 
-    if (this.list)
+    if (this.list) {
+      if (typeof resolve === 'function')
+        resolve();
       return;
+    }
 
     if (isNew)
       this.created++;
@@ -164,6 +167,9 @@ function createJSON(fileName, data, logMessage, isNew) {
       
       return this.callback();
     }
+
+    if (this.list && typeof resolve === 'function')
+      resolve();
     
     progress.call(this);
   });

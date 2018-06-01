@@ -21,7 +21,6 @@ module.exports = new Helper("Achievement", "achievements", {
     "Name_fr",
     "Name_ja",
     "Order",
-    "Patch",
     "Points",
     "Data_0",
     "Data_1",
@@ -33,7 +32,8 @@ module.exports = new Helper("Achievement", "achievements", {
     "Data_7",
     "Data_8",
     "Title.ID",
-    "Type"
+    "Type",
+    'GamePatch.ID'
   ],
   list: true,
   v3: true,
@@ -84,7 +84,7 @@ module.exports = new Helper("Achievement", "achievements", {
               jp: entry.Name_ja
             },
             series: entry.Series,
-            patch: entry.Patch,
+            patch: entry['GamePatch.ID'] || 2,
             weight: _getWeight(entry)
           }
 

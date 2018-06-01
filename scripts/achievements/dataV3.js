@@ -70,8 +70,11 @@ module.exports = new Helper(name, plural, {
             jp: content.Description_ja
           },
           img: (() => {
-            return content.Icon;
-          })()
+            if (!data.content.Icon)
+              return false;
+            return config.fullImagePathV3 + data.content.Icon;
+          })(),
+          xivdb: data.content.Url && ('/' + data.content.Url.charAt(1).toLowerCase() + data.content.Url.slice(2))
         }
       }
     }

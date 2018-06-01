@@ -74,7 +74,9 @@ module.exports = new Helper("Achievement", "achievements", {
               entry["AchievementCategory.AchievementKind.ID"]
             ],
             id: entry.ID,
-            icon: entry.Icon,
+            icon: +entry.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
+              return group;
+            }),
             order: entry.Order,
             points: entry.Points,
             name: {

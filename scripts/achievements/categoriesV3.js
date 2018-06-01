@@ -41,6 +41,9 @@ module.exports = new Helper("achievement category", "achievement categories", {
             categories: []
           }
 
+          if (!isKindAvailable(kind))
+            kind.unavailable = true;
+
           response[entry['AchievementKind.ID']] = kind;
         }
 
@@ -54,7 +57,7 @@ module.exports = new Helper("achievement category", "achievement categories", {
           }
         };
 
-        if (!isAvailable(kind, category))
+        if (!isCategoryAvailable(kind, category))
           category.unavailable = true;
 
         kind.categories.push(category)
@@ -66,20 +69,33 @@ module.exports = new Helper("achievement category", "achievement categories", {
   createList("achievement_categories", data, base, _helperCreateJSONFn);
 });
 
-function isAvailable(kind, category) {
+function isCategoryAvailable(kind, category) {
   const name = category.name.en;
 
   if (!name)
     return false;
 
-  const kindName = kind.name.en;
-
-  if (!kindName || kindName === 'Legacy')
+  if (!kind.unavailable)
     return false;
 
   switch (name) {
     case 'Ranking':
     case 'Seasonal Events':
+      return false;
+
+    default:
+      return true;
+  }
+}
+
+function isKindAvailable(kind) {
+  const name = kind.name.en;
+
+  if (!name)
+    return false;
+
+  switch (name) {
+    case 'Legacy':
       return false;
 
     default:

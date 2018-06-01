@@ -135,7 +135,7 @@ module.exports = new Helper("Achievement", "achievements", {
       title: `Achievements | Apkallu Falls`,
       description: `There are ${response.data.length.toLocaleString()} achievements in Final Fantasy XIV. Apkallu Falls allows you to track which ones you\\'ve unlocked.`,
       section: "Achievements"
-    }, "achievement", () => {});
+    }, undefined, () => {});
 
     return response;
   }

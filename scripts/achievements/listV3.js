@@ -98,7 +98,7 @@ module.exports = new Helper("Achievement", "achievements", {
           if (entry["Item.ID"] || entry["Title.ID"]) {
             response.reward = {};
 
-            if (entry.item)
+            if (entry["Item.ID"])
               response.reward.item = entry["Item.ID"];
               
             if (entry["Title.ID"])

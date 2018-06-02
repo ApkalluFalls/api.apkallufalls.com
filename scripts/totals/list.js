@@ -7,7 +7,7 @@ module.exports = async function() {
   let minionsList;
   let mountsList;
 
-  await new Promise((resolve) => fs.readFile('../docs/achievements.json', 'utf8', (e, data) => {
+  await new Promise((resolve) => fs.readFile('../docs/v3/achievements.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => achievementsList = JSON.parse(data).data);
 

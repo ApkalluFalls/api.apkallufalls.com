@@ -2,24 +2,24 @@
 
 // This function determines if an achievement is obtainable.
 module.exports = function(achievement) {
-  const category = achievement.AchievementCategory;
+  const kind = achievement['AchievementCategory.AchievementKind.Name'];
+  const category = achievement['AchievementCategory.Name'];
+
+  if (!kind || !category)
+    return 'unknown';
+
+  if (kind === 'Legacy')
+    return 'legacy';
 
   switch (category) {
-    case 0:
-      return 'unknown';
+    case 'Ranking':
+      return 'ranked-pvp';
 
-    case 38:
+    case 'Seasonal Events':
       return 'seasonal';
-
-    case 54:
-    case 55:
-    case 56:
-    case 57:
-    case 58:
-    case 59:
-    case 60:
-    case 61:
-      return "legacy";
+    
+    default:
+      break;
   }
 
   switch (achievement.ID) {

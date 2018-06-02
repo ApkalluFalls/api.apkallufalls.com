@@ -2,6 +2,8 @@
 
 **This is a work-in-progress. Version 2 of Apkallu Falls will hopefully be launched some time around December/January. This is the initial step towards creating version 2 and is in an incomplete state.**
 
+**Note: Due to a change between version 2 and version 3 of XIVDB's API, an API key is now required to update lists. In order to execute some of the scripts in this repository, you'll need to get an API key from XIVDB first, then store it in a text file on the root-level folder called `xivdb-api-key.txt`.**
+
 This is a mock API for Apkallu Falls. From version 2 onwards, the data Apkallu Falls loads will be maintained within this repository instead of being bundled in with the rest of the site's code.
 
 This benefit of this is that anyone can now update the site's content by cloning the repository and creating a pull request, although I don't expect anyone to actually do that other than myself!

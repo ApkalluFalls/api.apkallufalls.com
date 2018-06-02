@@ -70,7 +70,13 @@ function callApi(apiPath, columns, callback) {
 }
 
 async function recursiveFetch(api, result = [], page = 1) {
-  const data = await fetch(`${api}&page=${page}`)
+  const apiKey = await fs.readFileSync('../xivdb-api-key.txt', 'utf-8');
+
+  if (!apiKey) {
+    throw new Error('XIVDB API key required.')
+  }
+
+  const data = await fetch(`${api}&page=${page}&max_items=1000&key=${apiKey}`)
     .then(response => response.json());
 
   result = [...result, ...data.results];

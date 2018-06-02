@@ -16,25 +16,25 @@ module.exports = new Helper("Achievement", "achievements", {
     "AchievementCategory.AchievementKind.Name",
     "Icon",
     "ID",
-    "Item.ID",
     "Name_de",
     "Name_en",
     "Name_fr",
     "Name_ja",
     "Order",
     "Points",
-    "Data_0",
-    "Data_1",
-    "Data_2",
-    "Data_3",
-    "Data_4",
-    "Data_5",
-    "Data_6",
-    "Data_7",
-    "Data_8",
+    "Data0",
+    "Data1",
+    "Data2",
+    "Data3",
+    "Data4",
+    "Data5",
+    "Data6",
+    "Data7",
+    "Data8",
     "Title.ID",
     "Type",
-    'GamePatch.ID'
+    'GamePatch.ID',
+    "Item.ID"
   ],
   list: true,
   v3: true,
@@ -95,11 +95,11 @@ module.exports = new Helper("Achievement", "achievements", {
           if (unavailable)
             response.unavailable = unavailable;
 
-          if (entry.item || entry["Title.ID"]) {
+          if (entry["Item.ID"] || entry["Title.ID"]) {
             response.reward = {};
 
             if (entry.item)
-              response.reward.item = entry.item;
+              response.reward.item = entry["Item.ID"];
               
             if (entry["Title.ID"])
               response.reward.title = entry["Title.ID"];
@@ -140,82 +140,7 @@ module.exports = new Helper("Achievement", "achievements", {
     return response;
   }
 }, (data, base, _helperCreateJSONFn, resolve) => {
-  fetch(
-    'http://api.xivdb.com/minion',
-    {
-      method: 'GET',
-      mode: 'cors'
-    }
-  )
-    .then(response => response.json())
-    .then(minions => {
-      fetch(
-        'http://api.xivdb.com/mount',
-        {
-          method: 'GET',
-          mode: 'cors'
-        }
-      )
-        .then(response => response.json())
-        .then(mounts => {
-          fetch(
-            'http://api.xivdb.com/item?columns=id,icon,name_de,name_en,name_fr,name_ja,connect_achievement,item_ui_category',
-            {
-              method: 'GET',
-              mode: 'cors'
-            }
-          )
-            .then(response => response.json())
-            .then(items => {
-              items = items.filter(i => i.connect_achievement !== 0);
-              data.forEach(achievement => {
-                const item = items.filter(i => i.id === achievement['Item.ID'])[0];
-                
-                if (item) {
-                  achievement.item = {
-                    icon: item.icon,
-                    id: item.id,
-                    name: {
-                      de: item.name_de,
-                      en: item.name_en,
-                      fr: item.name_fr,
-                      jp: item.name_ja
-                    }
-                  }
-
-                  switch (item.item_ui_category) {
-                    case 81: {
-                      const match = minions.filter(m => m.name_en.toLowerCase() === item.name_en.toLowerCase())[0];
-                      if (!match) {
-                        throw new Error('Minion name not matched to item name.');
-                      }
-                      achievement.item.special = {
-                        type: 'minion',
-                        id: match.id
-                      };
-                      break;
-                    }
-
-                    case 63: {
-                      const match = _getMountIdFromItem(mounts, item);
-                      if (match)
-                        achievement.item.special = {
-                          type: 'mount',
-                          id: match
-                        };
-                      break;
-                      }
-                  }
-                }
-              })
-              
-              createList("achievements", data, base, _helperCreateJSONFn, resolve);
-            })
-            .catch(e => {
-              throw new Error(e)
-            });
-        });
-    });
+  createList("achievements", data, base, _helperCreateJSONFn, resolve);
 });
 
 function getPrev(filtered, offset, result) {

@@ -9,14 +9,16 @@ module.exports = function(achievement) {
 		case 13: // triumph in n matches in The Fold
 		case 17: // participate in n Frontline matches
 		case 19: // triumph in n Frontline matches
-			return achievement.Data_0;
+			return achievement.Data0;
+
 		case 1: // do n things
 		case 3: // achieve n levels as class
 		case 11: // achieve PVP rank n with a specific Grand Company
 		case 15: // achieve rank n with a specific Beast Tribe
 		case 18: // guide a specific Grand Company to n Frontline victories
 		case 21: // obtain n minions
-			return achievement.Data_1;
+			return achievement.Data1;
+
 		case 0: // complete specific Legacy thing (some stil relevant)
 		case 5: // complete all n of these requirement_2 - 9 things
 		case 6: // complete a specific quest
@@ -28,8 +30,10 @@ module.exports = function(achievement) {
 		case 23: // complete all Verminion challenges
 		case 24: // obtain a variety of anima weapon
 			return 1;
+
 		case 2: // complete n other achievements
 			return 0; // the other achievements have their own weights and this is automatic
+			
 		case 16: // there is no type 16
 		case 22: // there is no type 22
 		default:

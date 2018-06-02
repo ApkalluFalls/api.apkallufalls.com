@@ -15,31 +15,46 @@ module.exports = new Helper("Item", "items", {
     'Name_fr',
     'Name_ja',
     'ItemAction.Type',
-    'ItemAction.Data_0',
-    'ItemAction.Data_1',
-    'ItemAction.Data_2',
-    'ItemAction.Data_3'
+    'ItemAction.Data0',
+    'ItemAction.Data1',
+    'ItemAction.Data2',
+    'ItemAction.Data3',
+    'GameContentLinks.Achievement.Item'
   ],
   list: true,
   v3: true,
   format: (data, args) => {
     const response = {
-      emotes: format(
-        data.filter(item => item['ItemAction.Data_1'] >= 5100
-          && item['ItemAction.Data_1'] <= 5300
-          && item['ItemAction.Data_2'] !== 0
-        ),
-        'ItemAction.Data_2'
-      ),
-      minions: format(
-        data.filter((item => item['ItemAction.Type'] === 853)),
-        'ItemAction.Data_0'
-      ),
-      mounts: format(
-        data.filter((item => item['ItemAction.Type'] === 1322)),
-        'ItemAction.Data_0'
+      achievements: format(
+        data.filter(item => item['GameContentLinks.Achievement.Item']),
+        'GameContentLinks.Achievement.Item',
+        'achievement'
       )
-    }
+    };
+  
+    response.emotes = format(
+      data.filter(item => item['ItemAction.Data1'] >= 5100
+        && item['ItemAction.Data1'] <= 5300
+        && item['ItemAction.Data2'] !== 0
+      ),
+      'ItemAction.Data2',
+      'emote',
+      response.achievements
+    );
+
+    response.minions = format(
+      data.filter((item => item['ItemAction.Type'] === 853)),
+      'ItemAction.Data0',
+      'minion',
+      response.achievements
+    );
+
+    response.mounts = format(
+      data.filter((item => item['ItemAction.Type'] === 1322)),
+      'ItemAction.Data0',
+      'mount',
+      response.achievements
+    );
 
     return response;
   }
@@ -47,22 +62,47 @@ module.exports = new Helper("Item", "items", {
   createList("items", data, base, _helperCreateJSONFn);
 });
 
-function format(data, awardKey) {
-  return data.map(entry => ({
-    icon: entry.Icon,
-    id: entry.ID,
-    info: {
-      de: entry.Description_de,
-      en: entry.Description_en,
-      fr: entry.Description_fr,
-      jp: entry.Description_ja
-    },
-    name: {
-      de: entry.Name_de,
-      en: entry.Name_en,
-      fr: entry.Name_fr,
-      jp: entry.Name_ja
-    },
-    awards: entry[awardKey]
-  }))
+function format(data, awardKey, subresource, achievements) {
+   return data.map(entry => {
+     const result = {
+      icon: entry.Icon,
+      id: entry.ID,
+      info: {
+        de: entry.Description_de,
+        en: entry.Description_en,
+        fr: entry.Description_fr,
+        jp: entry.Description_ja
+      },
+      name: {
+        de: entry.Name_de,
+        en: entry.Name_en,
+        fr: entry.Name_fr,
+        jp: entry.Name_ja
+      }
+    }
+
+    if (achievements) {
+      const achievement = achievements.filter(a => a.id === result.id)[0];
+      result.awards = entry[awardKey];
+
+      if (achievement) {
+        if (achievement.special)
+          throw new Error(
+            "Achievement " + achievement.source + " with item " + result.id + " already has a special value."
+          );
+        
+        achievement.special = {
+          type: subresource,
+          id: result.awards
+        }
+      }
+    }
+    else {
+      if (entry[awardKey].length > 1)
+        throw new Error('Unhandled item with multiple achievements.');
+        result.source = entry[awardKey][0];
+    }
+
+    return result;
+  })
 }

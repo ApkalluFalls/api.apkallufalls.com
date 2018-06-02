@@ -13,10 +13,11 @@ module.exports = new Helper(name, plural, {
     "Id",
     "Icon",
     'ItemAction.Type',
-    'ItemAction.Data_0',
-    'ItemAction.Data_1',
-    'ItemAction.Data_2',
-    'ItemAction.Data_3'
+    'ItemAction.Data0',
+    'ItemAction.Data1',
+    'ItemAction.Data2',
+    'ItemAction.Data3',
+    'GameContentLinks'
   ],
   list: true,
   v3: true,
@@ -32,6 +33,7 @@ module.exports = new Helper(name, plural, {
   const mounts = data.filter((item => item['ItemAction.Type'] === 1322));
 
   getIcons(base, [
+    ...achievements,
     emote,
     ...minions,
     ...mounts

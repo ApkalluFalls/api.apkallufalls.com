@@ -124,7 +124,8 @@ const update = async function (args) {
     await require('./icons/achievements.js').fetch();
     await require('./icons/minions.js').fetch();
     await require('./icons/mounts.js').fetch();
-    await require('./icons/items.js').fetch();
+    // Sprite file too large.
+    // await require('./icons/items.js').fetch();
     await require('./icons/barding.js').fetch();
     await require('./icons/emotes.js').fetch();
     // Not used for now. Image size ends up > 11Mb

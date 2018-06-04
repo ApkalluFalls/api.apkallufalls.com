@@ -23,7 +23,7 @@ module.exports = new Helper("Minion", "minions", {
 
     const response = {
       localisation: localisationStrings,
-      data: data.filter(entry => entry.Icon).map(entry => {
+      data: data.filter(entry => entry.IconSmall).map(entry => {
         const result = {
           icon: +entry.IconSmall.replace(/^.*\/(\d+)\.png$/, (match, group) => {
             return group;

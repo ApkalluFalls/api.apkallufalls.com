@@ -38,7 +38,7 @@ module.exports = new Helper(name, plural, {
           img: (() => {
             if (!data.Icon)
               return false;
-            return config.fullImagePathV3 + data.Icon;
+            return data.Icon;
           })(),
           xivdb: data.Url && ('/' + data.Url.charAt(1).toLowerCase() + data.Url.slice(2))
         }

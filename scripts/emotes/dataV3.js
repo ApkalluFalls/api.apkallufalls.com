@@ -35,7 +35,7 @@ module.exports = new Helper(name, plural, {
           img: (() => {
             if (!data.Icon)
               return false;
-            return config.fullImagePathV3 + data.Icon;
+            return data.Icon;
           })(),
           targeted: targeted && (!untargeted || targeted.Text_en !== untargeted.Text_en) ? parseTargetedString(targeted.Text_en, data.ID) : undefined,
           untargeted: untargeted ? parseUntargetedString(untargeted.Text_en, data.ID) : undefined,

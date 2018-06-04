@@ -31,7 +31,7 @@ module.exports = class Helper {
     return new Promise((resolve) => {
       this.resolve = resolve;
       const apiPath = this.v3
-                    ? "http://api.xivdb-staging.com/" + this.api.charAt(0).toUpperCase() + this.api.slice(1)
+                    ? "https://api.xivdb-staging.com/" + this.api.charAt(0).toUpperCase() + this.api.slice(1)
                     : "https://api.xivdb.com/" + this.api;
       const columns = this.columns && this.columns.length
                     ? "?columns=" + this.columns.join(',')
@@ -60,6 +60,8 @@ function callApi(apiPath, columns, callback) {
     .then(response => response.json())
     .then(callback)
     .catch(e => {
+      console.info(e);
+
       if (this.errors > 10)
         throw new Error("XIVDB API error: " + e);
 
@@ -93,8 +95,6 @@ function process(data) {
   if (this.v3) {
     if (data instanceof Array)
       data = data.filter(d => d.ID !== 0);
-    else if (data && typeof data === 'object' && data.content instanceof Array)
-      data.content = data.content.filter(d => d.ID !== 0);
   }
 
   // If we should ignore everything and use a callback, do that.
@@ -110,7 +110,7 @@ function process(data) {
   }
   
   const processData = (d) => {
-    const fileName = this.v3 ? d.content.ID : d.id;
+    const fileName = this.v3 ? d.ID : d.id;
     const filePath = this.base + fileName + ".json";
     let logMessage = this.name + " @ " + filePath + " ";
   

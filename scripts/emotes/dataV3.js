@@ -26,20 +26,20 @@ module.exports = new Helper(name, plural, {
       api: api + '/' + entry.ID,
       base,
       format: (data) => {
-        const targeted = data.content.LogMessage_Targeted;
-        const textCommand = data.content.TextCommand;
-        const untargeted = data.content.LogMessage_Untargeted;
+        const targeted = data.LogMessageTargeted;
+        const textCommand = data.TextCommand;
+        const untargeted = data.LogMessageUntargeted;
         
         const result = {
-          id: data.content.ID,
+          id: data.ID,
           img: (() => {
-            if (!data.content.Icon)
+            if (!data.Icon)
               return false;
-            return config.fullImagePathV3 + data.content.Icon;
+            return config.fullImagePathV3 + data.Icon;
           })(),
-          targeted: targeted && (!untargeted || targeted.Text_en !== untargeted.Text_en) ? parseTargetedString(targeted.Text_en, data.content.ID) : undefined,
-          untargeted: untargeted ? parseUntargetedString(untargeted.Text_en, data.content.ID) : undefined,
-          xivdb: data.content.Url && ('/' + data.content.Url.charAt(1).toLowerCase() + data.content.Url.slice(2))
+          targeted: targeted && (!untargeted || targeted.Text_en !== untargeted.Text_en) ? parseTargetedString(targeted.Text_en, data.ID) : undefined,
+          untargeted: untargeted ? parseUntargetedString(untargeted.Text_en, data.ID) : undefined,
+          xivdb: data.Url && ('/' + data.Url.charAt(1).toLowerCase() + data.Url.slice(2))
         }
 
         if (textCommand) {
@@ -62,8 +62,8 @@ module.exports = new Helper(name, plural, {
         createHTML(result.id, {
           data: result,
           emoji: "😊",
-          title: `${data.content.Name_en} | Apkallu Falls`,
-          description: `The ${data.content.Name_en} emote on Final Fantasy XIV.${result.untargeted && result.untargeted.unisex ? ` *${result.untargeted.unisex.replace('CHARACTER', 'Apkallu Falls')}*` : ''}`,
+          title: `${data.Name_en} | Apkallu Falls`,
+          description: `The ${data.Name_en} emote on Final Fantasy XIV.${result.untargeted && result.untargeted.unisex ? ` *${result.untargeted.unisex.replace('CHARACTER', 'Apkallu Falls')}*` : ''}`,
           image: result.img,
           section: "Emotes"
         }, "emote", () => {});

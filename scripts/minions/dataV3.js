@@ -34,13 +34,13 @@ module.exports = new Helper(name, plural, {
       base,
       format: (data) => {
         const result = {
-          id: data.content.ID,
+          id: data.ID,
           img: (() => {
-            if (!data.content.Icon)
+            if (!data.Icon)
               return false;
-            return config.fullImagePathV3 + data.content.Icon;
+            return config.fullImagePathV3 + data.Icon;
           })(),
-          xivdb: data.content.Url && ('/' + data.content.Url.charAt(1).toLowerCase() + data.content.Url.slice(2))
+          xivdb: data.Url && ('/' + data.Url.charAt(1).toLowerCase() + data.Url.slice(2))
         }
 
         const parent = hasParent(result);
@@ -60,38 +60,38 @@ module.exports = new Helper(name, plural, {
         }
 
         result.behavior = {
-          de: data.content.Behavior.Name_de,
-          en: data.content.Behavior.Name_en,
-          fr: data.content.Behavior.Name_fr,
-          jp: data.content.Behavior.Name_ja
+          de: data.Behavior.Name_de,
+          en: data.Behavior.Name_en,
+          fr: data.Behavior.Name_fr,
+          jp: data.Behavior.Name_ja
         }
 
         result.race = {
-          de: data.content.MinionRace.Name_de,
-          en: data.content.MinionRace.Name_en,
-          fr: data.content.MinionRace.Name_fr,
-          jp: data.content.MinionRace.Name_ja
+          de: data.MinionRace.Name_de,
+          en: data.MinionRace.Name_en,
+          fr: data.MinionRace.Name_fr,
+          jp: data.MinionRace.Name_ja
         }
 
         result.info = {
-          de: data.content.DescriptionEnhanced_de,
-          en: data.content.DescriptionEnhanced_en,
-          fr: data.content.DescriptionEnhanced_fr,
-          jp: data.content.DescriptionEnhanced_ja
+          de: data.DescriptionEnhanced_de,
+          en: data.DescriptionEnhanced_en,
+          fr: data.DescriptionEnhanced_fr,
+          jp: data.DescriptionEnhanced_ja
         };
 
         result.quote = {
-          de: data.content.Tooltip_de,
-          en: data.content.Tooltip_en,
-          fr: data.content.Tooltip_fr,
-          jp: data.content.Tooltip_ja
+          de: data.Tooltip_de,
+          en: data.Tooltip_en,
+          fr: data.Tooltip_fr,
+          jp: data.Tooltip_ja
         };
 
         result.summon = {
-          de: data.content.Description_de,
-          en: data.content.Description_en.replace(new RegExp(`Summon your ${data.name_en}( minion)?\\. `, "i"), ''),
-          fr: data.content.Description_fr,
-          jp: data.content.Description_ja
+          de: data.Description_de,
+          en: data.Description_en.replace(new RegExp(`Summon your ${data.name_en}( minion)?\\. `, "i"), ''),
+          fr: data.Description_fr,
+          jp: data.Description_ja
         };
 
         const sound = soundFilter(result);
@@ -99,7 +99,7 @@ module.exports = new Helper(name, plural, {
         if (sound)
           result.sound = sound;
 
-        const name = data.content.Name_en && data.content.Name_en.split(' ').map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' ');
+        const name = data.Name_en && data.Name_en.split(' ').map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' ');
         createHTML(result.id, {
           data: result,
           emoji: "🐧",

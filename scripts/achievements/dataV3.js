@@ -29,22 +29,20 @@ module.exports = new Helper(name, plural, {
       api: api + '/' + entry.ID,
       base,
       format: (data) => {
-        const content = data.content;
-
         return {
-          id: content.ID,
+          id: data.ID,
           help: {
-            de: content.Description_de,
-            en: content.Description_en,
-            fr: content.Description_fr,
-            jp: content.Description_ja
+            de: data.Description_de,
+            en: data.Description_en,
+            fr: data.Description_fr,
+            jp: data.Description_ja
           },
           img: (() => {
-            if (!data.content.Icon)
+            if (!data.Icon)
               return false;
-            return config.fullImagePathV3 + data.content.Icon;
+            return config.fullImagePathV3 + data.Icon;
           })(),
-          xivdb: data.content.Url && ('/' + data.content.Url.charAt(1).toLowerCase() + data.content.Url.slice(2))
+          xivdb: data.Url && ('/' + data.Url.charAt(1).toLowerCase() + data.Url.slice(2))
         }
       }
     }

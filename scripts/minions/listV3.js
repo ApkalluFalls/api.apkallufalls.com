@@ -7,7 +7,7 @@ const localisationStrings = require('../../filters/minions/localisationStrings')
 module.exports = new Helper("Minion", "minions", {
   api: 'Companion',
   columns: [
-    'Icon',
+    'IconSmall',
     'ID',
     'Name_de',
     'Name_en',
@@ -25,7 +25,7 @@ module.exports = new Helper("Minion", "minions", {
       localisation: localisationStrings,
       data: data.filter(entry => entry.Icon).map(entry => {
         const result = {
-          icon: +entry.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
+          icon: +entry.IconSmall.replace(/^.*\/(\d+)\.png$/, (match, group) => {
             return group;
           }),
           id: entry.ID,

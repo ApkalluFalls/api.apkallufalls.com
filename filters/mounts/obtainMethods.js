@@ -118,6 +118,7 @@ const feastSeason3Pack = ["Season Three Pack Wolf Voucher C", "Preiscoupon C des
 const feastSeason4Lone = ["Season Four Lone Wolf Voucher C", "Preiscoupon C des einsamen Wolfes (4. Saison)", "Certificat de finaliste solitaire S4", "強者の証S4[ソロ]"];
 const feastSeason4Pack = ["Season Four Pack Wolf Voucher C", "Preiscoupon C des Rudelwolfes (4. Saison)", "Certificat de finaliste de meute S4", "強者の証S4[パーティ]"];
 const feastSeason7Pack = ["Season Seven Pack Wolf Voucher C", "Preiscoupon C des Rudelwolfes (7. Saison)", "Certificat de finaliste du festin S7", "強者の証S7"];
+const feastSeason8Pack = ["Season Eight Pack Wolf Voucher B", "Preiscoupon B des Rudelwolfes (8. Saison)", "Certificat de compétiteur du festin S8", "猛者の証S8"];
 const blissTotem = ["Bliss Totem", "Lakshmi-Totem", "Totem de la beauté", "美神のトーテム像"];
 const revelTotem = ["Revel Totem", "Susano-Totem", "Totem des tempêtes", "豪神のトーテム像"];
 const shinryuTotem = ["Shinryu Totem", "Shinryu-Totem", "Totem draconique divin", "神龍のトーテム像"];
@@ -1540,6 +1541,22 @@ module.exports = (mount, achievementsIn, mountsIn) => {
         'purchase',
         [
           1, feastSeason7Pack, feastSeasonItemImage,
+          ["Feast Quartermaster", "Versorgungsoffizier[p] Des Mahlstroms", "Officier Magasinier Du Maelstrom", "シーズン報酬支給官"],
+          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+          locationImage,
+          location.wolvesDenPier,
+          4.8, 5.8
+        ],
+        expansions.HW,
+        false,
+        false
+      );
+
+    case 163:
+      return o(
+        'purchase',
+        [
+          1, feastSeason8Pack, feastSeasonItemImage,
           ["Feast Quartermaster", "Versorgungsoffizier[p] Des Mahlstroms", "Officier Magasinier Du Maelstrom", "シーズン報酬支給官"],
           ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
           locationImage,

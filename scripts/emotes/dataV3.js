@@ -64,7 +64,7 @@ module.exports = new Helper(name, plural, {
           emoji: "😊",
           title: `${data.Name_en} | Apkallu Falls`,
           description: `The ${data.Name_en} emote on Final Fantasy XIV.${result.untargeted && result.untargeted.unisex ? ` *${result.untargeted.unisex.replace('CHARACTER', 'Apkallu Falls')}*` : ''}`,
-          image: result.img,
+          image: config.fullImagePathV3 + result.img,
           section: "Emotes"
         }, "emote", () => {});
 

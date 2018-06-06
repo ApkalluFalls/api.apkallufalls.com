@@ -105,7 +105,7 @@ module.exports = new Helper(name, plural, {
           emoji: "🐧",
           title: `${name} | Apkallu Falls`,
           description: `The ${name} minion on Final Fantasy XIV. ${result.info.en}.`,
-          image: result.img,
+          image: config.fullImagePathV3 + result.img,
           section: "Minions"
         }, "minion", () => {});
 

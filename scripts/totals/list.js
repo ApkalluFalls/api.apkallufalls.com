@@ -15,7 +15,7 @@ module.exports = async function() {
     resolve(data);
   })).then(data => emotesList = JSON.parse(data).data);
 
-  await new Promise((resolve) => fs.readFile('../docs/minions.json', 'utf8', (e, data) => {
+  await new Promise((resolve) => fs.readFile('../docs/v3/minions.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => minionsList = JSON.parse(data).data);
 

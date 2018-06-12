@@ -3403,6 +3403,11 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 1, ...craftItem.dotharliCloth }
         ]
       );
+    
+    case 297:
+      return helper.squareEnixStoreNoExpiration(
+        ['Stormblood FANTASY XIV Original Soundtrack[映像付サントラ／Blu-ray Disc Music]', true, true, true]
+      );
 
     case 299:
       return helper.raid(location.duty.theRidoranaLighthouse, 70, expansions.SB, true, false);

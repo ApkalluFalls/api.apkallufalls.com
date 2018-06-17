@@ -52,7 +52,7 @@ module.exports = new Helper("Barding", "barding", {
       return d.ref && d.ref.filter(r => !r.promo && r.available).length;
     }).length;
 
-    createHTML("barding", {
+    createHTML("chocobo-barding", {
       data: response.data,
       emoji: "💺",
       list: true,

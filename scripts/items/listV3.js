@@ -32,6 +32,13 @@ module.exports = new Helper("Item", "items", {
       )
     };
   
+    response.barding = format(
+      data.filter(item => item['ItemAction.Type'] == 1013),
+      'ItemAction.Data0',
+      'barding',
+      response.achievements
+    );
+  
     response.emotes = format(
       data.filter(item => item['ItemAction.Data1'] >= 5100
         && item['ItemAction.Data1'] <= 5300
@@ -50,7 +57,7 @@ module.exports = new Helper("Item", "items", {
     );
 
     response.mounts = format(
-      data.filter((item => item['ItemAction.Type'] === 1322)),
+      data.filter(item => item['ItemAction.Type'] === 1322),
       'ItemAction.Data0',
       'mount',
       response.achievements

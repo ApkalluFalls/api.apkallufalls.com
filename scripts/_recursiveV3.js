@@ -2,8 +2,8 @@
 
 const Helper = require('./_helper');
 
-module.exports = function(data, name, getConfig, resolve) {
-  const all = data.slice(0);
+module.exports = function(data, name, getConfig, resolve, nullResolved) {
+  const all = nullResolved ? data : data.slice(0);
   recursiveFetch(all, ...arguments);
 }
 

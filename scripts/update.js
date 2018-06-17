@@ -169,6 +169,12 @@ const update = async function (args) {
     await require('./minions/listV3.js').fetch(achievementsList);
   }
 
+  // Chocobo Barding V3.
+  if (config && config.bardingV3) {
+    message('Chocobo Barding');
+    await require('./barding/dataV3.js').fetch(achievementsListV3, itemsV3);
+  }
+
   // Emotes V3.
   if (config && config.emotesV3) {
     message('Emotes');

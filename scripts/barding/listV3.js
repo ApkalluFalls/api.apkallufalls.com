@@ -22,7 +22,9 @@ module.exports = new Helper("Barding", "barding", {
 
     const response = {
       localisation: localisationStrings,
-      data: data.map(entry => {
+      data: data
+        .filter(entry => entry.IconBody)
+        .map(entry => {
           const result = {
             icon: +entry.IconBody.replace(/^.*\/(\d+)\.png$/, (match, group) => {
               return group;

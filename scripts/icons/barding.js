@@ -1,7 +1,7 @@
 const Helper = require('../_helper');
 const getIcons = require('./_iconHelper');
 
-const api = "Item";
+const api = "BuddyEquip";
 const base = 'barding';
 const name = "Barding";
 const plural = "barding";
@@ -11,18 +11,16 @@ module.exports = new Helper(name, plural, {
   base,
   columns: [
     "ID",
-    "Icon",
-    "ItemAction.Type"
+    "IconBody"
   ],
   useCallback: true,
   list: true,
   v3: true
 }, (data, resolve) => {
-  data = data.filter(item => {
-    if (item["ItemAction.Type"] === 1013)
-      return true;
-    return false;
-  });
+  data = data.map(d => ({
+    ...d,
+    Icon: d.IconBody
+  })).filter(d => d.IconBody);
   getIcons(base, data, resolve, true);
 });
 

@@ -93,7 +93,7 @@ function process(type, data, resolve, v3) {
     path = config.fullImagePathV3 + entry.Icon;
     console.info(path);
     savePath = saveFolder + entry.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
-      return group;
+      return +group;
     }) + '.png';
   }
   else {

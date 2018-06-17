@@ -214,7 +214,7 @@ function resolve(data, logMessage) {
     if (logMessage)
       console.log(logMessage);
 
-    return this.callback(data, this.resolve);
+    return this.callback(data, this.resolve, this.args);
   }
 
   throw new Error("Resolve should not have been called.");

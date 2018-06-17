@@ -1572,7 +1572,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return o(
         'beastTribe',
         [
-          rank.sworn,
+          rank.bloodsworn,
           beastTribe.namazu,
           20, namazuKoban, namazuKobanImage,
           ["Gyosho", true, true, "ギョショウ"],

@@ -11,6 +11,7 @@ module.exports = class Helper {
     this.list = !!config.list;
     this.useCallback = config.useCallback;
     this.v3 = config.v3;
+    this.customId = config.customId;
 
     this.errors = 0;
 
@@ -110,7 +111,7 @@ function process(data) {
   }
   
   const processData = (d) => {
-    const fileName = this.v3 ? d.ID : d.id;
+    const fileName = this.customId ? this.customId : (this.v3 ? d.ID : d.id);
     const filePath = this.base + fileName + ".json";
     let logMessage = this.name + " @ " + filePath + " ";
   

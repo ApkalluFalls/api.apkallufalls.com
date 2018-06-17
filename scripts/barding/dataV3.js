@@ -1,19 +1,16 @@
-const fs = require('fs');
 const createHTML = require('../_HTML');
 const recursiveFetch = require('../_recursiveV3');
 const config = require('../_config');
-const localisation = require('../../localisation');
 
 const api = "Item";
 const base = 'v3/barding';
 const name = "Barding";
-const plural = "barding";
 
 module.exports = ({
   fetch: async (achievements, items) => {
     const data = items.barding.map(b => ({
       ...b,
-      ID: b.id // To allow the helper class to read the ID.
+      ID: b.awards // To allow the helper class to read the ID.
     }));
     return new Promise((resolve) => {
       recursiveFetch(data, name, (entry) => {
@@ -21,9 +18,10 @@ module.exports = ({
           v3: true,
           api: api + '/' + entry.id,
           base,
+          customId: entry.awards,
           format: (data) => {
             const result = {
-              id: data.ID,
+              id: data.ItemAction.Data0,
               help: {
                 de: data.Description_de,
                 en: data.Description_en,

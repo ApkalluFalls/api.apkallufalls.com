@@ -45,7 +45,7 @@ module.exports = new Helper(name, plural, {
         }
 
         if (data.GrandCompany && data.GrandCompany.ID)
-          result.GrandCompany = {
+          result.grandCompany = {
             de: data.GrandCompany.Name_de,
             en: data.GrandCompany.Name_en,
             fr: data.GrandCompany.Name_fr,

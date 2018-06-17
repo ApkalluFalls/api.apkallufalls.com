@@ -29,7 +29,7 @@ module.exports = () => {
 
   console.info('!! Make sure these look correct:', '\n');
 
-  // Minion and Mount tags
+  // Minion, Mount, Emote and Barding tags
   // This needs to be synchronised with the website's tag handling method.
   [
     "achievement",
@@ -60,7 +60,8 @@ module.exports = () => {
     "wondrous-tails",
     "unknown",
     "grand-company",
-    "default"
+    "default",
+    "companion"
   ].forEach(tag => {
     const text = tag
       .split('-')
@@ -77,7 +78,7 @@ module.exports = () => {
     createHTML(tag, {
       emoji: "🐧",
       list: true,
-      title: ` Minions tagged ‘${text}’ | Apkallu Falls`,
+      title: `Minions tagged ‘${text}’ | Apkallu Falls`,
       description: `This is a list of obtain methods for all minions tagged ‘${text}’.`,
       section: "Minions"
     }, 'minions/tagged', () => {});
@@ -85,7 +86,7 @@ module.exports = () => {
     createHTML(tag, {
       emoji: "🚲",
       list: true,
-      title: ` Mounts tagged ‘${text}’ | Apkallu Falls`,
+      title: `Mounts tagged ‘${text}’ | Apkallu Falls`,
       description: `This is a list of obtain methods for all mounts tagged ‘${text}’.`,
       section: "Mounts"
     }, 'mounts/tagged', () => {});
@@ -93,10 +94,18 @@ module.exports = () => {
     createHTML(tag, {
       emoji: "😊",
       list: true,
-      title: ` Emotes tagged ‘${text}’ | Apkallu Falls`,
+      title: `Emotes tagged ‘${text}’ | Apkallu Falls`,
       description: `This is a list of obtain methods for all emotes tagged ‘${text}’.`,
       section: "Emotes"
     }, 'emotes/tagged', () => {});
+
+    createHTML(tag, {
+      emoji: "💺",
+      list: true,
+      title: `Chocobo barding tagged ‘${text}’ | Apkallu Falls`,
+      description: `This is a list of obtain methods for all sets of chocobo barding tagged ‘${text}’.`,
+      section: "Chocobo Barding"
+    }, 'chocobo-barding/tagged', () => {});
   });
 
   console.info('\n', '!! Make sure those look correct ^.', '\n');

@@ -332,5 +332,22 @@ module.exports = {
     de: 'Lade einen Freund ein',
     fr: 'Campagne d\'invitation d\'ami',
     jp: '友達招待キャンペーン'
+  },
+
+  // Chocobo skill trees
+  'Defender': {
+    de: '?Defender?',
+    fr: '?Defender?',
+    jp: '?Defender?'
+  },
+  'Attacker': {
+    de: '?Attacker?',
+    fr: '?Attacker?',
+    jp: '?Attacker?'
+  },
+  'Healer': {
+    de: '?Healer?',
+    fr: '?Healer?',
+    jp: '?Healer?'
   }
 }

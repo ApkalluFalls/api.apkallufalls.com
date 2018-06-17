@@ -4,6 +4,9 @@ module.exports = {
     de: 'Schalte die Errungenschaft __achievement__ frei.',
     fr: 'Débloquer le haut fait \'__achievement__\'.'
   },
+  buddySkill: {
+    en: 'Raise the chocobo companion\'s {0} skill tree to level 10.'
+  },
   purchase: {
     en: 'Purchase for {img2} {i0} {i1} from {3} {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Erhältlich für {img2} {i0} {i1} von {3} {4} in {img5} {6} (x: {7}, y: {8}).',

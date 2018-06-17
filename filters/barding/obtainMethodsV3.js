@@ -109,6 +109,15 @@ const helper = {
       }
     )
   },
+  buddySkill: (tree) => {
+    return o(
+      'buddySkill',
+      [locale(tree)],
+      expansions.ARR,
+      true,
+      false
+    )
+  },
   companySeals: (cost, company, item) => {
     const companySeals = ['Company Seals', 'Staatstaler', 'Sceaux de compagnie', '軍票'];
 
@@ -280,6 +289,39 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
   switch (+barding.id) {
     case 2:
       return helper.companySeals(4000, 'Maelstrom', item);
+
+    case 3:
+      return helper.companySeals(6000, 'Maelstrom', item);
+
+    case 4:
+      return helper.companySeals(8000, 'Maelstrom', item);
+
+    case 6:
+      return helper.companySeals(4000, 'Order of the Twin Adder', item);
+
+    case 7:
+      return helper.companySeals(6000, 'Order of the Twin Adder', item);
+
+    case 8:
+      return helper.companySeals(8000, 'Order of the Twin Adder', item);
+
+    case 10:
+      return helper.companySeals(4000, 'Immortal Flames', item);
+
+    case 11:
+      return helper.companySeals(6000, 'Immortal Flames', item);
+
+    case 12:
+      return helper.companySeals(8000, 'Immortal Flames', item);
+    
+    case 13:
+      return helper.buddySkill('Defender');
+    
+    case 14:
+      return helper.buddySkill('Attacker');
+    
+    case 15:
+      return helper.buddySkill('Healer');
 
     default:
       console.log("Unknown method for barding " + barding.id);

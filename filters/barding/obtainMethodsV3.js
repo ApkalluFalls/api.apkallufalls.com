@@ -273,10 +273,14 @@ let value;
 /* Returns information about how minions are obtained.
  * Corresponds to ../../docs/obtainMethods.json.
  */
-module.exports = (barding, achievementsIn, allBardingIn) => {
+module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
   achievements = achievementsIn;
   allBarding = allBardingIn;
+  item = itemIn;
   switch (+barding.id) {
+    case 2:
+      return helper.companySeals(4000, 'Maelstrom', item);
+
     default:
       console.log("Unknown method for barding " + barding.id);
       return null;

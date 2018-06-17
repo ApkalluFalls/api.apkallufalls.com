@@ -97,6 +97,24 @@ const location = {
 }
 
 const helper = {
+  achievementCertificate: (quantity) => {
+    return o(
+      'achievementCertificate',
+      [
+        quantity + 'x',
+        ['Achievement Certificate', 'Errungenschaftszertifikat', 'Jeton de hauts faits', 'アチーブメントスクリップ'],
+        achievementCertificate,
+        ['Jonathas', true, true, 'ジョナサス'],
+        location.apkalluFalls,
+        locationImage,
+        location.oldGridania,
+        10.6, 6.3
+      ],
+      expansions.ARR,
+      true,
+      false
+    )
+  },
   achievementReward: (achievementId, expansion, available, promo) => {
     return o(
       'achievement',
@@ -117,6 +135,19 @@ const helper = {
       true,
       false
     )
+  },
+  collectorsEdition: (expansionText, expansion, available) => {
+    return o(
+      'collectorsEdition',
+      [
+        ['Collector\'s Edition', true, true, 'コレクターズエディション'],
+        expansionText,
+        locale('Mog Station')
+      ],
+      expansion,
+      available,
+      true
+    );
   },
   companySeals: (cost, company, item) => {
     const companySeals = ['Company Seals', 'Staatstaler', 'Sceaux de compagnie', '軍票'];
@@ -274,6 +305,15 @@ const helper = {
       true,
       true
     )
+  },
+  veteranReward: (days) => {
+    return o(
+      'veteranReward',
+      [locale('Veteran Reward'), days],
+      expansions.ARR,
+      false,
+      false
+    )
   }
 }
 
@@ -322,6 +362,23 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
     
     case 15:
       return helper.buddySkill('Healer');
+
+    case 17:
+      return helper.collectorsEdition(locale('A Realm Reborn'), expansions.ARR, true);
+    
+    case 19:
+      return [
+        helper.veteranReward(180),
+        helper.achievementCertificate(2)
+      ];
+    
+    case 21:
+      return helper.eventQuestPurchase(
+        ["Starlight Supplier", "Sternenlichtfest-Komiteemitglied", "Vendeuse De La Fête Des étoiles", "星芒祭実行委員"],
+        ['Starlight Celebration 2014', true, true, '星芒祭'],
+        expansions.ARR,
+        item
+      )
 
     default:
       console.log("Unknown method for barding " + barding.id);

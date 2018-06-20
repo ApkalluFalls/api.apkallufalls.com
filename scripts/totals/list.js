@@ -36,6 +36,7 @@ module.exports = async function() {
       }
     },
     emotes: {
+      byDefault: emotesList.filter(data => data.ref && data.ref.filter(ref => ref.method.text === 'isDefault').length).length,
       total: emotesList.length,
       unavailable: emotesList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
       unknown: emotesList.filter(data => !data.ref).length

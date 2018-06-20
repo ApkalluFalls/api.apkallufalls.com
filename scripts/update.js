@@ -140,6 +140,10 @@ const update = async function (args) {
     await require('./routes.js')();
   }
 
+  if (config && config.sitemap) {
+    await require('./sitemap.js')();
+  }
+
   // // Achievements V3.
   if (!config || config.achievementsV3) {
     message('Achievements');

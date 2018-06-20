@@ -1,4 +1,3 @@
-const fs = require('fs');
 const createHTML = require('./_HTML');
 
 module.exports = () => {

@@ -767,7 +767,10 @@ const helper = {
   fishingDesynthesis: (item, waters, loc, x, y, bait, level, expansion) => {
     return o(
       'fishingDesynth',
-      [item, locale('Culinarian'), locale('Fisher'), waters, locationImage, loc, x, y, bait, level]
+      [item, locale('Culinarian'), locale('Fisher'), waters, locationImage, loc, x, y, bait, level],
+      expansion,
+      true,
+      false
     )
   },
   fishingDoubleMooch: (waters, loc, x, y, bait, level, expansion, fish1, fish2) => {

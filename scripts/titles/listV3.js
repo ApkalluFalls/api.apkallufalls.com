@@ -23,7 +23,16 @@ module.exports = new Helper("Title", "titles", {
   format: (data, args) => {
     return {
       localisation: localisationStrings,
-      data: data.map(entry => {
+      data: data.filter(entry => {
+        let achievement;
+        if (args && args[0]) {
+          achievement = args[0].data.filter(achievement => (
+            achievement.reward && achievement.reward.title === entry.ID
+          ))[0];
+        }
+
+        return achievement && achievement.icon;
+      }).map(entry => {
         const response = {
           id: entry.ID,
           name: {

@@ -61,7 +61,7 @@ module.exports = function(fileName, content, folder, callback) {
     </script>
   </head>
   <body>
-    <p>If you're seeing this text, please tweet <a href="https://twitter.com/apkallufalls">@ApkalluFalls</a> as this is a bug.</p>
+    <p>${(emoji ? emoji + ' ' : '')}${content.description}</p>
   </body>
 </html>`, 'utf8', callback);
 }

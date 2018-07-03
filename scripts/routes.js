@@ -9,6 +9,10 @@ module.exports = () => {
     description: "Find a character to track on Apkallu Falls, or select from one of your tracked characters.",
     section: "Other Pages"
   }, {
+    name: "connect",
+    text: "Sign in",
+    description: "Connecting with Apkallu Falls will unlock manual tracking of Final Fantasy XIV content."
+  }, {
     name: "translate",
     text: "Translate",
     description: "Help us translate Apkallu Falls!",

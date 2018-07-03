@@ -158,7 +158,6 @@ const location = {
   foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
-  heavenOnHigh: ["Heaven-on-High", "Himmelssäule", "Le Pilier Des Cieux", "アメノミハシラ"],
   mist: ["Mist", "Dorf Des Nebels", "Brumée", "ミスト・ヴィレッジ"],
   morDhona: ["Mor Dhona", true, true, "モードゥナ"],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
@@ -192,6 +191,7 @@ const location = {
     containmentBayZ1T9Extreme: ["Containment Bay Z1T9 (Extreme)", "Zenit Der Götter - Zurvan", "Unité De Contention Z1P9 (extrême)", "極鬼神ズルワーン討滅戦"],
     deltascapev40Savage: ["Deltascape V4.0 (Savage)", "Deltametrie 4.0 (episch)", "Deltastice V4.0 (sadique)", "次元の狭間オメガ零式：デルタ編4"],
     emanationExtreme: ["Emanation (Extreme)", "Zenit Der Götter - Lakshmi", "Émanation (extrême)", "極ラクシュミ討滅戦"],
+    heavenOnHigh: ["Heaven-on-High", "Himmelssäule", "Le Pilier Des Cieux", "アメノミハシラ"],
     sigmascapev40Savage: ["Sigmascape V4.0 (Savage)", "Sigmametrie 4.0 (episch)", "Sigmastice V4.0 (sadique)", "次元の狭間オメガ零式：シグマ編4"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
@@ -376,14 +376,14 @@ const helper = {
       false
     )
   },
-  itemAccursedHoard: (sack, expansion) => {
+  itemAccursedHoard: (sack, locationIn, expansion) => {
     return o(
       'itemAccursedHoard',
       [
         sack,
         item.pieceOfAccursedHoard,
         dutyImage,
-        location.duty.thePalaceOfTheDead
+        locationIn || location.duty.thePalaceOfTheDead
       ],
       expansion || expansions.ARR,
       true,
@@ -1541,7 +1541,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return helper.trial(location.duty.theMinstrelsBalladTsukuyomisPain, 70, expansions.SB, true, false);
 
     case 159:
-      return helper.itemAccursedHoard(item.goldTrimmedSack, expansions.SB);
+      return helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB);
 
     case 162:
       return o(

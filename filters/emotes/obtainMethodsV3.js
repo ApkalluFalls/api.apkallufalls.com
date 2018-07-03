@@ -854,7 +854,8 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
           ['(Prize Exchange I)', '(Gewinne I)', '(Lots (1))', '（景品の交換（その1））'],
           locationImage,
           location.theRubySea,
-          21.2, 9.2
+          21.2, 9.2,
+          item.name
         ],
         expansions.SB,
         true,

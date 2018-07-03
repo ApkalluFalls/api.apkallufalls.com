@@ -45,6 +45,7 @@ const questImage = 'quest';
 const msqImage = 'msq';
 const brassSkyPirateSpoilsImage = 'bsps';
 const gelmorranPotsherdImage = 'gp';
+const empyreanPotsherdImage = 'ep';
 const wondrousTailsImage = 'wt';
 const sasshoSekiFragmentImage = 'ssf';
 const ventureImage = 'v';
@@ -64,6 +65,7 @@ const shinryuTotemImage = 'st';
 
 const item = {
   anemosLockbox: ["Anemos Lockbox", "Anemos-Schließkassette", "Coffre verrouillé d'Anemos", "アネモス帯のロックボックス"],
+  goldHaloedSack: ["Gold-haloed Sack", "Gülden strahlender Schatzbeutel", "Trésor énigmatique de grade II", "埋もれた財宝【弐】"],
   goldTrimmedSack: ["Gold-trimmed Sack", "Gefundener Schatz IV", "Trésor mystérieux de grade IV", "埋もれた財宝G4"],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝']
 }
@@ -98,6 +100,7 @@ const centurioSeals = ["Centurio Seal", "Centurio-Abzeichen", "Insigne Centurio"
 const wolfMarks = ["Wolf Marks", "Wolfsmarken", "Marques De Loup", "対人戦績の取引"];
 const brassSkyPirateSpoils = ["Brass Sky Pirate Spoil", "Messing-Piratenandenken", "Espoille de pirate des cieux en laiton", "スカイパイレーツスポイル:真鍮"];
 const gelmorranPotsherd = ["Gelmorran Potsherd", "Gelmorra-Scherbe", "Tesson de poterie gelmorraine", "ゲルモラ土器片"];
+const empyreanPotsherd = ["Empyrean Potsherd", "Empyreum-Scherbe", "Tesson de poterie empyréenne", "天之土器片"];
 const sasshoSekiFragment = ["Sassho-seki Fragment", "Sassho-seki-Fragment", "Fragment de la Roche meurtrière", "殺生石の欠片"];
 const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン珊瑚貨"];
 const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
@@ -155,6 +158,7 @@ const location = {
   foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
+  heavenOnHigh: ["Heaven-on-High", "Himmelssäule", "Le Pilier Des Cieux", "アメノミハシラ"],
   mist: ["Mist", "Dorf Des Nebels", "Brumée", "ミスト・ヴィレッジ"],
   morDhona: ["Mor Dhona", true, true, "モードゥナ"],
   newGridania: ['New Gridania', 'Neu-Gridania', 'Nouvelle Gridania', 'グリダニア：新市街'],
@@ -372,7 +376,7 @@ const helper = {
       false
     )
   },
-  itemAccursedHoard: (sack) => {
+  itemAccursedHoard: (sack, expansion) => {
     return o(
       'itemAccursedHoard',
       [
@@ -381,7 +385,7 @@ const helper = {
         dutyImage,
         location.duty.thePalaceOfTheDead
       ],
-      expansions.ARR,
+      expansion || expansions.ARR,
       true,
       false
     )
@@ -1535,6 +1539,9 @@ module.exports = (mount, achievementsIn, mountsIn) => {
 
     case 158:
       return helper.trial(location.duty.theMinstrelsBalladTsukuyomisPain, 70, expansions.SB, true, false);
+
+    case 159:
+      return helper.itemAccursedHoard(item.goldTrimmedSack, expansions.SB);
 
     case 162:
       return o(

@@ -37,6 +37,7 @@ const questImage = 'quest';
 const msqImage = 'msq';
 const brassSkyPirateSpoilsImage = 'bsps';
 const gelmorranPotsherdImage = 'gp';
+const empyreanPotsherdImage = 'ep';
 const wondrousTailsImage = 'wt';
 const sasshoSekiFragmentImage = 'ssf';
 const ventureImage = 'v';
@@ -85,6 +86,7 @@ const centurioSeals = ["Centurio Seal", "Centurio-Abzeichen", "Insigne Centurio"
 const wolfMarks = ["Wolf Marks", "Wolfsmarken", "Marques De Loup", "対人戦績の取引"];
 const brassSkyPirateSpoils = ["Brass Sky Pirate Spoil", "Messing-Piratenandenken", "Espoille de pirate des cieux en laiton", "スカイパイレーツスポイル:真鍮"];
 const gelmorranPotsherd = ["Gelmorran Potsherd", "Gelmorra-Scherbe", "Tesson de poterie gelmorraine", "ゲルモラ土器片"];
+const empyreanPotsherd = ["Empyrean Potsherd", "Empyreum-Scherbe", "Tesson de poterie empyréenne", "天之土器片"];
 const sasshoSekiFragment = ["Sassho-seki Fragment", "Sassho-seki-Fragment", "Fragment de la Roche meurtrière", "殺生石の欠片"];
 const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン珊瑚貨"];
 const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
@@ -93,7 +95,8 @@ const namazuKoban = ["Namazu Koban", "Namazuo-Koban", "Koban namazu", "ナマズ
 const mythicClanMarkLog = ["Mythic Clan Mark Log", "Clan-Mythenjäger-Tagebuch", "Journal de membre émérite du clan", "傑物クラン員の手記"];
 
 const location = {
-  theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー']
+  theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
+  theRubySea: ["The Ruby Sea", "Rubinsee", "Mer De Rubis", "紅玉海"]
 }
 
 const helper = {
@@ -836,6 +839,22 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
           ["Dhoro Iloh", true, true, "ドーロ・イロー"],
           5.8, 23.5,
           item.name
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 180:
+      return o(
+        'purchase',
+        [
+          10, empyreanPotsherd, empyreanPotsherdImage,
+          ["Confederate Custodian", "Materialhüterin", "Fournisseuse De La Confédération", "海賊衆の資材係"],
+          ['(Prize Exchange I)', '(Gewinne I)', '(Lots (1))', '（景品の交換（その1））'],
+          locationImage,
+          location.theRubySea,
+          21.2, 9.2
         ],
         expansions.SB,
         true,

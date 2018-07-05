@@ -21,7 +21,7 @@ module.exports = {
   },
   grandCompany: {
     en: 'Unlocked when enlisting with Grand Company: {i0}. You can only have one of __emotes__ at a time.',
-    de: 'Freigeschaltet beim Beitreten der Staatlichen Gesellschaft {i0}. Du kannst nur eine der _emotes_ zur selben Zeit besitzen.',
+    de: 'Freigeschaltet durch das Einschreiben in einer staatlichen Gesellschaft: {i0}. Du kannst nur eines der __emotes__ zur selben Zeit besitzen.',
     fr: 'Obtenu après avoir rejoint la Grande Compagnie: {i0}. Vous ne pouvez avoir qu\'une des emotes __emotes__ à la fois.'
   },
   isDefault: {

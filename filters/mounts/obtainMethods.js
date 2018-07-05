@@ -1177,10 +1177,10 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return helper.achievementReward(1539, expansions.ARR, false, true);
     
     case 95:
-      return helper.achievementReward(1771, expansions.HW, false, true);
+      return helper.achievementReward(1771, expansions.HW, true, false);
     
     case 96:
-      return helper.achievementReward(1772, expansions.HW, false, true);
+      return helper.achievementReward(1772, expansions.HW, true, false);
     
     case 98:
       return [
@@ -1216,7 +1216,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return helper.raid(location.duty.alexanderTheSoulOfTheCreatorSavage, 60, expansions.HW, true, false);
     
     case 102:
-      return helper.achievementReward(1773, expansions.HW, false, true);
+      return helper.achievementReward(1773, expansions.HW, true, false);
     
     case 104:
       return [

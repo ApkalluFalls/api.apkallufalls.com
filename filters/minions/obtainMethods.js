@@ -3480,6 +3480,14 @@ module.exports = (minion, achievementsIn) => {
         true,
         false
       );
+    
+    case 293:
+      return helper.eventQuest(
+        15,
+        ["In Adventurers We Trust", "Den Abenteurern Sei Dank", "Une Commémoration Bien Trempée", "新生祭と冒険者たちの戦い"],
+        'eq6',
+        expansions.ARR
+      );
 
     case 294:
       return helper.craft(

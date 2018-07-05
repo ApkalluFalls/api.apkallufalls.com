@@ -69,9 +69,11 @@ const item = {
   anemosLockbox: ["Anemos Lockbox", "Anemos-Schließkassette", "Coffre verrouillé d'Anemos", "アネモス帯のロックボックス"],
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
   elixir: ['Elixir', 'Elixier', 'Élixir', 'エリクサー'],
+  goldHaloedSack: ["Gold-haloed Sack", "Gülden strahlender Schatzbeutel", "Trésor énigmatique de grade II", "埋もれた財宝【弐】"],
   hiElixir: ['Hi-Elixir', 'Super-Elixier', 'Super élixir', 'ハイエリクサー'],
   ironTrimmedSack: ["Iron-trimmed Sack", "Gefundener Schatz II", "Trésor mystérieux de grade II", "埋もれた財宝G2"],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
+  silverHaloedSack: ["Silver-haloed Sack", "Silbrig strahlender Schatzbeutel", "Trésor énigmatique de grade I", "埋もれた財宝【壱】"],
   bait: {
     bruteLeech: ["Brute Leech", "Grobegel", "Sangsue bestiale", "ブルートリーチ"],
     lugworm: ["Lugworm", "Wattwurm", "Ver de vase", "ラグワーム"],
@@ -437,6 +439,7 @@ const location = {
     deltascapev40Savage: ["Deltascape V4.0 (Savage)", "Deltametrie 4.0 (episch)", "Deltastice V4.0 (sadique)", "次元の狭間オメガ零式：デルタ編4"],
     domaCastle: ["Doma Castle", "Burg Doma", "Le Château De Doma", "解放決戦 ドマ城"],
     dunScaith: ["Dun Scaith", true, true, "影の国ダン・スカー"],
+    heavenOnHigh: ["Heaven-on-High", "Himmelssäule", "Le Pilier Des Cieux", "アメノミハシラ"],
     hellsLid: ["Hells' Lid", "Höllenspund", "Le Couvercle Des Enfers", "紅玉火山 獄之蓋"],
     hullbreakerIsle: ['Hullbreaker Isle', 'Schiffbrecher-Insel', 'L\'Île De Crèvecarène', '財宝伝説 ハルブレーカー・アイル'],
     hullbreakerIsleHard: ["Hullbreaker Isle (Hard)", "Schiffbrecher-Insel (schwer)", "L'Île De Crèvecarène (brutal)", "黒渦伝説 ハルブレーカー・アイル (Hard)"],
@@ -857,16 +860,16 @@ const helper = {
       false
     )
   },
-  itemAccursedHoard: (sack) => {
+  itemAccursedHoard: (sack, locationIn, expansion) => {
     return o(
       'itemAccursedHoard',
       [
         sack,
         item.pieceOfAccursedHoard,
         dutyImage,
-        location.duty.thePalaceOfTheDead
+        locationIn || location.duty.thePalaceOfTheDead
       ],
-      expansions.ARR,
+      expansion || expansions.ARR,
       true,
       false
     )
@@ -1906,7 +1909,10 @@ module.exports = (minion, achievementsIn) => {
       );
 
     case 96:
-      return helper.retainerVenture(50, 'Disciples of War and Magic', 'Highland Exploration', 'XIV');
+      return [
+        helper.retainerVenture(50, 'Disciples of War and Magic', 'Highland Exploration', 'XIV'),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 97:
       return [
@@ -2298,7 +2304,8 @@ module.exports = (minion, achievementsIn) => {
     case 146:
       return [
         helper.retainerVenture(55, 'Fisher', 'Waterside Exploration', 'XVIII'),
-        helper.retainerVenture(60, 'Fisher', 'Waterside Exploration', 'XIX')
+        helper.retainerVenture(60, 'Fisher', 'Waterside Exploration', 'XIX'),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
       ];
     
     case 147:
@@ -2432,13 +2439,17 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 162:
-      return helper.fate(
-        60,
-        ["On The Inside", "Die Schlitzer Vom Diadem", "Défi: L'éventreur De L'azur", "美食の凶鳥「ガルピュデス」"],
-        location.theDiadem,
-        null, null,
-        expansions.HW
-      );
+      return [
+          helper.fate(
+          60,
+          ["On The Inside", "Die Schlitzer Vom Diadem", "Défi: L'éventreur De L'azur", "美食の凶鳥「ガルピュデス」"],
+          location.theDiadem,
+          null, null,
+          expansions.HW
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 163:
       return helper.achievementReward(1382, expansions.ARR, true, false);
@@ -2450,7 +2461,11 @@ module.exports = (minion, achievementsIn) => {
       return helper.achievementReward(1380, expansions.ARR, true, false);
     
     case 166:
-      return helper.dungeon(location.duty.saintMociannesArboretum, 60, null, null, expansions.HW, true, false);
+      return [
+        helper.dungeon(location.duty.saintMociannesArboretum, 60, null, null, expansions.HW, true, false),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 167: 
       return [
@@ -2473,18 +2488,22 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 169:
-      return helper.craft(
-        60,
-        locale('Weaver'),
-        1,
-        [
-          { quantity: 99, ...craftItem.lightningShard },
-          { quantity: 1, ...craftItem.garudasFeather },
-          { quantity: 1, ...craftItem.chimericalFelt },
-          { quantity: 1, ...craftItem.crawlerSilk },
-          { quantity: 1, ...craftItem.bloodPepper }
-        ]
-      );
+      return [
+        helper.craft(
+          60,
+          locale('Weaver'),
+          1,
+          [
+            { quantity: 99, ...craftItem.lightningShard },
+            { quantity: 1, ...craftItem.garudasFeather },
+            { quantity: 1, ...craftItem.chimericalFelt },
+            { quantity: 1, ...craftItem.crawlerSilk },
+            { quantity: 1, ...craftItem.bloodPepper }
+          ]
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
     
     case 170:
       return helper.craft(
@@ -2589,7 +2608,11 @@ module.exports = (minion, achievementsIn) => {
       return helper.dungeon(location.duty.theAntitower, 60, null, null, expansions.HW, true, false);
 
     case 180:
-      return helper.dungeon(location.duty.theLostCityOfAmdaporHard, 60, null, null, expansions.HW, true, false);
+      return [
+        helper.dungeon(location.duty.theLostCityOfAmdaporHard, 60, null, null, expansions.HW, true, false),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
     
     case 181:
       return helper.msq(
@@ -2635,32 +2658,40 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 185:
-      return helper.craft(
-        60,
-        locale('Weaver'),
-        1,
-        [
-          { quantity: 99, ...craftItem.lightningShard },
-          { quantity: 1, ...craftItem.levinOrb },
-          { quantity: 1, ...craftItem.chimericalFelt },
-          { quantity: 1, ...craftItem.crawlerSilk },
-          { quantity: 1, ...craftItem.bloodPepper }
-        ]
-      );
+      return [
+        helper.craft(
+          60,
+          locale('Weaver'),
+          1,
+          [
+            { quantity: 99, ...craftItem.lightningShard },
+            { quantity: 1, ...craftItem.levinOrb },
+            { quantity: 1, ...craftItem.chimericalFelt },
+            { quantity: 1, ...craftItem.crawlerSilk },
+            { quantity: 1, ...craftItem.bloodPepper }
+          ]
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
     
     case 186:
-      return helper.craft(
-        60,
-        locale('Weaver'),
-        1,
-        [
-          { quantity: 99, ...craftItem.lightningShard },
-          { quantity: 1, ...craftItem.iceTear },
-          { quantity: 1, ...craftItem.chimericalFelt },
-          { quantity: 1, ...craftItem.crawlerSilk },
-          { quantity: 1, ...craftItem.bloodPepper }
-        ]
-      );
+      return [
+        helper.craft(
+          60,
+          locale('Weaver'),
+          1,
+          [
+            { quantity: 99, ...craftItem.lightningShard },
+            { quantity: 1, ...craftItem.iceTear },
+            { quantity: 1, ...craftItem.chimericalFelt },
+            { quantity: 1, ...craftItem.crawlerSilk },
+            { quantity: 1, ...craftItem.bloodPepper }
+          ]
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
     
     case 188:
       return helper.fishing(
@@ -2676,11 +2707,14 @@ module.exports = (minion, achievementsIn) => {
       return helper.dungeon(location.duty.hullbreakerIsleHard, 60, null, null, expansions.HW, true, false);
 
     case 190:
-      return helper.diademFate(
-        60,
-        ["Secret Of The Lost Legend", "Geheimnis Der Verschollenen Legende", "Défi: Brachiosaures En Famille", "星呼の古代獣「ブラキオレイドス」"],
-        expansions.HW
-      );
+      return [
+        helper.diademFate(
+          60,
+          ["Secret Of The Lost Legend", "Geheimnis Der Verschollenen Legende", "Défi: Brachiosaures En Famille", "星呼の古代獣「ブラキオレイドス」"],
+          expansions.HW
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 191:
       return o(
@@ -2766,7 +2800,10 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 197:
-      return helper.aquapolis();
+      return [
+        helper.aquapolis(),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
     
     case 200:
     case 201:
@@ -2800,7 +2837,10 @@ module.exports = (minion, achievementsIn) => {
       ]
 
     case 216:
-      return helper.dungeon(location.duty.xelphatol, 60, null, null, expansions.HW, true, false);
+      return [
+        helper.dungeon(location.duty.xelphatol, 60, null, null, expansions.HW, true, false),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 217:
     case 218:
@@ -2940,16 +2980,19 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 237:
-      return helper.fishingDoubleMooch(
-        location.fishing.northIsleOfEndlessSummer,
-        location.easternLaNoscea,
-        36, 26,
-        item.bait.lugworm,
-        63,
-        expansions.SB,
-        item.fish.merlthorGoby,
-        item.fish.wahoo
-      );
+      return [
+        helper.fishingDoubleMooch(
+          location.fishing.northIsleOfEndlessSummer,
+          location.easternLaNoscea,
+          36, 26,
+          item.bait.lugworm,
+          63,
+          expansions.SB,
+          item.fish.merlthorGoby,
+          item.fish.wahoo
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
     
     case 238:
       return helper.collectorsEdition(locale('Stormblood'), expansions.SB, true);
@@ -2984,7 +3027,9 @@ module.exports = (minion, achievementsIn) => {
         helper.retainerVenture(60, 'Botanist', 'Woodland Exploration', 'XIX'),
         helper.retainerVenture(61, 'Botanist', 'Woodland Exploration', 'XX'),
         helper.retainerVenture(65, 'Botanist', 'Woodland Exploration', 'XXI'),
-        helper.retainerVenture(70, 'Botanist', 'Woodland Exploration', 'XXII')
+        helper.retainerVenture(70, 'Botanist', 'Woodland Exploration', 'XXII'),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
       ];
 
     case 242:
@@ -3037,29 +3082,40 @@ module.exports = (minion, achievementsIn) => {
       ];
     
     case 244:
-      return helper.fishingSpearfishing(
-        locale('Large Gig'),
-        location.fishing.theKobayashiMaru,
-        location.theRubySea,
-        38.8, 6.3,
-        70,
-        expansions.SB,
-        10,
-        item.fish.bashfulBatfish,
-        locale('Small Gig')
-      );
+      return [
+        helper.fishingSpearfishing(
+          locale('Large Gig'),
+          location.fishing.theKobayashiMaru,
+          location.theRubySea,
+          38.8, 6.3,
+          70,
+          expansions.SB,
+          10,
+          item.fish.bashfulBatfish,
+          locale('Small Gig')
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ]
 
     case 245:
-      return helper.dungeon(location.duty.shisuiOfTheVioletTides, 63, null, null, expansions.SB, true, false);
+      return [
+        helper.dungeon(location.duty.shisuiOfTheVioletTides, 63, null, null, expansions.SB, true, false),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 246:
       return [
         helper.retainerVenture(61, 'Disciples of War and Magic', 'Field Exploration', 'XX'),
-        helper.retainerVenture(70, 'Disciples of War and Magic', 'Field Exploration', 'XXII')
+        helper.retainerVenture(70, 'Disciples of War and Magic', 'Field Exploration', 'XXII'),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
       ];
 
     case 247:
-      return helper.dungeon(location.duty.bardamsMettle, 65, null, null, expansions.SB, true, false);
+      return [
+        helper.dungeon(location.duty.bardamsMettle, 65, null, null, expansions.SB, true, false),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 248:
     case 250:
@@ -3107,7 +3163,10 @@ module.exports = (minion, achievementsIn) => {
       return helper.dungeon(location.duty.castrumAbania, 69, null, null, expansions.SB, true, false);
 
     case 258:
-      return helper.dungeon(location.duty.theSirensongSea, 61, null, null, expansions.SB, true, false);
+      return [
+        helper.dungeon(location.duty.theSirensongSea, 61, null, null, expansions.SB, true, false),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 259:
       return [
@@ -3116,51 +3175,63 @@ module.exports = (minion, achievementsIn) => {
       ];
 
     case 261:
-      return helper.craft(
-        70,
-        locale('Weaver'),
-        1,
-        [
-          { quantity: 50, ...craftItem.lightningShard },
-          { quantity: 50, ...craftItem.waterShard },
-          { quantity: 1, ...craftItem.bloodPepper },
-          { quantity: 1, ...craftItem.bladeOfRevelry },
-          { quantity: 1, ...craftItem.kyanite },
-          { quantity: 2, ...craftItem.steppeSerge },
-          { quantity: 1, ...craftItem.worstedYarn }
-        ]
-      );
+      return [
+        helper.craft(
+          70,
+          locale('Weaver'),
+          1,
+          [
+            { quantity: 50, ...craftItem.lightningShard },
+            { quantity: 50, ...craftItem.waterShard },
+            { quantity: 1, ...craftItem.bloodPepper },
+            { quantity: 1, ...craftItem.bladeOfRevelry },
+            { quantity: 1, ...craftItem.kyanite },
+            { quantity: 2, ...craftItem.steppeSerge },
+            { quantity: 1, ...craftItem.worstedYarn }
+          ]
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 262:
-      return helper.craft(
-        70,
-        locale('Weaver'),
-        1,
-        [
-          { quantity: 50, ...craftItem.windShard },
-          { quantity: 50, ...craftItem.earthShard },
-          { quantity: 1, ...craftItem.bloodPepper },
-          { quantity: 1, ...craftItem.blissfulShroud },
-          { quantity: 1, ...craftItem.palladiumNugget },
-          { quantity: 2, ...craftItem.steppeSerge },
-          { quantity: 1, ...craftItem.worstedYarn }
-        ]
-      );
+      return [
+        helper.craft(
+          70,
+          locale('Weaver'),
+          1,
+          [
+            { quantity: 50, ...craftItem.windShard },
+            { quantity: 50, ...craftItem.earthShard },
+            { quantity: 1, ...craftItem.bloodPepper },
+            { quantity: 1, ...craftItem.blissfulShroud },
+            { quantity: 1, ...craftItem.palladiumNugget },
+            { quantity: 2, ...craftItem.steppeSerge },
+            { quantity: 1, ...craftItem.worstedYarn }
+          ]
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 263:
-      return helper.craft(
-        60,
-        locale('Weaver'),
-        1,
-        [
-          { quantity: 50, ...craftItem.windShard },
-          { quantity: 50, ...craftItem.waterShard },
-          { quantity: 1, ...craftItem.bloodPepper },
-          { quantity: 1, ...craftItem.chimericalFelt },
-          { quantity: 1, ...craftItem.crawlerSilk },
-          { quantity: 1, ...craftItem.expanseBaleen }
-        ]
-      );
+      return [
+        helper.craft(
+          60,
+          locale('Weaver'),
+          1,
+          [
+            { quantity: 50, ...craftItem.windShard },
+            { quantity: 50, ...craftItem.waterShard },
+            { quantity: 1, ...craftItem.bloodPepper },
+            { quantity: 1, ...craftItem.chimericalFelt },
+            { quantity: 1, ...craftItem.crawlerSilk },
+            { quantity: 1, ...craftItem.expanseBaleen }
+          ]
+        ),
+        helper.itemAccursedHoard(item.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB),
+        helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
 
     case 265:
       return helper.craft(

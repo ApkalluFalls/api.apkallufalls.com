@@ -67,7 +67,8 @@ const item = {
   anemosLockbox: ["Anemos Lockbox", "Anemos-Schließkassette", "Coffre verrouillé d'Anemos", "アネモス帯のロックボックス"],
   goldHaloedSack: ["Gold-haloed Sack", "Gülden strahlender Schatzbeutel", "Trésor énigmatique de grade II", "埋もれた財宝【弐】"],
   goldTrimmedSack: ["Gold-trimmed Sack", "Gefundener Schatz IV", "Trésor mystérieux de grade IV", "埋もれた財宝G4"],
-  pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝']
+  pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
+  platinumHaloedSack: ["Platinum-haloed Sack", "Platin strahlender Schatzbeutel", "Trésor énigmatique de grade III", "埋もれた財宝【参】"]
 }
 
 const rank = {
@@ -1541,7 +1542,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return helper.trial(location.duty.theMinstrelsBalladTsukuyomisPain, 70, expansions.SB, true, false);
 
     case 159:
-      return helper.itemAccursedHoard(item.goldHaloedSack, location.duty.heavenOnHigh, expansions.SB);
+      return helper.itemAccursedHoard(item.platinumHaloedSack, location.duty.heavenOnHigh, expansions.SB);
 
     case 162:
       return o(

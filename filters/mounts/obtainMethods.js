@@ -1594,6 +1594,26 @@ module.exports = (mount, achievementsIn, mountsIn) => {
         false
       );
     
+    case 166:
+      return o(
+        'empyreanAccessory',
+        [
+          ["Cast-off Confederate", "Betagt[a] Pirat", "Pirate âgé", "年老いた海賊"],
+          locationImage,
+          location.theRubySea,
+          21.6,
+          9.9,
+          ["Empyrean Ring", "Empyreum-Ring", "Bague empyréenne", "天之指輪"],
+          ["Empyrean Bracelet", "Empyreum-Armreif", "Bracelet empyréen", "天之腕輪"],
+          ["Empyrean Necklace", "Empyreum-Halsband", "Collier empyréen", "天之首飾"],
+          ["Empyrean Earring", "Empyreum-Ohrring", "Boucle d'oreille empyréenne", "天之耳飾"],
+          ["Empyrean Reliquary", "Empyreisches Relikt", "Relique sacrée empyréenne", "天之聖遺物"]
+        ],
+        expansions.SB,
+        true,
+        false
+      )
+    
     case 168:
       return helper.achievementReward(2065, expansions.SB, true, false);
 

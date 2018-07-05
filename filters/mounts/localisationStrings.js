@@ -34,6 +34,9 @@ module.exports = {
     de: 'Zufällig erhältlich von einer Schatztruhe des Level {0} Inhalts {img1} \'{i2}\' (Letzte Schatztruhe)',
     fr: 'Récompense aléatoire dans un coffre dans la mission de niveau {0} {img1} \'{i2}\' (x: {3}, y: {4}) (dernier coffre).'
   },
+  empyreanAccessory: {
+    en: 'Speak with {0} in {i1} {2} (x: {3}, y: {4}) with {5}, {6}, {7} and {8}, or their {9} counterparts, in your inventory.'
+  },
   msq: {
     en: 'Complete the level {0} {1} main scenario quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige das level {0} {1} Hauptszenario {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',

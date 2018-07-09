@@ -45,6 +45,7 @@ const ixionHornImage = 'ih';
 const anantaDreamstaffImage = 'ad';
 const namazuKobanImage = 'nk';
 const mythicClanLogMarkImage = 'mc';
+const odinsMantleImage = 'om';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -66,6 +67,33 @@ const beastTribe = {
   kojin: ["Kojin", true, true, "コウジン"],
   ananta: ["Ananta", true, true, "アナンタ"],
   namazu: ["Namazu", "Namazuo", true, "ナマズオ"]
+}
+
+const craftItem = {
+  darksteelPlate: {
+    icon: 5075,
+    name: ["Darksteel Plate", "Dunkelstahlplatte", "Plaque de sombracier", "ダークスチールプレート"]
+  },
+  earthCluster: {
+    icon: 17,
+    name: ["Earth Cluster", "Erdpolykristall", "Agrégat de terre", "アースクラスター"]
+  },
+  goldIngot: {
+    icon: 5069,
+    name: ["Gold Ingot", "Goldbarren", "Lingot d'or", "ゴールドインゴット"]
+  },
+  hippogryphLeather: {
+    icon: 5288,
+    name: ["Hippogryph Leather", "Gryphenleder", "Cuir d'hippogriffe", "ヒッポグリフレザー"]
+  },
+  iceCluster: {
+    icon: 15,
+    name: ["Ice Cluster", "Eispolykristall", "Agrégat de glace", "アイスクラスター"]
+  }, 
+  leviathansBarb: {
+    icon: 7159,
+    name: ["Leviathan's Barb", "Bartel Leviathans", "Barbillon de Léviathan", "リヴァイアサンの棘"]
+  },
 }
 
 const _npc = {
@@ -91,6 +119,7 @@ const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イク�
 const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
 const namazuKoban = ["Namazu Koban", "Namazuo-Koban", "Koban namazu", "ナマズオ小判"];
 const mythicClanMarkLog = ["Mythic Clan Mark Log", "Clan-Mythenjäger-Tagebuch", "Journal de membre émérite du clan", "傑物クラン員の手記"];
+const odinsMantle = ["Odin's Mantle", "Odins Mantel", "Mante d'Odin", "オーディンの被布"];
 
 const location = {
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー']
@@ -189,6 +218,31 @@ const helper = {
       expansions.ARR,
       true,
       false
+    )
+  },
+  craft: (level, job, stars, items, expansion) => {
+    const itemArr = ['', '', '', ''];
+    items.forEach((item, index) => {
+      for (var i = 0; i < 4; i++)
+        itemArr[i] += (index === 0 ? '' : (index === items.length - 1 ? ' and ' : ', '))
+                    + item.quantity + 'x '
+                    + item.name[i]
+                    + ' <img src="https://api.apkallufalls.com/icons/item/' + item.icon + '.png" alt="' + item.name[i] + '" />';
+    });
+    return o(
+      'craft',
+      [
+        level,
+        job,
+        stars ? ' (' + (new Array(stars).fill()).map(s => '★').join('') + ')' : '',
+        itemArr
+      ],
+      expansion,
+      true,
+      false,
+      {
+        job: job[0]
+      }
     )
   },
   eventQuest: (level, quest, image, expansion) => {
@@ -363,14 +417,47 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
     case 15:
       return helper.buddySkill('Healer');
 
+    case 16:
+      return o(
+        'purchase',
+        [
+          5, odinsMantle, odinsMantleImage,
+          ["Auriana", true, true, "オーリアナ"],
+          ["(Uncanny Knickknacks)", "(Gegenstände)", "(Objets (divers))", "（アイテムの取引（その他））"],
+          locationImage,
+          ["Mor Dhona", true, true, "モードゥナ"],
+          22.8, 6.7,
+          item.name
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+
     case 17:
       return helper.collectorsEdition(locale('A Realm Reborn'), expansions.ARR, true);
+    
+    case 18:
+      return helper.quest(
+        52,
+        locale('Side Story Quests'),
+        ["I Believe I Can Fly", "Nur Fliegen Ist Schöner!", "Vole, Beau Volatile!", "マイチョコボ、大空へ！"],
+        ["Arnoulain", true, true, "アルヌーラン"],
+        ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
+        7.8, 11.7,
+        expansions.HW,
+        true,
+        false
+      );
     
     case 19:
       return [
         helper.veteranReward(180),
         helper.achievementCertificate(2)
       ];
+
+    case 20:
+      return helper.achievementReward(861, expansions.ARR, true, false);
     
     case 21:
       return helper.eventQuestPurchase(
@@ -378,7 +465,36 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
         ['Starlight Celebration 2014', true, true, '星芒祭'],
         expansions.ARR,
         item
-      )
+      );
+    
+    case 22:
+      return helper.craft(
+        50,
+        locale('Armorer'),
+        3,
+        [
+          { quantity: 2, ...craftItem.iceCluster },
+          { quantity: 1, ...craftItem.earthCluster },
+          { quantity: 1, ...craftItem.goldIngot },
+          { quantity: 1, ...craftItem.darksteelPlate },
+          { quantity: 1, ...craftItem.hippogryphLeather },
+          { quantity: 1, ...craftItem.leviathansBarb }
+        ]
+      );
+    
+    case 23:
+      return [
+        helper.veteranReward(360),
+        helper.achievementCertificate(3)
+      ];
+    
+    case 24:
+      return helper.eventQuest(
+        15,
+        ["Hard-boiled", "Die Weisen Der Eiersuche", "Tous Ses Prœufs Dans Le Même Panier", "エッグハントの賢者様"],
+        'eq7',
+        expansions.ARR
+      );
 
     default:
       console.log("Unknown method for barding " + barding.id);

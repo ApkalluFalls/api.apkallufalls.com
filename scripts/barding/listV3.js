@@ -8,6 +8,8 @@ module.exports = new Helper("Barding", "barding", {
   api: 'BuddyEquip',
   columns: [
     'IconBody',
+    'IconHead',
+    'IconLegs',
     'ID',
     'Name_de',
     'Name_en',

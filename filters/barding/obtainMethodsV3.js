@@ -70,9 +70,21 @@ const beastTribe = {
 }
 
 const craftItem = {
+  allaganLeather: {
+    icon: 9364,
+    name: ["Allagan Leather", "Allagisches Leder", "Cuir chimérique allagois", "アラガンキメラレザー"]
+  },
+  cashmereCloth: {
+    icon: 7609,
+    name: ['Cashmere Cloth', 'Kaschmir', 'Étoffe de cachemire', 'カシミヤ織物']
+  },
   darksteelPlate: {
     icon: 5075,
     name: ["Darksteel Plate", "Dunkelstahlplatte", "Plaque de sombracier", "ダークスチールプレート"]
+  },
+  diamondTear: {
+    icon: 9378,
+    name: ["Diamond Tear", "Diamantenträne", "Larme de la Furie des neiges", "氷神シヴァの涙"]
   },
   earthCluster: {
     icon: 17,
@@ -97,6 +109,10 @@ const craftItem = {
   levinOrb: {
     icon: 8019,
     name: ["Levin Orb", "Ramuh-Kugel", "Orbe de Ramuh", "ラムウのオーブ"]
+  },
+  platinumNugget: {
+    icon: 9359,
+    name: ["Platinum Nugget", "Platin-Nugget", "Pépite de platine", "プラチナナゲット"]
   },
   roseGoldNugget: {
     icon: 5068,
@@ -169,7 +185,13 @@ const helper = {
   achievementReward: (achievementId, expansion, available, promo) => {
     return o(
       'achievement',
-      [],
+      [
+        ['Jonathas', true, true, 'ジョナサス'],
+        ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
+        locationImage,
+        location.oldGridania,
+        10.6, 6.3
+      ],
       expansion,
       available,
       promo,
@@ -282,6 +304,15 @@ const helper = {
       [shop, event, item.name],
       expansion,
       false,
+      false
+    )
+  },
+  fate: (level, fate, loc, x, y, expansion) => {
+    return o(
+      x && y ? 'fate' : 'fateUnknown',
+      [level, fateImage, fate, locationImage, loc, x, y],
+      expansion,
+      true,
       false
     )
   },
@@ -522,7 +553,7 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
     case 25:
       return helper.craft(
         50,
-        locale('Armorer'),
+        locale('Leatherworker'),
         3,
         [
           { quantity: 1, ...craftItem.windCluster },
@@ -547,6 +578,41 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
         ),
         helper.mogStation(item)
       ];
+    
+    case 28:
+      return helper.craft(
+        50,
+        locale('Leatherworker'),
+        4,
+        [
+          { quantity: 2, ...craftItem.windCluster },
+          { quantity: 2, ...craftItem.earthCluster },
+          { quantity: 1, ...craftItem.cashmereCloth },
+          { quantity: 1, ...craftItem.platinumNugget },
+          { quantity: 1, ...craftItem.allaganLeather },
+          { quantity: 1, ...craftItem.diamondTear }
+        ]
+      );
+
+    case 29:
+      return helper.goldSaucerPrizeExchange(20000, item);
+    
+    case 30:
+      return helper.eventQuest(
+        15,
+        ["Now That We've Found Love", "Wo Die Liebe Hinfällt", "L'amour Frappe Là Où On Ne L'attend Pas", "ヴァレンティオンデーと愛の始まり"],
+        'eq9',
+        expansions.ARR
+      );
+    
+    case 31:
+      return helper.fate(
+        56,
+        ["Vedrfolnir Devoteth", "Ehrenduell Mit Dem Weißen", "Défi: Duel Amical Contre Vedrfolnir", "蒼天の白竜「ヴェズルフェルニル」"],
+        ["The Churning Mists", "Wallende Nebel", "L'Écume Des Cieux De Dravania", "ドラヴァニア雲海"],
+        11, 36,
+        expansions.HW
+      );
 
     default:
       console.log("Unknown method for barding " + barding.id);

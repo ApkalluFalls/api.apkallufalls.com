@@ -37,6 +37,11 @@ module.exports = {
     de: 'Kaufe {i2} von {0} während des {i1} Events.',
     fr: 'Acheter {i2} chez {0} pendant l\'évènement {i1}.'
   },
+  fate: {
+    en: 'Achieve gold rating in the level {0} FATE {img1} \'{i2}\' in {img3} {4} (x: {5}, y: {6}).',
+    de: 'Erziele eine Gold-Bewertung im level {0} FATE {img1} \'{i2}\' in {img3} {4} (x: {5}, y: {6}).',
+    fr: 'Atteindre la récompense or sur l\'ALEA niveau {0} {img1} \'{i2}\' dans {img3} {4} (x: {5}, y: {6}).'
+  },
   mogStation: {
     en: 'Purchase directly from the {i0}.',
     de: 'Direkt erworben von {i0}.',

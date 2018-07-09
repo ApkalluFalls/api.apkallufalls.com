@@ -70,9 +70,21 @@ const beastTribe = {
 }
 
 const craftItem = {
+  adamantiteNugget: {
+    icon: 12526,
+    name: ["Adamantite Nugget", "Adamantium-Nugget", "Pépite d'adamant", "アダマンナゲット"]
+  },
   allaganLeather: {
     icon: 9364,
     name: ["Allagan Leather", "Allagisches Leder", "Cuir chimérique allagois", "アラガンキメラレザー"]
+  },
+  aurumRegisNugget: {
+    icon: 12522,
+    name: ["Aurum Regis Nugget", "Königsgold-Nugget", "Pépite d'aurum regis", "オーラムレギスナゲット"]
+  },
+  bismarcksBaleen: {
+    icon: 12256,
+    name: ["Bismarck's Baleen", "Bismarck-Barte", "Corne de Bismarck", "ビスマルクの角"]
   },
   cashmereCloth: {
     icon: 7609,
@@ -86,6 +98,10 @@ const craftItem = {
     icon: 9378,
     name: ["Diamond Tear", "Diamantenträne", "Larme de la Furie des neiges", "氷神シヴァの涙"]
   },
+  dhalmelLeather: {
+    icon: 12564,
+    name: ["Dhalmel Leather", "Dhalmelleder", "Cuir de dhalmel", "ダルメルレザー"]
+  },
   earthCluster: {
     icon: 17,
     name: ["Earth Cluster", "Erdpolykristall", "Agrégat de terre", "アースクラスター"]
@@ -93,6 +109,10 @@ const craftItem = {
   goldIngot: {
     icon: 5069,
     name: ["Gold Ingot", "Goldbarren", "Lingot d'or", "ゴールドインゴット"]
+  },
+  hallowedRamieCloth: {
+    icon: 12591,
+    name: ["Hallowed Ramie Cloth", "Geheiligter Ramienstoff", "Étoffe de ramie sacrée", "聖麻布"]
   },
   hippogryphLeather: {
     icon: 5288,
@@ -114,6 +134,10 @@ const craftItem = {
     icon: 9359,
     name: ["Platinum Nugget", "Platin-Nugget", "Pépite de platine", "プラチナナゲット"]
   },
+  ravanasForewing: {
+    icon: 12258,
+    name: ["Ravana's Forewing", "Ravana-Schwinge", "Aile de Ravana", "ラーヴァナの翅"]
+  },
   roseGoldNugget: {
     icon: 5068,
     name: ["Rose Gold Nugget", "Rosengold-Nugget", "Pépite d'or rose", "ローズゴールドナゲット"]
@@ -125,6 +149,10 @@ const craftItem = {
   silkThread: {
     icon: 5338,
     name: ["Silk Thread", "Vanya-Seidenfäden", "Fil de soie", "山繭糸"]
+  },
+  titaniumIngot: {
+    icon: 12525,
+    name: ["Titanium Ingot", "Titan-Barren", "Lingot de titane", "チタンインゴット"]
   },
   windCluster: {
     icon: 16,
@@ -160,6 +188,7 @@ const odinsMantle = ["Odin's Mantle", "Odins Mantel", "Mante d'Odin", "オーデ
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
+  theForgottenKnight: ["The Forgotten Knight", "Der Vergessene Ritter", "Le Chevalier Oublié", "忘れられた騎士亭"],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー']
 }
 
@@ -612,6 +641,37 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
         ["The Churning Mists", "Wallende Nebel", "L'Écume Des Cieux De Dravania", "ドラヴァニア雲海"],
         11, 36,
         expansions.HW
+      );
+    
+    case 32:
+      return o(
+        'purchase',
+        [
+          350, centurioSeals, centurioSealsImage,
+          ["Ardolain", true, true, "アルドラン"],
+          ['(Centurio Seals I)', '(Centurio-Abzeichen I)', '(Insigne Centurio I)', '（セントリオ記章（その他））'],
+          locationImage,
+          location.theForgottenKnight,
+          13, 11
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 34:
+      return helper.craft(
+        60,
+        locale('Armorer'),
+        1,
+        [
+          { quantity: 2, ...craftItem.iceCluster },
+          { quantity: 1, ...craftItem.earthCluster },
+          { quantity: 1, ...craftItem.bismarcksBaleen },
+          { quantity: 1, ...craftItem.aurumRegisNugget },
+          { quantity: 4, ...craftItem.titaniumIngot },
+          { quantity: 2, ...craftItem.hallowedRamieCloth }
+        ]
       );
 
     default:

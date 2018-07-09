@@ -106,6 +106,10 @@ const craftItem = {
     icon: 17,
     name: ["Earth Cluster", "Erdpolykristall", "Agrégat de terre", "アースクラスター"]
   },
+  electrumIngot: {
+    icon: 5066,
+    name: ["Electrum Ingot", "Elektrum-Barren", "Lingot d'électrum", "エレクトラムインゴット"]
+  },
   goldIngot: {
     icon: 5069,
     name: ["Gold Ingot", "Goldbarren", "Lingot d'or", "ゴールドインゴット"]
@@ -122,6 +126,10 @@ const craftItem = {
     icon: 15,
     name: ["Ice Cluster", "Eispolykristall", "Agrégat de glace", "アイスクラスター"]
   }, 
+  larimar: {
+    icon: 12541,
+    name: ["Orthodox Barding", "Orthodoxer Rossharnisch", "Barde orthodoxe", "オーソドックスバード"]
+  },
   leviathansBarb: {
     icon: 7159,
     name: ["Leviathan's Barb", "Bartel Leviathans", "Barbillon de Léviathan", "リヴァイアサンの棘"]
@@ -130,9 +138,17 @@ const craftItem = {
     icon: 8019,
     name: ["Levin Orb", "Ramuh-Kugel", "Orbe de Ramuh", "ラムウのオーブ"]
   },
+  lightningCrystal: {
+    icon: 12,
+    name: ["Lightning Crystal", "Blitzkristall", "Cristal de foudre", "ライトニングクリスタル"]
+  },
   platinumNugget: {
     icon: 9359,
     name: ["Platinum Nugget", "Platin-Nugget", "Pépite de platine", "プラチナナゲット"]
+  },
+  ramieCloth: {
+    icon: 12590,
+    name: ["Ramie Cloth", "Ramienstoff", "Étoffe de ramie", "青麻布"]
   },
   ravanasForewing: {
     icon: 12258,
@@ -157,6 +173,10 @@ const craftItem = {
   windCluster: {
     icon: 16,
     name: ["Wind Cluster", "Windpolykristall", "Agrégat de vent", "ウィンドクラスター"]
+  },
+  windCrystal: {
+    icon: 10,
+    name: ["Wind Crystal", "Windkristall", "Cristal de vent", "ウィンドクリスタル"]
   }
 }
 
@@ -343,6 +363,15 @@ const helper = {
       expansion,
       true,
       false
+    )
+  },
+  forumContest: (year, name, winners, expansion) => {
+    return o(
+      'forumContest',
+      [winners, name, year],
+      expansion,
+      false,
+      true
     )
   },
   goldSaucerPrizeExchange: (cost, item) => {
@@ -652,7 +681,8 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
           ['(Centurio Seals I)', '(Centurio-Abzeichen I)', '(Insigne Centurio I)', '（セントリオ記章（その他））'],
           locationImage,
           location.theForgottenKnight,
-          13, 11
+          13, 11,
+          item
         ],
         expansions.HW,
         true,
@@ -671,6 +701,52 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
           { quantity: 1, ...craftItem.aurumRegisNugget },
           { quantity: 4, ...craftItem.titaniumIngot },
           { quantity: 2, ...craftItem.hallowedRamieCloth }
+        ]
+      );
+    
+    case 35:
+      return helper.craft(
+        60,
+        locale('Armorer'),
+        1,
+        [
+          { quantity: 2, ...craftItem.iceCluster },
+          { quantity: 1, ...craftItem.earthCluster },
+          { quantity: 1, ...craftItem.ravanasForewing },
+          { quantity: 1, ...craftItem.aurumRegisNugget },
+          { quantity: 4, ...craftItem.adamantiteNugget },
+          { quantity: 2, ...craftItem.dhalmelLeather }
+        ]
+      );
+    
+    case 36:
+      return [
+        helper.forumContest(
+          2015,
+          ['Hairstyle Design Contest', 'Frisuren-Design-Wettbewerbs', 'concours de création de coupes de cheveux', '髪型デザインコンテスト'],
+          12,
+          expansions.ARR
+        ),
+        helper.forumContest(
+          2016,
+          ['Do You Even /Pose? (NA)', 'Do You Even /Pose? (NA)', 'Do You Even /Pose? (NA)', 'Do You Even /Pose? (NA)'],
+          50,
+          expansions.ARR
+        )
+      ];
+    
+    case 37:
+      return helper.craft(
+        56,
+        locale('Weaver'),
+        0,
+        [
+          { quantity: 4, ...craftItem.windCrystal },
+          { quantity: 5, ...craftItem.lightningCrystal },
+          { quantity: 1, ...craftItem.electrumIngot },
+          { quantity: 2, ...craftItem.larimar },
+          { quantity: 1, ...craftItem.dhalmelLeather },
+          { quantity: 4, ...craftItem.ramieCloth }
         ]
       );
 

@@ -42,6 +42,9 @@ module.exports = {
     de: 'Erziele eine Gold-Bewertung im level {0} FATE {img1} \'{i2}\' in {img3} {4} (x: {5}, y: {6}).',
     fr: 'Atteindre la récompense or sur l\'ALEA niveau {0} {img1} \'{i2}\' dans {img3} {4} (x: {5}, y: {6}).'
   },
+  forumContest: {
+    en: 'Be one of the {0} lucky players selected during the {1} ({2}).'
+  },
   mogStation: {
     en: 'Purchase directly from the {i0}.',
     de: 'Direkt erworben von {i0}.',

@@ -1,8 +1,8 @@
 module.exports = {
   achievement: {
-    en: 'Unlock the __achievement__ achievement.',
-    de: 'Schalte die Errungenschaft __achievement__ frei.',
-    fr: 'Débloquer le haut fait \'__achievement__\'.'
+    en: 'Unlock the __achievement__ achievement, then speak to {0} at {1} in {img2} {3} (x: {4}, y: {5}).',
+    de: 'Schalte die Errungenschaft __achievement__ frei, dann sprich mit {0} bei {1} in {img2} {3} (x: {4}, y: {5}).',
+    fr: 'Débloquer le haut fait \'__achievement__\', puis parler à {0} à {1} dans {img2} {3} (x: {4}, y: {5}).'
   },
   achievementCertificate: {
     en: 'Purchase for {i0} {i1} {img2} from {3} at {4} in {img5} {6} (x: {7}, y: {8}).',
@@ -17,6 +17,16 @@ module.exports = {
     de: 'Registriere oder rüste digital zur {i0} von {i1} auf der {2} auf.',
     fr: 'Enregistrer, ou mettre à jour numériquement vers la {i0} de {i1} sur la {2}.'
   },
+  craft: {
+    en: 'Crafted from a level {0} {i1} recipe{2} with {3}.',
+    de: 'Synthetisiert von einem level {0} {i1} Rezept {2} mit {3}.',
+    fr: 'Fabriqué par un {i1} via une recette{2} de niveau {0} avec {3}.'
+  },
+  craftShort: {
+    en: 'Crafted from a level {0} {i1} recipe{2}.',
+    de: 'Synthetisiert von einem level {0} {i1} Rezept {2}.',
+    fr: 'Fabriqué par un {i1} via une recette{2} de niveau {0}.'
+  },
   eventQuest: {
     en: 'Complete the level {0} {i1} quest {img3} \'{i2}\'.',
     de: 'Vervollständige den level  {0} {i1} Aufrag {img3} \'{i2}\'.',
@@ -27,10 +37,20 @@ module.exports = {
     de: 'Kaufe {i2} von {0} während des {i1} Events.',
     fr: 'Acheter {i2} chez {0} pendant l\'évènement {i1}.'
   },
+  mogStation: {
+    en: 'Purchase directly from the {i0}.',
+    de: 'Direkt erworben von {i0}.',
+    fr: 'Acheté directement sur la {i0}.'
+  },
   purchase: {
     en: 'Purchase {i9} for {img2} {i0} {i1} from {3} {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Kaufe {i9} für {img2} {i0} {i1} von {3} {4} in {img5} {6} (x: {7}, y: {8}).',
     fr: 'Achéter {i9} pour {img2} {i0} {i1} chez {3} {4} à {img5} {6} (x: {7}, y: {8}).'
+  },
+  quest: {
+    en: 'Complete the level {0} {1} quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
+    de: 'Vervollständige den level {0} {1} Auftrag {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',
+    fr: 'Compléter la quête {1} niveau {0} {img2} \'{i3}\' auprès de {4} à {img5} {6} (x: {7}, y: {8}).'
   },
   veteranReward: {
     en: 'Received as mail from a {i0} for subscribing for {1} days.',

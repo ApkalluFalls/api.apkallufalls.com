@@ -37,8 +37,9 @@ module.exports = new Helper(name, plural, {
           iconLegs: data.IconLegs,
           id: data.ID,
           img: (() => {
-            if (!bardingItem || !bardingItem.icon)
-              return false;
+            if (!bardingItem || !bardingItem.icon) {
+              return data.IconBody || data.IconHead || data.IconLegs
+            }
             return bardingItem.icon;
           })(),
           xivdb: data.Url && ('/' + data.Url.charAt(1).toLowerCase() + data.Url.slice(2))

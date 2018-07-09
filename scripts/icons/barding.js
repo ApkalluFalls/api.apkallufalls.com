@@ -11,7 +11,9 @@ module.exports = new Helper(name, plural, {
   base,
   columns: [
     "ID",
-    "IconBody"
+    "IconBody",
+    "IconHead",
+    "IconLegs"
   ],
   useCallback: true,
   list: true,
@@ -19,8 +21,8 @@ module.exports = new Helper(name, plural, {
 }, (data, resolve) => {
   data = data.map(d => ({
     ...d,
-    Icon: d.IconBody
-  })).filter(d => d.IconBody);
+    Icon: d.IconBody || d.IconHead || d.IconLegs
+  })).filter(d => d.IconBody || d.IconHead || d.IconLegs);
   getIcons(base, data, resolve, true);
 });
 

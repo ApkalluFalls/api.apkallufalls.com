@@ -3,6 +3,7 @@ const createList = require('../_list');
 
 module.exports = async function() {
   let achievementsList;
+  let bardingList;
   let emotesList;
   let minionsList;
   let mountsList;
@@ -10,6 +11,10 @@ module.exports = async function() {
   await new Promise((resolve) => fs.readFile('../docs/v3/achievements.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => achievementsList = JSON.parse(data).data);
+
+  await new Promise((resolve) => fs.readFile('../docs/v3/barding.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => bardingList = JSON.parse(data).data);
 
   await new Promise((resolve) => fs.readFile('../docs/v3/emotes.json', 'utf8', (e, data) => {
     resolve(data);
@@ -34,6 +39,12 @@ module.exports = async function() {
         total: achievementsList.map(a => a.points).reduce((a, b) => a + b),
         unavailable: achievementsList.filter(data => data.unavailable).map(a => a.points).reduce((a, b) => a + b)
       }
+    },
+    barding: {
+      byDefault: bardingList.filter(data => data.ref && data.ref.filter(ref => ref.method.text === 'isDefault').length).length,
+      total: bardingList.length,
+      unavailable: bardingList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
+      unknown: bardingList.filter(data => !data.ref).length
     },
     emotes: {
       byDefault: emotesList.filter(data => data.ref && data.ref.filter(ref => ref.method.text === 'isDefault').length).length,

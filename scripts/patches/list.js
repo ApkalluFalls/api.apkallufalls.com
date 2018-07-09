@@ -35,6 +35,7 @@ module.exports = new Helper("Patch", "patches", {
       const mounts = args[2] && args[2].data;
       const titles = args[3] && args[3].data;
       const emotes = args[4] && args[4].data;
+      const barding = args[5] && args[5].data;
 
       formattedData.forEach(f => {
         const counts = {};
@@ -116,6 +117,22 @@ module.exports = new Helper("Patch", "patches", {
             totalEmotes - emotesChange === 0
             ? '∞'
             : Math.round(((100/(totalEmotes - emotesChange)) * emotesChange) * 10) / 10
+          );
+        }
+
+        const bardingChange = barding instanceof Array && barding.filter(a => a.patch === f.id).length || 0;
+        if (bardingChange) {
+          const totalBarding = barding.filter(a => a.patch <= f.id).length;
+
+          counts.barding = {
+            change: bardingChange,
+            total: totalBarding
+          };
+
+          counts.barding.percent = (
+            totalBarding - bardingChange === 0
+            ? '∞'
+            : Math.round(((100/(totalBarding - bardingChange)) * bardingChange) * 10) / 10
           );
         }
 

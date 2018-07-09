@@ -17,6 +17,11 @@ module.exports = {
     de: 'Registriere oder rüste digital zur {i0} von {i1} auf der {2} auf.',
     fr: 'Enregistrer, ou mettre à jour numériquement vers la {i0} de {i1} sur la {2}.'
   },
+  eventQuest: {
+    en: 'Complete the level {0} {i1} quest {img3} \'{i2}\'.',
+    de: 'Vervollständige den level  {0} {i1} Aufrag {img3} \'{i2}\'.',
+    fr: 'Compléter la quête de niveau {0} {i1} {img3} \'{i2}\'.'
+  },
   eventQuestPurchase: {
     en: 'Purchase {i2} from {0} during the {i1} event.',
     de: 'Kaufe {i2} von {0} während des {i1} Events.',

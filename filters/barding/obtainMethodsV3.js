@@ -94,6 +94,26 @@ const craftItem = {
     icon: 7159,
     name: ["Leviathan's Barb", "Bartel Leviathans", "Barbillon de Léviathan", "リヴァイアサンの棘"]
   },
+  levinOrb: {
+    icon: 8019,
+    name: ["Levin Orb", "Ramuh-Kugel", "Orbe de Ramuh", "ラムウのオーブ"]
+  },
+  roseGoldNugget: {
+    icon: 5068,
+    name: ["Rose Gold Nugget", "Rosengold-Nugget", "Pépite d'or rose", "ローズゴールドナゲット"]
+  },
+  saurianLeather: {
+    icon: 7608,
+    name: ["Saurian Leather", "Echsenleder", "Cuir de saurien", "ソーリアンレザー"]
+  },
+  silkThread: {
+    icon: 5338,
+    name: ["Silk Thread", "Vanya-Seidenfäden", "Fil de soie", "山繭糸"]
+  },
+  windCluster: {
+    icon: 16,
+    name: ["Wind Cluster", "Windpolykristall", "Agrégat de vent", "ウィンドクラスター"]
+  }
 }
 
 const _npc = {
@@ -122,6 +142,8 @@ const mythicClanMarkLog = ["Mythic Clan Mark Log", "Clan-Mythenjäger-Tagebuch",
 const odinsMantle = ["Odin's Mantle", "Odins Mantel", "Mante d'Odin", "オーディンの被布"];
 
 const location = {
+  apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
+  oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー']
 }
 
@@ -380,6 +402,7 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
   achievements = achievementsIn;
   allBarding = allBardingIn;
   item = itemIn;
+
   switch (+barding.id) {
     case 2:
       return helper.companySeals(4000, 'Maelstrom', item);
@@ -495,6 +518,35 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
         'eq7',
         expansions.ARR
       );
+    
+    case 25:
+      return helper.craft(
+        50,
+        locale('Armorer'),
+        3,
+        [
+          { quantity: 1, ...craftItem.windCluster },
+          { quantity: 2, ...craftItem.earthCluster },
+          { quantity: 1, ...craftItem.roseGoldNugget },
+          { quantity: 4, ...craftItem.silkThread },
+          { quantity: 1, ...craftItem.saurianLeather },
+          { quantity: 1, ...craftItem.levinOrb }
+        ]
+      );
+
+    case 26:
+      return helper.achievementReward(1020, expansions.ARR, true, false);
+
+    case 27:
+      return [
+        helper.eventQuestPurchase(
+          ["Shady Smock", "Verführerisch[a] Händlerin", "Vendeuse Suspecte", "いかがわしい売り子"],
+          ["All Saints' Wake (2014)", true, true, "守護天節 (2014)"],
+          expansions.ARR,
+          item
+        ),
+        helper.mogStation(item)
+      ];
 
     default:
       console.log("Unknown method for barding " + barding.id);

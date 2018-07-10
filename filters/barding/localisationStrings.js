@@ -45,6 +45,9 @@ module.exports = {
   forumContest: {
     en: 'Be one of the {0} lucky players selected during the {1} ({2}).'
   },
+  grandComapany: {
+    en: 'Automatically awarded for joining the {0}.'
+  },
   mogStation: {
     en: 'Purchase directly from the {i0}.',
     de: 'Direkt erworben von {i0}.',

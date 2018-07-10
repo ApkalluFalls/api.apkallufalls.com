@@ -15,7 +15,11 @@ module.exports = new Helper("Barding", "barding", {
     'Name_en',
     'Name_fr',
     'Name_ja',
-    'GamePatch.ID'
+    'GamePatch.ID',
+    'GrandCompany.Name_de',
+    'GrandCompany.Name_en',
+    'GrandCompany.Name_fr',
+    'GrandCompany.Name_ja'
   ],
   list: true,
   v3: true,
@@ -45,7 +49,12 @@ module.exports = new Helper("Barding", "barding", {
             .filter(item => item.awards === result.id)
             .map(item => ({ name: item.name }))[0];
 
-          const method = obtainMethod(result, args && args[0], data, item);
+          const method = obtainMethod(result, args && args[0], data, item, {
+            de: entry['GrandCompany.Name_de'],
+            en: entry['GrandCompany.Name_en'],
+            fr: entry['GrandCompany.Name_fr'],
+            jp: entry['GrandCompany.Name_ja']
+          });
           result.ref = method && !(method instanceof Array) ? [method] : method;
 
           return result;

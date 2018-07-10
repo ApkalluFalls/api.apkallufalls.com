@@ -3,7 +3,8 @@ const getAchievement = require('../_getAchievement');
 const locale = require('../_locale');
 
 let achievements;
-let barding;
+let allBarding;
+let grandCompany;
 let item;
 
 const expansions = {
@@ -487,12 +488,26 @@ let value;
 /* Returns information about how minions are obtained.
  * Corresponds to ../../docs/obtainMethods.json.
  */
-module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
+module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn) => {
   achievements = achievementsIn;
   allBarding = allBardingIn;
+  grandCompany = grandCompanyIn;
   item = itemIn;
 
   switch (+barding.id) {
+    case 1:
+    case 5:
+    case 9:
+      return o(
+        'grandCompany',
+        [
+          [grandCompany.en, grandCompany.de, grandCompany.fr, grandCompany.jp]
+        ],
+        expansions.ARR,
+        true,
+        false
+      )
+
     case 2:
       return helper.companySeals(4000, 'Maelstrom', item);
 
@@ -722,13 +737,13 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn) => {
     case 36:
       return [
         helper.forumContest(
-          2015,
+          '2015',
           ['Hairstyle Design Contest', 'Frisuren-Design-Wettbewerbs', 'concours de création de coupes de cheveux', '髪型デザインコンテスト'],
           12,
           expansions.ARR
         ),
         helper.forumContest(
-          2016,
+          '2016',
           ['Do You Even /Pose? (NA)', 'Do You Even /Pose? (NA)', 'Do You Even /Pose? (NA)', 'Do You Even /Pose? (NA)'],
           50,
           expansions.ARR

@@ -46,7 +46,9 @@ module.exports = {
     en: 'Be one of the {0} lucky players selected during the {1} ({2}).'
   },
   grandComapany: {
-    en: 'Automatically awarded for joining the {0}.'
+    en: 'Unlocked when enlisting with Grand Company: {i0}.',
+    de: 'Freigeschaltet durch das Einschreiben in einer staatlichen Gesellschaft: {i0}.',
+    fr: 'Obtenu après avoir rejoint la Grande Compagnie: {i0}.'
   },
   mogStation: {
     en: 'Purchase directly from the {i0}.',

@@ -129,7 +129,7 @@ const craftItem = {
   }, 
   larimar: {
     icon: 12541,
-    name: ["Orthodox Barding", "Orthodoxer Rossharnisch", "Barde orthodoxe", "オーソドックスバード"]
+    name: ["Larimar", "Larimar", "Larimar", "ラリマール"]
   },
   leviathansBarb: {
     icon: 7159,

@@ -43,9 +43,9 @@ module.exports = {
     fr: 'Atteindre la récompense or sur l\'ALEA niveau {0} {img1} \'{i2}\' dans {img3} {4} (x: {5}, y: {6}).'
   },
   forumContest: {
-    en: 'Be one of the {0} lucky players selected during the {1} ({2}).'
+    en: 'Be one of the lucky winners selected during official forum contests.'
   },
-  grandComapany: {
+  grandCompany: {
     en: 'Unlocked when enlisting with Grand Company: {i0}.',
     de: 'Freigeschaltet durch das Einschreiben in einer staatlichen Gesellschaft: {i0}.',
     fr: 'Obtenu après avoir rejoint la Grande Compagnie: {i0}.'

@@ -366,11 +366,11 @@ const helper = {
       false
     )
   },
-  forumContest: (year, name, winners, expansion) => {
+  forumContest: () => {
     return o(
       'forumContest',
-      [winners, name, year],
-      expansion,
+      [],
+      expansions.ARR,
       false,
       true
     )
@@ -735,20 +735,7 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
       );
     
     case 36:
-      return [
-        helper.forumContest(
-          '2015',
-          ['Hairstyle Design Contest', 'Frisuren-Design-Wettbewerbs', 'concours de création de coupes de cheveux', '髪型デザインコンテスト'],
-          12,
-          expansions.ARR
-        ),
-        helper.forumContest(
-          '2016',
-          ['Do You Even /Pose? (NA)', 'Do You Even /Pose? (NA)', 'Do You Even /Pose? (NA)', 'Do You Even /Pose? (NA)'],
-          50,
-          expansions.ARR
-        )
-      ];
+      return helper.forumContest();
     
     case 37:
       return helper.craft(

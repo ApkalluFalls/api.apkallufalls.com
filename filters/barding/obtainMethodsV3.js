@@ -47,6 +47,7 @@ const anantaDreamstaffImage = 'ad';
 const namazuKobanImage = 'nk';
 const mythicClanLogMarkImage = 'mc';
 const odinsMantleImage = 'om';
+const heavensWardHelmFragmentImage = 'hwhf';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -83,6 +84,10 @@ const craftItem = {
     icon: 12522,
     name: ["Aurum Regis Nugget", "Königsgold-Nugget", "Pépite d'aurum regis", "オーラムレギスナゲット"]
   },
+  beastkinHorn: {
+    icon: 14190,
+    name: ["Beastkin Horn", "Bestienhorn", "Corne de bête", "枯角"]
+  },
   bismarcksBaleen: {
     icon: 12256,
     name: ["Bismarck's Baleen", "Bismarck-Barte", "Corne de Bismarck", "ビスマルクの角"]
@@ -103,6 +108,10 @@ const craftItem = {
     icon: 9378,
     name: ["Diamond Tear", "Diamantenträne", "Larme de la Furie des neiges", "氷神シヴァの涙"]
   },
+  dinosaurLeather: {
+    icon: 13745,
+    name: ["Dinosaur Leather", "Dinosaurierleder", "Cuir de dinosaure", "ダイノレザー"]
+  },
   dhalmelLeather: {
     icon: 12564,
     name: ["Dhalmel Leather", "Dhalmelleder", "Cuir de dhalmel", "ダルメルレザー"]
@@ -115,6 +124,14 @@ const craftItem = {
     icon: 5,
     name: ["Earth Shard", "Erdscherbe", "Éclat de terre", "アースシャード"]
   },
+  eikonIronIngot: {
+    icon: 14149,
+    name: ["Eikon Iron Ingot", "Ikoneneisenbarren", "Lingot de fer primordial", "イコンアロイインゴット"]
+  },
+  eikonLeather: {
+    icon: 14155,
+    name: ["Eikon Leather", "Ikonenleder", "Cuir primordial", "イコンレザー"]
+  },
   electrumIngot: {
     icon: 5066,
     name: ["Electrum Ingot", "Elektrum-Barren", "Lingot d'électrum", "エレクトラムインゴット"]
@@ -126,6 +143,10 @@ const craftItem = {
   goldIngot: {
     icon: 5069,
     name: ["Gold Ingot", "Goldbarren", "Lingot d'or", "ゴールドインゴット"]
+  },
+  griffinLeatherStrap: {
+    icon: 14187,
+    name: ["Griffin Leather Strap", "Greifenleder-Riemen", "Lanière en cuir de griffon", "グリフィンストラップ"]
   },
   hallowedRamieCloth: {
     icon: 12591,
@@ -155,6 +176,10 @@ const craftItem = {
     icon: 12,
     name: ["Lightning Crystal", "Blitzkristall", "Cristal de foudre", "ライトニングクリスタル"]
   },
+  nidhoggsScale: {
+    icon: 15653,
+    name: ["Nidhogg's Scale", "Nidhogg-Schuppe", "Écaille de Nidhogg", "邪竜の鱗"]
+  },
   platinumNugget: {
     icon: 9359,
     name: ["Platinum Nugget", "Platin-Nugget", "Pépite de platine", "プラチナナゲット"]
@@ -175,9 +200,21 @@ const craftItem = {
     icon: 7608,
     name: ["Saurian Leather", "Echsenleder", "Cuir de saurien", "ソーリアンレザー"]
   },
+  sephirotSap: {
+    icon: 13059,
+    name: ["Sephirot Sap", "Sephirot-Harz", "Sève de Sephirot", "セフィロトの樹液塊"]
+  },
   silkThread: {
     icon: 5338,
     name: ["Silk Thread", "Vanya-Seidenfäden", "Fil de soie", "山繭糸"]
+  },
+  starRuby: {
+    icon: 12544,
+    name: ["Star Ruby", "Sternenrubin", "Rubis étoilé", "スタールビー"]
+  },
+  starSapphire: {
+    icon: 12545,
+    name: ["Star Sapphire", "Sternensaphir", "Saphir étoilé", "スターサファイア"]
   },
   titaniumIngot: {
     icon: 12525,
@@ -229,9 +266,11 @@ const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette bé
 const namazuKoban = ["Namazu Koban", "Namazuo-Koban", "Koban namazu", "ナマズオ小判"];
 const mythicClanMarkLog = ["Mythic Clan Mark Log", "Clan-Mythenjäger-Tagebuch", "Journal de membre émérite du clan", "傑物クラン員の手記"];
 const odinsMantle = ["Odin's Mantle", "Odins Mantel", "Mante d'Odin", "オーディンの被布"];
+const heavensWardHelmFragment = ["Heavens' Ward Helm Fragment", "Azurgarden-Helmfragment", "Fragment de casque de l'Azur", "蒼天の甲冑片"];
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
+  idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   theForgottenKnight: ["The Forgotten Knight", "Der Vergessene Ritter", "Le Chevalier Oublié", "忘れられた騎士亭"],
   theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー']
@@ -789,7 +828,74 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
           { quantity: 1, ...craftItem.elmLumber },
           { quantity: 2, ...craftItem.blueFoxHide },
         ]
-      );      
+      );
+    
+    case 39:
+      return [
+        helper.veteranReward(960),
+        helper.achievementCertificate(3)
+      ];
+    
+    case 40:
+      return o(
+        'purchase',
+        [
+          15, heavensWardHelmFragment, heavensWardHelmFragmentImage,
+          ["Bertana", true, true, "ベルタナ"],
+          ["(Primal Gear II)", "(Primae-Ausrüstung II)", "(Armes De Primordiaux (2))", "(蛮神装備の取引（その2）)"],
+          locationImage,
+          location.idyllshire,
+          5.8, 5.2
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 41:
+      return helper.craft(
+        60,
+        locale("Leatherworker"),
+        2,
+        [
+          { quantity: 2, ...craftItem.windCluster },
+          { quantity: 2, ...craftItem.earthCluster },
+          { quantity: 2, ...craftItem.starRuby },
+          { quantity: 1, ...craftItem.starSapphire },
+          { quantity: 1, ...craftItem.sephirotSap },
+          { quantity: 4, ...craftItem.dinosaurLeather },
+        ]
+      );
+    
+    case 42:
+      return helper.eventQuest(
+        15,
+        ["Eggsaltation Of A Lark", "Ein Goldener Schatz", "La Prœufétie De Jihli", "エッグハントと黄金の宝物"],
+        'eq7',
+        expansions.ARR
+      );
+    
+    case 43:
+      return helper.mogStation(item);
+    
+    case 44:
+      return helper.achievementReward(1512, expansions.ARR, true, false);
+    
+    case 45:
+      return helper.craft(
+        60,
+        locale("Leatherworker"),
+        3,
+        [
+          { quantity: 2, ...craftItem.windCluster },
+          { quantity: 3, ...craftItem.earthCluster },
+          { quantity: 1, ...craftItem.eikonIronIngot },
+          { quantity: 4, ...craftItem.eikonLeather },
+          { quantity: 1, ...craftItem.griffinLeatherStrap },
+          { quantity: 2, ...craftItem.beastkinHorn },
+          { quantity: 3, ...craftItem.nidhoggsScale },
+        ]
+      );
 
     default:
       console.log("Unknown method for barding " + barding.id);

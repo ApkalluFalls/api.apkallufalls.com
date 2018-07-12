@@ -71,6 +71,15 @@ const beastTribe = {
   namazu: ["Namazu", "Namazuo", true, "ナマズオ"]
 }
 
+const specialItem = {
+  anemosLockbox: ["Anemos Lockbox", "Anemos-Schließkassette", "Coffre verrouillé d'Anemos", "アネモス帯のロックボックス"],
+  goldHaloedSack: ["Gold-haloed Sack", "Gülden strahlender Schatzbeutel", "Trésor énigmatique de grade II", "埋もれた財宝【弐】"],
+  goldTrimmedSack: ["Gold-trimmed Sack", "Gefundener Schatz IV", "Trésor mystérieux de grade IV", "埋もれた財宝G4"],
+  pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
+  platinumHaloedSack: ["Platinum-haloed Sack", "Platin strahlender Schatzbeutel", "Trésor énigmatique de grade III", "埋もれた財宝【参】"],
+  silverTrimmedSack: ["Silver-trimmed Sack", "Gefundener Schatz III", "Trésor mystérieux de grade III", "埋もれた財宝G3"]
+}
+
 const craftItem = {
   adamantiteNugget: {
     icon: 12526,
@@ -140,6 +149,10 @@ const craftItem = {
     icon: 5367,
     name: ["Elm Lumber", "Ulmen-Bauholz", "Madrier d'orme", "エルム材"]
   },
+  fireCluster: {
+    icon: 14,
+    name: ["Fire Cluster", "Feuerpolykristall", "Agrégat de feu", "ファイアクラスター"]
+  },
   goldIngot: {
     icon: 5069,
     name: ["Gold Ingot", "Goldbarren", "Lingot d'or", "ゴールドインゴット"]
@@ -200,6 +213,10 @@ const craftItem = {
     icon: 7608,
     name: ["Saurian Leather", "Echsenleder", "Cuir de saurien", "ソーリアンレザー"]
   },
+  scintillantIngot: {
+    icon: 16706,
+    name: ["Scintillant Ingot", "Szintillator-Barren", "Lingot de scintillant", "シンチレーターインゴット"]
+  },
   sephirotSap: {
     icon: 13059,
     name: ["Sephirot Sap", "Sephirot-Harz", "Sève de Sephirot", "セフィロトの樹液塊"]
@@ -207,6 +224,10 @@ const craftItem = {
   silkThread: {
     icon: 5338,
     name: ["Silk Thread", "Vanya-Seidenfäden", "Fil de soie", "山繭糸"]
+  },
+  sophicBeadFragment: {
+    icon: 16897,
+    name: ["Sophic Bead Fragment", "Sophia-Edelsteinsplitter", "Fragment d'orbe sophique", "女神の宝珠片"]
   },
   starRuby: {
     icon: 12544,
@@ -273,7 +294,10 @@ const location = {
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   theForgottenKnight: ["The Forgotten Knight", "Der Vergessene Ritter", "Le Chevalier Oublié", "忘れられた騎士亭"],
-  theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー']
+  theGoldSaucer: ['The Gold Saucer', 'Gold Saucer', 'Gold Saucer', 'ゴールドソーサー'],
+  duty: {
+    thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
+  }
 }
 
 const helper = {
@@ -483,6 +507,20 @@ const helper = {
       'isDefault',
       [],
       expansions.ARR,
+      true,
+      false
+    )
+  },
+  itemAccursedHoard: (sack, locationIn, expansion) => {
+    return o(
+      'itemAccursedHoard',
+      [
+        sack,
+        item.pieceOfAccursedHoard,
+        dutyImage,
+        locationIn || location.duty.thePalaceOfTheDead
+      ],
+      expansion || expansions.ARR,
       true,
       false
     )
@@ -760,7 +798,7 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
           locationImage,
           location.theForgottenKnight,
           13, 11,
-          item
+          item.name
         ],
         expansions.HW,
         true,
@@ -845,7 +883,8 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
           ["(Primal Gear II)", "(Primae-Ausrüstung II)", "(Armes De Primordiaux (2))", "(蛮神装備の取引（その2）)"],
           locationImage,
           location.idyllshire,
-          5.8, 5.2
+          5.8, 5.2,
+          item.name
         ],
         expansions.HW,
         true,
@@ -876,6 +915,7 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
       );
     
     case 43:
+    case 46:
       return helper.mogStation(item);
     
     case 44:
@@ -896,6 +936,27 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
           { quantity: 3, ...craftItem.nidhoggsScale },
         ]
       );
+    
+    case 47:
+      return helper.craft(
+        60,
+        locale("Goldsmith"),
+        4,
+        [
+          { quantity: 3, ...craftItem.fireCluster },
+          { quantity: 3, ...craftItem.windCluster },
+          { quantity: 3, ...craftItem.goldIngot },
+          { quantity: 2, ...craftItem.cashmereCloth },
+          { quantity: 1, ...craftItem.scintillantIngot },
+          { quantity: 1, ...craftItem.sophicBeadFragment },
+        ]
+      );
+    
+    case 48:
+      return [
+        helper.itemAccursedHoard(specialItem.silverTrimmedSack),
+        helper.itemAccursedHoard(specialItem.goldTrimmedSack)
+      ];
 
     default:
       console.log("Unknown method for barding " + barding.id);

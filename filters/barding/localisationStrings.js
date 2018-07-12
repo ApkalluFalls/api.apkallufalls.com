@@ -50,6 +50,11 @@ module.exports = {
     de: 'Freigeschaltet durch das Einschreiben in einer staatlichen Gesellschaft: {i0}.',
     fr: 'Obtenu après avoir rejoint la Grande Compagnie: {i0}.'
   },
+  itemAccursedHoard: {
+    en: 'Randomly awarded from a {i0}, after obtaining a {1} within {img2} {3}.',
+    de: 'Zufällig erhältlich von einem {i0}, nach erhalten von {1} in {img2} {3}.',
+    fr: 'Récompense aléatoire d\'un {i0}, après l\'obtention d\'un {1} dans {img2} {3}.'
+  },
   mogStation: {
     en: 'Purchase directly from the {i0}.',
     de: 'Direkt erworben von {i0}.',

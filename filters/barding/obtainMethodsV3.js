@@ -381,6 +381,7 @@ const veteransClanMarkLog = ["Veteran's Clan Mark Log", "Clan-Veteranenjäger-Ta
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
+  eurekaAnemos: ["Eureka Anemos", "Eureka Anemos", "Eurêka Anemos", "エウレカ：アネモス帯"],
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   theForgottenKnight: ["The Forgotten Knight", "Der Vergessene Ritter", "Le Chevalier Oublié", "忘れられた騎士亭"],
@@ -619,7 +620,7 @@ const helper = {
     return o(
       'itemAnemosLockbox',
       [
-        item.anemosLockbox,
+        specialItem.anemosLockbox,
         dutyImage,
         location.eurekaAnemos
       ],
@@ -1166,7 +1167,8 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
           ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
           locationImage,
           ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
-          13.9, 11.8
+          13.9, 11.8,
+          item.name
         ],
         expansions.SB,
         true,
@@ -1200,7 +1202,8 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
           ["(Yellow Gatherers' Scrip Exchange (Lv. 70 Items))", "(Gelbe Sammlerscheine (ab St. 70, Anderes))", "(Assignats Jaunes De Récolteur (divers/Nv 70))", "(ギャザラースクリップ:黄貨の取引（Lv70向け・その他）)"],
           locationImage,
           ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
-          9.9, 12.5
+          9.9, 12.5,
+          item.name
         ],
         expansions.SB,
         true,

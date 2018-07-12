@@ -55,6 +55,11 @@ module.exports = {
     de: 'Zufällig erhältlich von einem {i0}, nach erhalten von {1} in {img2} {3}.',
     fr: 'Récompense aléatoire d\'un {i0}, après l\'obtention d\'un {1} dans {img2} {3}.'
   },
+  itemAnemosLockbox: {
+    en: 'Randomly awarded from an {i0}, obtained after completing FATEs within {img1} {2}.',
+    de: 'Zufällig erhältlich von {i0}, erhalten nach  Vervollständigen von FATEs in {img1} {2}.',
+    fr: 'Récompense aléatoire d\'un {i0}, obtenu après avoir complété des ALEAs dans {img1} {2}.'
+  },
   mogStation: {
     en: 'Purchase directly from the {i0}.',
     de: 'Direkt erworben von {i0}.',

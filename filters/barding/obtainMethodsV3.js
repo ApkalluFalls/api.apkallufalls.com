@@ -48,6 +48,7 @@ const namazuKobanImage = 'nk';
 const mythicClanLogMarkImage = 'mc';
 const odinsMantleImage = 'om';
 const heavensWardHelmFragmentImage = 'hwhf';
+const veteransClanMarkLogImage = 'vcml';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -93,6 +94,10 @@ const craftItem = {
     icon: 12522,
     name: ["Aurum Regis Nugget", "Königsgold-Nugget", "Pépite d'aurum regis", "オーラムレギスナゲット"]
   },
+  azurite: {
+    icon: 19965,
+    name: ["Azurite", "Azurit", "Azurite", "アズライト"]
+  },
   beastkinHorn: {
     icon: 14190,
     name: ["Beastkin Horn", "Bestienhorn", "Corne de bête", "枯角"]
@@ -101,13 +106,33 @@ const craftItem = {
     icon: 12256,
     name: ["Bismarck's Baleen", "Bismarck-Barte", "Corne de Bismarck", "ビスマルクの角"]
   },
+  bladeOfRevelry: {
+    icon: 19123,
+    name: ["Blade of Revelry", "Verspielte Klinge", "Lame de Susano", "豪神スサノオの刃"]
+  },
+  blissfulShroud: {
+    icon: 19124,
+    name: ["Blissful Shroud", "Gepflegtes Tuch", "Étole de Lakshmi", "美神ラクシュミの羽衣"]
+  },
   blueFoxHide: {
     icon: 7041,
     name: ["Blue Fox Hide", "Blaufuchsfell", "Fourrure de renard bleu", "ブルーフォックスの毛皮"]
   },
+  byakkosMane: {
+    icon: 22307,
+    name: ["Byakko's Mane", "Byakko-Mäne", "Crinière du Tigre blanc", "白虎のタテガミ"]
+  },
   cashmereCloth: {
     icon: 7609,
     name: ['Cashmere Cloth', 'Kaschmir', 'Étoffe de cachemire', 'カシミヤ織物']
+  },
+  celestialKimonoRemnant: {
+    icon: 21609,
+    name: ["Celestial Kimono Remnant", "Himmlischer Kimonostoff", "Lambeau du kimono de Tsukuyomi", "夜神ツクヨミの反物"]
+  },
+  chromiteIngot: {
+    icon: 19949,
+    name: ["Chromite Ingot", "Chromeisen-Barren", "Lingot de chromite", "クロマイトインゴット"]
   },
   darksteelPlate: {
     icon: 5075,
@@ -153,6 +178,10 @@ const craftItem = {
     icon: 14,
     name: ["Fire Cluster", "Feuerpolykristall", "Agrégat de feu", "ファイアクラスター"]
   },
+  gazelleLeather: {
+    icon: 19997,
+    name: ["Gazelle Leather", "Gazellenleder", "Cuir de gazelle", "ガゼルレザー"]
+  },
   goldIngot: {
     icon: 5069,
     name: ["Gold Ingot", "Goldbarren", "Lingot d'or", "ゴールドインゴット"]
@@ -161,9 +190,21 @@ const craftItem = {
     icon: 14187,
     name: ["Griffin Leather Strap", "Greifenleder-Riemen", "Lanière en cuir de griffon", "グリフィンストラップ"]
   },
+  halgaiMane: {
+    icon: 19985,
+    name: ["Halgai Mane", "Halgai-Mähne", "Crinière de halgai", "ハルガイのタテガミ"]
+  },
   hallowedRamieCloth: {
     icon: 12591,
     name: ["Hallowed Ramie Cloth", "Geheiligter Ramienstoff", "Étoffe de ramie sacrée", "聖麻布"]
+  },
+  heavyMetalIngot: {
+    icon: 16705,
+    name: ["Heavy Metal Ingot", "Schwermetall-Barren", "Lingot d'alliage de tungstène", "ヘヴィアロイインゴット"]
+  },
+  hemicyonLeather: {
+    icon: 16708,
+    name: ["Hemicyon Leather", "Hemicyonleder", "Cuir d'hemicyon", "ヘミキオンレザー"]
   },
   hippogryphLeather: {
     icon: 5288,
@@ -172,7 +213,11 @@ const craftItem = {
   iceCluster: {
     icon: 15,
     name: ["Ice Cluster", "Eispolykristall", "Agrégat de glace", "アイスクラスター"]
-  }, 
+  },
+  kyanite: {
+    icon: 19963,
+    name: ["Kyanite", "Kyanit", "Disthène", "カイヤナイト"]
+  },
   larimar: {
     icon: 12541,
     name: ["Larimar", "Larimar", "Larimar", "ラリマール"]
@@ -185,13 +230,29 @@ const craftItem = {
     icon: 8019,
     name: ["Levin Orb", "Ramuh-Kugel", "Orbe de Ramuh", "ラムウのオーブ"]
   },
+  lightningCluster: {
+    icon: 18,
+    name: ["Lightning Cluster", "Blitzpolykristall", "Agrégat de foudre", "ライトニングクラスター"]
+  },
   lightningCrystal: {
     icon: 12,
     name: ["Lightning Crystal", "Blitzkristall", "Cristal de foudre", "ライトニングクリスタル"]
   },
+  molybdenumIngot: {
+    icon: 19947,
+    name: ["Molybdenum Ingot", "Molybdän-Barren", "Lingot de molybdène", "モリブデンインゴット"]
+  },
   nidhoggsScale: {
     icon: 15653,
     name: ["Nidhogg's Scale", "Nidhogg-Schuppe", "Écaille de Nidhogg", "邪竜の鱗"]
+  },
+  palladiumIngot: {
+    icon: 19948,
+    name: ["Palladium Ingot", "Palladium-Barren", "Lingot de palladium", "パラースインゴット"]
+  },
+  palladiumNugget: {
+    icon: 19946,
+    name: ["Palladium Nugget", "Palladium-Nugget", "Pépite de palladium", "パラースナゲット"]
   },
   platinumNugget: {
     icon: 9359,
@@ -221,10 +282,18 @@ const craftItem = {
     icon: 13059,
     name: ["Sephirot Sap", "Sephirot-Harz", "Sève de Sephirot", "セフィロトの樹液塊"]
   },
+  shinryusScales: {
+    icon: 21090,
+    name: ["Shinryu's Scales", "Shinryu-Schuppe", "Écaille de Shinryu", "神龍の鱗"]
+  },
   silkThread: {
     icon: 5338,
     name: ["Silk Thread", "Vanya-Seidenfäden", "Fil de soie", "山繭糸"]
   },
+  silvergraceIngot: {
+    icon: 22428,
+    name: ["Silvergrace Ingot", "Silbergunst-Barren", "Lingot de graçargent", "グレースインゴット"]
+  },  
   sophicBeadFragment: {
     icon: 16897,
     name: ["Sophic Bead Fragment", "Sophia-Edelsteinsplitter", "Fragment d'orbe sophique", "女神の宝珠片"]
@@ -237,9 +306,25 @@ const craftItem = {
     icon: 12545,
     name: ["Star Sapphire", "Sternensaphir", "Saphir étoilé", "スターサファイア"]
   },
+  tigerLeather: {
+    icon: 19995,
+    name: ["Tiger Leather", "Tigerleder", "Cuir de tigre", "タイガーレザー"]
+  },
   titaniumIngot: {
     icon: 12525,
     name: ["Titanium Ingot", "Titan-Barren", "Lingot de titane", "チタンインゴット"]
+  },
+  trueLinen: {
+    icon: 22493,
+    name: ["True Linen", "Naturbelassenes Reinleinen", "Étoffe de lin hingashien", "真麻布"]
+  },
+  twinsilk: {
+    icon: 19987,
+    name: ["Twinsilk", "Doppelseide", "Étoffe de doublesoie", "玉糸紬"]
+  },
+  twinthread: {
+    icon: 5330,
+    name: ['Twinthread', 'Doppelfaden', 'Fil de doublesoie', '玉糸']
   },
   undyedWoolenCloth: {
     icon: 5328,
@@ -260,6 +345,10 @@ const craftItem = {
   woolenYarn: {
     icon: 5337,
     name: ["Woolen Yarn", "Wollgarn", "Fil de laine", "毛糸"]
+  },
+  zurvaniteCarapaceFragment: {
+    icon: 17572,
+    name: ["Zurvanite Carapace Fragment", "Fragment von Zurvans Panzer", "Fragment de carapace zurvanique", "鬼神の甲殻片"]
   }
 }
 
@@ -288,6 +377,7 @@ const namazuKoban = ["Namazu Koban", "Namazuo-Koban", "Koban namazu", "ナマズ
 const mythicClanMarkLog = ["Mythic Clan Mark Log", "Clan-Mythenjäger-Tagebuch", "Journal de membre émérite du clan", "傑物クラン員の手記"];
 const odinsMantle = ["Odin's Mantle", "Odins Mantel", "Mante d'Odin", "オーディンの被布"];
 const heavensWardHelmFragment = ["Heavens' Ward Helm Fragment", "Azurgarden-Helmfragment", "Fragment de casque de l'Azur", "蒼天の甲冑片"];
+const veteransClanMarkLog = ["Veteran's Clan Mark Log", "Clan-Veteranenjäger-Tagebuch", "Journal de membre éminent du clan", "名物クラン員の手記"];
 
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
@@ -516,11 +606,24 @@ const helper = {
       'itemAccursedHoard',
       [
         sack,
-        item.pieceOfAccursedHoard,
+        specialItem.pieceOfAccursedHoard,
         dutyImage,
         locationIn || location.duty.thePalaceOfTheDead
       ],
       expansion || expansions.ARR,
+      true,
+      false
+    )
+  },
+  itemAnemosLockbox: () => {
+    return o(
+      'itemAnemosLockbox',
+      [
+        item.anemosLockbox,
+        dutyImage,
+        location.eurekaAnemos
+      ],
+      expansions.SB,
       true,
       false
     )
@@ -916,6 +1019,10 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
     
     case 43:
     case 46:
+    case 50:
+    case 51:
+    case 57:
+    case 58:
       return helper.mogStation(item);
     
     case 44:
@@ -957,6 +1064,163 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
         helper.itemAccursedHoard(specialItem.silverTrimmedSack),
         helper.itemAccursedHoard(specialItem.goldTrimmedSack)
       ];
+    
+    case 49:
+      return helper.goldSaucerPrizeExchange(150000, item);
+    
+    case 52:
+      return helper.craft(
+        60,
+        locale("Armorer"),
+        4,
+        [
+          { quantity: 3, ...craftItem.iceCluster },
+          { quantity: 3, ...craftItem.earthCluster },
+          { quantity: 1, ...craftItem.griffinLeatherStrap },
+          { quantity: 3, ...craftItem.heavyMetalIngot },
+          { quantity: 1, ...craftItem.hemicyonLeather },
+          { quantity: 1, ...craftItem.zurvaniteCarapaceFragment },
+        ]
+      );
+    
+    case 53:
+      return helper.craft(
+        70,
+        locale("Armorer"),
+        1,
+        [
+          { quantity: 2, ...craftItem.iceCluster },
+          { quantity: 1, ...craftItem.earthCluster },
+          { quantity: 1, ...craftItem.bladeOfRevelry },
+          { quantity: 3, ...craftItem.molybdenumIngot },
+          { quantity: 2, ...craftItem.kyanite },
+          { quantity: 3, ...craftItem.halgaiMane },
+          { quantity: 1, ...craftItem.gazelleLeather },
+        ]
+      );
+    
+    case 54:
+      return helper.fate(
+        68,
+        ["Rattle And Humbaba", "Hunba, Hunba, Hunba, Tätärä!", "Défi: L'affreux Humbaba", "豪腕の襲撃者「フンババ」"],
+        ["The Peaks", "Die Zinnen", "Les Pics", "ギラバニア山岳地帯"],
+        15.5, 30.5,
+        expansions.SB
+      );
+
+    case 55:
+      return helper.craft(
+        70,
+        locale("Goldsmith"),
+        1,
+        [
+          { quantity: 1, ...craftItem.fireCluster },
+          { quantity: 2, ...craftItem.windCluster },
+          { quantity: 1, ...craftItem.blissfulShroud },
+          { quantity: 2, ...craftItem.palladiumNugget },
+          { quantity: 2, ...craftItem.azurite },
+          { quantity: 2, ...craftItem.twinsilk },
+          { quantity: 1, ...craftItem.twinthread },
+        ]
+      );
+    
+    case 56:
+      return o(
+        'purchase',
+        [
+          4, veteransClanMarkLog, veteransClanMarkLogImage,
+          ["Eschina", true, true, "エシナ"],
+          ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
+          locationImage,
+          ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
+          13.9, 11.8,
+          item.name
+        ],
+        expansions.HW,
+        true,
+        false
+      );
+    
+    case 59:
+      return helper.craft(
+        70,
+        locale("Armorer"),
+        2,
+        [
+          { quantity: 2, ...craftItem.iceCluster },
+          { quantity: 2, ...craftItem.earthCluster },
+          { quantity: 1, ...craftItem.palladiumNugget },
+          { quantity: 2, ...craftItem.molybdenumIngot },
+          { quantity: 2, ...craftItem.chromiteIngot },
+          { quantity: 1, ...craftItem.gazelleLeather },
+          { quantity: 1, ...craftItem.shinryusScales },
+        ]
+      )
+
+    case 60:
+      return o(
+        'purchase',
+        [
+          5, ixionHorn, ixionHornImage,
+          ["Eschina", true, true, "エシナ"],
+          ["(Wondrous Sundries)", "(Gegenstände)", "(Objets)", "（アイテムの取引）"],
+          locationImage,
+          ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
+          13.9, 11.8
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+    
+    case 61:
+      return helper.itemAnemosLockbox();
+    
+    case 62:
+      return helper.craft(
+        70,
+        locale("Goldsmith"),
+        3,
+        [
+          { quantity: 2, ...craftItem.fireCluster },
+          { quantity: 2, ...craftItem.windCluster },
+          { quantity: 1, ...craftItem.palladiumIngot },
+          { quantity: 3, ...craftItem.chromiteIngot },
+          { quantity: 1, ...craftItem.tigerLeather },
+          { quantity: 1, ...craftItem.byakkosMane },
+        ]
+      )
+
+    case 63:
+      return o(
+        'purchase',
+        [
+          1650, ["Yellow Gatherers' Scrip", "Gelber Sammlerschein", "Assignat jaune de récolteur", "ギャザラースクリップ:黄貨"], 'ygs',
+          ["Scrip Exchange", "Scheinewechslerin", "Comptable Des Assignats", "スクリップ取引窓口"],
+          ["(Yellow Gatherers' Scrip Exchange (Lv. 70 Items))", "(Gelbe Sammlerscheine (ab St. 70, Anderes))", "(Assignats Jaunes De Récolteur (divers/Nv 70))", "(ギャザラースクリップ:黄貨の取引（Lv70向け・その他）)"],
+          locationImage,
+          ["Rhalgr's Reach", "Rhalgrs Wacht", "L'Étendue De Rhalgr", "ラールガーズリーチ"],
+          9.9, 12.5
+        ],
+        expansions.SB,
+        true,
+        false
+      );
+    
+    case 64:
+      return helper.craft(
+        70,
+        locale("Weaver"),
+        3,
+        [
+          { quantity: 2, ...craftItem.windCluster },
+          { quantity: 2, ...craftItem.lightningCluster },
+          { quantity: 1, ...craftItem.tigerLeather },
+          { quantity: 1, ...craftItem.silvergraceIngot },
+          { quantity: 3, ...craftItem.trueLinen },
+          { quantity: 1, ...craftItem.celestialKimonoRemnant },
+        ]
+      )
 
     default:
       console.log("Unknown method for barding " + barding.id);

@@ -844,6 +844,15 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
         true,
         false
       );
+    
+    case 178:
+      return helper.eventQuest(
+        15,
+        ["Jump To The Beach", "Sommer, Sonne, Abenteuer", "Voilà L'été", "紅蓮祭と常夏の挑戦"],
+        'eq10',
+        expansions.ARR
+      )
+      
 
     case 180:
       return o(

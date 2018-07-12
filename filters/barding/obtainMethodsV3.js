@@ -87,6 +87,10 @@ const craftItem = {
     icon: 12256,
     name: ["Bismarck's Baleen", "Bismarck-Barte", "Corne de Bismarck", "ビスマルクの角"]
   },
+  blueFoxHide: {
+    icon: 7041,
+    name: ["Blue Fox Hide", "Blaufuchsfell", "Fourrure de renard bleu", "ブルーフォックスの毛皮"]
+  },
   cashmereCloth: {
     icon: 7609,
     name: ['Cashmere Cloth', 'Kaschmir', 'Étoffe de cachemire', 'カシミヤ織物']
@@ -107,9 +111,17 @@ const craftItem = {
     icon: 17,
     name: ["Earth Cluster", "Erdpolykristall", "Agrégat de terre", "アースクラスター"]
   },
+  earthShard: {
+    icon: 5,
+    name: ["Earth Shard", "Erdscherbe", "Éclat de terre", "アースシャード"]
+  },
   electrumIngot: {
     icon: 5066,
     name: ["Electrum Ingot", "Elektrum-Barren", "Lingot d'électrum", "エレクトラムインゴット"]
+  },
+  elmLumber: {
+    icon: 5367,
+    name: ["Elm Lumber", "Ulmen-Bauholz", "Madrier d'orme", "エルム材"]
   },
   goldIngot: {
     icon: 5069,
@@ -171,6 +183,10 @@ const craftItem = {
     icon: 12525,
     name: ["Titanium Ingot", "Titan-Barren", "Lingot de titane", "チタンインゴット"]
   },
+  undyedWoolenCloth: {
+    icon: 5328,
+    name: ["Undyed Woolen Cloth", "Naturbelassene Wolle", "Étoffe de laine", "羅紗"]
+  },
   windCluster: {
     icon: 16,
     name: ["Wind Cluster", "Windpolykristall", "Agrégat de vent", "ウィンドクラスター"]
@@ -178,6 +194,14 @@ const craftItem = {
   windCrystal: {
     icon: 10,
     name: ["Wind Crystal", "Windkristall", "Cristal de vent", "ウィンドクリスタル"]
+  },
+  windShard: {
+    icon: 4,
+    name: ['Wind Shard', 'Windscherbe', 'Éclat de vent', 'ウィンドシャード']
+  },
+  woolenYarn: {
+    icon: 5337,
+    name: ["Woolen Yarn", "Wollgarn", "Fil de laine", "毛糸"]
   }
 }
 
@@ -751,6 +775,21 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
           { quantity: 4, ...craftItem.ramieCloth }
         ]
       );
+    
+    case 38:
+      return helper.craft(
+        40,
+        locale("Leatherworker"),
+        0,
+        [
+          { quantity: 4, ...craftItem.windShard },
+          { quantity: 5, ...craftItem.earthShard },
+          { quantity: 2, ...craftItem.undyedWoolenCloth },
+          { quantity: 3, ...craftItem.woolenYarn },
+          { quantity: 1, ...craftItem.elmLumber },
+          { quantity: 2, ...craftItem.blueFoxHide },
+        ]
+      );      
 
     default:
       console.log("Unknown method for barding " + barding.id);

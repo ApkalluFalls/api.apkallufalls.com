@@ -14,6 +14,7 @@ module.exports = new Helper("Item", "items", {
     'Name_en',
     'Name_fr',
     'Name_ja',
+    'IsUntradable',
     'ItemAction.Type',
     'ItemAction.Data0',
     'ItemAction.Data1',
@@ -87,6 +88,9 @@ function format(data, awardKey, subresource, achievements) {
         jp: entry.Name_ja
       }
     }
+
+    if (entry.IsUntradable)
+      result.untradable = true;
 
     if (achievements) {
       const achievement = achievements.filter(a => a.id === result.id)[0];

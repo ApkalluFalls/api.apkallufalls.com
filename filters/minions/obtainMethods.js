@@ -1686,12 +1686,15 @@ module.exports = (minion, achievementsIn) => {
       );
     
     case 63:
-      return helper.eventQuest(
-        10,
-        ['Burgeoning Dread', 'Der Schwarze Dämon', 'Abomination Aberrante', '黒い悪魔'],
-        'eq4',
-        expansions.ARR
-      );
+      return [
+        helper.eventQuest(
+          10,
+          ['Burgeoning Dread', 'Der Schwarze Dämon', 'Abomination Aberrante', '黒い悪魔'],
+          'eq4',
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ]
     
     case 64:
       return [
@@ -2885,21 +2888,27 @@ module.exports = (minion, achievementsIn) => {
       );
 
     case 225:
-      return helper.eventQuestPurchase(
-        ["Seasonal Event Prizes", "Saisonale Gegenstände", "Récompenses D'événements Saisonniers", "シーズナルイベント報酬の交換"],
-        ["All Saints' Wake (2016)", true, true, "守護天節 (2016)"],
-        expansions.ARR
-      );
+      return [
+        helper.eventQuestPurchase(
+          ["Seasonal Event Prizes", "Saisonale Gegenstände", "Récompenses D'événements Saisonniers", "シーズナルイベント報酬の交換"],
+          ["All Saints' Wake (2016)", true, true, "守護天節 (2016)"],
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
 
     case 226:
       return helper.dungeon(location.duty.baelsarsWall, 60, null, null, expansions.HW, true, false);
 
     case 227:
-      return helper.eventQuestPurchase(
-        ["House Valentione Maid", "Dienstmädchen[p] Des Hauses Valention", "Soubrette Des Valention", "ヴァレンティオン家のメイド"],
-        ["Valentione's Day (2017)", "Valention (2017)", "La Valention (2017)", "ヴァレンティオン (2017)"],
-        expansions.ARR
-      );
+      return [
+        helper.eventQuestPurchase(
+          ["House Valentione Maid", "Dienstmädchen[p] Des Hauses Valention", "Soubrette Des Valention", "ヴァレンティオン家のメイド"],
+          ["Valentione's Day (2017)", "Valention (2017)", "La Valention (2017)", "ヴァレンティオン (2017)"],
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ]
     
     case 229:
       return helper.squareEnixStore(

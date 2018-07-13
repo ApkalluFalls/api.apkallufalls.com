@@ -1011,12 +1011,15 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
       );
     
     case 42:
-      return helper.eventQuest(
-        15,
-        ["Eggsaltation Of A Lark", "Ein Goldener Schatz", "La Prœufétie De Jihli", "エッグハントと黄金の宝物"],
-        'eq7',
-        expansions.ARR
-      );
+      return [
+        helper.eventQuest(
+          15,
+          ["Eggsaltation Of A Lark", "Ein Goldener Schatz", "La Prœufétie De Jihli", "エッグハントと黄金の宝物"],
+          'eq7',
+          expansions.ARR
+        ),
+        helper.mogStation(item)
+      ]
     
     case 43:
     case 46:

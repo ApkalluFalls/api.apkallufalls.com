@@ -1252,12 +1252,15 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       );
 
     case 106:
-      return helper.eventQuest(
-        15,
-        ["Eggsistential Crisis", "Ein Unbezahlbares Juwel", "Riggy, Il S'appelle Riggy", "エッグハントが生む宝石"],
-        'eq7',
-        expansions.ARR
-      );
+      return [
+        helper.eventQuest(
+          15,
+          ["Eggsistential Crisis", "Ein Unbezahlbares Juwel", "Riggy, Il S'appelle Riggy", "エッグハントが生む宝石"],
+          'eq7',
+          expansions.ARR
+        ),
+        helper.mogStation()
+      ];
 
     case 108:
       return o(

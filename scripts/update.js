@@ -22,6 +22,7 @@ const update = async function (args) {
   let achievementsListV3;
   let bardingListV3;
   let emotesListV3;
+  let hairstyleListV3;
   let minionsListV3;
   let titlesListV3;
   let itemsV3;
@@ -213,6 +214,21 @@ const update = async function (args) {
       + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp'
     ).then(response => response).catch(e => console.error(e));
     await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, itemsV3);
+  }
+
+  // Hairstyles V3.
+  if (config && config.hairstylesV3) {
+    // message('Emotes');
+    // await require('./emotes/dataV3.js').fetch();
+    // const textCommands = await recursiveFetch(
+    //   'https://api.xivdb-staging.com/TextCommand'
+    //   + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'
+    //   + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp'
+    // ).then(response => response).catch(e => console.error(e));
+    // await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, itemsV3);
+  }
+  if (config && config.hairstylesListV3) {
+    await require('./hairstyles/listV3.js').fetch(achievementsListV3, itemsV3);
   }
 
   // Titles V3.

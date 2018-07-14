@@ -172,13 +172,18 @@ const helper = {
       false
     )
   },
-  goldSaucerPrizeExchange: (cost, item) => {
+  goldSaucerPrizeExchange: (cost, item, isPrizeExchange2) => {
     return o(
       'purchase',
       [
         cost, mgp, mgpImage,
         ['Gold Saucer Attendant', 'Sonderartikel-Händlerin', 'Préposée Aux Lots', '景品交換窓口'],
-        ['(Prize Exchange I)', '(Gewinne I)', '(Lots (1))', '（景品の交換（その1））'],
+        [
+          '(Prize Exchange I' + (isPrizeExchange2 ? 'I' : '') + ')',
+          '(Gewinne ' + (isPrizeExchange2 ? 'I' : '') + ')',
+          '(Lots (' + (isPrizeExchange2 ? '2' : '1') + '))',
+          '（景品の交換（その' + (isPrizeExchange2 ? '2' : '1') + '））'
+        ],
         locationImage,
         location.theGoldSaucer,
         5.4, 6.7,
@@ -442,7 +447,7 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
       )
 
     case 81:
-      return helper.goldSaucerPrizeExchange(20000, item);
+      return helper.goldSaucerPrizeExchange(20000, item, true);
     
     case 82:
       return [

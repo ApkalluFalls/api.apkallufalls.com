@@ -3147,7 +3147,10 @@ module.exports = (minion, achievementsIn) => {
       return helper.dungeon(location.duty.domaCastle, 67, null, null, expansions.SB, true, false);
 
     case 253:
-      return helper.timewornMap(...timewornMap.gazelleskin);
+      return [
+        helper.timewornMap(...timewornMap.gazelleskin),
+        helper.hiddenCanalsOfUznair()
+      ]
 
     case 254:
       return helper.dungeon(location.duty.theTempleOfTheFist, 70, null, null, expansions.SB, true, false);

@@ -49,6 +49,15 @@ module.exports = new Helper("Item", "items", {
       'emote',
       response.achievements
     );
+  
+    response.hairstyles = format(
+      data.filter(item => item['ItemAction.Type'] == 2633
+        && item['ItemAction.Data1'] === 4659
+      ),
+      'ItemAction.Data0',
+      'hairstyle',
+      response.achievements
+    );
 
     response.minions = format(
       data.filter((item => item['ItemAction.Type'] === 853)),

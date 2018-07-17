@@ -25,7 +25,7 @@ module.exports = new Helper("achievement category", "achievement categories", {
   format: (data, args) => {
     const response = {};
 
-    data: data
+    data
       .forEach(entry => {
         let kind = response[entry['AchievementKind.ID']];
 

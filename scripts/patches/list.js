@@ -36,6 +36,7 @@ module.exports = new Helper("Patch", "patches", {
       const titles = args[3] && args[3].data;
       const emotes = args[4] && args[4].data;
       const barding = args[5] && args[5].data;
+      const orchestrionRolls = args[6] && args[6].data;
 
       formattedData.forEach(f => {
         const counts = {};
@@ -133,6 +134,22 @@ module.exports = new Helper("Patch", "patches", {
             totalBarding - bardingChange === 0
             ? '∞'
             : Math.round(((100/(totalBarding - bardingChange)) * bardingChange) * 10) / 10
+          );
+        }
+
+        const orchestrionRollsChange = orchestrionRolls instanceof Array && orchestrionRolls.filter(a => a.patch === f.id).length || 0;
+        if (orchestrionRollsChange) {
+          const totalOrchestrionRolls = orchestrionRolls.filter(a => a.patch <= f.id).length;
+
+          counts['orchestrion-rolls'] = {
+            change: orchestrionRollsChange,
+            total: totalOrchestrionRolls
+          };
+
+          counts['orchestrion-rolls'].percent = (
+            totalOrchestrionRolls - orchestrionRollsChange === 0
+            ? '∞'
+            : Math.round(((100/(totalOrchestrionRolls - orchestrionRollsChange)) * orchestrionRollsChange) * 10) / 10
           );
         }
 

@@ -24,6 +24,7 @@ const update = async function (args) {
   let emotesListV3;
   let hairstyleListV3;
   let minionsListV3;
+  let orchestrionRollsListV3;
   let titlesListV3;
   let itemsV3;
 
@@ -67,6 +68,10 @@ const update = async function (args) {
     resolve(data);
   })).then(data => minionsListV3 = JSON.parse(data));
 
+  await new Promise((resolve) => fs.readFile('../docs/v3/orchestrion-rolls.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => orchestrionRollsListV3 = JSON.parse(data));
+
   await new Promise((resolve) => fs.readFile('../docs/v3/titles.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => titlesListV3 = JSON.parse(data));
@@ -86,7 +91,8 @@ const update = async function (args) {
       mountsList,
       titlesListV3,
       emotesListV3,
-      bardingListV3
+      bardingListV3,
+      orchestrionRollsListV3
     );
   }
 
@@ -229,6 +235,17 @@ const update = async function (args) {
   }
   if (config && config.hairstylesListV3) {
     await require('./hairstyles/listV3.js').fetch(achievementsListV3, itemsV3);
+  }
+
+  // Orchestrion Rolls V3.
+  if (config && config.orchestrionRollsV3) {
+    message('Emotes');
+    await require('./orchestrionRolls/dataV3.js').fetch();
+    await require('./orchestrionRolls/listV3.js').fetch(achievementsListV3, itemsV3);
+  }
+  if (config && config.orchestrionRollsListV3) {
+    // Until the V3 API is fixed...
+    await require('./orchestrionRolls/listV3.js').fetch(achievementsListV3, itemsV3);
   }
 
   // Titles V3.

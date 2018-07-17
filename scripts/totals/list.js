@@ -7,6 +7,7 @@ module.exports = async function() {
   let emotesList;
   let minionsList;
   let mountsList;
+  let orchestrionRollsList;
 
   await new Promise((resolve) => fs.readFile('../docs/v3/achievements.json', 'utf8', (e, data) => {
     resolve(data);
@@ -28,6 +29,10 @@ module.exports = async function() {
     resolve(data);
   })).then(data => mountsList = JSON.parse(data).data);
 
+  await new Promise((resolve) => fs.readFile('../docs/v3/orchestrion-rolls.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => orchestrionRollsList = JSON.parse(data).data);
+
   const achievementsWithItems = achievementsList.filter(data => data.reward && data.reward.item);
   const achievementsWithTitles = achievementsList.filter(data => data.reward && data.reward.title);
 
@@ -41,7 +46,6 @@ module.exports = async function() {
       }
     },
     barding: {
-      byDefault: bardingList.filter(data => data.ref && data.ref.filter(ref => ref.method.text === 'isDefault').length).length,
       total: bardingList.length,
       unavailable: bardingList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
       unknown: bardingList.filter(data => !data.ref).length
@@ -64,6 +68,11 @@ module.exports = async function() {
       total: mountsList.length,
       unavailable: mountsList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
       unknown: mountsList.filter(data => !data.ref).length
+    },
+    'orchestrion-rolls': {
+      total: orchestrionRollsList.length,
+      unavailable: orchestrionRollsList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
+      unknown: orchestrionRollsList.filter(data => !data.ref).length
     },
     rewards: {
       total: achievementsWithItems.length,

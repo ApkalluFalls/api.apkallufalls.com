@@ -20,7 +20,8 @@ module.exports = new Helper("Item", "items", {
     'ItemAction.Data1',
     'ItemAction.Data2',
     'ItemAction.Data3',
-    'GameContentLinks.Achievement.Item'
+    'GameContentLinks.Achievement.Item',
+    'GamePatch.ID'
   ],
   list: true,
   v3: true,
@@ -77,7 +78,8 @@ module.exports = new Helper("Item", "items", {
       data.filter(item => item['ItemAction.Type'] === 5845),
       'ItemAction.Data0',
       'orchestrionRoll',
-      response.achievements
+      response.achievements,
+      true
     )
 
     return response;
@@ -86,7 +88,7 @@ module.exports = new Helper("Item", "items", {
   createList("items", data, base, _helperCreateJSONFn);
 });
 
-function format(data, awardKey, subresource, achievements) {
+function format(data, awardKey, subresource, achievements, requiresPatch) {
    return data.map(entry => {
      const result = {
       icon: entry.Icon,
@@ -129,6 +131,9 @@ function format(data, awardKey, subresource, achievements) {
         throw new Error('Unhandled item with multiple achievements.');
         result.source = entry[awardKey][0];
     }
+
+    if (requiresPatch)
+      result.patch = entry['GamePatch.ID'];
 
     return result;
   })

@@ -74,7 +74,7 @@ module.exports = new Helper("Item", "items", {
       response.achievements
     );
 
-    response.orchestrionRolls = format(
+    response['orchestrion-rolls'] = format(
       data.filter(item => item['ItemAction.Type'] === 5845),
       'ItemAction.Data0',
       'orchestrionRoll',

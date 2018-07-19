@@ -30,9 +30,46 @@ module.exports = () => {
     }, '', () => {});
   });
 
+  // Orchestrion Roll categories
+  // This matches the object contained within config.js of Apkallu Falls itself.
+  const orchestrionRolls = {
+    2: {
+      name: {"de":"Orte","en":"Locales","fr":"Lieux","jp":"フィールド"}
+    },
+    3: {
+      name: {"de":"Dungeons","en":"Dungeons","fr":"Donjons","jp":"ダンジョン"}
+    },
+    4: {
+      name: {"de":"Primae","en":"Trials","fr":"Défis","jp":"討伐・討滅戦"}
+    },
+    5: {
+      name: {"de":"Raids","en":"Raids","fr":"Raids","jp":"レイド"}
+    },
+    6: {
+      name: {"de":"Andere","en":"Others","fr":"Divers","jp":"その他"}
+    },
+    7: {
+      name: {"de":"Saisonales Ereignis","en":"Seasonal","fr":"Événements","jp":"シーズナル"}
+    },
+    8: {
+      name: {"de":"Mogry-Kiosk","en":"Mog Station","fr":"Station Mog","jp":"モグステーション"}
+    }
+  };
+
+  Object.keys(orchestrionRolls).forEach(k => {
+    const text = orchestrionRolls[k].name.en;
+    createHTML(k, {
+      emoji: "🎶",
+      list: true,
+      title: `${text} - Orchestrion Rolls | Apkallu Falls`,
+      description: `This is a list of obtain methods for all orchestrion rolls in the ‘${text}’ category.`,
+      section: "Orchestrion Rolls"
+    }, 'orchestrion-rolls/category', () => {});
+  })
+
   console.info('!! Make sure these look correct:', '\n');
 
-  // Minion, Mount, Emote and Barding tags
+  // Minion, Mount, Emote, Barding and Orchestrion Roll tags
   // This needs to be synchronised with the website's tag handling method.
   [
     "achievement",
@@ -64,7 +101,8 @@ module.exports = () => {
     "unknown",
     "grand-company",
     "default",
-    "companion"
+    "companion",
+    "buddy-skill"
   ].forEach(tag => {
     const text = tag
       .split('-')
@@ -105,10 +143,18 @@ module.exports = () => {
     createHTML(tag, {
       emoji: "💺",
       list: true,
-      title: `Chocobo barding tagged ‘${text}’ | Apkallu Falls`,
+      title: `Chocobo Barding tagged ‘${text}’ | Apkallu Falls`,
       description: `This is a list of obtain methods for all sets of chocobo barding tagged ‘${text}’.`,
       section: "Chocobo Barding"
     }, 'chocobo-barding/tagged', () => {});
+
+    createHTML(tag, {
+      emoji: "🎶",
+      list: true,
+      title: `Orchestrion Rolls tagged ‘${text}’ | Apkallu Falls`,
+      description: `This is a list of obtain methods for all orchestrion rolls tagged ‘${text}’.`,
+      section: "Orchestrion Rolls"
+    }, 'orchestrion-rolls/tagged', () => {});
   });
 
   console.info('\n', '!! Make sure those look correct ^.', '\n');

@@ -239,7 +239,7 @@ const update = async function (args) {
 
   // Orchestrion Rolls V3.
   if (config && config.orchestrionRollsV3) {
-    message('Emotes');
+    message('Orchestrion rolls');
     await require('./orchestrionRolls/dataV3.js').fetch();
     await require('./orchestrionRolls/listV3.js').fetch(achievementsListV3, itemsV3);
   }

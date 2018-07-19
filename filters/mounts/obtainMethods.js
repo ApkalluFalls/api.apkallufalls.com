@@ -428,7 +428,7 @@ const helper = {
       [locale('Recruit a Friend Campaign')],
       expansions.ARR,
       true,
-      false
+      true
     )
   },
   promotional: (event, expansion) => {

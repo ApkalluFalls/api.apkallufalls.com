@@ -262,7 +262,7 @@ const helper = {
       [locale('Recruit a Friend Campaign')],
       expansions.ARR,
       true,
-      false
+      true
     )
   },
   squareEnixStoreNoExpiration: (item, expiration) => {
@@ -900,7 +900,7 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
         ["Emissary Of The Dawn", "Der Knabe Der Morgenröte", "Voyage En Terre Hostile", "「暁」の少年"],
         ["Alisaie", "Alisaie", "Alisaie", "アリゼー"],
         ["The Rising Stones", "Sonnenstein", "Refuge Des Roches", "石の家"],
-        0, 0,
+        6, 6,
         expansions.SB,
         true,
         false

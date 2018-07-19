@@ -665,7 +665,7 @@ const helper = {
       [locale('Recruit a Friend Campaign')],
       expansions.ARR,
       true,
-      false
+      true
     )
   },
   squareEnixStoreNoExpiration: (item, expiration) => {

@@ -71,7 +71,7 @@ module.exports = async function() {
     },
     'orchestrion-rolls': {
       total: orchestrionRollsList.length,
-      unavailable: orchestrionRollsList.filter(data => data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0).length,
+      unavailable: orchestrionRollsList.filter(data => (!data.order || +data.order > 10000)/* && data.ref && data.ref.filter(ref => ref.available && !ref.promo).length === 0*/).length,
       unknown: orchestrionRollsList.filter(data => !data.ref).length
     },
     rewards: {
@@ -108,6 +108,8 @@ module.exports = async function() {
       }
     }
   }
+
+  console.info(data['orchestrion-rolls'].unavailable)
 
   // Node doesn't support array.reverse() :(
   data.levequests.battle = achievementsList.filter(d => d.id === data.levequests.ids.battle[data.levequests.ids.battle.length - 1])[0].weight;

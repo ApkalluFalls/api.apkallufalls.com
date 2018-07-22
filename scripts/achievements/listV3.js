@@ -42,15 +42,15 @@ module.exports = new Helper("Achievement", "achievements", {
     data.forEach(
       achievement => {
         const filtered = data.filter(
-          a => a["AchievementCategory.ID"] === achievement["AchievementCategory.ID"]
-               && a.type === achievement.Type
-               && a.requirement_1 === achievement.Requirement_1
+          a => +a["AchievementCategory.ID"] === +achievement["AchievementCategory.ID"]
+               && +a.Type === +achievement.Type
+               && +a.Data0 === +achievement.Data0
         );
 
-        // If it has no Order set, and it has a requirement_1 property, the
+        // If it has no Order set, and it has a Data0 property, the
         // achievements are already in order for us.
-        if (achievement.Order === 0 && achievement.Requirement_1) {
-          const series = filtered.filter(a => a.requirement_1 === achievement.Requirement_1);
+        if (achievement.Order === 0 && achievement.Data0) {
+          const series = filtered.filter(a => a.Data0 === achievement.Data0);
           if (series.length > 1)
             achievement.series = series.map(a => a.id);
         }

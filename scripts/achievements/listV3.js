@@ -43,8 +43,9 @@ module.exports = new Helper("Achievement", "achievements", {
       achievement => {
         const filtered = data.filter(
           a => +a["AchievementCategory.ID"] === +achievement["AchievementCategory.ID"]
-              && +a.Type === +achievement.Type
-              && +a.Data0 === +achievement.Data0
+            && +a.Type === +achievement.Type
+            && +a.Data0 === +achievement.Data0
+            && +a.Data2 === 0
         );
 
         // If it has no Order set, and it has a Data0 property, the
@@ -61,7 +62,7 @@ module.exports = new Helper("Achievement", "achievements", {
             const next = getNext(filtered, achievement.Order + 1, []);
         
             if (next.length || prev.length)
-              achievement.similar = [...prev, achievement.ID, ...next];
+              achievement.series = [...prev, achievement.ID, ...next];
           }
         } else {
           // // If the natural filter didn't match anything, attempt to filter on the sum of the Data0
@@ -103,7 +104,6 @@ module.exports = new Helper("Achievement", "achievements", {
               jp: entry.Name_ja
             },
             series: entry.series,
-            similar: entry.similar,
             patch: entry['GamePatch.ID'] || 2,
             weight: _getWeight(entry)
           }

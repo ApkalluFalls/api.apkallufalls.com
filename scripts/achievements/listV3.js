@@ -43,32 +43,40 @@ module.exports = new Helper("Achievement", "achievements", {
       achievement => {
         const filtered = data.filter(
           a => +a["AchievementCategory.ID"] === +achievement["AchievementCategory.ID"]
-               && +a.Type === +achievement.Type
-               && (
-                 +a.Data0 === +achievement.Data0
-                 || (
-                  +achievement.Data0 !== 0
-                  && +achievement.Data1 !== 0
-                  && +achievement.Data2 === 0
-                  && +a.Data0 === +achievement.Data0 + +achievement.Data1
-                 )
-               )
+              && +a.Type === +achievement.Type
+              && +a.Data0 === +achievement.Data0
         );
 
         // If it has no Order set, and it has a Data0 property, the
         // achievements are already in order for us.
-        if (achievement.Order === 0 && achievement.Data0) {
-          const series = filtered.filter(a => a.Data0 === achievement.Data0);
-          if (series.length > 1)
-            achievement.series = series.map(a => a.ID);
-        }
-        // Otherwise, the Order is incremental.
-        else {
-          const prev = getPrev(filtered, achievement.Order - 1, []);
-          const next = getNext(filtered, achievement.Order + 1, []);
-      
-          if (next.length || prev.length)
-            achievement.series = [...prev, achievement.ID, ...next];
+        if (filtered.length > 1) {
+          if (achievement.Order === 0 && achievement.Data0) {
+            const series = filtered.filter(a => a.Data0 === achievement.Data0);
+            if (series.length > 1)
+              achievement.series = series.map(a => a.ID);
+          }
+          // Otherwise, the Order is incremental.
+          else {
+            const prev = getPrev(filtered, achievement.Order - 1, []);
+            const next = getNext(filtered, achievement.Order + 1, []);
+        
+            if (next.length || prev.length)
+              achievement.series = [...prev, achievement.ID, ...next];
+          }
+        } else {
+          // // If the natural filter didn't match anything, attempt to filter on the sum of the Data0
+          // // and Data1 values.
+          // const filtered2 = data.filter(
+          //   a => +a["AchievementCategory.ID"] === +achievement["AchievementCategory.ID"]
+          //       && +a.Type === +achievement.Type
+          //       && +achievement.Data0 !== 0
+          //       && +achievement.Data1 === 1
+          //       && +achievement.Data2 === 0
+          //       && +a.Data0 === +achievement.Data0 + 1
+          // );
+
+          // if (filtered2.length !== 0)
+          //   console.info(achievement.ID);
         }
       }
     );

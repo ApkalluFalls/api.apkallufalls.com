@@ -61,7 +61,7 @@ module.exports = new Helper("Achievement", "achievements", {
             const next = getNext(filtered, achievement.Order + 1, []);
         
             if (next.length || prev.length)
-              achievement.series = [...prev, achievement.ID, ...next];
+              achievement.similar = [...prev, achievement.ID, ...next];
           }
         } else {
           // // If the natural filter didn't match anything, attempt to filter on the sum of the Data0
@@ -103,6 +103,7 @@ module.exports = new Helper("Achievement", "achievements", {
               jp: entry.Name_ja
             },
             series: entry.series,
+            similar: entry.similar,
             patch: entry['GamePatch.ID'] || 2,
             weight: _getWeight(entry)
           }

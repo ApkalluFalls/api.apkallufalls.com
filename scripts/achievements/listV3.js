@@ -44,7 +44,15 @@ module.exports = new Helper("Achievement", "achievements", {
         const filtered = data.filter(
           a => +a["AchievementCategory.ID"] === +achievement["AchievementCategory.ID"]
                && +a.Type === +achievement.Type
-               && +a.Data0 === +achievement.Data0
+               && (
+                 +a.Data0 === +achievement.Data0
+                 || (
+                  +achievement.Data0 !== 0
+                  && +achievement.Data1 !== 0
+                  && +achievement.Data2 === 0
+                  && +a.Data0 === +achievement.Data0 + +achievement.Data1
+                 )
+               )
         );
 
         // If it has no Order set, and it has a Data0 property, the
@@ -145,24 +153,24 @@ module.exports = new Helper("Achievement", "achievements", {
 
 function getPrev(filtered, offset, result) {
   const prev = filtered.filter(
-    b => b.order === offset
+    b => b.Order === offset
   )[0];
 
   if (!prev)
     return result;
 
-  result.unshift(prev.id);
+  result.unshift(prev.ID);
   return getPrev(filtered, offset - 1, result);
 }
 
 function getNext(filtered, offset, result) {
   const next = filtered.filter(
-    b => b.order === offset
+    b => b.Order === offset
   )[0];
 
   if (!next)
     return result;
 
-  result.push(next.id);
+  result.push(next.ID);
   return getNext(filtered, offset + 1, result);
 }

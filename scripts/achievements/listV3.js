@@ -52,7 +52,7 @@ module.exports = new Helper("Achievement", "achievements", {
         if (achievement.Order === 0 && achievement.Data0) {
           const series = filtered.filter(a => a.Data0 === achievement.Data0);
           if (series.length > 1)
-            achievement.series = series.map(a => a.id);
+            achievement.series = series.map(a => a.ID);
         }
         // Otherwise, the Order is incremental.
         else {

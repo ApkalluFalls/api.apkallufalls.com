@@ -32,7 +32,7 @@ module.exports = class Helper {
     return new Promise((resolve) => {
       this.resolve = resolve;
       const apiPath = this.v3
-                    ? "https://api.xivdb-staging.com/" + this.api.charAt(0).toUpperCase() + this.api.slice(1)
+                    ? "https://xivapi.com/" + this.api.charAt(0).toUpperCase() + this.api.slice(1)
                     : "https://api.xivdb.com/" + this.api;
       const columns = this.columns && this.columns.length
                     ? "?columns=" + this.columns.join(',')

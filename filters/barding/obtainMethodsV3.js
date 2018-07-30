@@ -78,6 +78,7 @@ const specialItem = {
   goldTrimmedSack: ["Gold-trimmed Sack", "Gefundener Schatz IV", "Trésor mystérieux de grade IV", "埋もれた財宝G4"],
   pieceOfAccursedHoard: ['piece of the Accursed Hoard', 'verborgenen Schatz', 'trésor caché', '埋もれた財宝'],
   platinumHaloedSack: ["Platinum-haloed Sack", "Platin strahlender Schatzbeutel", "Trésor énigmatique de grade III", "埋もれた財宝【参】"],
+  silverHaloedSack: ["Silver-haloed Sack", "Silbrig strahlender Schatzbeutel", "Trésor énigmatique de grade I", "埋もれた財宝【壱】"],
   silverTrimmedSack: ["Silver-trimmed Sack", "Gefundener Schatz III", "Trésor mystérieux de grade III", "埋もれた財宝G3"]
 }
 
@@ -382,6 +383,7 @@ const veteransClanMarkLog = ["Veteran's Clan Mark Log", "Clan-Veteranenjäger-Ta
 const location = {
   apkalluFalls: ['Apkallu Falls', 'Apkallu-Fälle', 'Chutes De L\'Apkallu', 'アプカル滝'],
   eurekaAnemos: ["Eureka Anemos", "Eureka Anemos", "Eurêka Anemos", "エウレカ：アネモス帯"],
+  heavenOnHigh: ["Heaven-on-High", "Himmelssäule", "Le Pilier Des Cieux", "アメノミハシラ"],
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
   oldGridania: ['Old Gridania', 'Alt-Gridania', 'Vieille Gridania', 'グリダニア：旧市街'],
   theForgottenKnight: ["The Forgotten Knight", "Der Vergessene Ritter", "Le Chevalier Oublié", "忘れられた騎士亭"],
@@ -800,19 +802,22 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
       );
     
     case 22:
-      return helper.craft(
-        50,
-        locale('Armorer'),
-        3,
-        [
-          { quantity: 2, ...craftItem.iceCluster },
-          { quantity: 1, ...craftItem.earthCluster },
-          { quantity: 1, ...craftItem.goldIngot },
-          { quantity: 1, ...craftItem.darksteelPlate },
-          { quantity: 1, ...craftItem.hippogryphLeather },
-          { quantity: 1, ...craftItem.leviathansBarb }
-        ]
-      );
+      return [
+        helper.craft(
+          50,
+          locale('Armorer'),
+          3,
+          [
+            { quantity: 2, ...craftItem.iceCluster },
+            { quantity: 1, ...craftItem.earthCluster },
+            { quantity: 1, ...craftItem.goldIngot },
+            { quantity: 1, ...craftItem.darksteelPlate },
+            { quantity: 1, ...craftItem.hippogryphLeather },
+            { quantity: 1, ...craftItem.leviathansBarb }
+          ]
+        ),
+        helper.itemAccursedHoard(specialItem.silverHaloedSack, location.duty.heavenOnHigh, expansions.SB)
+      ];
     
     case 23:
       return [

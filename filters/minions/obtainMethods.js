@@ -462,6 +462,7 @@ const location = {
     theFeast: ["The Feast", true, true, "ザ・フィースト"],
     theFractalContinuum: ["The Fractal Continuum", "Die Fraktal-Kontinuum", "Le Continuum Fractal", "博物戦艦 フラクタル・コンティニアム"],
     theGreatGubalLibrary: ["The Great Gubal Library", "Große Gubal-Bibliothek", "La Grande Bibliothèque De Gubal", "禁書回収 グブラ幻想図書館"],
+    theGreatHuntExtreme: ["The Great Hunt (Extreme)", "Jagd auf Rathalos (schwer)", "Chasse au Rathalos (extrême)", "極リオレウス狩猟戦"],
     theHiddenCanalsOfUznair: ["The Hidden Canals Of Uznair", "Vergessene Kanäle Von Uznair", "Les Canaux Cachés D'Uznair", "宝物庫 ウズネアカナル深層"],
     theLostCityOfAmdaporHard: ["The Lost City Of Amdapor (Hard)", "Historisches Amdapor (schwer)", "Les Vestiges De La Cité D'Amdapor (brutal)", "神聖遺跡 古アムダプール市街 (Hard)"],
     thePalaceOfTheDead: ['The Palace of the Dead', 'Palast Der Toten', 'Palais Des Morts', '死者の宮殿'],
@@ -3540,20 +3541,23 @@ module.exports = (minion, achievementsIn) => {
       );
 
     case 301:
-      return o(
-        'purchase',
-        [
-          5, rathalosScalePlus, rathalosScalePlusImage,
-          ["Smithy", "Schmied", "Forgeron Itinérant", "加工屋の男"],
-          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
-          locationImage,
-          location.kugane,
-          9.7, 8.8
-        ],
-        expansions.SB,
-        true,
-        false
-      );
+      return [
+        helper.trial(location.duty.theGreatHuntExtreme, 70, expansions.SB, true, false),
+        o(
+          'purchase',
+          [
+            5, rathalosScalePlus, rathalosScalePlusImage,
+            ["Smithy", "Schmied", "Forgeron Itinérant", "加工屋の男"],
+            ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+            locationImage,
+            location.kugane,
+            9.7, 8.8
+          ],
+          expansions.SB,
+          true,
+          false
+        )
+      ]
 
     case 302:
       return o(

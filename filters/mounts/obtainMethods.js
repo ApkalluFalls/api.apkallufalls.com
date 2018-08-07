@@ -158,6 +158,7 @@ const location = {
   fortempsManor: ["Fortemps Manor", "Anwesen Der Fortemps", "Manoir Des Fortemps", "フォルタン伯爵邸"],
   foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
+  kugane:  ["Kugane", true, true, "クガネ"],
   limsaUpperDecks: ['Limsa Lominsa Upper Decks', 'Obere Decks', 'Limsa Lominsa - Le Tillac', 'リムサ・ロミンサ：上甲板層'],
   mist: ["Mist", "Dorf Des Nebels", "Brumée", "ミスト・ヴィレッジ"],
   morDhona: ["Mor Dhona", true, true, "モードゥナ"],
@@ -1546,6 +1547,22 @@ module.exports = (mount, achievementsIn, mountsIn) => {
 
     case 159:
       return helper.itemAccursedHoard(item.platinumHaloedSack, location.duty.heavenOnHigh, expansions.SB);
+
+    case 161:
+      return o(
+        'purchase',
+        [
+          50, rathalosScalePlus, rathalosScalePlusImage,
+          ["Smithy", "Schmied", "Forgeron Itinérant", "加工屋の男"],
+          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+          locationImage,
+          location.kugane,
+          9.7, 8.8
+        ],
+        expansions.SB,
+        true,
+        false
+      );
 
     case 162:
       return o(

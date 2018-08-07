@@ -43,6 +43,7 @@ const kojinSangoImage = 'ks';
 const ixionHornImage = 'ih';
 const anantaDreamstaffImage = 'ad';
 const namazuKobanImage = 'nk';
+const rathalosScalePlusImage = 'rs+';
 
 const rank = {
   sworn: ['Sworn', 'Solidarisch', 'Assermenté', '誓約'],
@@ -548,6 +549,7 @@ const kojinSango = ["Kojin Sango", "Kojin-Koralle", "Sango kojin", "コウジン
 const ixionHorn = ["Ixion Horn", "Ixion-Hornfragment", "Corne d'Ixion", "イクシオンの角片"];
 const anantaDreamstaff = ["Ananta Dreamstaff", "Ananta-Traumstab", "Barrette béatifique ananta", "アナンタ魔金錫貨"];
 const namazuKoban = ["Namazu Koban", "Namazuo-Koban", "Koban namazu", "ナマズオ小判"];
+const rathalosScalePlus = ["Rathalos Scale+", "Rathalos-Schuppe+", "Écaille Rathalos +", "火竜の上鱗"];
 
 const helper = {
   achievementCertificate: (quantity) => {
@@ -3523,6 +3525,35 @@ module.exports = (minion, achievementsIn) => {
 
     case 299:
       return helper.raid(location.duty.theRidoranaLighthouse, 70, expansions.SB, true, false);
+
+    case 300:
+      return helper.quest(
+        70,
+        locale('Special Quests'),
+        ["The New King on the Block", "Jagd auf den König der Lüfte", "Le roi des cieux", "王は頂にて眠る"],
+        ["Hearty Hunter", "Monsterjäger", "Chasseur de monstres", "ライバルモブハンター"],
+        location.kugane,
+        9.7, 8.9,
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 301:
+      return o(
+        'purchase',
+        [
+          5, rathalosScalePlus, rathalosScalePlusImage,
+          ["Smithy", "Schmied", "Forgeron Itinérant", "加工屋の男"],
+          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+          locationImage,
+          location.kugane,
+          9.7, 8.8
+        ],
+        expansions.SB,
+        true,
+        false
+      );
 
     case 302:
       return o(

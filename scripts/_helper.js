@@ -46,7 +46,7 @@ module.exports = class Helper {
       if (this.api === 'PatchList')
         paginated = false;
 
-      recursiveFetch(apiPath + columns, !paginated)
+      recursiveFetch(apiPath + columns, !paginated || undefined)
         .then(data => process.call(this, data))
         .catch(e => console.error(e));
     });

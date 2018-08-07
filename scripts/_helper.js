@@ -36,12 +36,17 @@ module.exports = class Helper {
                     : "https://api.xivdb.com/" + this.api;
       const columns = this.columns && this.columns.length
                     ? "?columns=" + this.columns.join(',')
-                    : "";
+                    : "?af=1";
 
       if (!this.v3 || !this.list)
         return callApi(apiPath, columns, process.bind(this));
 
-      recursiveFetch(apiPath + columns)
+      let paginated = true;
+
+      if (this.api === 'PatchList')
+        paginated = false;
+
+      recursiveFetch(apiPath + columns, !paginated)
         .then(data => process.call(this, data))
         .catch(e => console.error(e));
     });
@@ -87,6 +92,9 @@ async function recursiveFetch(api, result = [], page = 1) {
 
   const data = await fetch(`${api}&page=${page}&max_items=1000&key=${apiKey}`)
     .then(response => response.json());
+
+  if (typeof result === 'boolean' && result)
+    return data;
 
   result = [...result, ...data.results];
 

@@ -3,30 +3,29 @@ const createHTML = require('../_HTML');
 const createList = require('../_list');
 
 module.exports = new Helper("Patch", "patches", {
-  api: 'data/patchlist',
+  api: 'PatchList',
   list: true,
+  v3: true,
   format: (data, args) => {
-    let formattedData = [];
-  
-    Object.keys(data).forEach(k => {
-      const patch = data[k];
+    console.info(data.length);
+    const formattedData = data.map(patch => {
       const response = {
-        id: patch.patch,
-        version: patch.command,
-        date: +new Date(patch.date),
+        date: patch.ReleaseDate,
+        id: patch.ID,
         name: {
-          de: patch.name_de,
-          en: patch.name_en,
-          fr: patch.name_fr,
-          jp: patch.name_ja
-        }
-      };
+          de: patch.Name_de,
+          en: patch.Name_en,
+          fr: patch.Name_fr,
+          jp: patch.Name_ja
+        },
+        version: patch.Version
+      }
 
-      const image = getPatchImage(patch.patch);
+      const image = getPatchImage(patch.ID);
       if (image)
         response.image = image;
 
-      formattedData.push(response);
+      return response;
     })
 
     if (args) {

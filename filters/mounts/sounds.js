@@ -59,7 +59,11 @@ module.exports = (mount) => {
       return override('Protocole de conduite responsable engagé', 'Responsible protocol of conduct engaged')
 
     case 106:
-      return override('Un petit œuf, deux petits œufs...', 'One small egg, two small eggs...')
+      return override('Un petit œuf, deux petits œufs...', 'One small egg, two small eggs...');
+    
+    case 161:
+      console.info(quote);
+      return override('Bonne chasse!', 'Good hunting!');
 
     default:
       return true;

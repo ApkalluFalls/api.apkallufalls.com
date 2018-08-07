@@ -342,11 +342,20 @@ module.exports = (minion) => {
     case 294:
       return override('Les Dotharl ne craignent rien, pas même la mort', 'The Dotharl fear nothing, not even death');
 
+    case 296:
+      return override('Ma pelisse vermillon est magnifique!', 'My vermilion fur-lined cloak is beautiful!');
+
     case 298:
       return override('Merrrci beaucoup', 'Thaaaaank you');
 
     case 299:
       return override('J\'ATTENDS VOS ORDRES, MAÎTRE', 'I AM WAITING YOUR ORDERS, MASTER');
+
+    case 300:
+      return override('Chat c\'est sûr!', 'Cat is sure!');
+
+    case 301:
+      return override('Grouik', 'Oink');
 
     default:
       return quote === minion.quote.fr ? true : quote;

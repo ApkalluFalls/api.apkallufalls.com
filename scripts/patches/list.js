@@ -10,7 +10,7 @@ module.exports = new Helper("Patch", "patches", {
     console.info(data.length);
     const formattedData = data.map(patch => {
       const response = {
-        date: patch.ReleaseDate + '000',
+        date: +(patch.ReleaseDate + '000'),
         id: patch.ID,
         name: {
           de: patch.Name_de,

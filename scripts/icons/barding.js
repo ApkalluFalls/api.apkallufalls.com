@@ -19,6 +19,7 @@ module.exports = new Helper(name, plural, {
   list: true,
   v3: true
 }, (data, resolve) => {
+  console.info("...processing chocobo barding icons");
   data = data.map(d => ({
     ...d,
     Icon: d.IconBody || d.IconHead || d.IconLegs

@@ -1,7 +1,7 @@
 const Helper = require('../_helper');
 const getIcons = require('./_iconHelper');
 
-const api = "achievement";
+const api = "Achievement";
 const base = 'achievement';
 const name = "Achievement";
 const plural = "achievements";
@@ -10,11 +10,15 @@ module.exports = new Helper(name, plural, {
   api,
   base,
   columns: [
-    "id",
-    "icon"
+    "ID",
+    "Icon"
   ],
-  useCallback: true
+  list: true,
+  useCallback: true,
+  v3: true
 }, (data, resolve) => {
-  getIcons(base, data, resolve);
+  console.info("...processing achievement icons");
+  data = data.filter(d => d.Icon);
+  getIcons(base, data, resolve, true);
 });
 

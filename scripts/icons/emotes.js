@@ -1,7 +1,7 @@
 const Helper = require('../_helper');
 const getIcons = require('./_iconHelper');
 
-const api = "emote";
+const api = "Emote";
 const base = 'emote';
 const name = "Emote";
 const plural = "emotes";
@@ -10,13 +10,19 @@ module.exports = new Helper(name, plural, {
   api,
   base,
   columns: [
-    "id",
-    "icon"
+    "ID",
+    "Icon"
   ],
-  useCallback: true
+  list: true,
+  useCallback: true,
+  v3: true
 }, (data, resolve) => {
+  console.info("...processing emote icons");
   data = data.filter(emote => {
-    switch (emote.id) {
+    if (!emote.Icon)
+      return false;
+
+    switch (emote.ID) {
       case 88:
         // This emote has no icon, but links to one.
         return false;
@@ -25,6 +31,6 @@ module.exports = new Helper(name, plural, {
         return true;
     }
   })
-  getIcons(base, data, resolve);
+  getIcons(base, data, resolve, true);
 });
 

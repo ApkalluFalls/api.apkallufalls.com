@@ -62,6 +62,7 @@ const feastSeasonItemImage = 'feast3';
 const blissTotemImage = 'bt';
 const revelTotemImage = 'rt';
 const shinryuTotemImage = 'st';
+const rathalosScalePlusImage = 'rs+';
 
 const item = {
   anemosLockbox: ["Anemos Lockbox", "Anemos-Schließkassette", "Coffre verrouillé d'Anemos", "アネモス帯のロックボックス"],
@@ -126,8 +127,7 @@ const feastSeason8Pack = ["Season Eight Pack Wolf Voucher B", "Preiscoupon B des
 const blissTotem = ["Bliss Totem", "Lakshmi-Totem", "Totem de la beauté", "美神のトーテム像"];
 const revelTotem = ["Revel Totem", "Susano-Totem", "Totem des tempêtes", "豪神のトーテム像"];
 const shinryuTotem = ["Shinryu Totem", "Shinryu-Totem", "Totem draconique divin", "神龍のトーテム像"];
-
-
+const rathalosScalePlus = ["Rathalos Scale+", "Rathalos-Schuppe+", "Écaille Rathalos +", "火竜の上鱗"];
 
 const craftItem = {
   cloudsbreath: {

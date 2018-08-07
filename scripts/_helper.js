@@ -48,14 +48,20 @@ module.exports = class Helper {
   }
 }
 
-function callApi(apiPath, columns, callback) {
+async function callApi(apiPath, columns, callback) {
+  const apiKey = await fs.readFileSync('../xivapi-key.txt', 'utf-8');
+
+  if (!apiKey) {
+    throw new Error('XIVDB API key required.')
+  }
+
   const config = {
     method: 'GET',
     mode: 'cors'
   }
 
   fetch(
-    apiPath + columns,
+    `${apiPath}${columns}${columns ? '&' : '?'}key=${apiKey}`,
     config
   )
     .then(response => response.json())
@@ -73,7 +79,7 @@ function callApi(apiPath, columns, callback) {
 }
 
 async function recursiveFetch(api, result = [], page = 1) {
-  const apiKey = await fs.readFileSync('../xivdb-api-key.txt', 'utf-8');
+  const apiKey = await fs.readFileSync('../xivapi-key.txt', 'utf-8');
 
   if (!apiKey) {
     throw new Error('XIVDB API key required.')

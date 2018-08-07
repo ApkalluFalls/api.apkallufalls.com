@@ -47,7 +47,7 @@ module.exports = new Helper("OrchestrionRoll", "orchestrionRolls", {
           order: entry['OrchestrionUiparam.Order']
         }
 
-        const item = items.orchestrionRolls
+        const item = items['orchestrion-rolls']
           .filter(item => item.awards === result.id)[0]
 
         result.patch = item.patch || entry['GamePatch.ID'];

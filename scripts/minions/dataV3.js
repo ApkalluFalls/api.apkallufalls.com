@@ -89,7 +89,7 @@ module.exports = new Helper(name, plural, {
 
         result.summon = {
           de: data.Description_de,
-          en: data.Description_en.replace(new RegExp(`Summon your ${data.name_en}( minion)?\\. `, "i"), ''),
+          en: data.Description_en.replace(new RegExp(`Summon your ${data.Name_en}( minion)?\\. `, "i"), ''),
           fr: data.Description_fr,
           jp: data.Description_ja
         };

@@ -18,7 +18,13 @@
  * @returns {(bool|string)} - if it has a sound or a sound override.
  */
 module.exports = (mount) => {
-  const quote = mount.quote.fr;
+  const quote = mount.quote.fr
+    && mount.quote.fr
+      .replace(/\<Indent\/\>/g, '')
+      .replace('<If(PlayerParameter(4))>', '')
+      .replace('</If>', '')
+      .replace('<Else/>', ' / ')
+      .replace(/\n\n/g, '\n');
 
   switch (mount.id) {
     case 4:

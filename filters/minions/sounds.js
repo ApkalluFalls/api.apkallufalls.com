@@ -23,7 +23,8 @@ module.exports = (minion) => {
       .replace(/\<Indent\/\>/g, '')
       .replace('<If(PlayerParameter(4))>', '')
       .replace('</If>', '')
-      .replace('<Else/>', ' / ');
+      .replace('<Else/>', ' / ')
+      .replace(/\n\n/g, '\n');
 
   switch (minion.id) {
     case 200:

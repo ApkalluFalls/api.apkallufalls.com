@@ -24,6 +24,7 @@ const update = async function (args) {
   let emotesListV3;
   let hairstyleListV3;
   let minionsListV3;
+  let mountsListV3;
   let orchestrionRollsListV3;
   let titlesListV3;
   let itemsV3;
@@ -68,6 +69,10 @@ const update = async function (args) {
     resolve(data);
   })).then(data => minionsListV3 = JSON.parse(data));
 
+  await new Promise((resolve) => fs.readFile('../docs/v3/mounts.json', 'utf8', (e, data) => {
+    resolve(data);
+  })).then(data => moutnsListV3 = JSON.parse(data));
+
   await new Promise((resolve) => fs.readFile('../docs/v3/orchestrion-rolls.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => orchestrionRollsListV3 = JSON.parse(data));
@@ -88,7 +93,7 @@ const update = async function (args) {
     await require('./patches/list.js').fetch(
       achievementsListV3,
       minionsListV3,
-      mountsList,
+      mountsListV3,
       titlesListV3,
       emotesListV3,
       bardingListV3,
@@ -191,6 +196,17 @@ const update = async function (args) {
     await require('./minions/listV3.js').fetch(achievementsList);
   }
 
+  // Mounts V3.
+  if (!config || config.mountsV3) {
+    message('Mounts');
+    await require('./mounts/dataV3.js').fetch();
+    await require('./mounts/listV3.js').fetch(achievementsList);
+    console.info("!! Remember to check sounds to filter out French text.");
+  }
+  if (config && config.mountsListV3) {
+    await require('./mounts/listV3.js').fetch(achievementsList);
+  }
+
   // Chocobo Barding V3.
   if (config && config.bardingV3) {
     message('Chocobo Barding');
@@ -205,19 +221,23 @@ const update = async function (args) {
   if (config && config.emotesV3) {
     message('Emotes');
     await require('./emotes/dataV3.js').fetch();
+    const apiKey = await fs.readFileSync('../xivapi-key.txt', 'utf-8');
     const textCommands = await recursiveFetch(
       'https://xivapi.com/TextCommand'
       + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'
       + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp'
+      + '&key=' + apiKey
     ).then(response => response).catch(e => console.error(e));
     await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, itemsV3);
   }
   if (config && config.emotesListV3) {
     // Until the V3 API is fixed...
+    const apiKey = await fs.readFileSync('../xivapi-key.txt', 'utf-8');
     const textCommands = await recursiveFetch(
       'https://xivapi.com/TextCommand'
       + '?columns=ID,Command_de,Command_en,Command_fr,Command_ja,ShortAlias_de,'
       + 'ShortAlias_en,ShortAlias_fr,ShortAlias_ja,Alias_de,Alias_en,Alias_fr,Alias_jp'
+      + '&key=' + apiKey
     ).then(response => response).catch(e => console.error(e));
     await require('./emotes/listV3.js').fetch(achievementsListV3, textCommands, itemsV3);
   }

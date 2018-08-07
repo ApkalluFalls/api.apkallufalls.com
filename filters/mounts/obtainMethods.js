@@ -196,6 +196,7 @@ const location = {
     heavenOnHigh: ["Heaven-on-High", "Himmelssäule", "Le Pilier Des Cieux", "アメノミハシラ"],
     sigmascapev40Savage: ["Sigmascape V4.0 (Savage)", "Sigmametrie 4.0 (episch)", "Sigmastice V4.0 (sadique)", "次元の狭間オメガ零式：シグマ編4"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
+    theGreatHuntExtreme: ["The Great Hunt (Extreme)", "Jagd auf Rathalos (schwer)", "Chasse au Rathalos (extrême)", "極リオレウス狩猟戦"],
     theHowlingEyeExtreme: ["The Howling Eye (Extreme)", "Zenit Der Götter - Garuda", "Hurlœil (extrême)", "極ガルーダ討滅戦"],
     theJadeStoa: ["The Jade Stoa (Extreme)", "Seelensturm - Byakko", "La Clairière De Jade (extrême)", "極白虎征魂戦"],
     theLimitlessBlueExtreme: ["The Limitless Blue (Extreme)", "Zenit Der Götter - Bismarck", "L'Immensité Bleue (extrême)", "極ビスマルク討滅戦"],
@@ -1549,20 +1550,23 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       return helper.itemAccursedHoard(item.platinumHaloedSack, location.duty.heavenOnHigh, expansions.SB);
 
     case 161:
-      return o(
-        'purchase',
-        [
-          50, rathalosScalePlus, rathalosScalePlusImage,
-          ["Smithy", "Schmied", "Forgeron Itinérant", "加工屋の男"],
-          ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
-          locationImage,
-          location.kugane,
-          9.7, 8.8
-        ],
-        expansions.SB,
-        true,
-        false
-      );
+      return [
+        helper.trial(location.duty.theGreatHuntExtreme, 70, expansions.SB, true, false),
+        o(
+          'purchase',
+          [
+            50, rathalosScalePlus, rathalosScalePlusImage,
+            ["Smithy", "Schmied", "Forgeron Itinérant", "加工屋の男"],
+            ["(Prize Exchange I)", "(Gewinne I", "Lots (1))", "(景品の交換（その1）)"],
+            locationImage,
+            location.kugane,
+            9.7, 8.8
+          ],
+          expansions.SB,
+          true,
+          false
+        )
+      ];
 
     case 162:
       return o(

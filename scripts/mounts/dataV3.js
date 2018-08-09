@@ -68,7 +68,7 @@ module.exports = new Helper(name, plural, {
 
         const name = data.Name_en && data.Name_en.split(' ').map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' ');
 
-        createHTML(data.id, {
+        createHTML(result.id, {
           data: result,
           emoji: "🚲",
           title: `${name} | Apkallu Falls`,

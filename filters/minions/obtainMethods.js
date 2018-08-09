@@ -1428,7 +1428,7 @@ module.exports = (minion, achievementsIn) => {
 
     case 41:
       return helper.msq(
-        22,
+        33,
         locale('Seventh Umbral Era'),
         ['It Was A Very Good Year', 'Wandelndes Biotop', 'Un pied de vigne ambulant', '人の命運、ワインの運命'],
         ['Shamani Lohmani', true, true, 'シャマニ・ローマニ'],

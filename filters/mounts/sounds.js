@@ -62,7 +62,6 @@ module.exports = (mount) => {
       return override('Un petit œuf, deux petits œufs...', 'One small egg, two small eggs...');
     
     case 161:
-      console.info(quote);
       return override('Bonne chasse!', 'Good hunting!');
 
     default:

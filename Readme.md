@@ -1,10 +1,8 @@
 # api.apkallufalls.com
 
-**This is a work-in-progress. Version 2 of Apkallu Falls will hopefully be launched some time around December/January. This is the initial step towards creating version 2 and is in an incomplete state.**
+**Note: Due to a change between XIVDB's API and XIVAPI an API key is now required to run any update scripts. For this, you'll need to register an API key on XIVAPI first, then store it in a text file on the root-level folder called `xivapi-key.txt`.**
 
-**Note: Due to a change between version 2 and version 3 of XIVDB's API, an API key is now required to update lists. In order to execute some of the scripts in this repository, you'll need to get an API key from XIVDB first, then store it in a text file on the root-level folder called `xivapi-key.txt`.**
-
-This is a mock API for Apkallu Falls. From version 2 onwards, the data Apkallu Falls loads will be maintained within this repository instead of being bundled in with the rest of the site's code.
+This is a mock API for Apkallu Falls. From version 2 onwards, the data Apkallu Falls loads is maintained within this repository instead of being bundled in with the rest of the site's code. The exception to this being character info, as that data is not static.
 
 This benefit of this is that anyone can now update the site's content by cloning the repository and creating a pull request, although I don't expect anyone to actually do that other than myself!
 
@@ -62,41 +60,53 @@ npm update.js patches
 
 ##### Everything
 ```
-npm update.js achievements
+npm update.js achievementsV3
 ```
 
 ##### Only the list
 ```
-npm update.js achievementsList
+npm update.js achievementsListV3
 ```
 
 #### Minions
 
 ##### Everything
 ```
-npm update.js minions
+npm update.js minionsV3
 ```
 
 ##### Only the list
 ```
-npm update.js minionsList
+npm update.js minionsListV3
 ```
 
 #### Mounts
 
 ##### Everything
 ```
-npm update.js mounts
+npm update.js mountsV3
 ```
 
 ##### Only the list
 ```
-npm update.js mountsList
+npm update.js mountsListV3
+```
+
+#### Emotes
+
+##### Everything
+```
+npm update.js emotesV3
+```
+
+##### Only the list
+```
+npm update.js emotesListV3
 ```
 
 #### Icons
 
 ##### Everything
 ```
-npm update.js icons
+npm update.js iconsV3
 ```

@@ -1,7 +1,7 @@
 {
   "name": "api.apkallufalls.com",
   "version": "1.0.0",
-  "description": "The mock API for Apkallu Falls",
+  "description": "The mock API for Apkallu Falls (https://apkallufalls.com).",
   "private": true,
   "main": "scripts/update.js",
   "author": "James Donnelly @ApkalluFalls",
@@ -13,9 +13,9 @@
     "imagemin-pngcrush": "^5.1.0",
     "imagemin-pngout": "^3.0.0",
     "imagemin-pngquant": "^5.1.0",
-    "node-fetch": "^2.1.2",
+    "node-fetch": "^2.2.0",
     "request": "^2.87.0",
-    "spritesmith": "^3.3.0",
-    "walk": "^2.3.13"
+    "spritesmith": "^3.3.1",
+    "walk": "^2.3.14"
   }
 }

@@ -37,7 +37,7 @@ module.exports = new Helper(name, plural, {
             jp: data.OrchestrionUiparam.OrchestrionCategory.Name_ja
           },
           id: data.ID,
-          img: '/img/ui/game/icon4/1/14267.png',
+          img: '/i/025000/025945.png',
           xivdb: data.Url && ('/' + data.Url.charAt(1).toLowerCase() + data.Url.slice(2))
         }
 

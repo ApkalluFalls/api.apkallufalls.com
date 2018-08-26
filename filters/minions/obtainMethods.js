@@ -68,6 +68,7 @@ const beastTribe = {
 
 const item = {
   anemosLockbox: ["Anemos Lockbox", "Anemos-Schließkassette", "Coffre verrouillé d'Anemos", "アネモス帯のロックボックス"],
+  pagosLockbox: ["Pagos Lockbox", "Pagos-Schließkassette", "Coffre verrouillé de Pagos", "パゴス帯のロックボックス"],
   bronzeTrimmedSack: ['Bronze-trimmed Sack', 'Gefundener Schatz I', 'Trésor mystérieux de grade I', '埋もれた財宝G1'],
   elixir: ['Elixir', 'Elixier', 'Élixir', 'エリクサー'],
   goldHaloedSack: ["Gold-haloed Sack", "Gülden strahlender Schatzbeutel", "Trésor énigmatique de grade II", "埋もれた財宝【弐】"],
@@ -392,6 +393,7 @@ const location = {
   easternThanalan: ['Eastern Thanalan', 'Östliches Thanalan', 'Thanalan Oriental', '東ザナラーン'],
   eastShroud: ['East Shroud', 'Ostwald', 'Forêt De L\'est', '黒衣森：東部森林'],
   eurekaAnemos: ["Eureka Anemos", "Eureka Anemos", "Eurêka Anemos", "エウレカ：アネモス帯"],
+  eurekaPagos: ["Eureka Pagos", "Pagos", "Eurêka Pagos", "エウレカ：パゴス帯"],
   fogfens: ["Fogfens", "Nebelmoor", "Fangebrume", "迷霧湿原"],
   foundation: ["Foundation", "Fundamente", "Ishgard - L'Assise", "イシュガルド：下層"],
   idyllshire: ["Idyllshire", "Frohehalde", "Idyllée", "イディルシャイア"],
@@ -877,13 +879,28 @@ const helper = {
       false
     )
   },
-  itemAnemosLockbox: () => {
+  itemAnemosLockbox: (stage) => {
+    let lockbox;
+    let eurekaMap;
+
+    switch (stage) {
+      case 'pagos':
+      lockbox = item.pagosLockbox;
+        eurekaMap = location.eurekaPagos;
+        break;
+      
+      default:
+      lockbox = item.anemosLockbox;
+        eurekaMap = location.eurekaAnemos;
+        break;
+    }
+
     return o(
       'itemAnemosLockbox',
       [
-        item.anemosLockbox,
+        lockbox,
         dutyImage,
-        location.eurekaAnemos
+        eurekaMap
       ],
       expansions.SB,
       true,
@@ -3518,6 +3535,10 @@ module.exports = (minion, achievementsIn) => {
           { quantity: 1, ...craftItem.dotharliCloth }
         ]
       );
+    
+    case 295:
+    case 296:
+      return helper.itemAnemosLockbox('pagos');
     
     case 297:
       return helper.squareEnixStoreNoExpiration(

@@ -52,7 +52,7 @@ module.exports = new Helper("OrchestrionRoll", "orchestrionRolls", {
 
         result.patch = item.patch || entry['GamePatch.ID'];
         
-        if (item.untradable)
+        if (!item || item.untradable)
           result.untradable = true;
 
         const method = obtainMethod(result, args && args[0], item);

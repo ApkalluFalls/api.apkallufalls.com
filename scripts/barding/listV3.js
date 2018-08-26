@@ -48,9 +48,8 @@ module.exports = new Helper("Barding", "barding", {
           const item = items.barding
             .filter(item => item.awards === result.id)
             .map(item => ({ name: item.name }))[0];
-
           
-          if (item && item.untradable)
+          if (!item || item.untradable)
             result.untradable = true;
 
           const method = obtainMethod(result, args && args[0], data, item, {

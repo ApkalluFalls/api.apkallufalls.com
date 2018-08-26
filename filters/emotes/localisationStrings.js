@@ -29,6 +29,11 @@ module.exports = {
     de: 'Automatisch freigeschaltet',
     fr: 'Obtenu par défaut'
   },
+  itemAnemosLockbox: {
+    en: 'Randomly awarded from an {i0}, obtained after completing FATEs within {img1} {2}.',
+    de: 'Zufällig erhältlich von {i0}, erhalten nach  Vervollständigen von FATEs in {img1} {2}.',
+    fr: 'Récompense aléatoire d\'un {i0}, obtenu après avoir complété des ALEAs dans {img1} {2}.'
+  },
   mogStation: {
     en: 'Purchase {i1} directly from the {i0}.',
     de: 'Kaufe {i1} direkt von {i0}',

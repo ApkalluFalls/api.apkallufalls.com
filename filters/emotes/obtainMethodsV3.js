@@ -226,6 +226,29 @@ const helper = {
       false
     )
   },
+  itemAnemosLockbox: (stage) => {
+    let lockbox;
+    let eurekaMap;
+
+    switch (stage) {
+      case 'pagos':
+        lockbox = ["Pagos Lockbox", "Pagos-Schließkassette", "Coffre verrouillé de Pagos", "パゴス帯のロックボックス"];
+        eurekaMap = ["Eureka Pagos", "Pagos", "Eurêka Pagos", "エウレカ：パゴス帯"];
+        break;
+    }
+
+    return o(
+      'itemAnemosLockbox',
+      [
+        lockbox,
+        dutyImage,
+        eurekaMap
+      ],
+      expansions.SB,
+      true,
+      false
+    )
+  },
   mogStation: (item) => {
     return o(
       'mogStation',
@@ -875,6 +898,9 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
         true,
         false
       );
+    
+    case 181:
+      return helper.itemAnemosLockbox('pagos');
 
     case 182:
       return o(

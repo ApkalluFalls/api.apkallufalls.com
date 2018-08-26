@@ -14,12 +14,12 @@ module.exports = new Helper("Item", "items", {
     'Name_en',
     'Name_fr',
     'Name_ja',
-    'IsUntradable',
     'ItemAction.Type',
     'ItemAction.Data0',
     'ItemAction.Data1',
     'ItemAction.Data2',
     'ItemAction.Data3',
+    'ItemSearchCategory',
     'GameContentLinks.Achievement.Item',
     'GamePatch.ID'
   ],
@@ -107,7 +107,7 @@ function format(data, awardKey, subresource, achievements, requiresPatch) {
       }
     }
 
-    if (entry.IsUntradable)
+    if (!entry.ItemSearchCategory)
       result.untradable = true;
 
     if (achievements) {

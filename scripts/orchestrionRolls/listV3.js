@@ -51,6 +51,9 @@ module.exports = new Helper("OrchestrionRoll", "orchestrionRolls", {
           .filter(item => item.awards === result.id)[0]
 
         result.patch = item.patch || entry['GamePatch.ID'];
+        
+        if (item.untradable)
+          result.untradable = true;
 
         const method = obtainMethod(result, args && args[0], item);
         result.ref = method && !(method instanceof Array) ? [method] : method;

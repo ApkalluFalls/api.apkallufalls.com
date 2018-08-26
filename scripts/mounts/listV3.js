@@ -18,6 +18,8 @@ module.exports = new Helper("Mount", "mounts", {
   list: true,
   v3: true,
   format: (data, args) => {
+    const items = args[1];
+
     const response = {
       localisation: localisationStrings,
       data: data.filter(entry => entry.IconSmall && (
@@ -47,6 +49,11 @@ module.exports = new Helper("Mount", "mounts", {
           name_ja: d.Name_ja
         })));
         result.ref = method && !(method instanceof Array) ? [method] : method;
+
+        const item = items.mounts.filter(i => i.awards === result.id)[0];
+
+        if (item && item.untradable)
+          result.untradable = true;
 
         return result;
       })

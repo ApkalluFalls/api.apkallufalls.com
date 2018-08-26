@@ -71,7 +71,7 @@ const update = async function (args) {
 
   await new Promise((resolve) => fs.readFile('../docs/v3/mounts.json', 'utf8', (e, data) => {
     resolve(data);
-  })).then(data => moutnsListV3 = JSON.parse(data));
+  })).then(data => mountsListV3 = JSON.parse(data));
 
   await new Promise((resolve) => fs.readFile('../docs/v3/orchestrion-rolls.json', 'utf8', (e, data) => {
     resolve(data);
@@ -188,23 +188,23 @@ const update = async function (args) {
   // Minions V3.
   if (!config || config.minionsV3) {
     message('Minions');
-    await require('./minions/dataV3.js').fetch();
-    await require('./minions/listV3.js').fetch(achievementsList);
+    await require('./minions/dataV3.js').fetch(itemsV3);
+    await require('./minions/listV3.js').fetch(achievementsList, itemsV3);
     console.info("!! Remember to check sounds to filter out French text.");
   }
   if (config && config.minionsListV3) {
-    await require('./minions/listV3.js').fetch(achievementsList);
+    await require('./minions/listV3.js').fetch(achievementsList, itemsV3);
   }
 
   // Mounts V3.
   if (!config || config.mountsV3) {
     message('Mounts');
-    await require('./mounts/dataV3.js').fetch();
-    await require('./mounts/listV3.js').fetch(achievementsList);
+    await require('./mounts/dataV3.js').fetch(itemsV3);
+    await require('./mounts/listV3.js').fetch(achievementsLis, itemsV3);
     console.info("!! Remember to check sounds to filter out French text.");
   }
   if (config && config.mountsListV3) {
-    await require('./mounts/listV3.js').fetch(achievementsList);
+    await require('./mounts/listV3.js').fetch(achievementsList, itemsV3);
   }
 
   // Chocobo Barding V3.
@@ -260,7 +260,7 @@ const update = async function (args) {
   // Orchestrion Rolls V3.
   if (config && config.orchestrionRollsV3) {
     message('Orchestrion rolls');
-    await require('./orchestrionRolls/dataV3.js').fetch();
+    await require('./orchestrionRolls/dataV3.js').fetch(itemsV3);
     await require('./orchestrionRolls/listV3.js').fetch(achievementsListV3, itemsV3);
   }
   if (config && config.orchestrionRollsListV3) {

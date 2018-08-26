@@ -18,8 +18,7 @@ module.exports = new Helper("Minion", "minions", {
   list: true,
   v3: true,
   format: (data, args) => {
-    const textCommands = args[1];
-    const items = args[2];
+    const items = args[1];
 
     const response = {
       localisation: localisationStrings,
@@ -58,6 +57,11 @@ module.exports = new Helper("Minion", "minions", {
             break;
           }
         }
+
+        const item = items.minions.filter(i => i.awards === result.id)[0];
+
+        if (item && item.untradable)
+          result.untradable = true;
 
         return result;
       })

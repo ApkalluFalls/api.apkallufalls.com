@@ -49,7 +49,7 @@ module.exports = new Helper("Barding", "barding", {
             .filter(item => item.awards === result.id)
             .map(item => ({ name: item.name }))[0];
 
-          const itemRaw = items.emotes
+          const itemRaw = items.barding
             .filter(item => item.awards === result.id)[0];
           
           if (!itemRaw || itemRaw.untradable)

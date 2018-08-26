@@ -107,7 +107,7 @@ function format(data, awardKey, subresource, achievements, requiresPatch) {
       }
     }
 
-    if (!entry.ItemSearchCategory)
+    if (entry.ItemSearchCategory === 0)
       result.untradable = true;
 
     if (achievements) {

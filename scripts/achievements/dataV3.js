@@ -21,6 +21,7 @@ module.exports = new Helper(name, plural, {
   ],
   useCallback: true,
   list: true,
+  tag: 'achievements,entry',
   v3: true
 }, (data, resolve) => {
   recursiveFetch(data, name, (entry, all) => {

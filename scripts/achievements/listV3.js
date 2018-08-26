@@ -37,6 +37,7 @@ module.exports = new Helper("Achievement", "achievements", {
     "Item.ID"
   ],
   list: true,
+  tag: 'achievements,list',
   v3: true,
   format: (data, args) => {
     data.forEach(

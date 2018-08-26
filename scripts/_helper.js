@@ -10,6 +10,7 @@ module.exports = class Helper {
     this.format = config.format;
     this.list = !!config.list;
     this.useCallback = config.useCallback;
+    this.tag = config.tag;
     this.v3 = config.v3;
     this.customId = config.customId;
 
@@ -39,21 +40,21 @@ module.exports = class Helper {
                     : "?af=1";
 
       if (!this.v3 || !this.list)
-        return callApi(apiPath, columns, process.bind(this));
+        return callApi(apiPath, columns, process.bind(this), this.tag);
 
       let paginated = true;
 
       if (this.api === 'PatchList')
         paginated = false;
 
-      recursiveFetch(apiPath + columns, !paginated || undefined)
+      recursiveFetch(apiPath + columns, !paginated || undefined, undefined, this.tag)
         .then(data => process.call(this, data))
         .catch(e => console.error(e));
     });
   }
 }
 
-async function callApi(apiPath, columns, callback) {
+async function callApi(apiPath, columns, callback, tag) {
   const apiKey = await fs.readFileSync('../xivapi-key.txt', 'utf-8');
 
   if (!apiKey) {
@@ -66,7 +67,7 @@ async function callApi(apiPath, columns, callback) {
   }
 
   fetch(
-    `${apiPath}${columns}${columns ? '&' : '?'}key=${apiKey}`,
+    `${apiPath}${columns}${columns ? '&' : '?'}key=${apiKey}${tag ? `&tags=${tag}` : ''}`,
     config
   )
     .then(response => response.json())
@@ -79,18 +80,18 @@ async function callApi(apiPath, columns, callback) {
 
       ++this.errors;
       console.info("API retry attempt ", this.errors);
-      callApi(apiPath, columns, callback);
+      callApi(apiPath, columns, callback, tag);
     });
 }
 
-async function recursiveFetch(api, result = [], page = 1) {
+async function recursiveFetch(api, result = [], page = 1, tag) {
   const apiKey = await fs.readFileSync('../xivapi-key.txt', 'utf-8');
 
   if (!apiKey) {
     throw new Error('XIVDB API key required.')
   }
 
-  const data = await fetch(`${api}&page=${page}&max_items=1000&key=${apiKey}`)
+  const data = await fetch(`${api}&page=${page}&max_items=1000&key=${apiKey}${tag ? `&tags=${tag}` : ''}`)
     .then(response => response.json());
 
   if (typeof result === 'boolean' && result)
@@ -99,7 +100,7 @@ async function recursiveFetch(api, result = [], page = 1) {
   result = [...result, ...data.results];
 
   if (data.pagination.page_next)
-    return recursiveFetch(api, result, data.pagination.page_next);
+    return recursiveFetch(api, result, data.pagination.page_next, tag);
   return result;
 }
   

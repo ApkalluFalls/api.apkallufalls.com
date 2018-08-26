@@ -94,8 +94,11 @@ module.exports = new Helper("Emote", "emotes", {
           const item = items.emotes
             .filter(item => item.awards === itemOffsetId)
             .map(item => ({ name: item.name }))[0];
+
+          const itemRaw = items.emotes
+            .filter(item => item.awards === itemOffsetId)[0];
           
-          if (!item || item.untradable)
+          if (!itemRaw || itemRaw.untradable)
             result.untradable = true;
 
           if (itemOffsetId)

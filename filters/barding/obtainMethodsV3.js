@@ -1030,7 +1030,6 @@ module.exports = (barding, achievementsIn, allBardingIn, itemIn, grandCompanyIn)
     case 46:
     case 50:
     case 51:
-    case 57:
     case 58:
       return helper.mogStation(item);
     

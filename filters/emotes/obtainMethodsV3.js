@@ -232,7 +232,7 @@ const helper = {
 
     switch (stage) {
       case 'pagos':
-        lockbox = ["Pagos Lockbox", "Pagos-Schließkassette", "Coffre verrouillé de Pagos", "パゴス帯のロックボックス"];
+        lockbox = ["Cold-warped Lockbox", "Frostverbeulte Schließkassette", "Coffre glacé", "変異したロックボックス【氷】"];
         eurekaMap = ["Eureka Pagos", "Pagos", "Eurêka Pagos", "エウレカ：パゴス帯"];
         break;
     }

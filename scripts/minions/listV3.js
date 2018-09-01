@@ -34,7 +34,7 @@ module.exports = new Helper("Minion", "minions", {
             fr: entry.Name_fr,
             jp: entry.Name_ja
           },
-          patch: entry['GamePatch.ID'] || 2
+          patch: entry.GamePatch.ID || 2
         }
 
         switch (result.id) {

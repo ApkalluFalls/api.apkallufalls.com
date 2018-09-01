@@ -431,6 +431,7 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
       );
     
     case 62:
+    case 63:
     case 123:
     case 124:
     case 128:

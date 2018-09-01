@@ -779,6 +779,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
     case 135:
     case 138:
     case 139:
+    case 143:
       return helper.mogStation();
     
     case 43:

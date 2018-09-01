@@ -43,7 +43,7 @@ module.exports = new Helper("Achievement", "achievements", {
     data.forEach(
       achievement => {
         const filtered = data.filter(
-          a => +a["AchievementCategory.ID"] === +achievement["AchievementCategory.ID"]
+          a => +a.AchievementCategory.ID === +achievement.AchievementCategory.ID
             && +a.Type === +achievement.Type
             && +a.Data0 === +achievement.Data0
             && +a.Data2 === 0
@@ -69,7 +69,7 @@ module.exports = new Helper("Achievement", "achievements", {
           // // If the natural filter didn't match anything, attempt to filter on the sum of the Data0
           // // and Data1 values.
           // const filtered2 = data.filter(
-          //   a => +a["AchievementCategory.ID"] === +achievement["AchievementCategory.ID"]
+          //   a => +a.AchievementCategory.ID === +achievement.AchievementCategory.ID
           //       && +a.Type === +achievement.Type
           //       && +achievement.Data0 !== 0
           //       && +achievement.Data1 === 1
@@ -89,8 +89,8 @@ module.exports = new Helper("Achievement", "achievements", {
         .map(entry => {
           let response = {
             tag: [
-              entry["AchievementCategory.ID"],
-              entry["AchievementCategory.AchievementKind.ID"]
+              entry.AchievementCategory.ID,
+              entry.AchievementCategory.AchievementKind.ID
             ],
             id: entry.ID,
             icon: +entry.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
@@ -113,14 +113,14 @@ module.exports = new Helper("Achievement", "achievements", {
           if (unavailable)
             response.unavailable = unavailable;
 
-          if (entry["Item.ID"] || entry["Title.ID"]) {
+          if (entry.Item.ID || entry.Title.ID) {
             response.reward = {};
 
-            if (entry["Item.ID"])
-              response.reward.item = entry["Item.ID"];
+            if (entry.Item.ID)
+              response.reward.item = entry.Item.ID;
               
-            if (entry["Title.ID"])
-              response.reward.title = entry["Title.ID"];
+            if (entry.Title.ID)
+              response.reward.title = entry.Title.ID;
           }
 
           // Entry type 2 is an achievement which requires multiple

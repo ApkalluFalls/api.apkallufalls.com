@@ -42,7 +42,7 @@ module.exports = new Helper("Barding", "barding", {
               fr: entry.Name_fr,
               jp: entry.Name_ja
             },
-            patch: entry['GamePatch.ID'] || tempGetPatch(entry.ID)
+            patch: entry.GamePatch.ID || tempGetPatch(entry.ID)
           }
 
           const item = items.barding
@@ -56,10 +56,10 @@ module.exports = new Helper("Barding", "barding", {
             result.untradable = true;
 
           const method = obtainMethod(result, args && args[0], data, item, {
-            de: entry['GrandCompany.Name_de'],
-            en: entry['GrandCompany.Name_en'],
-            fr: entry['GrandCompany.Name_fr'],
-            jp: entry['GrandCompany.Name_ja']
+            de: entry.GrandCompany.Name_de,
+            en: entry.GrandCompany.Name_en,
+            fr: entry.GrandCompany.Name_fr,
+            jp: entry.GrandCompany.Name_ja
           });
           result.ref = method && !(method instanceof Array) ? [method] : method;
 

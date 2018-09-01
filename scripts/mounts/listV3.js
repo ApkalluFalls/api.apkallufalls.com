@@ -37,7 +37,7 @@ module.exports = new Helper("Mount", "mounts", {
             fr: entry.Name_fr,
             jp: entry.Name_ja
           },
-          patch: entry['GamePatch.ID'] || 2
+          patch: entry.GamePatch.ID || 2
         }
 
         const method = obtainMethod(result, args && args[0], data.map(d => ({

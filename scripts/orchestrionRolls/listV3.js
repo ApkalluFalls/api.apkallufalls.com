@@ -27,9 +27,9 @@ module.exports = new Helper("OrchestrionRoll", "orchestrionRolls", {
 
     const response = {
       localisation: localisationStrings,
-      data: data.filter(entry => entry['OrchestrionUiparam.OrchestrionCategory.ID']).map(entry => {
+      data: data.filter(entry => entry.OrchestrionUiparam.OrchestrionCategory.ID).map(entry => {
         const result = {
-          category: entry['OrchestrionUiparam.OrchestrionCategory.ID'],
+          category: entry.OrchestrionUiparam.OrchestrionCategory.ID,
           description: {
             de: entry.Description_de,
             en: entry.Description_en && entry.Description_en.split(' ').map(c => c.charAt(0).toUpperCase() + c.slice(1)).join(' '),
@@ -44,13 +44,13 @@ module.exports = new Helper("OrchestrionRoll", "orchestrionRolls", {
             fr: entry.Name_fr,
             jp: entry.Name_ja
           },
-          order: entry['OrchestrionUiparam.Order']
+          order: entry.OrchestrionUiparam.Order
         }
 
         const item = items['orchestrion-rolls']
           .filter(item => item.awards === result.id)[0]
 
-        result.patch = item.patch || entry['GamePatch.ID'];
+        result.patch = item.patch || entry.GamePatch.ID;
         
         if (!item || item.untradable)
           result.untradable = true;

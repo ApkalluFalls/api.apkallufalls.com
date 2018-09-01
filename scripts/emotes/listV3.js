@@ -29,7 +29,7 @@ module.exports = new Helper("Emote", "emotes", {
     const response = {
       localisation: localisationStrings,
       data: data
-        .filter(d => d['TextCommand.ID'])
+        .filter(d => d.TextCommand.ID)
         .map(entry => {
           // Items only point to one emote. Some, like the one which teaches
           // Red Ranger Pose A and Red Ranger Pose B, have 2 emotes. This
@@ -51,10 +51,10 @@ module.exports = new Helper("Emote", "emotes", {
 
           const result = {
             category: {
-              de: entry['EmoteCategory.Name_de'],
-              en: entry['EmoteCategory.Name_en'],
-              fr: entry['EmoteCategory.Name_fr'],
-              jp: entry['EmoteCategory.Name_ja']
+              de: entry.EmoteCategory.Name_de,
+              en: entry.EmoteCategory.Name_en,
+              fr: entry.EmoteCategory.Name_fr,
+              jp: entry.EmoteCategory.Name_ja
             },
             icon: +entry.Icon.replace(/^.*\/(\d+)\.png$/, (match, group) => {
               return group;
@@ -66,9 +66,9 @@ module.exports = new Helper("Emote", "emotes", {
               fr: entry.Name_fr,
               jp: entry.Name_ja
             },
-            patch: entry['GamePatch.ID'] || 2,
+            patch: entry.GamePatch.ID || 2,
             commands: textCommands
-              .filter(t => t.ID === entry['TextCommand.ID'])
+              .filter(t => t.ID === entry.TextCommand.ID)
               .map(c => ({
                 main: {
                   de: c.Command_de,

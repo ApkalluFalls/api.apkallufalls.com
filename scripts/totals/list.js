@@ -25,7 +25,7 @@ module.exports = async function() {
     resolve(data);
   })).then(data => minionsList = JSON.parse(data).data);
 
-  await new Promise((resolve) => fs.readFile('../docs/mounts.json', 'utf8', (e, data) => {
+  await new Promise((resolve) => fs.readFile('../docs/v3/mounts.json', 'utf8', (e, data) => {
     resolve(data);
   })).then(data => mountsList = JSON.parse(data).data);
 

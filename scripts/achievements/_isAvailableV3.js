@@ -2,8 +2,8 @@
 
 // This function determines if an achievement is obtainable.
 module.exports = function(achievement) {
-  const kind = achievement['AchievementCategory.AchievementKind.Name'];
-  const category = achievement['AchievementCategory.Name'];
+  const kind = achievement.AchievementCategory.AchievementKind.Name;
+  const category = achievement.AchievementCategory.Name;
 
   if (!kind || !category)
     return 'unknown';

@@ -79,6 +79,17 @@ async function getInfo(index, content, data, description) {
   
   const title = apiData.data.title;
 
+  if (content[index].url)  
+    createHTML(content[index].url, {
+      data: data[index],
+      emoji: "🗡️",
+      title: `${apiData.data.name} | Apkallu Falls`,
+      description: `${apiData.data.name}${title ? ` «${title}»` : ''} of ${apiData.data.server} is a ${(description === "translator" ? content[index]['?'] + " translator" : description)} of Apkallu Falls.`,
+      image: apiData.data.avatar,
+      imageAvatar: avatar,
+      section: "Characters"
+    }, "!", () => {});
+
   createHTML(content[index].id, {
     data: data[index],
     emoji: "🗡️",

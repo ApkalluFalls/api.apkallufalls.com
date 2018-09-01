@@ -27,16 +27,16 @@ module.exports = new Helper("achievement category", "achievement categories", {
 
     data
       .forEach(entry => {
-        let kind = response[entry['AchievementKind.ID']];
+        let kind = response[entry.AchievementKind.ID];
 
         if (!kind) {
           kind = {
             id: entry['AchievementKind.ID'],
             name: {
-              de: entry['AchievementKind.Name_de'],
-              en: entry['AchievementKind.Name_en'],
-              fr: entry['AchievementKind.Name_fr'],
-              jp: entry['AchievementKind.Name_ja']
+              de: entry.AchievementKind.Name_de,
+              en: entry.AchievementKind.Name_en,
+              fr: entry.AchievementKind.Name_fr,
+              jp: entry.AchievementKind.Name_ja
             },
             categories: []
           }
@@ -44,7 +44,7 @@ module.exports = new Helper("achievement category", "achievement categories", {
           if (!isKindAvailable(kind))
             kind.unavailable = true;
 
-          response[entry['AchievementKind.ID']] = kind;
+          response[entry.AchievementKind.ID] = kind;
         }
 
         const category = {

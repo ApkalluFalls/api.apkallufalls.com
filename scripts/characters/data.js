@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 const createHTML = require('../_HTML');
 
-module.exports = async () => {
+module.exports = async (titles) => {
   let friends;
   let supporters;
   let translators;
@@ -19,7 +19,7 @@ module.exports = async () => {
     resolve(data);
   })).then(data => translators = JSON.parse(data));
 
-  const processedFriends = await getInfo(0, friends, [], "friend");
+  const processedFriends = await getInfo(0, friends, [], "friend", titles);
   fs.writeFile(
     "../docs/friends.json",
     JSON.stringify(processedFriends),
@@ -29,7 +29,7 @@ module.exports = async () => {
     }
   );
 
-  const processedSupporters = await getInfo(0, supporters, [], "Patreon supporter");
+  const processedSupporters = await getInfo(0, supporters, [], "Patreon supporter", titles);
   fs.writeFile(
     "../docs/supporters.json",
     JSON.stringify(processedSupporters),
@@ -39,7 +39,7 @@ module.exports = async () => {
     }
   );
 
-  const processedTranslators = await getInfo(0, translators, [], "translator");
+  const processedTranslators = await getInfo(0, translators, [], "translator", titles);
   fs.writeFile(
     "../docs/translators.json",
     JSON.stringify(processedTranslators),
@@ -50,9 +50,10 @@ module.exports = async () => {
   );
 }
 
-async function getInfo(index, content, data, description) {
+async function getInfo(index, content, data, description, titles) {
+  const apiKey = await fs.readFileSync('../xivapi-key.txt', 'utf-8');
   const apiData = await fetch(
-    'http://api.xivdb.com/character/' + content[index].id,
+    `http://xivapi.com/character/${content[index].id}?columns=Character.Avatar,Character.Name,Character.Server,Character.Title&key=${apiKey}`,
     {
       method: 'GET',
       mode: 'cors'
@@ -61,15 +62,18 @@ async function getInfo(index, content, data, description) {
     .then(response => response.json())
     .catch(e => console.error(e));
 
+  if (!apiData || !apiData.Character || apiData.Error)
+    throw new Error(`Unable to find character ${content[index].id}`);
+
   data.push({
     ...content[index],
-    img: apiData.data.avatar,
-    name: apiData.data.name,
-    world: apiData.data.server
+    img: apiData.Character.Avatar,
+    name: apiData.Character.Name,
+    world: apiData.Character.Server
   });
 
   const avatar = await fetch(
-    apiData.data.avatar,
+    apiData.Character.Avatar,
     {
       method: 'GET',
       mode: 'cors'
@@ -77,15 +81,15 @@ async function getInfo(index, content, data, description) {
   )
     .then(response => response.arrayBuffer());
   
-  const title = apiData.data.title;
+  const title = apiData.Character.Title && apiData.Character.Title != 247 && titles.data.filter(t => t.id === apiData.Character.Title)[0].name.en;
 
   if (content[index].url)  
     createHTML(content[index].url, {
       data: data[index],
       emoji: "🗡️",
-      title: `${apiData.data.name} | Apkallu Falls`,
-      description: `${apiData.data.name}${title ? ` «${title}»` : ''} of ${apiData.data.server} is a ${(description === "translator" ? content[index]['?'] + " translator" : description)} of Apkallu Falls.`,
-      image: apiData.data.avatar,
+      title: `${apiData.Character.Name} | Apkallu Falls`,
+      description: `${apiData.Character.Name}${title ? ` «${title}»` : ''} of ${apiData.Character.Server} is a ${(description === "translator" ? content[index]['?'] + " translator" : description)} of Apkallu Falls.`,
+      image: apiData.Character.Avatar,
       imageAvatar: avatar,
       section: "Characters"
     }, "!", () => {});
@@ -93,9 +97,9 @@ async function getInfo(index, content, data, description) {
   createHTML(content[index].id, {
     data: data[index],
     emoji: "🗡️",
-    title: `${apiData.data.name} | Apkallu Falls`,
-    description: `${apiData.data.name}${title ? ` «${title}»` : ''} of ${apiData.data.server} is a ${(description === "translator" ? content[index]['?'] + " translator" : description)} of Apkallu Falls.`,
-    image: apiData.data.avatar,
+    title: `${apiData.Character.Name} | Apkallu Falls`,
+    description: `${apiData.Character.Name}${title ? ` «${title}»` : ''} of ${apiData.Character.Server} is a ${(description === "translator" ? content[index]['?'] + " translator" : description)} of Apkallu Falls.`,
+    image: apiData.Character.Avatar,
     imageAvatar: avatar,
     section: "Characters"
   }, "character", () => {});
@@ -103,5 +107,5 @@ async function getInfo(index, content, data, description) {
   if (index === content.length - 1)
     return data;
   
-  return getInfo(index += 1, content, data, description);
+  return getInfo(index += 1, content, data, description, titles);
 }

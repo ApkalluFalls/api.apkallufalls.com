@@ -156,7 +156,7 @@ const update = async function (args) {
   }
 
   if (config && config.characters) {
-    await require('./characters/data.js')();
+    await require('./characters/data.js')(titlesListV3);
   }
 
   if (config && config.routes) {

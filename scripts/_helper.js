@@ -91,8 +91,12 @@ async function recursiveFetch(api, result = [], page = 1, tag) {
     throw new Error('XIVDB API key required.')
   }
 
-  const data = await fetch(`${api}&page=${page}&max_items=1000&key=${apiKey}${tag ? `&tags=${tag}` : ''}`)
+  const url = `${api}&page=${page}&max_items=1000&key=${apiKey}${tag ? `&tags=${tag}` : ''}`;
+  const data = await fetch(url)
     .then(response => response.json());
+
+  if (data.Error)
+    throw new Error(`${url} threw error: ${data.Message}`);
 
   if (typeof result === 'boolean' && result)
     return data;

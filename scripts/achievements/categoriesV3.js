@@ -31,7 +31,7 @@ module.exports = new Helper("achievement category", "achievement categories", {
 
         if (!kind) {
           kind = {
-            id: entry['AchievementKind.ID'],
+            id: entry.AchievementKind.ID,
             name: {
               de: entry.AchievementKind.Name_de,
               en: entry.AchievementKind.Name_en,

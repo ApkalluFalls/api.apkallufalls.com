@@ -105,7 +105,7 @@ module.exports = new Helper("Achievement", "achievements", {
               jp: entry.Name_ja
             },
             series: entry.series,
-            patch: entry['GamePatch.ID'] || 2,
+            patch: entry.GamePatch.ID || 2,
             weight: _getWeight(entry)
           }
 

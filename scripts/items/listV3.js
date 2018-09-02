@@ -28,23 +28,23 @@ module.exports = new Helper("Item", "items", {
   format: (data, args) => {
     const response = {
       achievements: format(
-        data.filter(item => item['GameContentLinks.Achievement.Item']),
+        data.filter(item => item.GameContentLinks.Achievement.Item),
         'GameContentLinks.Achievement.Item',
         'achievement'
       )
     };
   
     response.barding = format(
-      data.filter(item => item['ItemAction.Type'] == 1013),
+      data.filter(item => item.ItemAction.Type == 1013),
       'ItemAction.Data0',
       'barding',
       response.achievements
     );
   
     response.emotes = format(
-      data.filter(item => item['ItemAction.Data1'] >= 5100
-        && item['ItemAction.Data1'] <= 5300
-        && item['ItemAction.Data2'] !== 0
+      data.filter(item => item.ItemAction.Data1 >= 5100
+        && item.ItemAction.Data1 <= 5300
+        && item.ItemAction.Data2 !== 0
       ),
       'ItemAction.Data2',
       'emote',
@@ -52,8 +52,8 @@ module.exports = new Helper("Item", "items", {
     );
   
     response.hairstyles = format(
-      data.filter(item => item['ItemAction.Type'] == 2633
-        && item['ItemAction.Data1'] === 4659
+      data.filter(item => item.ItemAction.Type == 2633
+        && item.ItemAction.Data1 === 4659
       ),
       'ItemAction.Data0',
       'hairstyle',
@@ -61,21 +61,21 @@ module.exports = new Helper("Item", "items", {
     );
 
     response.minions = format(
-      data.filter((item => item['ItemAction.Type'] === 853)),
+      data.filter((item => item.ItemAction.Type === 853)),
       'ItemAction.Data0',
       'minion',
       response.achievements
     );
 
     response.mounts = format(
-      data.filter(item => item['ItemAction.Type'] === 1322),
+      data.filter(item => item.ItemAction.Type === 1322),
       'ItemAction.Data0',
       'mount',
       response.achievements
     );
 
     response['orchestrion-rolls'] = format(
-      data.filter(item => item['ItemAction.Type'] === 5845),
+      data.filter(item => item.ItemAction.Type === 5845),
       'ItemAction.Data0',
       'orchestrionRoll',
       response.achievements,
@@ -112,7 +112,7 @@ function format(data, awardKey, subresource, achievements, requiresPatch) {
 
     if (achievements) {
       const achievement = achievements.filter(a => a.id === result.id)[0];
-      result.awards = entry[awardKey];
+      result.awards = eval(`entry.${awardKey}`);
 
       if (achievement) {
         if (achievement.special)
@@ -127,13 +127,13 @@ function format(data, awardKey, subresource, achievements, requiresPatch) {
       }
     }
     else {
-      if (entry[awardKey].length > 1)
+      if (eval(`entry.${awardKey}`).length > 1)
         throw new Error('Unhandled item with multiple achievements.');
-        result.source = entry[awardKey][0];
+      result.source = eval(`entry.${awardKey}`)[0];
     }
 
     if (requiresPatch)
-      result.patch = entry['GamePatch.ID'];
+      result.patch = entry.GamePatch.ID;
 
     return result;
   })

@@ -10,7 +10,7 @@ module.exports = function(fileName, content, folder, callback) {
 
   const emoji = content.emoji;
   const summary = content.list ? 'summary_large_image' : 'summary';
-  const backdrop = 'https://apkallufalls.com/icon/backdrop-2.0.png?v=2';
+  const backdrop = 'https://apkallufalls.com/icon/backdrop-2.1.png?v=2';
   let twitterImage = content.list ? backdrop : (
     content.image
     ? content.image

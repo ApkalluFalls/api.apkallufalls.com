@@ -2102,7 +2102,7 @@ module.exports = (minion, achievementsIn) => {
       return o(
         'beastTribe',
         [
-          rank.sworn,
+          rank.allied,
           beastTribe.ixal,
           25000, gil, gilImage,
           ['Ixali Vendor', 'Ixal-Händler', 'Vendeur Ixal', 'イクサル族のよろず屋'],
@@ -3370,7 +3370,7 @@ module.exports = (minion, achievementsIn) => {
         [
           rank.respected,
           beastTribe.ananta,
-          5, anantaDreamstaff, anantaDreamstaffImage,
+          7, anantaDreamstaff, anantaDreamstaffImage,
           ["Madhura", true, true, "マドゥラ"],
           ["(Ananta Dreamstaff Exchange)", "(Ananta-Traumstäbe)", "(Échange De Barrettes Béatifiques Anantas)", "(アナンタ魔金錫貨の取引)"],
           locationImage,

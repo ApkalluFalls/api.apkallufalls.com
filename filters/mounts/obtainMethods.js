@@ -386,7 +386,7 @@ const helper = {
         sack,
         item.pieceOfAccursedHoard,
         dutyImage,
-        locationIn || location.duty.thePalaceOfTheDead
+        locationIn || location.thePalaceOfTheDead
       ],
       expansion || expansions.ARR,
       true,

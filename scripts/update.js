@@ -290,9 +290,10 @@ async function recursiveFetch(api, result = [], page = 1) {
   const data = await fetch(`${api}&page=${page}`)
     .then(response => response.json());
 
-  result = [...result, ...data.results];
+  result = [...result, ...data.Results];
+  console.info(data);
 
-  if (data.pagination.page_next)
-    return recursiveFetch(api, result, data.pagination.page_next);
+  if (data.Pagination.PageNext !== page)
+    return recursiveFetch(api, result, data.Pagination.PageNext);
   return result;
 }

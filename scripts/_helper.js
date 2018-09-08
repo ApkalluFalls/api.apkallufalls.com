@@ -101,10 +101,10 @@ async function recursiveFetch(api, result = [], page = 1, tag) {
   if (typeof result === 'boolean' && result)
     return data;
 
-  result = [...result, ...data.results];
+  result = [...result, ...data.Results];
 
-  if (data.pagination.page_next)
-    return recursiveFetch(api, result, data.pagination.page_next, tag);
+  if (data.Pagination.PageNext !== 1)
+    return recursiveFetch(api, result, data.Pagination.PageNext, tag);
   return result;
 }
   

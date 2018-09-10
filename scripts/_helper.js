@@ -103,7 +103,7 @@ async function recursiveFetch(api, result = [], page = 1, tag) {
 
   result = [...result, ...data.Results];
 
-  if (data.Pagination.PageNext !== 1)
+  if (data.Pagination.Page !== data.Pagination.PageTotal)
     return recursiveFetch(api, result, data.Pagination.PageNext, tag);
   return result;
 }

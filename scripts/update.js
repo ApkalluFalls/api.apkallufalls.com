@@ -293,7 +293,7 @@ async function recursiveFetch(api, result = [], page = 1) {
   result = [...result, ...data.Results];
   console.info(data);
 
-  if (data.Pagination.PageNext !== page)
+  if (data.Pagination.Page !== data.Pagination.PageTotal)
     return recursiveFetch(api, result, data.Pagination.PageNext);
   return result;
 }

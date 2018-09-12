@@ -141,8 +141,6 @@ module.exports = async function() {
     }
   }
 
-  console.info(data['orchestrion-rolls'].unavailable)
-
   // Node doesn't support array.reverse() :(
   data.levequests.battle = achievementsList.filter(d => d.id === data.levequests.ids.battle[data.levequests.ids.battle.length - 1])[0].weight;
   data.levequests.crafting = achievementsList.filter(d => d.id === data.levequests.ids.crafting.CRP[data.levequests.ids.crafting.CRP.length - 1])[0].weight * Object.keys(data.levequests.ids.crafting).length;

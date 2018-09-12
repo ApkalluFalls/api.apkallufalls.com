@@ -200,7 +200,7 @@ const update = async function (args) {
   if (!config || config.mountsV3) {
     message('Mounts');
     await require('./mounts/dataV3.js').fetch(itemsV3);
-    await require('./mounts/listV3.js').fetch(achievementsLis, itemsV3);
+    await require('./mounts/listV3.js').fetch(achievementsListV3, itemsV3);
     console.info("!! Remember to check sounds to filter out French text.");
   }
   if (config && config.mountsListV3) {
@@ -291,7 +291,6 @@ async function recursiveFetch(api, result = [], page = 1) {
     .then(response => response.json());
 
   result = [...result, ...data.Results];
-  console.info(data);
 
   if (data.Pagination.Page !== data.Pagination.PageTotal)
     return recursiveFetch(api, result, data.Pagination.PageNext);

@@ -36,7 +36,8 @@ module.exports = {
   },
   empyreanAccessory: {
     en: 'Speak with {0} in {img1} {2} (x: {3}, y: {4}) with {i5}, {i6}, {i7} and {i8}, or their {i9} counterparts, in your inventory.',
-    de: 'Sprich mit {0} in {img1} {2} (x: {3}, y: {4}) mit {i5}, {i6}, {i7} und {i8}, oder ihren {i9} Gegenstücken, in deinem Inventar.'
+    de: 'Sprich mit {0} in {img1} {2} (x: {3}, y: {4}) mit {i5}, {i6}, {i7} und {i8}, oder ihren {i9} Gegenstücken, in deinem Inventar.',
+    fr: 'Parler à {0} dans {img1} {2} (x: {3}, y: {4}) avec {i5}, {i6}, {i7} et {i8}, ou avec les {i9} équivalentes, dans l\'inventaire.'
   },
   msq: {
     en: 'Complete the level {0} {1} main scenario quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',

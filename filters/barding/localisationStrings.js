@@ -10,7 +10,8 @@ module.exports = {
     fr: 'Acheté pour {i0} {i1} {img2} chez {3} à {4} dans {img5} {6} (x: {7}, y: {8}).'
   },
   buddySkill: {
-    en: 'Raise the chocobo companion\'s {0} skill tree to level 10.'
+    en: 'Raise the chocobo companion\'s {0} skill tree to level 10.',
+    fr: 'Améliorer l\'arbre de compétence {0} du compagnon chocobo au niveau 10.'
   },
   collectorsEdition: {
     en: 'Register or digitally upgrade to the {i0} of {i1} on the {2}.',
@@ -43,7 +44,8 @@ module.exports = {
     fr: 'Atteindre la récompense or sur l\'ALEA niveau {0} {img1} \'{i2}\' dans {img3} {4} (x: {5}, y: {6}).'
   },
   forumContest: {
-    en: 'Be one of the lucky winners selected during official forum contests.'
+    en: 'Be one of the lucky winners selected during official forum contests.',
+    fr: 'Être l\'un des heureux gagnants sélectionnés pendant les concours sur le forum officiel.'
   },
   grandCompany: {
     en: 'Unlocked when enlisting with Grand Company: {i0}.',

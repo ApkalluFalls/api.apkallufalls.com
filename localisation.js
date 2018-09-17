@@ -337,17 +337,17 @@ module.exports = {
   // Chocobo skill trees
   'Defender': {
     de: '?Defender?',
-    fr: '?Defender?',
+    fr: 'Défense',
     jp: '?Defender?'
   },
   'Attacker': {
     de: '?Attacker?',
-    fr: '?Attacker?',
+    fr: 'Attaque',
     jp: '?Attacker?'
   },
   'Healer': {
     de: '?Healer?',
-    fr: '?Healer?',
+    fr: 'Soin',
     jp: '?Healer?'
   }
 }

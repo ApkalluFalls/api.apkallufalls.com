@@ -334,7 +334,7 @@ module.exports = (minion) => {
       return override('Triple attaque!', 'Triple attack!');
 
     case 286:
-      return override('Ce harrrnais scorpion me va comme un gant!', 'This scorpion harness fits me like a glove!')
+      return override('Ce harrrnais scorpion me va\\ncomme un gant!', 'This scorpion harness fits me like a glove!')
 
     case 290:
       return override('À moi, nuage magique', 'To me, magic cloud');

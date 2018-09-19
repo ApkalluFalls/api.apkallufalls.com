@@ -192,6 +192,9 @@ function tempGetPatch(id) {
     case 64:
       return 45; // 4.3
 
+    case 65:
+      return 49; // 4.4
+
     default:
       console.info('Unknown patch for chocobo barding ' + id + '.');
       return 2;

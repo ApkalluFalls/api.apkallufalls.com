@@ -22,6 +22,9 @@ module.exports = function(achievement) {
       break;
   }
 
+  if (achievement.Type == 25) // regional Feast Championship achievements
+    return 'ranked-pvp';
+
   switch (achievement.ID) {
     case 310:
     case 311:

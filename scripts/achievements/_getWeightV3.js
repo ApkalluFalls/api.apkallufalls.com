@@ -8,7 +8,8 @@ module.exports = function(achievement) {
 		case 12: // participate in n matches in The Fold
 		case 13: // triumph in n matches in The Fold
 		case 17: // participate in n Frontline matches
-		case 19: // triumph in n Frontline matches
+    case 19: // triumph in n Frontline matches
+    case 25: // Regional Feast championship
 			return achievement.Data0;
 
 		case 1: // do n things
@@ -35,9 +36,9 @@ module.exports = function(achievement) {
 			return 0; // the other achievements have their own weights and this is automatic
 			
 		case 16: // there is no type 16
-		case 22: // there is no type 22
+    case 22: // there is no type 22
 		default:
-			console.error("Unknown achievement type " + achievement.Type + " detected. achievements/_getWeight.js will need updating.");
+			console.error("Unknown achievement type " + achievement.Type + " detected on achievement " + achievement.ID + ". achievements/_getWeight.js will need updating.");
 			return process.exit();
 	}
 }

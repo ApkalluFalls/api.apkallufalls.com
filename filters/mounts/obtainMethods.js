@@ -940,7 +940,11 @@ module.exports = (mount, achievementsIn, mountsIn) => {
       );
 
     case 71:
-      return helper.fanFestival(2018, ['Las Vegas', true, true, 'ラスベガス']);
+      return [
+        helper.fanFestival(2018, ['Las Vegas', true, true, 'ラスベガス']),
+        helper.fanFestival(2018, ['Paris', true, true, 'パリ']),
+        helper.fanFestival(2018, ['Tokyo', 'Tokio', true, '東京'])
+      ];
     
     case 72:
       return o(

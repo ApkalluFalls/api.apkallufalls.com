@@ -431,6 +431,8 @@ const location = {
     alexanderBurdenOfTheSonSavage: ["Alexander - The Burden Of The Son (Savage)", "Alexander - Last Des Sohnes (episch)", "Alexander - Le Fardeau Du Fils (sadique)", "機工城アレキサンダー零式：律動編4"],
     alexanderSoulOfTheCreator: ["Alexander - The Soul Of The Creator", "Alexander - Seele Des Schöpfers", "Alexander - L'Âme Du Créateur", "機工城アレキサンダー：天動編4"],
     alexanderTheSoulOfTheCreatorSavage: ["Alexander - The Soul Of The Creator (Savage)", "Alexander - Seele Des Schöpfers (episch)", "Alexander - L'Âme Du Créateur (sadique)", "機工城アレキサンダー零式：天動編4"],
+    alphascapev40: ["Alphascape V4.0", "Alphametrie 4.0", "Alphastice v4.0", "次元の狭間オメガ：アルファ編4"],
+    alphascapev40Savage: ["Alphascape V4.0 (Savage)", "Alphametrie 4.0 (episch)", "Alphastice v4.0 (sadique)", "次元の狭間オメガ零式：アルファ編4"],
     amdaporKeep: ['Amdapor Keep', 'Die Ruinen Von Amdapor', 'Le Château D\'Amdapor', '邪教排撃 古城アムダプール'],
     baelsarsWall: ["Baelsar's Wall", "Baelsar-Wall", "La Muraille De Baelsar", "巨大防壁 バエサルの長城"],
     bardamsMettle: ["Bardam's Mettle", "Bardams Probe", "La Force De Bardam", "伝統試練 バルダム覇道"],
@@ -451,6 +453,7 @@ const location = {
     sastashaHard: ['Sastasha (Hard)', 'Sastasha (schwer)', 'Sastasha (brutal)', '逆襲要害 サスタシャ浸食洞 (Hard)'],
     sohmAl: ["Sohm Al", "Sohm Al", "Sohm Al", "霊峰踏破 ソーム・アル"],
     saintMociannesArboretum: ["Saint Mocianne's Arboretum", "Sankt Mocianne-Arboretum", "L'Arboretum Sainte-Mocianne", "草木庭園 聖モシャーヌ植物園"],
+    saintMociannesArboretumHard: ["Saint Mocianne's Arboretum (Hard)", "Sankt Mocianne-Arboretum (schwer)", "l'Arboretum Sainte-Mocianne (brutal)", "草木汚染 聖モシャーヌ植物園 (Hard)"],
     shisuiOfTheVioletTides: ["Shisui Of The Violet Tides", "Shisui", "Le Palais Aux Marées Violettes", "海底宮殿 紫水宮"],
     sigmascapev40: ["Sigmascape V4.0", "Sigmametrie 4.0", "Sigmastice V4.0", "次元の狭間オメガ：シグマ編4"],
     sigmascapev40Savage: ["Sigmascape V4.0 (Savage)", "Sigmametrie 4.0 (episch)", "Sigmastice V4.0 (sadique)", "次元の狭間オメガ零式：シグマ編4"],
@@ -3598,12 +3601,46 @@ module.exports = (minion, achievementsIn) => {
         false
       );
 
-    case 311:
+    case 304:
+      return helper.quest(
+        70,
+        locale('Side Story Quests'),
+        ["To Kweh Under Distant Skies", "Träume verleihen Flügel", "Le grand envol", "翼に夢を"],
+        ["Biggs", "Biggs", "Biggs", "ビッグス"],
+        location.coerthasCentralHighlands,
+        7, 28,
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 305:
       return [
-        helper.fanFestival(2018, ['Las Vegas', true, true, 'ラスベガス']),
-        helper.fanFestival(2018, ['Paris', true, true, 'パリ']),
-        helper.fanFestival(2018, ['Tokyo', 'Tokio', true, '東京'])
+        helper.raid(location.duty.alphascapev40, 70, expansions.SB, true, false),
+        helper.raid(location.duty.alphascapev40Savage, 70, expansions.SB, true, false)
       ];
+
+    case 307:
+    case 308:
+      return [
+          helper.eventQuest(
+          15,
+          ["The Sordid Cipher", "Der verschlüsselte Code", "Un numéro très secret", "守護天節と奇妙な暗号"],
+          'eq1',
+          expansions.ARR
+        ),
+        helper.eventQuestPurchase(
+          ["Adventurers' Guild Investigator", "Abenteurergilden-Gesandt[a]", "Enquêteur", "冒険者ギルドの調査員"],
+          ["All Saints' Wake (2018)", true, true, "守護天節 (2018)"],
+          expansions.ARR
+        )
+      ];
+
+    case 311:
+      return helper.fanFestival(2018, ['Las Vegas', true, true, 'ラスベガス']);
+
+    case 312:
+      return helper.dungeon(location.duty.saintMociannesArboretumHard, 70, null, null, expansions.SB, true, false);
 
     default:
       console.log("Unknown method for minion " + minion.id);

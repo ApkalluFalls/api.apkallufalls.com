@@ -39,6 +39,11 @@ module.exports = {
     de: 'Sprich mit {0} in {img1} {2} (x: {3}, y: {4}) mit {i5}, {i6}, {i7} und {i8}, oder ihren {i9} Gegenstücken, in deinem Inventar.',
     fr: 'Parler à {0} dans {img1} {2} (x: {3}, y: {4}) avec {i5}, {i6}, {i7} et {i8}, ou avec les {i9} équivalentes, dans l\'inventaire.'
   },
+  fanFestival: {
+    en: 'Attend the {y0} fan festival in {1}.',
+    de: 'Besuche das {y0] Fanfest in {1}.',
+    fr: 'Participer au fan festival {y0} à {1}.'
+  },
   msq: {
     en: 'Complete the level {0} {1} main scenario quest {img2} \'{i3}\' from {4} in {img5} {6} (x: {7}, y: {8}).',
     de: 'Vervollständige das level {0} {1} Hauptszenario {img2} \'{i3}\' von {4} in {img5} {6} (x: {7}, y: {8}).',

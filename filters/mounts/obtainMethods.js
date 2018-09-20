@@ -188,12 +188,14 @@ const location = {
     alaMhigo: ["Ala Mhigo", "Ala Mhigo", "Ala Mhigo", "紅蓮決戦 アラミゴ"],
     alexanderTheBurdenOfTheFatherSavage: ["Alexander - The Burden Of The Father (Savage)", "Alexander - Last Des Vaters (episch)", "Alexander - Le Fardeau Du Père (sadique)", "機工城アレキサンダー零式：起動編4"],
     alexanderTheSoulOfTheCreatorSavage: ["Alexander - The Soul Of The Creator (Savage)", "Alexander - Seele Des Schöpfers (episch)", "Alexander - L'Âme Du Créateur (sadique)", "機工城アレキサンダー零式：天動編4"],
+    alphascapev40Savage: ["Alphascape V4.0 (Savage)", "Alphametrie 4.0 (episch)", "Alphastice v4.0 (sadique)", "次元の狭間オメガ零式：アルファ編4"],
     containmentBayP1T6Extreme: ["Containment Bay P1T6 (Extreme)", "Zenit Der Götter - Sophia", "Unité De Contention P1P6 (extrême)", "極女神ソフィア討滅戦"],
     containmentBayS1T7Extreme: ["Containment Bay S1T7 (Extreme)", "Zenit Der Götter - Sephirot", "Unité De Contention S1P7 (extrême)", "極魔神セフィロト討滅戦"],
     containmentBayZ1T9Extreme: ["Containment Bay Z1T9 (Extreme)", "Zenit Der Götter - Zurvan", "Unité De Contention Z1P9 (extrême)", "極鬼神ズルワーン討滅戦"],
     deltascapev40Savage: ["Deltascape V4.0 (Savage)", "Deltametrie 4.0 (episch)", "Deltastice V4.0 (sadique)", "次元の狭間オメガ零式：デルタ編4"],
     emanationExtreme: ["Emanation (Extreme)", "Zenit Der Götter - Lakshmi", "Émanation (extrême)", "極ラクシュミ討滅戦"],
     heavenOnHigh: ["Heaven-on-High", "Himmelssäule", "Le Pilier Des Cieux", "アメノミハシラ"],
+    hellsKeirExtreme: ["Hells' Kier (Extreme)", "Seelensturm - Suzaku", "le Nid des Lamentations (extrême)", "極朱雀征魂戦"],
     sigmascapev40Savage: ["Sigmascape V4.0 (Savage)", "Sigmametrie 4.0 (episch)", "Sigmastice V4.0 (sadique)", "次元の狭間オメガ零式：シグマ編4"],
     theBowlOfEmbersExtreme: ["The Bowl Of Embers (Extreme)", "Zenit Der Götter - Ifrit", "Le Cratère Des Tisons (extrême)", "極イフリート討滅戦"],
     theGreatHuntExtreme: ["The Great Hunt (Extreme)", "Jagd auf Rathalos (schwer)", "Chasse au Rathalos (extrême)", "極リオレウス狩猟戦"],
@@ -312,6 +314,15 @@ const helper = {
       expansion,
       false,
       false
+    )
+  },
+  fanFestival: (year, location) => {
+    return o(
+      'fanFestival',
+      [year, location],
+      expansions.ARR,
+      false,
+      true
     )
   },
   goldChocoboFeatherExchange: (cost) => {
@@ -926,6 +937,9 @@ module.exports = (mount, achievementsIn, mountsIn) => {
         true,
         false
       );
+
+    case 71:
+      return helper.fanFestival(2018, ['Las Vegas', true, true, 'ラスベガス']);
     
     case 72:
       return o(
@@ -1299,6 +1313,7 @@ module.exports = (mount, achievementsIn, mountsIn) => {
 
     case 110:
     case 142:
+    case 154:
       return helper.goldSaucerPrizeExchange(750000);
     
     case 111:
@@ -1641,6 +1656,28 @@ module.exports = (mount, achievementsIn, mountsIn) => {
     
     case 168:
       return helper.achievementReward(2065, expansions.SB, true, false);
+
+    case 172:
+      return helper.trial(location.duty.hellsKeirExtreme, 70, expansions.SB, true, false);
+    
+    case 173:
+        return helper.raid(location.duty.alphascapev40Savage, 70, expansions.SB, true, false);
+
+    case 174:
+      return o(
+        'purchase',
+        [
+          20000, wolfMarks, wolfMarksImage,
+          _npc.stormSegeant,
+          wolfMarks.map(w => '(' + w + ')'),
+          locationImage,
+          location.theWolvesDen,
+          4.4, 6.1
+        ],
+        expansions.ARR,
+        true,
+        false
+      );
 
     default:
       console.log("Unknown method for mount " + mount.id);

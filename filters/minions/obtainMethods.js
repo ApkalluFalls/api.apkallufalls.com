@@ -3598,6 +3598,13 @@ module.exports = (minion, achievementsIn) => {
         false
       );
 
+    case 311:
+      return [
+        helper.fanFestival(2018, ['Las Vegas', true, true, 'ラスベガス']),
+        helper.fanFestival(2018, ['Paris', true, true, 'パリ']),
+        helper.fanFestival(2018, ['Tokyo', 'Tokio', true, '東京'])
+      ];
+
     default:
       console.log("Unknown method for minion " + minion.id);
       return null;

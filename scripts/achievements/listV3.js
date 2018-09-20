@@ -113,6 +113,9 @@ module.exports = new Helper("Achievement", "achievements", {
           if (unavailable)
             response.unavailable = unavailable;
 
+          if (response.id === 2114)
+            console.info(entry.Title);
+
           if (entry.Item.ID || entry.Title.ID) {
             response.reward = {};
 

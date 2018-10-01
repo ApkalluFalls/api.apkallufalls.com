@@ -113,8 +113,7 @@ const helper = {
     )
   },
   companionApp: () => {
-    return (
-      o,
+    return o(
       'companionApp',
       [],
       expansions.ARR,

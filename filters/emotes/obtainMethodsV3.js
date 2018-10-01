@@ -228,7 +228,7 @@ const helper = {
   },
   hiddenCanalsOfUznair: (location) => {
     return o(
-      'shiftingAltarsOfUznair',
+      'hiddenCanalsOfUznair',
       [
         dutyImage,
         location

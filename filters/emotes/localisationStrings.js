@@ -10,7 +10,8 @@ module.exports = {
     fr: 'Après avoir atteint la réputation {0} avec la tribu {i1}, acheter {i11} pour {img4} {i2} {i3} chez {5} {6} à {img7} {8} (x: {9}, y: {10}).'
   },
   companionApp: {
-    en: 'Log in to the Companion App on an Android or iOS device.'
+    en: 'Log in to the Companion App on an Android or iOS device.',
+    fr: 'Connectez vous à l\'application Compagnon sur un appareil Android ou iOS'
   },
   eventQuest: {
     en: 'Complete the level {0} {i1} quest {img3} \'{i2}\'.',

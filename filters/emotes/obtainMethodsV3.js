@@ -112,6 +112,16 @@ const helper = {
       }
     )
   },
+  companionApp: () => {
+    return (
+      o,
+      'companionApp',
+      [],
+      expansions.ARR,
+      true,
+      true
+    )
+  },
   companySeals: (cost, company, item) => {
     const companySeals = ['Company Seals', 'Staatstaler', 'Sceaux de compagnie', '軍票'];
 
@@ -215,6 +225,18 @@ const helper = {
           };
         })
       }
+    )
+  },
+  hiddenCanalsOfUznair: (location) => {
+    return o(
+      'shiftingAltarsOfUznair',
+      [
+        dutyImage,
+        location
+      ],
+      expansions.SB,
+      true,
+      false
     )
   },
   isDefault: () => {
@@ -932,6 +954,38 @@ module.exports = (emote, achievementsIn, emotesIn, itemsIn) => {
         true,
         false
       );
+    
+    case 187:
+      return helper.quest(
+        70,
+        locale('Side Story Quests'),
+        ["The Fire-bird Down Below", "Eine Liebe über den Tod hinaus", "Une passion brûlante", "朱色慕情"],
+        ["Bunchin", "Bunchin", "Bunchin", "ブンチン"],
+        location.theRubySea,
+        27.8, 16.4,
+        expansions.SB,
+        true,
+        false
+      );
+    
+    case 188:
+      return helper.hiddenCanalsOfUznair(["The Shifting Altars of Uznair", "Halle der Glücksaltäre", "Temple sacré d'Uznair", "ウズネアカナル祭殿"]);
+    
+    case 190:
+      return helper.msq(
+        70,
+        locale('Stormblood'),
+        ["The Call", "Stimme aus der Ferne", "Ravageuses résonances", "響き渡る声"],
+        ["Y'shtola", "Y'shtola", "Y'shtola", "ヤ・シュトラ"],
+        ["The Azim Steppe", "Azim-Steppe", "Steppe D'Azim", "アジムステップ"],
+        31.3, 11.3,
+        expansions.SB,
+        true,
+        false
+      );
+
+    case 191:
+      return helper.companionApp();
 
     default:
       console.log("Unknown method for emote " + emote.id);

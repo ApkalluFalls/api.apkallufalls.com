@@ -7,7 +7,10 @@ module.exports = {
   beastTribe: {
     en: 'Achieve {0} reputation with the {i1} Beast Tribe, then purchase {i11} for {img4} {i2} {i3} from {5} {6} in {img7} {8} (x: {9}, y: {10}).',
     de: 'Erreiche Verbundenheit {0} mit dem {i1} Stamm, dann kaufe {i1} für {img4} {i2} {i3} von {5} {6} in {img7} {8} (x: {9}, y: {10}).',
-    fr: 'Après avoir atteint la réputation {0} avec la tribu {i1}, acheter {i11} pour {img4} {i2} {i3} chez {5} {6} à {img7} {8} (x: {9}, y: {10})'
+    fr: 'Après avoir atteint la réputation {0} avec la tribu {i1}, acheter {i11} pour {img4} {i2} {i3} chez {5} {6} à {img7} {8} (x: {9}, y: {10}).'
+  },
+  companionApp: {
+    en: 'Log in to the Companion App on an Android or iOS device.'
   },
   eventQuest: {
     en: 'Complete the level {0} {i1} quest {img3} \'{i2}\'.',
@@ -23,6 +26,11 @@ module.exports = {
     en: 'Unlocked when enlisting with Grand Company: {i0}. You can only have one of __emotes__ at a time.',
     de: 'Freigeschaltet durch das Einschreiben in einer staatlichen Gesellschaft: {i0}. Du kannst nur eines der __emotes__ zur selben Zeit besitzen.',
     fr: 'Obtenu après avoir rejoint la Grande Compagnie: {i0}. Vous ne pouvez avoir qu\'une des emotes __emotes__ à la fois.'
+  },
+  hiddenCanalsOfUznair: {
+    en: 'Randomly awarded from treasure chests in {img0} {i1}.',
+    de: 'Zufällig erhältlich von Schatztruhen in {img0} {i1}.',
+    fr: 'Récompense aléatoire dans un coffre dans {img0} {i1}.'
   },
   isDefault: {
     en: 'Unlocked by default.',

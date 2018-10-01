@@ -11,7 +11,8 @@ module.exports = {
   },
   companionApp: {
     en: 'Log in to the Companion App on an Android or iOS device.',
-    fr: 'Connectez vous à l\'application Compagnon sur un appareil Android ou iOS'
+    de: 'Melde dich mit einem Android oder iOS-Gerät auf der Companion-App an.',
+    fr: 'Connectez vous à l\'application Compagnon sur un appareil Android ou iOS.'
   },
   eventQuest: {
     en: 'Complete the level {0} {i1} quest {img3} \'{i2}\'.',

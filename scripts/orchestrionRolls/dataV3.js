@@ -23,7 +23,7 @@ module.exports = new Helper(name, plural, {
   list: true,
   v3: true
 }, (data, resolve) => {
-  recursiveFetch(data, name, (entry, all) => {
+  recursiveFetch(data.filter(d => d['Name_en']), name, (entry, all) => {
     return {
       v3: true,
       api: api + '/' + entry.ID,

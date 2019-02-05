@@ -66,6 +66,9 @@ async function callApi(apiPath, columns, callback, tag) {
     mode: 'cors'
   }
 
+  const x = new Date();
+  console.log(x.getSeconds(), x.getMilliseconds());
+
   fetch(
     `${apiPath}${columns}${columns ? '&' : '?'}key=${apiKey}${tag ? `&tags=${tag}` : ''}`,
     config
@@ -92,6 +95,9 @@ async function recursiveFetch(api, result = [], page = 1, tag) {
   }
 
   const url = `${api}&page=${page}&max_items=1000&key=${apiKey}${tag ? `&tags=${tag}` : ''}`;
+  
+  console.info("1", url);
+  
   const data = await fetch(url)
     .then(response => response.json());
 

@@ -57,7 +57,7 @@ module.exports = async function() {
       unknown: emotesList.filter(data => !data.ref).length
     },
     levels: {
-      total: 25 * 70
+      total: (28 * 80) + 50
     },
     minions: {
       total: minionsList.length,

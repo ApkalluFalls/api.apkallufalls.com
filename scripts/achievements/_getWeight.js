@@ -29,6 +29,8 @@ module.exports = function(achievement) {
 		case 24: // obtain a variety of anima weapon
 			return 1;
 		case 2: // complete n other achievements
+		case 26: // New but dud
+		case 27: // New but dud
 			return 0; // the other achievements have their own weights and this is automatic
 		case 16: // there is no type 16
 		case 22: // there is no type 22

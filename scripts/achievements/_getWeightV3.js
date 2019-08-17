@@ -33,6 +33,7 @@ module.exports = function(achievement) {
 			return 1;
 
 		case 2: // complete n other achievements
+		case 26: // temporary, to be resolved in AF v3
 			return 0; // the other achievements have their own weights and this is automatic
 			
 		case 16: // there is no type 16
